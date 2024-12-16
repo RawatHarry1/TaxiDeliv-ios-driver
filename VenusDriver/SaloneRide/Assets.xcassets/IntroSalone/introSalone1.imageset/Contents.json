@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "SuperApp Driver Screen1 Dark Green 3.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "SuperApp Driver Screen1 Dark Green 4.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "SuperApp Driver Screen1 Dark Green 5.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

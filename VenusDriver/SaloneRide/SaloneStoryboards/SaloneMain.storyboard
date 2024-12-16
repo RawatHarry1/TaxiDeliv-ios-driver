@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Intro ScreensVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="SIIntroScreensVC" id="Y6W-OH-hqX" customClass="SIIntroScreensVC" customModule="SaloneRide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uwc-3p-lOF">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Kmu-fi-cFC">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mbU-e1-FTS">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gOn-9F-Ulb">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <visualEffectView opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3iS-0V-oFy">
+                                <rect key="frame" x="0.0" y="721" width="393" height="131"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="T80-Q5-ReZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="131"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="PbY-ko-iiD">
+                                <rect key="frame" x="30" y="726" width="333" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="16v-ak-iJk"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" red="0.43900001049041748" green="0.43900001049041748" blue="0.43900001049041748" alpha="0.49549875827814571" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" name="buttonSelectedOrange"/>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fy-Va-KST" customClass="VDButton" customModule="SaloneRide" customModuleProvider="target">
+                                <rect key="frame" x="30" y="762" width="333" height="46"/>
+                                <color key="backgroundColor" name="buttonSelectedOrange"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="PGy-0e-Uxx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" name="textColorWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="nextBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2JU-Cu-zfk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2R-U6-duv">
+                                <rect key="frame" x="325.66666666666669" y="63" width="37.333333333333314" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37.329999999999998" id="XUs-C5-Mzw"/>
+                                    <constraint firstAttribute="height" constant="25" id="pY4-jH-mEz"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="skipBtn"/>
+                                <connections>
+                                    <action selector="skipBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="PoI-Od-JQ3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1fy-Va-KST" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="20e-yH-HSM"/>
+                            <constraint firstItem="3iS-0V-oFy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="58Z-1t-rzS"/>
+                            <constraint firstItem="PbY-ko-iiD" firstAttribute="top" secondItem="3iS-0V-oFy" secondAttribute="top" constant="5" id="7lD-y1-udT"/>
+                            <constraint firstItem="1fy-Va-KST" firstAttribute="top" secondItem="PbY-ko-iiD" secondAttribute="bottom" constant="10" id="Cvd-aT-AxH"/>
+                            <constraint firstItem="Uwc-3p-lOF" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="GDo-uS-Vit"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3iS-0V-oFy" secondAttribute="trailing" id="HrE-Fl-335"/>
+                            <constraint firstAttribute="bottom" secondItem="Uwc-3p-lOF" secondAttribute="bottom" id="PHZ-x1-PqZ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PbY-ko-iiD" secondAttribute="trailing" constant="30" id="Z66-fg-nrj"/>
+                            <constraint firstAttribute="bottom" secondItem="3iS-0V-oFy" secondAttribute="bottom" id="Zbq-K8-ZE7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="1fy-Va-KST" secondAttribute="trailing" constant="30" id="a6W-3h-8zz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="q2R-U6-duv" secondAttribute="trailing" constant="30" id="dnX-aZ-qHR"/>
+                            <constraint firstItem="PbY-ko-iiD" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="epc-Zc-oog"/>
+                            <constraint firstItem="q2R-U6-duv" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="4" id="iUl-Hu-Y9b"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="1fy-Va-KST" secondAttribute="bottom" constant="10" id="ldG-Lp-gSm"/>
+                            <constraint firstItem="Uwc-3p-lOF" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="sW1-CS-64Q"/>
+                            <constraint firstItem="Uwc-3p-lOF" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="uJU-Qv-hFW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnNext" destination="1fy-Va-KST" id="J1d-Rl-PtE"/>
+                        <outlet property="introCollectionView" destination="Uwc-3p-lOF" id="MO5-7n-IEY"/>
+                        <outlet property="pageControl" destination="PbY-ko-iiD" id="oB6-hx-2DK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-19.083969465648853" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="1fy-Va-KST">
+            <size key="intrinsicContentSize" width="33" height="32"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="skipBtn" width="34.333332061767578" height="12.333333015441895"/>
+        <namedColor name="buttonSelectedOrange">
+            <color red="0.0" green="0.32899999618530273" blue="0.6470000147819519" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="textColorWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

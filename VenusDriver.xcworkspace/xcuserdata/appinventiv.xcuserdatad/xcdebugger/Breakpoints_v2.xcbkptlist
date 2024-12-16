@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "5FA719FC-4A3F-4CBE-8955-E2D0D551FB59"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            uuid = "9272593B-F2C0-4938-B913-C1E43D190AB5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8734068D-BDE8-448F-80DE-5B8A96E988EA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Modules/Prelogin/VDLoginVC/LoginModel/VDLoginViewModel/VDLoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "loginWithOtp(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "33675429-9B1C-41E9-AAF3-0E22BBDB27E5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Modules/Prelogin/VDLoginVC/LoginModel/VDLoginViewModel/VDLoginViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "loginWithOtp(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "33675429-9B1C-41E9-AAF3-0E22BBDB27E5 - 28c1f0c074f82c51"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDLoginViewModel.loginWithOtp(Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Desktop/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Modules/Prelogin/VDLoginVC/LoginModel/VDLoginViewModel/VDLoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "33675429-9B1C-41E9-AAF3-0E22BBDB27E5 - 8e66f1aa443fed21"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Optional&lt;Any&gt;, Swift.Error&gt;) -&gt; () in SaloneRide.VDLoginViewModel.loginWithOtp(Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Desktop/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Modules/Prelogin/VDLoginVC/LoginModel/VDLoginViewModel/VDLoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "93">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3CCDC286-0320-4917-8114-1292B6EFF7B4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Modules/PostLogin/VDDocumentsVC/VDDocumentsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "btnSubmit(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AC80EA85-EE3C-43D4-BC32-70FC9A3B6FE2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/AppController/RestAPI Controller/WebServices+Trips.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "fetchOngoingTrip(parameters:response:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58D9DE6F-4144-4845-AF38-4EB9C9DC7FB7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/AppController/RestAPI Controller/WebServices+Trips.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "markArrivedTripApi(parameters:response:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1CC793E-1E64-40EE-BBEE-7FE4915D6484"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Modules/Commonmodule/VDBaseVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "setNavigationBarHidden"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "979606EE-2E78-49CF-8605-2F308AEC3F4F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Resources/AppDelegates/Appdelegate+PushNotifications.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "registerForPushNotification()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "979606EE-2E78-49CF-8605-2F308AEC3F4F - 3c52ce895529d95d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.AppDelegate.application(_: __C.UIApplication, didReceiveRemoteNotification: Swift.Dictionary&lt;Swift.AnyHashable, Any&gt;) -&gt; ()"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Resources/AppDelegates/Appdelegate+PushNotifications.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "979606EE-2E78-49CF-8605-2F308AEC3F4F - 804716807f82d5a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaloneRide.AppDelegate.registerForPushNotification() -&gt; ()"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Resources/AppDelegates/Appdelegate+PushNotifications.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  uuid = "979606EE-2E78-49CF-8605-2F308AEC3F4F - 804716807f82d5a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in SaloneRide.AppDelegate.registerForPushNotification() -&gt; ()"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Resources/AppDelegates/Appdelegate+PushNotifications.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "504">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A2D3604-13A1-4A9E-A440-C183B0660856"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Utility/ReuseableExtensions/String+Extension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
+            landmarkName = "toDate(dateFormat:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4A2D3604-13A1-4A9E-A440-C183B0660856 - 6598f79819ba954f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift.String.toDate(dateFormat: Swift.String) -&gt; Swift.Optional&lt;Foundation.Date&gt;"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Utility/ReuseableExtensions/String+Extension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "339"
+                  endingLineNumber = "339"
+                  offsetFromSymbolStart = "476">
+               </Location>
+               <Location
+                  uuid = "4A2D3604-13A1-4A9E-A440-C183B0660856 - 6598f79819ba954f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Swift.String.toDate(dateFormat: Swift.String) -&gt; Swift.Optional&lt;Foundation.Date&gt;"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Utility/ReuseableExtensions/String+Extension.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "339"
+                  endingLineNumber = "339"
+                  offsetFromSymbolStart = "540">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A66D1FC7-0A2D-4B36-8770-849FD7EBE1FD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Utility/ReuseableExtensions/Date+Extensions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "378"
+            endingLineNumber = "378"
+            landmarkName = "toLocalTime()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A66D1FC7-0A2D-4B36-8770-849FD7EBE1FD - b4ca1dc695b099df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Foundation.Date.toLocalTime() -&gt; Foundation.Date"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Utility/ReuseableExtensions/Date+Extensions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "378"
+                  endingLineNumber = "378"
+                  offsetFromSymbolStart = "912">
+               </Location>
+               <Location
+                  uuid = "A66D1FC7-0A2D-4B36-8770-849FD7EBE1FD - b4ca1dc695b099df"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Foundation.Date.toLocalTime() -&gt; Foundation.Date"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Utility/ReuseableExtensions/Date+Extensions.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "378"
+                  endingLineNumber = "378"
+                  offsetFromSymbolStart = "1056">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC529188-B44A-442B-A002-18C317DED5E0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Utility/AppUtils/VDGlobals.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "ConvertDateToLocalTimeZone(date:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "79DB782A-47F9-432C-9E97-8D1B45DD0EE6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Utility/AppUtils/VDGlobals.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "ConvertDateToLocalTimeZone(date:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC01F37E-4C68-4060-A0D9-D1F49F5F8B5D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
+            landmarkName = "changeAvailabilitySuccess(_:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DC01F37E-4C68-4060-A0D9-D1F49F5F8B5D - cb21b6a4d8be27ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDHomeVC.changeAvailabilitySuccess(Swift.Bool, Swift.String) -&gt; ()"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "504"
+                  endingLineNumber = "504"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "DC01F37E-4C68-4060-A0D9-D1F49F5F8B5D - cb21b6a4d8be29fa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDHomeVC.changeAvailabilitySuccess(Swift.Bool, Swift.String) -&gt; ()"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "522"
+                  endingLineNumber = "522"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "DC01F37E-4C68-4060-A0D9-D1F49F5F8B5D - cb21b6a4d8be2b8e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDHomeVC.changeAvailabilitySuccess(Swift.Bool, Swift.String) -&gt; ()"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "534"
+                  endingLineNumber = "534"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "DC01F37E-4C68-4060-A0D9-D1F49F5F8B5D - cb21b6a4d8be2ae3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDHomeVC.changeAvailabilitySuccess(Swift.Bool, Swift.String) -&gt; ()"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "529"
+                  endingLineNumber = "529"
+                  offsetFromSymbolStart = "96">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4CEF1DF-FD50-4315-95F3-A9552006D3DC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/AppController/SocketManager/SocketManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "handleLocationACK(data:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9B3C92A-08C2-4544-AFD1-0BDFD4A4099C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "656"
+            endingLineNumber = "656"
+            landmarkName = "centerLocationBtn(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B9B3C92A-08C2-4544-AFD1-0BDFD4A4099C - 4c3ba98a9529ef6b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDHomeVC.centerLocationBtn(__C.UIButton) -&gt; ()"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "605"
+                  endingLineNumber = "605"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "B9B3C92A-08C2-4544-AFD1-0BDFD4A4099C - 4c3ba98a9529e8d0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDHomeVC.centerLocationBtn(__C.UIButton) -&gt; ()"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/appinventiv/Documents/MyProjects/WithWhiteLabelDesigns/venus-ios-driver/VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "600"
+                  endingLineNumber = "600"
+                  offsetFromSymbolStart = "160">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "40F55524-8105-4E7F-B9EF-4F511E4BD07E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "724"
+            endingLineNumber = "724"
+            landmarkName = "apiCallforRefreshNearbyDriver(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

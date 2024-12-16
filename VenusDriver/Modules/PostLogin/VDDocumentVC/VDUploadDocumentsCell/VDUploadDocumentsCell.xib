@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="VDUploadDocumentsCell" rowHeight="173" id="KGk-i7-Jjw" customClass="VDUploadDocumentsCell" customModule="SaloneRide" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="449" height="173"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="449" height="173"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9C2-Cu-pQf">
+                        <rect key="frame" x="30" y="10" width="389" height="153"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7n-d1-4FL">
+                                <rect key="frame" x="0.0" y="0.0" width="389" height="153"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fRa-3X-fb5">
+                                        <rect key="frame" x="20" y="20" width="349" height="113"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="sy4-o6-GfE">
+                                                <rect key="frame" x="0.0" y="0.0" width="349" height="39"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="1. Upload Driver's License fewfw efwecfwefwefewfwef" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lh9-4r-Eul">
+                                                        <rect key="frame" x="0.0" y="0.0" width="349" height="39"/>
+                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                                        <color key="textColor" name="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lKz-JD-mhp">
+                                                        <rect key="frame" x="349" y="0.0" width="32" height="39"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rejected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mC-cA-bIG">
+                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="24"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="24" id="BqN-Kp-yTT"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                                                <color key="textColor" red="1" green="0.054901960784313725" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WFo-dd-B83">
+                                                                <rect key="frame" x="8" y="0.0" width="24" height="24"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="24" id="Dye-dh-EbX"/>
+                                                                    <constraint firstAttribute="height" constant="24" id="q9I-aC-eRl"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hih-I0-Wiz" customClass="VDButton" customModule="SaloneRide" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="78" width="200" height="35"/>
+                                                <color key="backgroundColor" name="buttonSelectedOrange"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="XEU-ir-USy"/>
+                                                    <constraint firstAttribute="width" constant="200" id="w2d-1k-6vC"/>
+                                                </constraints>
+                                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Upload">
+                                                    <color key="titleColor" name="textColorWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="17.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="sy4-o6-GfE" secondAttribute="trailing" id="ctY-en-xpR"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="notification"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fRa-3X-fb5" secondAttribute="bottom" constant="20" id="9lz-fi-Ht2"/>
+                                    <constraint firstItem="fRa-3X-fb5" firstAttribute="top" secondItem="I7n-d1-4FL" secondAttribute="top" constant="20" id="Q1w-Gl-naz"/>
+                                    <constraint firstItem="fRa-3X-fb5" firstAttribute="leading" secondItem="I7n-d1-4FL" secondAttribute="leading" constant="20" id="Xm9-ME-Plq"/>
+                                    <constraint firstItem="fRa-3X-fb5" firstAttribute="centerX" secondItem="I7n-d1-4FL" secondAttribute="centerX" id="mUK-Mu-kEp"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2D-FG-3jz">
+                                <rect key="frame" x="0.0" y="153" width="389" height="95"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9g0-9X-M3b">
+                                        <rect key="frame" x="20" y="20" width="177.66666666666666" height="55"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Upload Municiple Card" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOm-rE-mSa">
+                                                <rect key="frame" x="0.0" y="0.0" width="177.66666666666666" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                                <color key="textColor" name="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYV-zq-qBo" customClass="VDButton" customModule="SaloneRide" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="20" width="135" height="35"/>
+                                                <color key="backgroundColor" name="buttonSelectedOrange"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="35" id="1Az-Ax-mTy"/>
+                                                    <constraint firstAttribute="width" constant="135" id="Qny-ew-UF0"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Upload">
+                                                    <color key="titleColor" name="textColorWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="17.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="notification"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="9g0-9X-M3b" secondAttribute="bottom" constant="20" id="1ES-l3-2tS"/>
+                                    <constraint firstItem="9g0-9X-M3b" firstAttribute="leading" secondItem="B2D-FG-3jz" secondAttribute="leading" constant="20" id="9J3-u9-xyr"/>
+                                    <constraint firstItem="9g0-9X-M3b" firstAttribute="top" secondItem="B2D-FG-3jz" secondAttribute="top" constant="20" id="yO0-sW-ibM"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="9C2-Cu-pQf" secondAttribute="bottom" constant="10" id="5Lu-9s-ehB"/>
+                    <constraint firstItem="9C2-Cu-pQf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="a8c-Ab-XH6"/>
+                    <constraint firstItem="9C2-Cu-pQf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="ll2-NG-h7l"/>
+                    <constraint firstAttribute="trailing" secondItem="9C2-Cu-pQf" secondAttribute="trailing" constant="30" id="rjs-Z1-W1b"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnUpload" destination="Hih-I0-Wiz" id="BA4-Mw-m7X"/>
+                <outlet property="titlelabel" destination="lh9-4r-Eul" id="0m2-xC-4m4"/>
+                <outlet property="warningIcon" destination="WFo-dd-B83" id="LKg-Bf-Ai5"/>
+                <outlet property="warningLbl" destination="1mC-cA-bIG" id="To9-KO-I7K"/>
+                <outlet property="warningSV" destination="lKz-JD-mhp" id="dQ7-7U-vQ8"/>
+            </connections>
+            <point key="canvasLocation" x="66.412213740458014" y="34.859154929577464"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="AYV-zq-qBo">
+            <size key="intrinsicContentSize" width="49" height="30"/>
+        </designable>
+        <designable name="Hih-I0-Wiz">
+            <size key="intrinsicContentSize" width="89" height="18"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="buttonSelectedOrange">
+            <color red="1" green="0.45100000500679016" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="notification">
+            <color red="1" green="0.96899998188018799" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textColor">
+            <color red="0.10199999809265137" green="0.093999996781349182" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textColorWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
