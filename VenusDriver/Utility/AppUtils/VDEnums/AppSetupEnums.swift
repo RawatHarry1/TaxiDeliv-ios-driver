@@ -29,7 +29,7 @@ enum AppEnvironment: String {
         switch self {
         case .dev: return "https://dev-rides.venustaxi.in"
         case .qa: return "http://43.204.229.91:8080"
-        case .stage: return "https://chuki-rides.venustaxi.in"
+        case .stage: return "https://chuki-rides.venustaxi.in" //https://chuki-rides.venustaxi.in
         case .production: return "https://super-app-rides.venustaxi.in"
         }
     }

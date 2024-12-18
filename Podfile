@@ -9,6 +9,7 @@ target 'VenusDriver' do
   pod 'SkyFloatingLabelTextField'
   pod 'GoogleMaps'
   pod 'LGSideMenuController'
+  pod 'SDWebImage'
 #  pod 'Firebase/Messaging'
 #  pod 'Firebase/Performance'
 #  pod 'FirebaseCore'
@@ -30,6 +31,7 @@ target 'SaloneRide' do
   pod 'FirebaseMessaging'
   pod 'Socket.IO-Client-Swift'
   pod 'StripePaymentSheet'
+  pod 'SDWebImage'
 end
 
 

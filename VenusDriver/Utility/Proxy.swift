@@ -8,11 +8,12 @@ import NVActivityIndicatorView
 let storyboardObj = UIStoryboard(name: "Main", bundle: nil)
 
 class Proxy {
+    
     static var shared: Proxy {
         return Proxy()
     }
-    fileprivate init(){}
     
+    fileprivate init(){}
     func isValidEmail(email: String) -> Bool {
         let regEx =  "(?:[a-zA-Z0-9!#$%\\&‘*+/=?\\^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%\\&'*+/=?\\^_`{|}" +
         "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" +

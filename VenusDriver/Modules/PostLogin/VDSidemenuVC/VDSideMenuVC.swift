@@ -81,7 +81,7 @@ class VDSideMenuVC: VDBaseVC {
 extension VDSideMenuVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 13
+        return 14
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -141,11 +141,15 @@ extension VDSideMenuVC: UITableViewDelegate, UITableViewDataSource {
 //            } else {
 //
 //            }
+            
         case 11:
+            print("tickets")
+            sideMenuController.rootViewController = TicketListVC.create()
+        case 12:
             print("Delete Account")
             self.deleteAccount()
             
-        case 12:
+        case 13:
             let story = UIStoryboard(name: "PostLogin", bundle:nil)
             let vc = story.instantiateViewController(withIdentifier: "VDLogoutVC") as! VDLogoutVC//VDLogoutVC.create()
             vc.modalPresentationStyle = .overFullScreen

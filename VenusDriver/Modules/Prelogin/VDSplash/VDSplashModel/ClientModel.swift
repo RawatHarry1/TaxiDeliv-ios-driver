@@ -126,8 +126,12 @@ struct City_list : Codable {
     let bank_list : String?
     let mandatory_fleet_registration : Int?
     let operator_available : [Int]?
+    let package_delivery_restriction_enabled : Int?
+    let maximum_distance : String?
 
     enum CodingKeys: String, CodingKey {
+        case maximum_distance = "maximum_distance"
+        case package_delivery_restriction_enabled = "package_delivery_restriction_enabled"
         case config_json = "config_json"
         case city_id = "city_id"
         case elm_verification_enabled = "elm_verification_enabled"
@@ -141,6 +145,8 @@ struct City_list : Codable {
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        maximum_distance = try values.decodeIfPresent(String.self, forKey: .maximum_distance)
+        package_delivery_restriction_enabled = try values.decodeIfPresent(Int.self, forKey: .package_delivery_restriction_enabled)
         config_json = try values.decodeIfPresent(String.self, forKey: .config_json)
         city_id = try values.decodeIfPresent(Int.self, forKey: .city_id)
         elm_verification_enabled = try values.decodeIfPresent(Int.self, forKey: .elm_verification_enabled)

@@ -80,6 +80,15 @@ class VDEarningDetailVC: VDBaseVC {
           
         }
     }
+    
+    @IBAction func btnRaiseATicket(_ sender: Any) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "RaiseTicketVC") as! RaiseTicketVC
+        vc.rideId = "\(tripID ?? 0)"
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
+       // self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 
     @IBAction func btnDownloadInvoice(_ sender: Any) {
         let pdfUrlString = "\(sharedAppDelegate.appEnvironment.baseURL)/ride/invoice?ride_id=\(self.tripID ?? 0)"

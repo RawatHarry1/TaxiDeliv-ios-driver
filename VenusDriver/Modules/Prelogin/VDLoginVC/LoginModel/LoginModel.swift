@@ -151,7 +151,7 @@ struct LoginModel : Codable {
     var service_type : Int?
     var delivery_cancellation_reasons: [String]?
     var enabled_service : Int?
-    
+    var support_ticket_reasons : [String]?
     
     enum CodingKeys: String, CodingKey {
         case stripeCredentials = "stripeCredentials"
@@ -200,6 +200,7 @@ struct LoginModel : Codable {
         case service_type = "service_type"
         case delivery_cancellation_reasons = "delivery_cancellation_reasons"
         case enabled_service = "enabled_service"
+        case support_ticket_reasons = "support_ticket_reasons"
     }
 
     init(from decoder: Decoder) throws {
@@ -258,10 +259,12 @@ struct LoginModel : Codable {
         service_type = try values.decodeIfPresent(Int.self, forKey: .service_type)
         delivery_cancellation_reasons = try values.decodeIfPresent([String].self, forKey: .delivery_cancellation_reasons)
         enabled_service = try values.decodeIfPresent(Int.self, forKey: .enabled_service)
+        support_ticket_reasons = try values.decodeIfPresent([String].self, forKey: .support_ticket_reasons)
     }
 
 
     init() {
+        support_ticket_reasons = nil
         enabled_service = nil
         registration_steps = nil
         date_format = nil

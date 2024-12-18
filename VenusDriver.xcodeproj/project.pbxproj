@@ -577,8 +577,12 @@
 		CF08C7B12C819B35007A981A /* CardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C7A32C819B35007A981A /* CardsVC.swift */; };
 		CF08C7B22C819B35007A981A /* CardsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C7A42C819B35007A981A /* CardsVM.swift */; };
 		CF08C7B32C819B35007A981A /* CardsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C7A42C819B35007A981A /* CardsVM.swift */; };
+		CF1038512D0957DA00682919 /* MapSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1038502D0957DA00682919 /* MapSettingsVC.swift */; };
+		CF1038522D0957F600682919 /* MapSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1038502D0957DA00682919 /* MapSettingsVC.swift */; };
 		CF3127262C9C3F7900E8F2BE /* TypeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3127252C9C3F7900E8F2BE /* TypeCollectionCell.swift */; };
 		CF3127272C9C404E00E8F2BE /* TypeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3127252C9C3F7900E8F2BE /* TypeCollectionCell.swift */; };
+		CF3360732D02CA1100822D6D /* ImageViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3360712D02CA1100822D6D /* ImageViewerVC.swift */; };
+		CF3360742D02CA1100822D6D /* ImageViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3360712D02CA1100822D6D /* ImageViewerVC.swift */; };
 		CF3C920F2C46460700F9D0EF /* chatCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C920E2C46460700F9D0EF /* chatCollectionCell.swift */; };
 		CF3C92102C46460A00F9D0EF /* chatCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C920E2C46460700F9D0EF /* chatCollectionCell.swift */; };
 		CF477CBB2C450D070059B122 /* SenderTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF477CBA2C450D070059B122 /* SenderTblCell.swift */; };
@@ -591,6 +595,16 @@
 		CF477CC62C452E8E0059B122 /* GetAllMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF477CC42C452E620059B122 /* GetAllMessages.swift */; };
 		CF477CC82C4532610059B122 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF477CC72C4532600059B122 /* Singleton.swift */; };
 		CF477CC92C45327E0059B122 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF477CC72C4532600059B122 /* Singleton.swift */; };
+		CF704C972D096EB800D83A3B /* RaiseTicketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C8E2D096EB600D83A3B /* RaiseTicketVC.swift */; };
+		CF704C982D096EB800D83A3B /* RaiseTicketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C8E2D096EB600D83A3B /* RaiseTicketVC.swift */; };
+		CF704C992D096EB800D83A3B /* RaiseTicketVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C8F2D096EB600D83A3B /* RaiseTicketVM.swift */; };
+		CF704C9A2D096EB800D83A3B /* RaiseTicketVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C8F2D096EB600D83A3B /* RaiseTicketVM.swift */; };
+		CF704C9B2D096EB800D83A3B /* TicketListModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C912D096EB800D83A3B /* TicketListModal.swift */; };
+		CF704C9C2D096EB800D83A3B /* TicketListModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C912D096EB800D83A3B /* TicketListModal.swift */; };
+		CF704C9D2D096EB800D83A3B /* TicketListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C922D096EB800D83A3B /* TicketListVC.swift */; };
+		CF704C9E2D096EB800D83A3B /* TicketListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C922D096EB800D83A3B /* TicketListVC.swift */; };
+		CF704C9F2D096EB800D83A3B /* TicketTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C932D096EB800D83A3B /* TicketTblCell.swift */; };
+		CF704CA02D096EB800D83A3B /* TicketTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C932D096EB800D83A3B /* TicketTblCell.swift */; };
 		CF81FE312CC7B4E900ABE41A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF81FE302CC7B4E900ABE41A /* GoogleService-Info.plist */; };
 		CF81FE322CC7B4E900ABE41A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF81FE302CC7B4E900ABE41A /* GoogleService-Info.plist */; };
 		CF89ED272C367AD400DC7125 /* NeedHelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF89ED252C367A1000DC7125 /* NeedHelpVC.swift */; };
@@ -927,13 +941,21 @@
 		CF08C7A22C819B35007A981A /* CardsTblCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardsTblCell.xib; sourceTree = "<group>"; };
 		CF08C7A32C819B35007A981A /* CardsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsVC.swift; sourceTree = "<group>"; };
 		CF08C7A42C819B35007A981A /* CardsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsVM.swift; sourceTree = "<group>"; };
+		CF1038502D0957DA00682919 /* MapSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsVC.swift; sourceTree = "<group>"; };
 		CF3127252C9C3F7900E8F2BE /* TypeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCollectionCell.swift; sourceTree = "<group>"; };
+		CF3360712D02CA1100822D6D /* ImageViewerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerVC.swift; sourceTree = "<group>"; };
 		CF3C920E2C46460700F9D0EF /* chatCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatCollectionCell.swift; sourceTree = "<group>"; };
 		CF477CBA2C450D070059B122 /* SenderTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTblCell.swift; sourceTree = "<group>"; };
 		CF477CBC2C450D1E0059B122 /* ReceiverTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverTblCell.swift; sourceTree = "<group>"; };
 		CF477CBF2C450E920059B122 /* ChatModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatModal.swift; sourceTree = "<group>"; };
 		CF477CC42C452E620059B122 /* GetAllMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetAllMessages.swift; sourceTree = "<group>"; };
 		CF477CC72C4532600059B122 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		CF704C8D2D096EAB00D83A3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF704C8E2D096EB600D83A3B /* RaiseTicketVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaiseTicketVC.swift; sourceTree = "<group>"; };
+		CF704C8F2D096EB600D83A3B /* RaiseTicketVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaiseTicketVM.swift; sourceTree = "<group>"; };
+		CF704C912D096EB800D83A3B /* TicketListModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketListModal.swift; sourceTree = "<group>"; };
+		CF704C922D096EB800D83A3B /* TicketListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketListVC.swift; sourceTree = "<group>"; };
+		CF704C932D096EB800D83A3B /* TicketTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTblCell.swift; sourceTree = "<group>"; };
 		CF81FE302CC7B4E900ABE41A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF89ED252C367A1000DC7125 /* NeedHelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedHelpVC.swift; sourceTree = "<group>"; };
 		CF989E832CE20D18002FB3E3 /* UploadPackageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPackageVC.swift; sourceTree = "<group>"; };
@@ -1413,6 +1435,11 @@
 		0C2887FC2A35C20E009436BA /* PostLogin */ = {
 			isa = PBXGroup;
 			children = (
+				CF704C8D2D096EAB00D83A3B /* Assets.xcassets */,
+				CF704C902D096EB600D83A3B /* Raise Ticket VC */,
+				CF704C942D096EB800D83A3B /* Ticket List VC */,
+				CF10384F2D0957C300682919 /* MapSettingsVC */,
+				CF3360722D02CA1100822D6D /* ImageViewerVC */,
 				CFCC5E2D2CE4A54F00E4C1B6 /* Cancel Trip VC */,
 				CF989E822CE20CFB002FB3E3 /* Upload Package VC */,
 				CFAA7ED42CE203EE004CAAF5 /* Package List VC */,
@@ -2435,6 +2462,22 @@
 			path = "Cards VC";
 			sourceTree = "<group>";
 		};
+		CF10384F2D0957C300682919 /* MapSettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				CF1038502D0957DA00682919 /* MapSettingsVC.swift */,
+			);
+			path = MapSettingsVC;
+			sourceTree = "<group>";
+		};
+		CF3360722D02CA1100822D6D /* ImageViewerVC */ = {
+			isa = PBXGroup;
+			children = (
+				CF3360712D02CA1100822D6D /* ImageViewerVC.swift */,
+			);
+			path = ImageViewerVC;
+			sourceTree = "<group>";
+		};
 		CF477CBE2C450E870059B122 /* Chat Modal */ = {
 			isa = PBXGroup;
 			children = (
@@ -2442,6 +2485,25 @@
 				CF477CBF2C450E920059B122 /* ChatModal.swift */,
 			);
 			path = "Chat Modal";
+			sourceTree = "<group>";
+		};
+		CF704C902D096EB600D83A3B /* Raise Ticket VC */ = {
+			isa = PBXGroup;
+			children = (
+				CF704C8E2D096EB600D83A3B /* RaiseTicketVC.swift */,
+				CF704C8F2D096EB600D83A3B /* RaiseTicketVM.swift */,
+			);
+			path = "Raise Ticket VC";
+			sourceTree = "<group>";
+		};
+		CF704C942D096EB800D83A3B /* Ticket List VC */ = {
+			isa = PBXGroup;
+			children = (
+				CF704C922D096EB800D83A3B /* TicketListVC.swift */,
+				CF704C912D096EB800D83A3B /* TicketListModal.swift */,
+				CF704C932D096EB800D83A3B /* TicketTblCell.swift */,
+			);
+			path = "Ticket List VC";
 			sourceTree = "<group>";
 		};
 		CF89ED242C3679F900DC7125 /* NeedHelpVC */ = {
@@ -2766,6 +2828,7 @@
 				0CED86CC2A7A6543007959D6 /* VDWalletCell.xib in Resources */,
 				0CD15EF02A6AD65600123A1C /* ProximaNova-Regular.otf in Resources */,
 				0CED86BA2A7A2024007959D6 /* Wallet.storyboard in Resources */,
+				0CD15F302A6ADF7600123A1C /* Assets.xcassets in Resources */,
 				0CD15EF12A6AD65600123A1C /* PreLoginNavBar.xib in Resources */,
 				0CD15EF22A6AD65600123A1C /* Proxima Nova Black.otf in Resources */,
 				0CD15EF32A6AD65600123A1C /* proximanovacond-lightit.otf in Resources */,
@@ -2778,7 +2841,6 @@
 				0CD15EF92A6AD65600123A1C /* proximanova-semibold.otf in Resources */,
 				0CD15EFA2A6AD65600123A1C /* VDNotificationHeaderCell.xib in Resources */,
 				0CD15EFB2A6AD65600123A1C /* Proxima Nova Alt Bold.otf in Resources */,
-				0CD15F302A6ADF7600123A1C /* Assets.xcassets in Resources */,
 				0CD15EFC2A6AD65600123A1C /* SFUIText-BoldItalic.ttf in Resources */,
 				0CD15EFD2A6AD65600123A1C /* proximanovacond-semiboldit.otf in Resources */,
 				0CD15EFE2A6AD65600123A1C /* proximanovacond-regularit.otf in Resources */,
@@ -2942,6 +3004,7 @@
 			files = (
 				0C67EEBA2A361CAA00D59C41 /* IQKeyboardManagerConstants.swift in Sources */,
 				0C53C40A2A34DE88002D9E8A /* VDSignUpVC.swift in Sources */,
+				CF3360732D02CA1100822D6D /* ImageViewerVC.swift in Sources */,
 				CF989E862CE20D61002FB3E3 /* UploadCollectionCell.swift in Sources */,
 				CF477CC52C452E620059B122 /* GetAllMessages.swift in Sources */,
 				0C209C6C2A685425005929BA /* TCApiCode.swift in Sources */,
@@ -2996,9 +3059,12 @@
 				CFCC5E222CE471FC00E4C1B6 /* PackageListTblCell.swift in Sources */,
 				0C53C4102A34E6AF002D9E8A /* VDCreateProfileVC.swift in Sources */,
 				0CD15F472A6BF39500123A1C /* SIIntroCollectionCell.swift in Sources */,
+				CF704C992D096EB800D83A3B /* RaiseTicketVM.swift in Sources */,
 				CF08C7B02C819B35007A981A /* CardsVC.swift in Sources */,
+				CF704C972D096EB800D83A3B /* RaiseTicketVC.swift in Sources */,
 				0C6176D32A40EA37001DC0D8 /* VDRideCompleteVC.swift in Sources */,
 				CF08C7A62C819B35007A981A /* CardsModal.swift in Sources */,
+				CF704C9D2D096EB800D83A3B /* TicketListVC.swift in Sources */,
 				0C67EEB72A361CAA00D59C41 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				0CC586BF2A9AAF4B00D168B8 /* VDWalletModel.swift in Sources */,
 				0C67EEB82A361CAA00D59C41 /* IQInvocation.swift in Sources */,
@@ -3052,6 +3118,7 @@
 				0C209C672A68529C005929BA /* Webservices.swift in Sources */,
 				0CED86F42A7ACEA2007959D6 /* VDAccountViewModel.swift in Sources */,
 				0CB3F64D2A99E53F00EA8665 /* VDAboutAppCell.swift in Sources */,
+				CF704C9F2D096EB800D83A3B /* TicketTblCell.swift in Sources */,
 				0C24E9902A3637BB00502583 /* VDDocumentCell.swift in Sources */,
 				0CDE7A032A39CFCD003D4DE5 /* VDNotificationVC.swift in Sources */,
 				0CC23AAE2A6FAB6500343306 /* VDElectricListCell.swift in Sources */,
@@ -3064,6 +3131,7 @@
 				CF3127262C9C3F7900E8F2BE /* TypeCollectionCell.swift in Sources */,
 				0C24E98C2A36376500502583 /* VDDocumentsVC.swift in Sources */,
 				0CD1166A2A9675D6008AF9DF /* DeviceDetails.swift in Sources */,
+				CF704C9B2D096EB800D83A3B /* TicketListModal.swift in Sources */,
 				CFCC5E2F2CE4A56700E4C1B6 /* CancelTripVC.swift in Sources */,
 				0CC958372B81E1B500717A92 /* SocketManager.swift in Sources */,
 				0C6A50B32A41DF7900091805 /* VDDocumentVC.swift in Sources */,
@@ -3081,6 +3149,7 @@
 				CFD79B6B2C365BC5007D2CF4 /* VCFeedbackVC.swift in Sources */,
 				0CF9E2042A34C07500F8DAAC /* VDIntroCollectionCell.swift in Sources */,
 				0CBBB0E12A35CCDA00F1EDD0 /* LocationTracker.swift in Sources */,
+				CF1038512D0957DA00682919 /* MapSettingsVC.swift in Sources */,
 				0C01A5A12A6C689800B98ADF /* CountryDetailCell.swift in Sources */,
 				0CF9E1FC2A34BA3600F8DAAC /* VDIntroVC.swift in Sources */,
 				0C209C652A685236005929BA /* AppSetupEnums.swift in Sources */,
@@ -3154,6 +3223,7 @@
 				0CC23AB52A6FBB6E00343306 /* VDPayoutInfoViewModel.swift in Sources */,
 				0CED86F62A7ACEAA007959D6 /* VDAccountModel.swift in Sources */,
 				CF477CC92C45327E0059B122 /* Singleton.swift in Sources */,
+				CF704C9E2D096EB800D83A3B /* TicketListVC.swift in Sources */,
 				0C01A5CF2A6E917300B98ADF /* VDCreateProfileModel.swift in Sources */,
 				0CD15E6A2A6AD65600123A1C /* VDEarningDetailVC.swift in Sources */,
 				0CF659CB2AAE2E1700E98D8F /* VDSideMenuViewModel.swift in Sources */,
@@ -3239,6 +3309,7 @@
 				0CD1166B2A967612008AF9DF /* DeviceDetails.swift in Sources */,
 				0CD15E882A6AD65600123A1C /* VDEarningCell.swift in Sources */,
 				0CD15E892A6AD65600123A1C /* Notification.name+Extension.swift in Sources */,
+				CF704C9A2D096EB800D83A3B /* RaiseTicketVM.swift in Sources */,
 				0CD15E8A2A6AD65600123A1C /* VDRatingsTableCell.swift in Sources */,
 				0CD15E8B2A6AD65600123A1C /* VDEnums.swift in Sources */,
 				0C01A5902A6C656D00B98ADF /* VDCancelRideVC.swift in Sources */,
@@ -3277,6 +3348,8 @@
 				0CD15E992A6AD65600123A1C /* Webservices.swift in Sources */,
 				0CD15E9A2A6AD65600123A1C /* VDDocumentCell.swift in Sources */,
 				0CB3C1702A6F19FD00A51576 /* WebService+DocumentData.swift in Sources */,
+				CF704C9C2D096EB800D83A3B /* TicketListModal.swift in Sources */,
+				CF3360742D02CA1100822D6D /* ImageViewerVC.swift in Sources */,
 				CF08C7A92C819B35007A981A /* ConfirmCardModal.swift in Sources */,
 				CF08C7B32C819B35007A981A /* CardsVM.swift in Sources */,
 				0C4940B92AB039E900A6E35F /* WebServices+Wallet.swift in Sources */,
@@ -3287,6 +3360,7 @@
 				CFD79B6E2C367044007D2CF4 /* VCFeedbackVC.swift in Sources */,
 				0CD15E9C2A6AD65600123A1C /* VDDocumentsVC.swift in Sources */,
 				0CD15E9D2A6AD65600123A1C /* VDDocumentVC.swift in Sources */,
+				CF704CA02D096EB800D83A3B /* TicketTblCell.swift in Sources */,
 				0CD15E9E2A6AD65600123A1C /* SkyfieldTF.swift in Sources */,
 				0CD15E9F2A6AD65600123A1C /* VDHomeVC+MapView.swift in Sources */,
 				0CD15EA02A6AD65600123A1C /* VDPayoutInfoVC.swift in Sources */,
@@ -3341,9 +3415,11 @@
 				0C01A5CE2A6E917000B98ADF /* VDCreateProfileViewModel.swift in Sources */,
 				CFCC5E232CE4726000E4C1B6 /* PackageListTblCell.swift in Sources */,
 				0CD15EBD2A6AD65600123A1C /* IQTitleBarButtonItem.swift in Sources */,
+				CF704C982D096EB800D83A3B /* RaiseTicketVC.swift in Sources */,
 				0CED86D02A7A6543007959D6 /* VDWalletTCPopUp.swift in Sources */,
 				0C01A5BD2A6DBCE000B98ADF /* StringConstant.swift in Sources */,
 				0CED86F92A7AD4A7007959D6 /* UIIMage_Extension.swift in Sources */,
+				CF1038522D0957F600682919 /* MapSettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3577,6 +3653,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9R3NLR89HG;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VenusDriver/SaloneRide/sloneInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Venus Driver";
@@ -3621,6 +3698,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9R3NLR89HG;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VenusDriver/SaloneRide/sloneInfo.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Venus Driver";

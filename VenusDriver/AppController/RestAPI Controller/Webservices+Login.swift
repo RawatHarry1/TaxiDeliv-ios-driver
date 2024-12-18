@@ -38,6 +38,36 @@ extension WebServices {
             }
         }
     }
+    
+    static func raiseTicketApi(parameters: JSONDictionary, response: @escaping ((Result<(Any?), Error>) -> Void)) {
+        commonPostWithRawJSONAPI(parameters: parameters, endPoint: .generate_ticket, loader: true) { (result) in
+            switch result {
+            case .success(let json):
+                printDebug(json)
+                let data = try! json.rawData()
+                let model = try! JSONDecoder().decode(TicketModal.self, from: data)
+                response(.success(model))
+            case .failure(let error):
+                response(.failure(error))
+            }
+        }
+    }
+    
+    static func getTicketList(url: String,parameters: JSONDictionary, response: @escaping ((Result<(Any?), Error>) -> Void)) {
+        commonGetAPI(parameters: parameters, endPoint: .list_support_tickets,toAppend: url, loader: true) { (result) in
+      
+            switch result {
+            case .success(let json):
+                printDebug(json)
+                let data = try! json.rawData()
+                let model = try! JSONDecoder().decode(TicketListModal.self, from: data)
+                response(.success(model))
+            case .failure(let error):
+                response(.failure(error))
+            }
+        }
+    }
+    
     static func rateCustomer(parameters: JSONDictionary, response: @escaping ((Result<(Any?), Error>) -> Void)) {
         commonPostWithRawJSONAPI(parameters: parameters, endPoint: .rate_the_customer, loader: true) { (result) in
             switch result {

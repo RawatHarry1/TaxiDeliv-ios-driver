@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+protocol CollectionViewCellDelegate: AnyObject {
+    func didSelectItem(url: String)
+}
 class PackageListTblCell: UITableViewCell {
     @IBOutlet weak var btnAccept: UIButton!
     @IBOutlet weak var imagesStackView: UIStackView!
@@ -16,6 +18,7 @@ class PackageListTblCell: UITableViewCell {
     @IBOutlet weak var lblSize: UILabel!
     @IBOutlet weak var collectionViewImages: UICollectionView!
     
+    @IBOutlet weak var mainStack: UIStackView!
     @IBOutlet weak var deliveryStackView: UIStackView!
     @IBOutlet weak var viewStatus: UIView!
     @IBOutlet weak var lblStatus: UILabel!
@@ -26,6 +29,7 @@ class PackageListTblCell: UITableViewCell {
     var imagesArr : [String]?
     var deliveryImagesArr : [String]?
     var deliveryPackages : DeliveryPackages?
+    weak var delegate: CollectionViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         baseView.addShadowView()
@@ -83,6 +87,32 @@ extension PackageListTblCell: UICollectionViewDelegate, UICollectionViewDataSour
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagesCollectionCell", for: indexPath) as! ImagesCollectionCell
             cell.imgViewImages.setImage(deliveryImagesArr?[indexPath.row] ?? "", placeHolder: nil)
             return cell
+        }
+        
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //  guard let tableViewIndexPath = tableViewIndexPath else { return }
+        
+        if collectionView == collectionViewImages{
+            if imagesArr?.count ?? 0 > 0{
+                let urlStr = self.imagesArr?[indexPath.row] ?? ""
+                
+                delegate?.didSelectItem(url:urlStr)
+            
+                
+            }else{
+                let urlStr = deliveryPackages?.package_image_while_pickup?[indexPath.row] ?? ""
+                
+                delegate?.didSelectItem(url:urlStr)
+            }
+           
+        }else{
+            
+            let urlStr = deliveryImagesArr?[indexPath.row] ?? ""
+            delegate?.didSelectItem(url:urlStr)
+            
         }
         
     }

@@ -21,7 +21,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         NSLog("User Info didReceive = ",response.notification.request.content.userInfo)
         if let userInfo = response.notification.request.content.userInfo as NSDictionary? as? [String: Any] {
             switch notificationTypes(rawValue: (userInfo["notification_type"] as? String) ?? "0") {
-            case .new_ride_request, .scheduleRide :
+            case .new_ride_request , .schedule:
                 
                 if let data = (userInfo["notificationDetails"] as? String)?.data(using: .utf8), let model = try? JSONDecoder().decode(PushNotification.self, from: data)  {
                     printDebug(model)
@@ -58,7 +58,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
                     NotificationCenter.default.post(name: .updateWalletBalance, object: nil, userInfo: nil)
                     VDNotificationActionController.shared.goToWalletScreen()
                 } else {
-                    
                 }
                 
                 completionHandler()
@@ -114,7 +113,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         let userInfo = notification.request.content.userInfo //notification.request.content.userInfo
         printDebug(userInfo)
         switch notificationTypes(rawValue: (userInfo["notification_type"] as? String) ?? "0") {
-        case .new_ride_request, .scheduleRide :
+        case .new_ride_request ,.schedule :
             if let data = (userInfo["notificationDetails"] as? String)?.data(using: .utf8), let model = try? JSONDecoder().decode(PushNotification.self, from: data)  {
                 printDebug(model)
                 DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
@@ -178,7 +177,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         let userInfo = userInfo //notification.request.content.userInfo
         printDebug(userInfo)
         switch notificationTypes(rawValue: (userInfo["notification_type"] as? String) ?? "0") {
-        case .new_ride_request, .scheduleRide :
+        case .new_ride_request , .schedule:
             if let data = (userInfo["notificationDetails"] as? String)?.data(using: .utf8), let model = try? JSONDecoder().decode(PushNotification.self, from: data)  {
                 printDebug(model)
                 DispatchQueue.global().asyncAfter(deadline: .now() + 2) {

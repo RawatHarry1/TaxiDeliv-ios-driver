@@ -1,16 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
 //
 //  VDElectricVC.swift
 //  VenusDriver

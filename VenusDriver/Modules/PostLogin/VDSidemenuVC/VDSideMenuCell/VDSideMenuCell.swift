@@ -13,13 +13,13 @@ class VDSideMenuCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var alertIcon: UIImageView!
     
-    var titles = ["Home", "Account", "Earnings", "Wallet","Cards", "Bookings", "Documents", "Ratings", "Notifications", "About Us", "Vehicle List","Delete Account", "Log Out"]
+    var titles = ["Home", "Account", "Earnings", "Wallet","Cards", "Bookings", "Documents", "Ratings", "Notifications", "About Us", "Vehicle List","Raised Tickets","Delete Account", "Log Out"]
     var images = [UIImage?]()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         images = [VDImageAsset.home.asset, VDImageAsset.account.asset, VDImageAsset.earnings.asset, VDImageAsset.wallet.asset,VDImageAsset.creditCard.asset, VDImageAsset.bookings.asset, VDImageAsset.documents.asset]
-        images += [VDImageAsset.ratings.asset, VDImageAsset.notifications.asset, VDImageAsset.aboutUs.asset, VDImageAsset.document.asset, VDImageAsset.delete.asset,VDImageAsset.logout.asset]
+        images += [VDImageAsset.ratings.asset, VDImageAsset.notifications.asset, VDImageAsset.aboutUs.asset, VDImageAsset.document.asset,VDImageAsset.ticket.asset, VDImageAsset.delete.asset,VDImageAsset.logout.asset]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

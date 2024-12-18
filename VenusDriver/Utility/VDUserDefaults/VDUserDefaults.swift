@@ -68,6 +68,8 @@ enum VDUserDefaults {
         removeValue(forKey: .isDriverAvailable)
         removeValue(forKey: .currentLocation)
         removeValue(forKey: .oldDriverCoordinates)
+        removeValue(forKey: .mapType)
+        removeValue(forKey: .mapDetail)
         RideStatus = .none
         sharedAppDelegate.notficationDetails = nil
 //        removeValue(forKey: .clientData)
@@ -104,5 +106,8 @@ extension VDUserDefaults {
         case google_map_keys
         case showIntroScreens
         case service_type
+        case mapType
+        case mapDetail
+        
     }
 }

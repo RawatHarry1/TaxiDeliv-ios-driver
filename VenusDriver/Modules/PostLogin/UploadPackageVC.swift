@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 struct UplodPhotoModal : Codable {
     let message : String?
@@ -13,6 +15,7 @@ struct UplodPhotoModal : Codable {
     let data : UplodPhotoData?
 
 }
+
 struct UplodPhotoData : Codable {
     let file_path : String?
 }
@@ -25,12 +28,14 @@ class UploadPackageVC: UIViewController {
     var data_img: Data?
     var name_img:String?
     var viewModal = UploadPhotoViewModal()
-    var arrImages = [String]()
+    var arrImages = [""]
+    var appendedArr = [String]()
     var acceptTripCallBack: (([String]) -> Void)?
+  //  var appendedArr = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.arrImages.removeAll()
-      
+        self.arrImages.removeAll(keepingCapacity: true)
+        self.uploadedImages.removeAll()
     }
     
     @IBAction func btnDismissAction(_ sender: Any) {
@@ -40,12 +45,12 @@ class UploadPackageVC: UIViewController {
     @IBAction func btnConfirmAction(_ sender: Any) {
         print(arrImages)
       
-        if uploadedImages.count == 0{
+        if appendedArr.count == 0{
            // SKToast.show(withMessage: "Please Upload Images!!")
             self.showAlert(withTitle: "Alert", message: "Please Upload Images!!", on: self)
         }else{
             self.dismiss(animated: true) { [self] in
-                self.acceptTripCallBack!(self.arrImages)
+                self.acceptTripCallBack!(self.appendedArr)
             }
         }
     }
@@ -67,51 +72,80 @@ class UploadPackageVC: UIViewController {
 //MARK: UploadFileAlertDelegates
 extension UploadPackageVC: UploadFileAlertDelegates {
     func didSelect(data: Data?, name: String?, type: UploadFileFor) {
+       
         if let dt = data{
             self.selectedImage = UIImage(data: dt)
-           
+          
             self.data_img = data
             self.name_img = name
-            uploadedImages.append(self.selectedImage!)
-            collecetionVw.reloadData()
+            //  uploadedImages.append(self.selectedImage!)
+            
             
             let param : [String:Any] = ["trip_id":sharedAppDelegate.notficationDetails?.trip_id ?? ""]
-            viewModal.uploadPhoto(param, self.selectedImage!, completion: {
-                self.arrImages.append(self.viewModal.objUplodPhotoModal?.data?.file_path ?? "")
-            })
+            viewModal.uploadPhoto(param, self.selectedImage!) { [weak self] in
+                guard let self = self else { return }
+  
+                
+                    
+                    // Safely extract the file path
+                    if let filePath = self.viewModal.objUplodPhotoModal?.data?.file_path {
+                        let uniqueFilePath = filePath // Copy the value to a unique variable
+                        appendedArr.append(uniqueFilePath) // Append the unique string
+                    } else {
+                        print("Error: file_path is nil")
+                    }
+
+                    // Reload the collection view on the main thread
+                    DispatchQueue.main.async {
+                        self.collecetionVw.reloadData()
+                    }
+            }
         }
     }
 }
 
 extension UploadPackageVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return uploadedImages.count + 1
+        return appendedArr.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item < uploadedImages.count {
+        if indexPath.item < appendedArr.count{
             // Show uploaded image cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagesCollectionCell", for: indexPath) as! ImagesCollectionCell
-            cell.imgViewImages.image = uploadedImages[indexPath.item]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagesCollectionCell2", for: indexPath) as! ImagesCollectionCell2
+            
+            // Assign the correct image
+            cell.imgViewImages.loadImage(from: URL(string: appendedArr[indexPath.item])!)
+            
+            // Handle delete action using a closure
+            cell.didPressDelete = { [weak self] in
+                guard let self = self else { return }
+                
+                // Ensure the index is valid before attempting to delete
+                if indexPath.item < appendedArr.count {
+                    appendedArr.remove(at: indexPath.item)
+                    collectionView.reloadData() // Reload the collection view to reflect changes
+                }
+            }
+            
             return cell
         } else {
             // Show upload button cell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UploadCollectionCell", for: indexPath) as! UploadCollectionCell
-            
             return cell
         }
     }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSizeMake(100, 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.item < uploadedImages.count {
+        if indexPath.item < appendedArr.count {
             
         }else{
-            UploadFileAlert.sharedInstance.alert(self, .profile , false, self)
+            UploadFileAlert.sharedInstance.showCamera2(vc: self, self)// alert(self, .profile , false, self)
         }
     }
-    
 }
