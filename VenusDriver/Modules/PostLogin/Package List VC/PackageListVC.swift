@@ -10,7 +10,6 @@ import UIKit
 class PackageListVC: UIViewController, CollectionViewCellDelegate {
 
     @IBOutlet weak var btnContinue: VDButton!
-    
     @IBOutlet weak var tblView: UITableView!
     
     var deliveryPackages : [DeliveryPackages]?
@@ -30,7 +29,6 @@ class PackageListVC: UIViewController, CollectionViewCellDelegate {
         self.didPressContinue!()
         self.navigationController?.popViewController(animated: true)
     }
-
 }
 
 extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
@@ -120,31 +118,30 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
             vc.acceptTripCallBack = { imageArr in
                 print(imageArr)
                 if imageArr.count != 0{
-                    
-           
-                    
+ 
                     self.imgArr = imageArr
                     self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:"",AcceptTrip:true,comerFromMarkArive:self.comesFromMardArrive, completion: {
-                        Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
-                        //SKToast.show(withMessage: self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "")
+                        
+                        if self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "" != ""{
+                            Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
+                        }
+                        
                         cell.btnAccept.isEnabled = false
                         cell.btnreject.isEnabled = false
                         cell.btnAccept.alpha = 0.4
                         cell.btnreject.alpha = 0.4
+                        
                         if self.comesFromMardArrive == true{
                             if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
                                 self.btnContinue.alpha = 1
                                 self.btnContinue.isEnabled = true
-                                
                             }
                         }else{
                             if self.viewModal.objPackageStatusModal?.data?.can_end == 1{
                                 self.btnContinue.alpha = 1
                                 self.btnContinue.isEnabled = true
-                                
                             }
                         }
-                        
                     })
                     
                     cell.mainStack.isHidden = false
@@ -157,14 +154,10 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                         self.deliveryImages = imageArr
                         cell.deliveryStackView.isHidden = false
                         cell.deliveryImagesArr = imageArr
-                       
                         cell.collectionVwDropOffImgs.reloadData()
                         self.tblView.reloadRows(at: [indexPath], with: .automatic)
-                        
                     }
                 }
-                
-                
             }
             self.present(vc, animated: true)
         }
@@ -185,8 +178,9 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                             
                             
                             self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:reasonStr,AcceptTrip:false,comerFromMarkArive:true, completion: {
-                                Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
-                                //SKToast.show(withMessage: self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "")
+                                if self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "" != ""{
+                                    Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
+                                }
                                 cell.btnAccept.isEnabled = false
                                 cell.btnreject.isEnabled = false
                                 cell.btnAccept.alpha = 0.4
@@ -222,8 +216,9 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                             print("done")
                             
                             self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:reasonStr,AcceptTrip:false,comerFromMarkArive: false, completion: {
-                                Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
-                               // SKToast.show(withMessage: self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "")
+                                if self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "" != ""{
+                                    Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
+                                }
                                 cell.btnAccept.isEnabled = false
                                 cell.btnreject.isEnabled = false
                                 cell.btnAccept.alpha = 0.4

@@ -17,7 +17,6 @@ struct OngoingRideModel : Codable {
     let trips : [PushNotification]?
 
     enum CodingKeys: String, CodingKey {
-
         case is_driver_online = "is_driver_online"
         case currency = "currency"
         case currency_symbol = "currency_symbol"
@@ -38,6 +37,7 @@ struct OngoingRideModel : Codable {
         deliveryPackages = try values.decodeIfPresent([DeliveryPackages].self, forKey: .deliveryPackages)
     }
 }
+
 struct DeliveryPackages: Codable{
     var delivery_status: Int?
     var notes :  String?
