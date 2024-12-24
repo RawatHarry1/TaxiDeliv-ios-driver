@@ -35,11 +35,7 @@ struct PushNotification : Codable {
     var recipient_name: String?
     var customer_ame: String?
     var service_type : Int?
-    var delivery_packages: [DeliveryPackageData]?
-    
-            
-        
-                
+
     enum CodingKeys: String, CodingKey {
 
         case title = "title"
@@ -69,8 +65,6 @@ struct PushNotification : Codable {
         case recipient_name = "recipient_name"
         case customer_ame = "customer_ame"
         case service_type = "service_type"
-        case delivery_packages = "delivery_packages"
-        
     }
 
     init(from decoder: Decoder) throws {
@@ -158,15 +152,6 @@ struct PushNotification : Codable {
         recipient_name = try values.decodeIfPresent(String.self, forKey: .recipient_name)
         customer_ame = try values.decodeIfPresent(String.self, forKey: .customer_ame)
         service_type = try values.decodeIfPresent(Int.self, forKey: .service_type)
-        delivery_packages  = try values.decodeIfPresent([DeliveryPackageData].self, forKey: .delivery_packages)
-        
-        do {
-            delivery_packages = try values.decodeIfPresent([DeliveryPackageData].self, forKey: .delivery_packages)
-        } catch {
-            print("Error decoding delivery_packages: \(error)")
-        }
-        
-        
     }
 
     init() {
@@ -197,8 +182,6 @@ struct PushNotification : Codable {
         recipient_name = nil
         customer_ame = nil
         service_type = nil
-        delivery_packages = nil
-       
     }
 }
 
@@ -219,12 +202,4 @@ struct Driver_balance_data : Codable {
         wallet_balance = try values.decodeIfPresent(Double.self, forKey: .wallet_balance)
     }
 
-}
-struct DeliveryPackageData: Codable {
-    var quantity: String?
-    var id: String?
-    var type: String?
-    var image: [String]?
-    var package_size: String?
-    var description: String?
 }

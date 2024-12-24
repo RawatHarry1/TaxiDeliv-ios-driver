@@ -58,7 +58,7 @@ class UploadFileAlert: NSObject {
     }
 
 
-    public func showCamera()  {
+    private func showCamera()  {
         picker = UIImagePickerController()
         picker.view.backgroundColor = UIColor.white
         picker.sourceType = UIImagePickerController.SourceType.camera
@@ -68,18 +68,6 @@ class UploadFileAlert: NSObject {
         presentedOnVC.present(picker, animated: true, completion: nil)
     }
 
-    public func showCamera2(vc:UIViewController, _ imgDelegate: UploadFileAlertDelegates)  {
-        delegate = imgDelegate
-        presentedOnVC = vc
-        picker = UIImagePickerController()
-        picker.view.backgroundColor = UIColor.white
-        picker.sourceType = UIImagePickerController.SourceType.camera
-        picker.delegate = self
-        picker.allowsEditing = true
-        picker.modalPresentationStyle = .overFullScreen
-        presentedOnVC.present(picker, animated: true, completion: nil)
-    }
-    
     private func showPhotoLibrary()  {
         picker = UIImagePickerController()
         picker.view.backgroundColor = UIColor.white

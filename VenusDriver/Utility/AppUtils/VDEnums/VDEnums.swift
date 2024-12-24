@@ -36,7 +36,6 @@ enum notificationTypes: String {
     case ride_rejected_by_driver = "7"
     case wallet_update = "120"
     case message = "600"
-    case schedule = "126"
 }
 
 

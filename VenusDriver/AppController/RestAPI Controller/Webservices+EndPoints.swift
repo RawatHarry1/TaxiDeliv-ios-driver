@@ -49,10 +49,6 @@ extension WebServices {
         case getCard = "/fetch/cardDetails?payment_method_type=1"
         case deleteCard = "/removeCard"
         case add_money_via_stripe = "/add_money_via_stripe"
-        case upload_file_driver = "/upload_file_driver"
-        case update_delivery_package_status = "/update_delivery_package_status"
-        case generate_ticket = "/generate_ticket"
-        case list_support_tickets = "/list_support_tickets"
         
         // MARK: - API url path
         var path: String {

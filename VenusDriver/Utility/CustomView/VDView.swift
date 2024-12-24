@@ -37,7 +37,7 @@ class VDView: UIView {
         gradientLayer.frame = rect
 
         // Set the colors
-        gradientLayer.colors = [startColor.cgColor]
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
         // Gradient is linear from left to right
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
@@ -53,7 +53,7 @@ class VDView: UIView {
 
     func updateGradient() {
         if whiteLabelProperties.appButtonGradient {
-            gradientLayer.colors = [startColor.cgColor]
+            gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
         } else {
             self.backgroundColor = startColor
         }

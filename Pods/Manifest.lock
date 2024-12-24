@@ -58,9 +58,6 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
-  - SDWebImage (5.13.2):
-    - SDWebImage/Core (= 5.13.2)
-  - SDWebImage/Core (5.13.2)
   - SkyFloatingLabelTextField (4.0.0)
   - Socket.IO-Client-Swift (16.0.1):
     - Starscream (~> 4.0)
@@ -90,7 +87,6 @@ DEPENDENCIES:
   - FirebaseMessaging
   - GoogleMaps
   - LGSideMenuController
-  - SDWebImage
   - SkyFloatingLabelTextField
   - Socket.IO-Client-Swift
   - StripePaymentSheet
@@ -108,7 +104,6 @@ SPEC REPOS:
     - LGSideMenuController
     - nanopb
     - PromisesObjC
-    - SDWebImage
     - SkyFloatingLabelTextField
     - Socket.IO-Client-Swift
     - Starscream
@@ -131,7 +126,6 @@ SPEC CHECKSUMS:
   LGSideMenuController: 0c7b155b0dbdf14bf8b88d5ac363c5fe1584bb23
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
-  SDWebImage: 72f86271a6f3139cc7e4a89220946489d4b9a866
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   Socket.IO-Client-Swift: c116d6dc9fd6be9c259bacfe143f8725bce7d79e
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
@@ -142,6 +136,6 @@ SPEC CHECKSUMS:
   StripePaymentsUI: 595f6581a9a039fa2f23f9a77235af44c15171fc
   StripeUICore: 5099399e52853370736aca81b27fc0e86b1822c8
 
-PODFILE CHECKSUM: b2da1fb834003c3b56f8a995937ba88bef00a227
+PODFILE CHECKSUM: 07054431987cd31fdf7fca71e51355cc73aee0e0
 
 COCOAPODS: 1.15.2

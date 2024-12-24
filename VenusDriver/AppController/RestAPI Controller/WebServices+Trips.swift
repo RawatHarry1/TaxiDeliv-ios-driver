@@ -37,20 +37,6 @@ extension WebServices {
         }
     }
     
-    static func uploadPackageStatus(parameters: JSONDictionary, response: @escaping ((Result<(Any?), Error>) -> Void)) {
-        commonPostWithRawJSONAPI(parameters: parameters, endPoint: .update_delivery_package_status, loader: true) { (result) in
-            switch result {
-            case .success(let json):
-                printDebug(json)
-                let data = try! json.rawData()
-                let model = try! JSONDecoder().decode(PackageStatusModal.self, from: data)
-                response(.success(model))
-            case .failure(let error):
-                response(.failure(error))
-            }
-        }
-    }
-    
     static func getCard(url: String,parameters: JSONDictionary, response: @escaping ((Result<(Any?), Error>) -> Void)) {
         commonGetAPI(parameters: parameters, endPoint: .getCard,toAppend: url, loader: true) { (result) in
       

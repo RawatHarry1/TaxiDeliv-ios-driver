@@ -54,7 +54,6 @@ extension VDSplashVC{
             if UserModel.currentUser.access_token != "" &&  UserModel.isAllStepsCompleted(login.registration_step_completed ?? Registration_step_completed(), login.mandatory_registration_steps ?? Mandatory_registration_steps()) {
                 delay(withSeconds: 1.0) {
                     self.loginWithAccessToken()
-                    self.apiClientConfigure2()
                 }
             } else {
                 apiClientConfigure()
@@ -76,54 +75,6 @@ extension VDSplashVC{
 // MARK: - API's
 extension VDSplashVC {
     // TODO: - Configure client
-    
-    
-    private func apiClientConfigure2() {
-        var paramToModifyVehicleDetails: JSONDictionary {
-            let param = [
-                "packageName": whiteLabelProperties.packageName,
-            ] as [String: Any]
-            return param
-        }
-        
-        
-        WebServices.getClientConfig(parameters: paramToModifyVehicleDetails) { [weak self] (result) in
-            switch result {
-            case .success(let data):
-                if let update_location_timmer = ClientModel.currentClientData.update_location_timmer {
-                    self?.timer = Timer.scheduledTimer(timeInterval: ClientModel.currentClientData.update_location_timmer!, target: self!, selector: #selector(self!.updateDriverLocation), userInfo: nil, repeats: true)
-                }else{
-                    self?.timer = Timer.scheduledTimer(timeInterval: self!.counter, target: self!, selector: #selector(self!.updateDriverLocation), userInfo: nil, repeats: true)
-                }
-                
-                let isLogin = "\(UserDefaults.standard.value(forKey: "isLogin") ?? "")"
-             //   if isLogin == "true"{
-                    
-                    //self?.loginWithAccessToken()
-//                }else{
-//                    if whiteLabelProperties.packageName == bundleIdentifiers.venus.rawValue {
-//                        self?.navigationController?.pushViewController(VDIntroVC.create(), animated: true)
-//                    } else {
-//                        let showIntroScreens = VDUserDefaults.value(forKey: .showIntroScreens)
-//                        if showIntroScreens == true{
-//                            VDRouter.loadPreloginScreen()
-//                        }else{
-//                            self?.navigationController?.pushViewController(SIIntroScreensVC.create(), animated: true)
-//                        }
-//                    }
-//                }
-                
-            case .failure(let error):
-                SKToast.show(withMessage: error.localizedDescription)
-            }
-        }
-    }
-    
-    
-    
-    
-    
-    
     private func apiClientConfigure() {
         var paramToModifyVehicleDetails: JSONDictionary {
             let param = [

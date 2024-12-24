@@ -124,7 +124,7 @@ func ConvertDateToLocalTimeZone(date: String) -> Date {
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
     dateFormatter.timeZone = TimeZone(identifier: "UTC")
     let strDate = dateFormatter.date(from: date)
-    return strDate ?? Date()
+    return strDate!
     let localDateFormatter = DateFormatter()
     localDateFormatter.timeZone = .current
     localDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"

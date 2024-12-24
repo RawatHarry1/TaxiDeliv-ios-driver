@@ -21,19 +21,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         NSLog("User Info didReceive = ",response.notification.request.content.userInfo)
         if let userInfo = response.notification.request.content.userInfo as NSDictionary? as? [String: Any] {
             switch notificationTypes(rawValue: (userInfo["notification_type"] as? String) ?? "0") {
-            case .new_ride_request , .schedule:
+            case .new_ride_request :
                 
                 if let data = (userInfo["notificationDetails"] as? String)?.data(using: .utf8), let model = try? JSONDecoder().decode(PushNotification.self, from: data)  {
                     printDebug(model)
-                    DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-                        objDelivery_packages = model.delivery_packages ?? []
-                              
-                    }
                     let notificationFireTime = ConvertDateToLocalTimeZone(date: model.date ?? "")
                     if (notificationFireTime + 30) < Date() {
                         printDebug("Notification Expire.")
                     } else {
-                       //
                         sharedAppDelegate.notficationDetails = model
                         if let login = UserModel.currentUser.login {
                             if UserModel.currentUser.access_token != "" &&  UserModel.isAllStepsCompleted(login.registration_step_completed ?? Registration_step_completed(), login.mandatory_registration_steps ?? Mandatory_registration_steps()) {
@@ -113,17 +108,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         let userInfo = notification.request.content.userInfo //notification.request.content.userInfo
         printDebug(userInfo)
         switch notificationTypes(rawValue: (userInfo["notification_type"] as? String) ?? "0") {
-        case .new_ride_request ,.schedule :
+        case .new_ride_request :
             if let data = (userInfo["notificationDetails"] as? String)?.data(using: .utf8), let model = try? JSONDecoder().decode(PushNotification.self, from: data)  {
                 printDebug(model)
-                DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
-                    objDelivery_packages = model.delivery_packages ?? []
-                          
-                }
-               
+                
+                
                 playSound()
                 
-                objDelivery_packages = model.delivery_packages ?? []
+                
                 sharedAppDelegate.notficationDetails = model
                 let notificationType: [AnyHashable: String] = ["notificationType" : (userInfo["notificationDetails"] as? String ?? "")]
                // NotificationCenter.default.post(name: .newRideRequest, object: notificationType)
@@ -135,7 +127,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
 //                if (notificationFireTime + 30) < Date() {
 //                    printDebug("Notification Expire.")
 //                } else {
-                objDelivery_packages = model.delivery_packages ?? []
                     sharedAppDelegate.notficationDetails = model
                     if let login = UserModel.currentUser.login {
                         if UserModel.currentUser.access_token != "" &&  UserModel.isAllStepsCompleted(login.registration_step_completed ?? Registration_step_completed(), login.mandatory_registration_steps ?? Mandatory_registration_steps()) {
@@ -177,13 +168,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         let userInfo = userInfo //notification.request.content.userInfo
         printDebug(userInfo)
         switch notificationTypes(rawValue: (userInfo["notification_type"] as? String) ?? "0") {
-        case .new_ride_request , .schedule:
+        case .new_ride_request :
             if let data = (userInfo["notificationDetails"] as? String)?.data(using: .utf8), let model = try? JSONDecoder().decode(PushNotification.self, from: data)  {
                 printDebug(model)
-                DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
-                    objDelivery_packages = model.delivery_packages ?? []
-                          
-                }
+                
                 
                 playSound()
                 

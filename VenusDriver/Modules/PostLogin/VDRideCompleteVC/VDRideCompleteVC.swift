@@ -10,9 +10,6 @@ import CoreLocation
 
 class VDRideCompleteVC: VDBaseVC {
 
-    @IBOutlet weak var collectionViewImages: UICollectionView!
-    @IBOutlet weak var tblHeightConstant: NSLayoutConstraint!
-    @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var viewDot: UIView!
     @IBOutlet weak var btnChat: UIButton!
     @IBOutlet weak var dashLineView: UIView!
@@ -114,7 +111,6 @@ class VDRideCompleteVC: VDBaseVC {
             } else {
                 SKToast.show(withMessage: "Ride has been cancelled by you.")
             }
-            
             sharedAppDelegate.isFromNotification = false
             sharedAppDelegate.notficationDetails = nil
             RideStatus = .none
@@ -374,43 +370,4 @@ extension UIView {
         shapeLayer.path = path
         layer.addSublayer(shapeLayer)
     }
-}
-extension VDRideCompleteVC: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objDelivery_packages.count 
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PackageDetailTblCell", for: indexPath) as! PackageDetailTblCell
-        let obj = objDelivery_packages[indexPath.row]
-        cell.lblSize.text = obj.package_size ?? ""
-        cell.lblPackageType.text = obj.type ?? ""
-        cell.objDelivery_packages = obj
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        DispatchQueue.main.async {
-            self.tblHeightConstant.constant = self.tblView.contentSize.height
-        }
-    }
-}
-
-extension VDRideCompleteVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagesCollectionCell", for: indexPath) as! ImagesCollectionCell
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSizeMake(58, 58)
-    }
-    
-    
-    
 }

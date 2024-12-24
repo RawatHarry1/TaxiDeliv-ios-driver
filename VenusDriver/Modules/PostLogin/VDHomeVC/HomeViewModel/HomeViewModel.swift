@@ -23,7 +23,7 @@ class VDHomeViewModel: NSObject{
     var rideCancelledSuccessCallBack : ((BlockDriverModel) -> ()) = { _ in } // Ride Cancelled
     var polylineCallBack: ((String) -> ())?
     var distanceThresholdValue = 20
-    var objFetchOngoingModal : OngoingRideModel?
+
     var error: CustomError? {
         didSet { self.showAlertClosure?() }
     }
@@ -232,7 +232,6 @@ extension VDHomeViewModel {
                     printDebug("Failed to fetch ongoing trips")
                     return
                 }
-                self?.objFetchOngoingModal = rideDetails
                 if currentRides.count > 0 {
                     VDUserDefaults.save(value: true, forKey: .isDriverAvailable)
                     sharedAppDelegate.notficationDetails = currentRides[0]

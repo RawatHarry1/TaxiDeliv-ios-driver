@@ -23,7 +23,6 @@ struct ClientModel : Codable {
     let update_location_timmer : Double?
     let google_map_keys : String?
     let operator_availablity: [operatorAvailablity]?
-    let enabled_service : Int?
                
     
     // MARK: - Parameters
@@ -51,7 +50,6 @@ struct ClientModel : Codable {
         case update_location_timmer = "update_location_timmer"
         case google_map_keys = "google_map_keys"
         case operator_availablity = "operator_availablity"
-        case enabled_service = "enabled_service"
     }
 
     init(from decoder: Decoder) throws {
@@ -72,12 +70,10 @@ struct ClientModel : Codable {
         update_location_timmer = try values.decodeIfPresent(Double.self, forKey: .update_location_timmer)
         google_map_keys = try values.decodeIfPresent(String.self, forKey: .google_map_keys)
         operator_availablity = try values.decodeIfPresent([operatorAvailablity].self, forKey: .operator_availablity)
-        enabled_service = try values.decodeIfPresent(Int.self, forKey: .enabled_service)
         
     }
 
     init() {
-        enabled_service = nil
         show_terms = nil
         locale = nil
         terms_of_use_url = nil
@@ -126,12 +122,9 @@ struct City_list : Codable {
     let bank_list : String?
     let mandatory_fleet_registration : Int?
     let operator_available : [Int]?
-    let package_delivery_restriction_enabled : Int?
-    let maximum_distance : String?
 
     enum CodingKeys: String, CodingKey {
-        case maximum_distance = "maximum_distance"
-        case package_delivery_restriction_enabled = "package_delivery_restriction_enabled"
+
         case config_json = "config_json"
         case city_id = "city_id"
         case elm_verification_enabled = "elm_verification_enabled"
@@ -145,8 +138,6 @@ struct City_list : Codable {
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        maximum_distance = try values.decodeIfPresent(String.self, forKey: .maximum_distance)
-        package_delivery_restriction_enabled = try values.decodeIfPresent(Int.self, forKey: .package_delivery_restriction_enabled)
         config_json = try values.decodeIfPresent(String.self, forKey: .config_json)
         city_id = try values.decodeIfPresent(Int.self, forKey: .city_id)
         elm_verification_enabled = try values.decodeIfPresent(Int.self, forKey: .elm_verification_enabled)
@@ -157,4 +148,5 @@ struct City_list : Codable {
         mandatory_fleet_registration = try values.decodeIfPresent(Int.self, forKey: .mandatory_fleet_registration)
         operator_available = try values.decodeIfPresent([Int].self, forKey: .operator_available)
     }
+
 }

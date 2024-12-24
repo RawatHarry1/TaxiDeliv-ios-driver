@@ -8,13 +8,8 @@
 import UIKit
 import GoogleMaps
 import LGSideMenuController
-import AVFAudio
-import CoreLocation
-import AVFoundation
-
 var navigateToChatOnce = false
 var navigateToChat = false
-
 class VDHomeVC: VDBaseVC {
     // MARK: - Outlets
     @IBOutlet weak private(set) var availabilityButton: UIButton!
@@ -74,10 +69,7 @@ class VDHomeVC: VDBaseVC {
     var profileImg = ""
     var profileName = ""
     var markerUser : GMSMarker?
-    var objDelivery_packages: [DeliveryPackageData]?
     var shouldUpdateCamera = true
-    var mapTypeValue = 0
-    var mapDetailValue = 0
     private var driverMarker = GMSMarker()
     private var currentMarker = GMSMarker()
 
@@ -91,15 +83,11 @@ class VDHomeVC: VDBaseVC {
     var isStartTrip = false
     var rideStatusTitle = "Slide to end trip"
     var previousLocation: CLLocation?
-    var driverBearing = 0.0
+    
     var currentLat = 0.0
     var currentLong = 0.0
     var cameraUpdateOnce = true
     var coordinates = CLLocation()
-    let speechSynthesizer = AVSpeechSynthesizer()
-    var routeCoordinates:  [CLLocationCoordinate2D] = []
-    var announcedSteps = Set<Int>()
-    var isSpeaking: Bool = false
     // TODO: - DEINIT METHOD
     deinit {
         //NotificationCenter.default.removeObserver(self)
@@ -115,7 +103,6 @@ class VDHomeVC: VDBaseVC {
     override func initialSetup() {
         callIndidLoad()
         callBacks()
-       
       //  let obj = ClientModel.currentClientData
         
         NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -126,31 +113,7 @@ class VDHomeVC: VDBaseVC {
     }
     
     func callIndidLoad(){
-      //  DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            // Code to be executed after a delay
-            self.homeViewModel.fetchAvailableRide()
-      //  }
-        
-    }
-    
-    func checkMapType(){
-        
-        self.mapTypeValue = UserDefaults.standard.value(forKey: "mapType") as? Int ?? 0
-        self.mapDetailValue = UserDefaults.standard.value(forKey: "mapDetail") as? Int ?? 0
-        if mapTypeValue == 1{
-            self.mapView.mapType = .satellite
-        }else if mapTypeValue == 2{
-            self.mapView.mapType = .terrain
-        }else{
-            self.mapView.mapType = .normal
-        }
-   
-        if mapDetailValue == 1{
-            self.mapView.isTrafficEnabled = true
-        }else{
-            self.mapView.isTrafficEnabled = false
-            self.mapView.mapType = .normal
-        }
+        homeViewModel.fetchAvailableRide()
     }
     
     override func getCurrentLocation(lat: CLLocationDegrees,long:CLLocationDegrees){
@@ -172,29 +135,19 @@ class VDHomeVC: VDBaseVC {
 //        }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-          super.viewWillDisappear(animated)
-          // Restore default screen behavior
-          UIApplication.shared.isIdleTimerDisabled = false
-      }
-    
     override func viewWillAppear(_ animated: Bool) {
-        checkMapType()
-        UIApplication.shared.isIdleTimerDisabled = true
-        loginWithAccessToken()
-        self.homeViewModel.fetchAvailableRide()
         checkLocationServices()
         checkNotificationStatusAndPrompt()
         let isDriverAvailablecheck = VDUserDefaults.value(forKey: .isDriverAvailable)
        
         let valueCheck = isDriverAvailablecheck.rawValue as? Bool
-//        if valueCheck == false{
-//            self.homeViewModel.changeDriverAvailability(0)
-//           
-//        }else{
-//           
-//            self.homeViewModel.changeDriverAvailability(1)
-//        }
+        if valueCheck == false{
+            self.homeViewModel.changeDriverAvailability(0)
+           
+        }else{
+           
+            self.homeViewModel.changeDriverAvailability(1)
+        }
        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if let location = LocationTracker.shared.lastLocation {
@@ -221,16 +174,19 @@ class VDHomeVC: VDBaseVC {
 //                RideStatus = .availableRide
                 updateUIAccordingtoRideStatus()
                 updateAvailableRidePopUp()
-
+//                self.availabilityButton.isEnabled = false
             } else if notificationModel.status == rideStatus.markArrived.rawValue || notificationModel.status == rideStatus.acceptedRide.rawValue || notificationModel.status == rideStatus.customerPickedUp.rawValue{
-
+//                RideStatus = .acceptedRide
                 homeViewModel.fetchAvailableRide()
                 updateUIAccordingtoRideStatus()
-              
+                //                self.availabilityButton.isEnabled = false
             }
-          
+            //         else if notificationModel.status == rideStatus.customerPickedUp.rawValue {
+            //            self.newRideReqView.isHidden = true
+            //            self.rideProcessingView.isHidden = true
+            //            self.rideStatusView.isHidden = false }
             else {
-               self.availabilityButton.isHidden = false
+//                self.availabilityButton.isEnabled = true
                 RideStatus = .none
                 updateUIAccordingtoRideStatus()
             }
@@ -321,51 +277,19 @@ class VDHomeVC: VDBaseVC {
     }
 
     @objc func cancelRideOnSwipe() {
-        if RideStatus == .none{
-            self.availabilityButton.isHidden = false
-        }else{
-            self.availabilityButton.isHidden = true
-        }
         if RideStatus == .acceptedRide {
             
-            if UserModel.currentUser.login?.service_type == 1 {
-                
-                if let tripID = sharedAppDelegate.notficationDetails?.trip_id  {
-                    var att = [String:Any]()
-                    att["tripId"] = tripID
-                    att["customerId"] = sharedAppDelegate.notficationDetails?.customer_id ?? ""
+            if let tripID = sharedAppDelegate.notficationDetails?.trip_id  {
+                var att = [String:Any]()
+                att["tripId"] = tripID
+                att["customerId"] = sharedAppDelegate.notficationDetails?.customer_id ?? ""
 
-                    if let locationCreds = LocationTracker.shared.lastLocation {
-                        att["pickupLongitude"] = locationCreds.coordinate.longitude
-                        att["pickupLatitude"] = locationCreds.coordinate.latitude
-                    }
-                    homeViewModel.markArrivedTrip(att)
+                if let locationCreds = LocationTracker.shared.lastLocation {
+                    att["pickupLongitude"] = locationCreds.coordinate.longitude
+                    att["pickupLatitude"] = locationCreds.coordinate.latitude
                 }
-                
-            }else{
-                let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
-                vc.comesFromMardArrive = true
-                vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
-                vc.didPressContinue = {
-                    if let tripID = sharedAppDelegate.notficationDetails?.trip_id  {
-                        var att = [String:Any]()
-                        att["tripId"] = tripID
-                        att["customerId"] = sharedAppDelegate.notficationDetails?.customer_id ?? ""
-
-                        if let locationCreds = LocationTracker.shared.lastLocation {
-                            att["pickupLongitude"] = locationCreds.coordinate.longitude
-                            att["pickupLatitude"] = locationCreds.coordinate.latitude
-                        }
-                        self.homeViewModel.markArrivedTrip(att)
-                    }
-
-                }
-                self.navigationController?.pushViewController(vc, animated: true)
+                homeViewModel.markArrivedTrip(att)
             }
-            
-            
-       
         } else if RideStatus == .markArrived {
             var att = [String:Any]()
             att["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
@@ -380,43 +304,18 @@ class VDHomeVC: VDBaseVC {
             }
             homeViewModel.startTrip(att)
         } else {
-            
-            if UserModel.currentUser.login?.service_type == 1 {
-                var attributes = [String: Any]()
-                if let locationCreds = LocationTracker.shared.lastLocation {
-                    attributes["dropLatitude"] = locationCreds.coordinate.latitude
-                    attributes["dropLongitude"] = locationCreds.coordinate.longitude
-                }
-                attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
-                attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
-                attributes["rideTime"] = 12
-                attributes["waitTime"] = 3
-                homeViewModel.endRideApi(attributes)
-            }else{
-                let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
-                vc.comesFromMardArrive = false
-                vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
-                vc.didPressContinue = {
-              
-                    var attributes = [String: Any]()
-                    if let locationCreds = LocationTracker.shared.lastLocation {
-                        attributes["dropLatitude"] = locationCreds.coordinate.latitude
-                        attributes["dropLongitude"] = locationCreds.coordinate.longitude
-                    }
-                    attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
-                    attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
-                    attributes["rideTime"] = 12
-                    attributes["waitTime"] = 3
-                    self.homeViewModel.endRideApi(attributes)
-                    
+            var attributes = [String: Any]()
 
-                }
-                self.navigationController?.pushViewController(vc, animated: true)
-              
+            if let locationCreds = LocationTracker.shared.lastLocation {
+                attributes["dropLatitude"] = locationCreds.coordinate.latitude
+                attributes["dropLongitude"] = locationCreds.coordinate.longitude
             }
+            attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+            attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+            attributes["rideTime"] = 12
+            attributes["waitTime"] = 3
 
-           
+            homeViewModel.endRideApi(attributes)
         }
     }
     func addMarkerToPosition(_ coordinates: CLLocationCoordinate2D) {
@@ -671,7 +570,6 @@ extension VDHomeVC {
 
     func updateAvailableRidePopUp() {
         if let notificationModel = sharedAppDelegate.notficationDetails {
-            self.objDelivery_packages = notificationModel.delivery_packages
             tripID = notificationModel.trip_id
             customerID = notificationModel.customer_id ?? ""
             profileImg = notificationModel.customer_image ?? ""
@@ -1001,7 +899,6 @@ extension VDHomeVC {
     @IBAction func btnAcceptRide(_ sender: UIButton) {
         audioPlayer?.stop()
         openAcceptRideScreen()
-       // self.homeViewModel.fetchAvailableRide()
     }
 
     @IBAction func btnCancelRideProcessing(_ sender: UIButton) {
@@ -1027,36 +924,9 @@ extension VDHomeVC {
 
     @IBAction func centerLocationBtn(_ sender: UIButton) {
         // Update Location accuratly
-//        if let location = LocationTracker.shared.lastLocation {
-//            self.refreshMap(location)
-//
-//        }
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "MapSettingsVC") as! MapSettingsVC
-        vc.modalPresentationStyle = .overFullScreen
-        vc.mapDetailval = mapDetailValue
-        vc.mapTypeVal = mapTypeValue
-        vc.didSelectMapType = { mapType in
-            self.mapTypeValue = mapType
-            
-            if mapType == 1{
-                self.mapView.mapType = .satellite
-            }else if mapType == 2{
-                self.mapView.mapType = .terrain
-            }else{
-                self.mapView.mapType = .normal
-            }
+        if let location = LocationTracker.shared.lastLocation {
+            self.refreshMap(location)
         }
-        vc.didSelectMapDetail = { mapDetail in
-            self.mapDetailValue = mapDetail
-            
-            if mapDetail == 1{
-                self.mapView.isTrafficEnabled = true
-            }else{
-                self.mapView.isTrafficEnabled = false
-              
-            }
-        }
-        self.present(vc, animated: true)
     }
 }
 
@@ -1103,7 +973,6 @@ extension VDHomeVC {
                 if let operatorToken = ClientModel.currentClientData.operatorToken {
                     objc["operatorToken"] = operatorToken
                 }
-                
                 if let accessToken = UserModel.currentUser.access_token {
                     objc["accessToken"] = accessToken
                 }
@@ -1115,20 +984,6 @@ extension VDHomeVC {
                 //                    tripStartedAction()
                 var destination = CLLocationCoordinate2D(latitude: (trips.latitude ?? "0.0").double ?? 0.0, longitude: (trips.longitude ?? "0.0").double ?? 0.0)
                 
-//                if RideStatus != .none{
-//                    for (index, coordinate) in routeCoordinates.enumerated() {
-//                            let pointLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-//                            let distance = currentLocation.distance(from: pointLocation)
-//
-//                            if distance <= 100 && !announcedSteps.contains(index) { // Announce within 100 meters
-//                                announceTurn(at: index)
-//                                announcedSteps.insert(index)
-//                            }
-//                        }
-//                }
-                
-                
-                
                 if (RideStatus == .markArrived) || (RideStatus == .acceptedRide) {
                     // fallback
                 } else {
@@ -1138,14 +993,14 @@ extension VDHomeVC {
                 var source = CLLocation(latitude: (trips.drop_latitude ?? "0.0").double ?? 0.0, longitude: (trips.drop_longitude ?? "0.0").double ?? 0.0)
                 
                
-             //   let driverBearing = self.calculateBearing(from: currentLocation.coordinate, to: destination)
+                let driverBearing = self.calculateBearing(from: currentLocation.coordinate, to: destination)
                 DispatchQueue.main.async {
-                    self.getTurnInstructions()
+                  
                     //self.showMarker(Source: source.coordinate, Destination: destination)
-                    self.updateMarkersPositionForRide(self.driverBearing,currentLocation.coordinate , destination, true)
+                    self.updateMarkersPositionForRide(driverBearing,currentLocation.coordinate , destination, true)
                 }
                 
-                VDUserDefaults.save(value: [(trips.drop_latitude ?? "0.0").double ?? 0.0, (trips.drop_longitude ?? "0.0").double ?? 0.0, 0.0], forKey: .currentLocation)
+                VDUserDefaults.save(value: [(trips.drop_latitude ?? "0.0").double ?? 0.0, (trips.drop_longitude ?? "0.0").double ?? 0.0, driverBearing], forKey: .currentLocation)
                 
                 //                } else {
                 //                    return
@@ -1172,49 +1027,19 @@ extension VDHomeVC {
         }
     }
     
-    func calculateBearing2(from start: CLLocationCoordinate2D, to end: CLLocationCoordinate2D) -> CLLocationDirection {
-        let lat1 = start.latitude.degreesToRadians
-        let lon1 = start.longitude.degreesToRadians
-        let lat2 = end.latitude.degreesToRadians
-        let lon2 = end.longitude.degreesToRadians
-        let dLon = lon2 - lon1
-
-        let y = sin(dLon) * cos(lat2)
-        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
-        let radiansBearing = atan2(y, x)
-
-        // Convert bearing from radians to degrees and normalize to 0-360 range
-        let bearing = radiansBearing.radiansToDegrees
-        return (bearing + 360).truncatingRemainder(dividingBy: 360)
-    }
-    
-    
     func calculateBearing(from startLocation: CLLocationCoordinate2D, to endLocation: CLLocationCoordinate2D) -> CLLocationDirection {
-        let lat1 = startLocation.latitude.degreesToRadians
-        let lon1 = startLocation.longitude.degreesToRadians
-        let lat2 = endLocation.latitude.degreesToRadians
-        let lon2 = endLocation.longitude.degreesToRadians
-        let dLon = lon2 - lon1
-
-        let y = sin(dLon) * cos(lat2)
-        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
-        let radiansBearing = atan2(y, x)
-
-        // Convert bearing from radians to degrees and normalize to 0-360 range
-        let bearing = radiansBearing.radiansToDegrees
-        return (bearing + 360).truncatingRemainder(dividingBy: 360)
-//        let lat1 = startLocation.latitude.toRadians()
-//        let lon1 = startLocation.longitude.toRadians()
-//        
-//        let lat2 = endLocation.latitude.toRadians()
-//        let lon2 = endLocation.longitude.toRadians()
-//        
-//        let deltaLongitude = lon2 - lon1
-//        let y = sin(deltaLongitude) * cos(lat2)
-//        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(deltaLongitude)
-//        
-//        let initialBearing = atan2(y, x).toDegrees()
-//        return (initialBearing + 360).truncatingRemainder(dividingBy: 360)
+        let lat1 = startLocation.latitude.toRadians()
+        let lon1 = startLocation.longitude.toRadians()
+        
+        let lat2 = endLocation.latitude.toRadians()
+        let lon2 = endLocation.longitude.toRadians()
+        
+        let deltaLongitude = lon2 - lon1
+        let y = sin(deltaLongitude) * cos(lat2)
+        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(deltaLongitude)
+        
+        let initialBearing = atan2(y, x).toDegrees()
+        return (initialBearing + 360).truncatingRemainder(dividingBy: 360)
     }
 }
 
@@ -1279,8 +1104,8 @@ extension VDHomeVC {
             let driverCord = "\(latestCoordinates.latitude)"  + "," +  "\(latestCoordinates.longitude)"
             let locCord = "\(destination.latitude)"  + "," +  "\(destination.longitude)"
             self.homeViewModel.getNewPolyline("\(locCord)", "\(driverCord)")
-           // let driverBearing = self.calculateBearing(from: latestCoordinates, to: destination)
-            self.updateMarkersPositionForRide(self.driverBearing, latestCoordinates, destination, false , shouldUpdateCameraMovement)
+            let driverBearing = self.calculateBearing(from: latestCoordinates, to: destination)
+            self.updateMarkersPositionForRide(driverBearing, latestCoordinates, destination, false , shouldUpdateCameraMovement)
         }
        // showMarker(Source: latestCoordinates, Destination: destination)
        
@@ -1365,8 +1190,6 @@ extension VDHomeVC {
         mapView.padding = mapInsets
         view.layoutIfNeeded()
         
-      //  monitorTurnDirections(currentLocation: LocationTracker.shared.lastLocation?.coordinate ?? CLLocationCoordinate2D(), path: self.routeCoordinates)
-        
         // Update Driver Marker
         if driverMarker.map == nil {
             driverMarker = GMSMarker(position: driverCoordinates)
@@ -1377,7 +1200,6 @@ extension VDHomeVC {
             CATransaction.begin()
             CATransaction.setAnimationDuration(2.0) // Adjust duration as needed
             driverMarker.position = driverCoordinates
-            driverMarker.isFlat = true
             driverMarker.rotation = driverBearing
             CATransaction.commit()
         }
@@ -1391,7 +1213,6 @@ extension VDHomeVC {
         } else {
             CATransaction.begin()
             CATransaction.setAnimationDuration(2.0) // Adjust duration as needed
-            currentMarker.isFlat = true
             currentMarker.position = destinationCoordinates
             CATransaction.commit()
         }
@@ -1485,7 +1306,7 @@ extension VDHomeVC {
        // driverMarker.rotation = CLLocationDegrees(0.0)
         driverMarker.position = oldCoodinateLocation ?? driverCoordinates
         driverMarker.icon = VDImageAsset.vehicleMarker.asset
-        driverMarker.isFlat = true
+        driverMarker.isFlat = false
         CATransaction.begin()
         CATransaction.setAnimationDuration(2.0)
         driverMarker.rotation = driverBearing // Adjusting the car marker's rotation to face the path direction
@@ -1698,47 +1519,8 @@ extension VDHomeVC {
         completePolyline = polyline
         travelledGmsPath = completeGmsPath
         travelledPolyline = completePolyline
+        
         travelledPolyline?.map = mapView
-        
-//        guard let nextCoordinate = getNextPolylineCoordinate(currentCoordinates: LocationTracker.shared.lastLocation?.coordinate ?? CLLocationCoordinate2D(), polylineCoordinates: routeCoordinates) else {
-//            return
-//        }
-        
-        let coordinateCount = gmsPath.count()
-       
-        for i in 0..<(coordinateCount - 2) {
-        let currentLocation = gmsPath.coordinate(at: i)
-            let encodedPolyline = polyLinePoints
-            if let routeCoordinates = decodePolyline(encodedPolyline) {
-                print("Route Coordinates: \(routeCoordinates)")
-               
-                self.routeCoordinates = routeCoordinates
-               
-            }
-           
-        }
-
-
-
-       
-
-        // Output bearings
-   
-//                let nextLocation = gmsPath.coordinate(at: i + 1)
-//                let afterNextLocation = gmsPath.coordinate(at: i + 2)
-//                
-//                // Calculate turn direction
-//                let direction = getTurnDirection(
-//                    currentLocation: currentLocation,
-//                    nextLocation: nextLocation,
-//                    afterNextLocation: afterNextLocation
-//                )
-//            routeCoordinates.append(direction)
-//            }
-//        for (index, direction) in routeCoordinates.enumerated() {
-//                print("At segment \(index + 1): \(direction)")
-//            }
-        
 //        if !hasSetPolyLineBounds {
         
         if isUpdateOnce {
@@ -1754,63 +1536,6 @@ extension VDHomeVC {
 //        }
        // handleCarMovement(for: rideType, with: modelRideData, direction: nil)
     }
-    
-    func getTurnInstructions(){
-        for i in 0..<routeCoordinates.count - 2 {
-            let currentLocation = routeCoordinates[i]
-            let nextLocation = routeCoordinates[i + 1]
-            let afterNextLocation = routeCoordinates[i + 2]
-            
-            let bearing = calculateBearing(from: LocationTracker.shared.lastLocation?.coordinate ?? CLLocationCoordinate2D(), to: nextLocation)
-            
-            self.driverBearing = bearing
-            
-            // Calculate the distance from the user's location to the next turn
-            let nextTurnLocation = CLLocation(latitude: nextLocation.latitude, longitude: nextLocation.longitude)
-            let  userLocation = CLLocation(latitude: LocationTracker.shared.lastLocation?.coordinate.latitude ?? 0, longitude: LocationTracker.shared.lastLocation?.coordinate.longitude ?? 0)
-            let distanceToNextTurn = userLocation.distance(from: nextTurnLocation)
-            
-            // Check if the user is within 50 meters of the next turn
-            if distanceToNextTurn <= 100 {
-                // Calculate the bearing for each consecutive pair of points
-                let bearing1 = calculateBearing(from: currentLocation, to: nextLocation)
-                let bearing2 = calculateBearing(from: nextLocation, to: afterNextLocation)
-                
-                // Calculate the difference between the two bearings
-                let angleDifference = bearing2 - bearing1
-                speechSynthesizer.stopSpeaking(at: .immediate)
-                // Determine if it's a left or right turn or continue straight
-                if angleDifference > 15 && angleDifference < 180 {
-                    giveSpeechInstruction("Turn left")
-                } else if angleDifference < -15 && angleDifference > -180 {
-                    giveSpeechInstruction("Turn right")
-                } else {
-                    //giveSpeechInstruction("Continue straight")
-                }
-            }
-        }
-    }
-    
-    
-    func checkTurnProgress(_ nextTurnLocation: CLLocation) {
-        if let lastLocation = LocationTracker.shared.lastLocation {
-            let userLocation = CLLocation(latitude: lastLocation.coordinate.latitude, longitude: lastLocation.coordinate.longitude)
-            // Now you can use userLocation
-        }
-      //  let distanceToNextTurn = userLocation.distance(from: nextTurnLocation)
-        guard let userLocation = lastLocation else { return }
-            // Check if the user is still within 50 meters of the turn
-            let distanceToNextTurn = userLocation.distance(from: nextTurnLocation)
-            if distanceToNextTurn <= 50 {
-                // Keep speaking the instruction until the user turns
-                if !isSpeaking {
-                    self.getTurnInstructions() // Recheck and speak the instruction again
-                }
-            } else {
-                // User has passed the turn, stop the speech
-                speechSynthesizer.stopSpeaking(at: .immediate)
-            }
-        }
 
     // MARK: - Calculate Car Direction Angle
     private func getHeadingForDirection(fromCoordinate fromLoc: CLLocationCoordinate2D, toCoordinate toLoc: CLLocationCoordinate2D) -> Float {
@@ -1829,7 +1554,6 @@ extension FloatingPoint {
     var degreesToRadians: Self { return self * .pi / 180 }
     var radiansToDegrees: Self { return self * 180 / .pi }
 }
-
 extension CLLocationDegrees {
     func toRadians() -> Double {
         return self * .pi / 180.0
@@ -1907,7 +1631,7 @@ extension VDHomeVC{
     func showNotificationAlert() {
         let alert = UIAlertController(
             title: "Notifications Disabled",
-            message: "Enable notifications for Super Driver Driver? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
+            message: "Enable notifications for SHARPXALLY Driver? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
             preferredStyle: .alert
         )
 
@@ -1925,184 +1649,4 @@ extension VDHomeVC{
         }))
         present(alert, animated: true, completion: nil)
     }
-    
-    
-    // TODO: - Login with access token
-    private func loginWithAccessToken() {
-        if let _ = LocationTracker.shared.lastLocation {
-        } else {
-            failedToFetchLocation = true
-            SKToast.show(withMessage: "Not able to fetch your location")
-            return
-        }
-        var paramToModifyVehicleDetails: JSONDictionary {
-            if let location = LocationTracker.shared.lastLocation {
-                let param = [
-                    "latitude": location.coordinate.latitude ,
-                    "longitude": location.coordinate.longitude
-                ] as [String: Any]
-                return param
-            } else {
-                return [String:Any]()
-            }
-        }
-        
-        WebServices.loginWithAccessToken(parameters: paramToModifyVehicleDetails) { [weak self] (result) in
-            switch result {
-            case .success(let _):
-             
-                self?.handleValidationPopUp()
-            case .failure(let error):
-                SKToast.show(withMessage: error.localizedDescription)
-            }
-        }
-    }
-}
-extension VDHomeVC{
-
-    func monitorTurnDirections(currentLocation: CLLocationCoordinate2D, path: [CLLocationCoordinate2D]) {
-        guard path.count > 2 else { return }
-        
-        for i in 0..<(path.count - 2) {
-            let nextLocation = path[i + 1]
-            let afterNextLocation = path[i + 2]
-            
-            // Calculate distance to the next location
-            let distance = calculateBearing2(from: currentLocation, to: nextLocation)
-            
-            // Announce turn only when within 100 meters
-            if distance <= 100 {
-                let direction = getTurnDirection(currentLocation: currentLocation, nextLocation: nextLocation, afterNextLocation: afterNextLocation)
-                announceDirection(direction)
-            }
-        }
-    }
-
-    // Helper Method: Calculate distance between two coordinates
-    func calculateDistance(from coordinate1: CLLocationCoordinate2D, to coordinate2: CLLocationCoordinate2D) -> Double {
-        let location1 = CLLocation(latitude: coordinate1.latitude, longitude: coordinate1.longitude)
-        let location2 = CLLocation(latitude: coordinate2.latitude, longitude: coordinate2.longitude)
-        return location1.distance(from: location2) // Distance in meters
-    }
-    
-    func getTurnDirection(currentLocation: CLLocationCoordinate2D, nextLocation: CLLocationCoordinate2D, afterNextLocation: CLLocationCoordinate2D) -> String {
-        // Calculate bearing from current location to next location
-      //  let nextCoordinate = getNextPolylineCoordinate(currentCoordinates: currentLocation, polylineCoordinates: self.routeCoordinates) ?? <#default value#>
-        let bearing1 = calculateBearing2(from: currentLocation, to: nextLocation)
-       // driverBearing = bearing1
-        // Calculate bearing from next location to after-next location
-        let bearing2 = calculateBearing2(from: nextLocation, to: afterNextLocation)
-        
-        // Calculate the angle difference
-        let angleDifference = bearing2 - bearing1
-        
-        if angleDifference > 15 && angleDifference < 180 {
-       
-            return "Turn right"
-        } else if angleDifference < -15 && angleDifference > -180 {
-       
-            return "Turn left"
-        } else {
-
-            return "Continue straight"
-        }
-    }
-    
-//    func getBearingsFromPolylineCoordinates(polylineCoordinates: [CLLocationCoordinate2D]) -> [Double] {
-//        var bearings = [Double]()
-//        
-//        for i in 0..<polylineCoordinates.count - 1 {
-//            let bearing = calculateBearing(from: polylineCoordinates[i], to: polylineCoordinates[i + 1])
-//            bearings.append(bearing)
-//        }
-//        
-//        return bearings
-//    }
-    
-    func announceDirection(_ direction: String) {
-        // Use text-to-speech or another mechanism to announce the direction
-        print(direction)
-        
-        let utterance = AVSpeechUtterance(string: direction)
-          utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-          utterance.rate = 0.5
-
-          if !speechSynthesizer.isSpeaking {
-              speechSynthesizer.speak(utterance)
-          }
-    }
-    
-    func getNextPolylineCoordinate(currentCoordinates: CLLocationCoordinate2D, polylineCoordinates: [CLLocationCoordinate2D]) -> CLLocationCoordinate2D? {
-        // Find the next coordinate in the polyline relative to the current coordinates.
-        // Implement a more sophisticated approach if needed.
-        let closestPoint = polylineCoordinates.min {
-            CLLocation(latitude: $0.latitude, longitude: $0.longitude).distance(from: CLLocation(latitude: currentCoordinates.latitude, longitude: currentCoordinates.longitude)) <
-            CLLocation(latitude: $1.latitude, longitude: $1.longitude).distance(from: CLLocation(latitude: currentCoordinates.latitude, longitude: currentCoordinates.longitude))
-        }
-        return closestPoint
-    }
-    
-    func getPolylineCoordinates(from polyline: GMSPolyline) -> [CLLocationCoordinate2D] {
-        var coordinates: [CLLocationCoordinate2D] = []
-        
-        // Ensure the polyline has a path
-        guard let path = polyline.path else {
-            print("No path found in polyline")
-            return coordinates
-        }
-        
-        // Iterate through the path and append coordinates
-        for index in 0..<path.count() {
-            let coordinate = path.coordinate(at: index)
-            coordinates.append(coordinate)
-        }
-        
-        return coordinates
-    }
-    
-    func giveSpeechInstruction(_ instruction: String) {
-            let speechUtterance = AVSpeechUtterance(string: instruction)
-            speechSynthesizer.speak(speechUtterance)
-        isSpeaking = true
-        }
-    
-    func decodePolyline(_ encodedPolyline: String) -> [CLLocationCoordinate2D]? {
-        var coordinates: [CLLocationCoordinate2D] = []
-        var index = encodedPolyline.startIndex
-        let length = encodedPolyline.count
-        var lat = 0
-        var lng = 0
-
-        while index < encodedPolyline.endIndex {
-            var b: Int
-            var shift = 0
-            var result = 0
-
-            repeat {
-                b = Int(encodedPolyline[index].asciiValue! - 63)
-                index = encodedPolyline.index(after: index)
-                result |= (b & 0x1F) << shift
-                shift += 5
-            } while b >= 0x20
-            let deltaLat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1))
-            lat += deltaLat
-
-            shift = 0
-            result = 0
-
-            repeat {
-                b = Int(encodedPolyline[index].asciiValue! - 63)
-                index = encodedPolyline.index(after: index)
-                result |= (b & 0x1F) << shift
-                shift += 5
-            } while b >= 0x20
-            let deltaLng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1))
-            lng += deltaLng
-
-            coordinates.append(CLLocationCoordinate2D(latitude: Double(lat) / 1E5, longitude: Double(lng) / 1E5))
-        }
-
-        return coordinates
-    }
-
 }

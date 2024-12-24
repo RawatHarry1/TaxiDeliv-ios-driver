@@ -38,19 +38,4 @@ extension WebServices {
             }
         }
     }
-    
-    static func uploadPackageImageApi(parameters: [String: Any], image: [String : UIImage], response: @escaping ((Result<(Any?), Error>) -> Void)) {
-
-        commonPostAPIWithImage(endPoint: .upload_file_driver, parameters: parameters, image: image) { (result) in
-            switch result {
-            case .success(let json):
-                printDebug(json)
-                let data = try! json.rawData()
-                let model = try! JSONDecoder().decode(UplodPhotoModal.self, from: data)
-                response(.success(model))
-            case .failure(let error):
-                response(.failure(error))
-            }
-        }
-    }
 }

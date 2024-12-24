@@ -12,7 +12,6 @@ import FirebaseCore
 import FirebaseMessaging
 import AVKit
 var audioPlayer: AVAudioPlayer?
-var objDelivery_packages = [DeliveryPackageData]()
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var player: AVAudioPlayer?

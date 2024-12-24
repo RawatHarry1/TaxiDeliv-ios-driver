@@ -40,7 +40,6 @@ class VDElectricVC: VDBaseVC, UITextFieldDelegate {
     var selectedIndex = 0
     var filteredCityList: [City_list] = []
     var selectedID = 0
-    
     //  To create ViewModel
     static func create(_ type: Int = 0) -> UIViewController {
         let obj = VDElectricVC.instantiate(fromAppStoryboard: .postLogin)
@@ -49,17 +48,6 @@ class VDElectricVC: VDBaseVC, UITextFieldDelegate {
     }
 
     override func initialSetup() {
-        
-        if ClientModel.currentClientData.enabled_service! == 3{
-            collectionView.isHidden = false
-        }else if ClientModel.currentClientData.enabled_service! == 2{
-            selectedID = 2
-            collectionView.isHidden = true
-        }else{
-            selectedID = 1
-            collectionView.isHidden = true
-        }
-        
         vehicleNumberTF.delegate = self
         listTableView.delegate  = self
         listTableView.dataSource = self
@@ -346,20 +334,20 @@ extension VDElectricVC:UICollectionViewDelegate,UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TypeCollectionCell", for: indexPath) as! TypeCollectionCell
         let obj = ClientModel.currentClientData.operator_availablity?[indexPath.row]
         
-        if collectionView.isHidden == false{
-            if selectedIndex == indexPath.row{
-                selectedID = obj?.id ?? 0
-                self.viewModel.fetchDocumentsList(self.selectedCity?.city_id ?? 0, rideType: self.selectedID, completion: {
-                    self.cityTF.text = ""
-                    self.vehicleTypeTF.text = ""
-                })
-                filterCities()
-                listTableView.reloadData()
-                self.selectedCell(view: cell.viewBase)
-            }else{
-                self.unSelectedCell(view: cell.viewBase)
-            }
+       
+        if selectedIndex == indexPath.row{
+            selectedID = obj?.id ?? 0
+            self.viewModel.fetchDocumentsList(self.selectedCity?.city_id ?? 0, rideType: self.selectedID, completion: {
+                self.cityTF.text = ""
+                self.vehicleTypeTF.text = ""
+            })
+            filterCities()
+            listTableView.reloadData()
+            self.selectedCell(view: cell.viewBase)
+        }else{
+            self.unSelectedCell(view: cell.viewBase)
         }
+        
         
         
         cell.lblTitle.text = obj?.name ?? ""
@@ -369,15 +357,12 @@ extension VDElectricVC:UICollectionViewDelegate,UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView.isHidden == false{
-            self.selectedIndex = indexPath.row
-            self.collectionView.reloadData()
-        }
-      
+        self.selectedIndex = indexPath.row
+        self.collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSizeMake(collectionView.frame.width / 2 - 5 , 50)
+        return CGSizeMake(collectionView.frame.width / 2 - 10 , 50)
     }
     
 }

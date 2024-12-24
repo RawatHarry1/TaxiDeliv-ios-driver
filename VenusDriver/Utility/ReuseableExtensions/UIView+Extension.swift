@@ -7,32 +7,6 @@
 
 import  UIKit
 // swiftlint:disable all
-import UIKit
-
-extension UIImageView {
-    func loadImage(from url: URL, placeholder: UIImage? = nil) {
-        // Set placeholder image if provided
-        self.image = placeholder
-
-        // Download the image
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            guard
-                let self = self,
-                let data = data,
-                error == nil,
-                let downloadedImage = UIImage(data: data)
-            else {
-                print("Failed to load image: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
-
-            // Update the UI on the main thread
-            DispatchQueue.main.async {
-                self.image = downloadedImage
-            }
-        }.resume()
-    }
-}
 
 extension UIView {
     enum Border {

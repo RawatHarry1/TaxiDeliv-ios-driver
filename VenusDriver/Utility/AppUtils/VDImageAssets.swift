@@ -70,7 +70,6 @@ enum VDImageAsset: String {
     case clock
     case profileImgDummy
     case rateUs
-    case ticket
     case likeus
     case legal
     case settingsAboutApp
