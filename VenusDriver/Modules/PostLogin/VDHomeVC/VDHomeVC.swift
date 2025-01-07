@@ -559,6 +559,7 @@ extension VDHomeVC {
             newRideReqView.isHidden = true
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = true
+            self.mapView.clear()
 //            stopTimer() // Stop timer to update driver location when driver is not taking any rides
         case .availableRide :
             newRideReqView.isHidden = false
@@ -692,13 +693,16 @@ extension VDHomeVC {
                 self.customerNameLbl.text = notificationModel.customer_name ?? ""
                 
                 if let estimatedFare = notificationModel.estimated_driver_fare,
-                   let currency = notificationModel.currency,
-                   estimatedFare.contains(currency) {
-                    // Do something when estimated fare contains the currency
-                    self.amountLbl.text = "\(notificationModel.estimated_driver_fare ?? "")"
-                } else {
-                    self.amountLbl.text = "\(notificationModel.currency ?? "")\(notificationModel.estimated_driver_fare ?? "")"
-                    // Do something else if it doesn't contain the currency
+                   let currency = notificationModel.currency{
+                   if estimatedFare.contains(currency) {
+                        print("Estimated Fare" + estimatedFare)
+                        // Do something when estimated fare contains the currency
+                        self.amountLbl.text = "\(notificationModel.estimated_driver_fare ?? "")"
+                    } else {
+                        print("Estimated Fare" + estimatedFare)
+                        self.amountLbl.text = "\(notificationModel.currency ?? "")\(estimatedFare ?? "")"
+                        // Do something else if it doesn't contain the currency
+                    }
                 }
                 
                 
@@ -1706,16 +1710,18 @@ extension VDHomeVC {
         
         let coordinateCount = gmsPath.count()
        
-        for i in 0..<(coordinateCount - 2) {
-        let currentLocation = gmsPath.coordinate(at: i)
-            let encodedPolyline = polyLinePoints
-            if let routeCoordinates = decodePolyline(encodedPolyline) {
-                print("Route Coordinates: \(routeCoordinates)")
-               
-                self.routeCoordinates = routeCoordinates
-               
+        // Ensure there are at least 3 coordinates before trying to iterate
+        if coordinateCount > 2 {
+            for i in 0..<(coordinateCount - 2) {
+                let currentLocation = gmsPath.coordinate(at: i)
+                let encodedPolyline = polyLinePoints
+                if let routeCoordinates = decodePolyline(encodedPolyline) {
+                    print("Route Coordinates: \(routeCoordinates)")
+                    self.routeCoordinates = routeCoordinates
+                }
             }
-           
+        } else {
+            print("Not enough coordinates to process.")
         }
 
 
@@ -1756,7 +1762,9 @@ extension VDHomeVC {
     }
     
     func getTurnInstructions(){
-        for i in 0..<routeCoordinates.count - 2 {
+        if (routeCoordinates.count > 0)
+        {
+            for i in 0..<routeCoordinates.count - 2 {
             let currentLocation = routeCoordinates[i]
             let nextLocation = routeCoordinates[i + 1]
             let afterNextLocation = routeCoordinates[i + 2]
@@ -1788,6 +1796,7 @@ extension VDHomeVC {
                     //giveSpeechInstruction("Continue straight")
                 }
             }
+        }
         }
     }
     

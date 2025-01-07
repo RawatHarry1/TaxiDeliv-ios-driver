@@ -188,7 +188,7 @@ extension WebServices {
         commonGetAPI(parameters: parameters, endPoint: .fetchOngoingTrip, loader: true) { (result) in
             switch result {
             case .success(let json):
-                printDebug(json)
+                print(json)
 
                 let data = try! json[APIKeys.data.rawValue].rawData()
                 let model = try! JSONDecoder().decode(OngoingRideModel.self, from: data)
