@@ -128,7 +128,7 @@ class VDHomeVC: VDBaseVC {
     func callIndidLoad(){
       //  DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             // Code to be executed after a delay
-            self.homeViewModel.fetchAvailableRide()
+       //     self.homeViewModel.fetchAvailableRide()
       //  }
         
     }
@@ -182,7 +182,7 @@ class VDHomeVC: VDBaseVC {
         checkMapType()
         UIApplication.shared.isIdleTimerDisabled = true
         loginWithAccessToken()
-        self.homeViewModel.fetchAvailableRide()
+     //   self.homeViewModel.fetchAvailableRide()
         checkLocationServices()
         checkNotificationStatusAndPrompt()
         let isDriverAvailablecheck = VDUserDefaults.value(forKey: .isDriverAvailable)
