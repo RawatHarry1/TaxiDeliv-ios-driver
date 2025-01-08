@@ -8,9 +8,8 @@
 import UIKit
 
 class VDElectricVC: VDBaseVC, UITextFieldDelegate {
-
+ 
     // MARK: - Outlets
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var vehicleYearTF: SkyfieldTF!
     @IBOutlet weak var vehicleModelTF: SkyfieldTF!
@@ -25,7 +24,8 @@ class VDElectricVC: VDBaseVC, UITextFieldDelegate {
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var listTop: NSLayoutConstraint!
     @IBOutlet weak var listBackBtn: UIButton!
-
+    var fromOTP = false
+    var fromWelcome = false
     private var screenType = 0
     private var vehicleColorID: Int?
     private var vehicleModelID: Int?
@@ -40,9 +40,9 @@ class VDElectricVC: VDBaseVC, UITextFieldDelegate {
     var selectedIndex = 0
     var filteredCityList: [City_list] = []
     var selectedID = 0
-    
+    var firstTime = true
     //  To create ViewModel
-    static func create(_ type: Int = 0) -> UIViewController {
+    static func create(_ type: Int = 0) -> VDElectricVC {
         let obj = VDElectricVC.instantiate(fromAppStoryboard: .postLogin)
         obj.screenType = type
         return obj
@@ -70,6 +70,14 @@ class VDElectricVC: VDBaseVC, UITextFieldDelegate {
                 if city.count > 0 {
                     self.selectedCity = city[0]
                     self.cityTF.text = self.selectedCity?.city_name ?? ""
+                    self.viewModel.fetchDocumentsList(self.selectedCity?.city_id ?? 0, rideType: self.selectedID, completion: {
+                        self.listTableView.reloadData()
+                    })
+                    
+                    selectedVehicleType = nil
+                    vehicleTypeTF.text = ""
+                    vehicleModelID = nil
+                    vehicleModelTF.text = ""
                 }
             }
             viewModel.fetchDocumentsList(cityId, rideType: self.selectedID, completion: {
@@ -100,8 +108,29 @@ class VDElectricVC: VDBaseVC, UITextFieldDelegate {
     }
     
     @IBAction func backBtn(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        
+        if fromOTP == true{
+            if let viewControllers = self.navigationController?.viewControllers {
+                if viewControllers.count >= 3 {
+                    let targetViewController = viewControllers[viewControllers.count - 3]
+                    self.navigationController?.popToViewController(targetViewController, animated: true)
+                }
+            }        }
+        else if fromWelcome == true
+        {
+            exit(0)
+        }
+        else
+        {
+            
+            self.navigationController?.popViewController(animated: false)
+            
+        }
+        
+        
     }
+//        self.navigationController?.popViewController(animated: true)
+    
 
     @IBAction func selectCityBtn(_ sender: UIButton) {
         self.lblNoDataFound.isHidden = true
@@ -350,8 +379,11 @@ extension VDElectricVC:UICollectionViewDelegate,UICollectionViewDataSource, UICo
             if selectedIndex == indexPath.row{
                 selectedID = obj?.id ?? 0
                 self.viewModel.fetchDocumentsList(self.selectedCity?.city_id ?? 0, rideType: self.selectedID, completion: {
-                    self.cityTF.text = ""
-                    self.vehicleTypeTF.text = ""
+                    if self.firstTime == false{
+                        self.cityTF.text = ""
+                        self.vehicleTypeTF.text = ""
+
+                    }
                 })
                 filterCities()
                 listTableView.reloadData()
@@ -370,6 +402,7 @@ extension VDElectricVC:UICollectionViewDelegate,UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.isHidden == false{
+            firstTime = false
             self.selectedIndex = indexPath.row
             self.collectionView.reloadData()
         }

@@ -134,6 +134,7 @@ extension VDHomeViewModel {
             case .success(let data):
                 guard let rides = data as? RideDetails else { return }
                 self?.rideDetails = rides
+                RideStatus = .acceptedRide
             case .failure(let error):
                 completionFaliur(error.localizedDescription)
                 printDebug(error.localizedDescription)

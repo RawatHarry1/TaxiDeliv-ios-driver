@@ -10,12 +10,17 @@ import UIKit
 class VDLogoutVC: VDBaseVC {
 
     // MARK: -> Variables
+    @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var btnLogout: UIButton!
     private var loginViewModel: VDLoginViewModel = VDLoginViewModel()
 
     // MARK: -> Outlets
     var cancelCallBack : ((Bool) -> ()) = { _ in }
+    // MARK: -> Outlets
+    var sucessCallback : ((Bool) -> ()) = { _ in }
 
-
+    var descriptionText = "";
+    var rejectPackage = false
     //  To create ViewModel
     static func create() -> VDLogoutVC {
         let obj = VDLogoutVC.instantiate(fromAppStoryboard: .postLogin)
@@ -24,13 +29,23 @@ class VDLogoutVC: VDBaseVC {
 
     override func initialSetup() {
         // Show Error Alert
-        self.loginViewModel.showAlertClosure = {
-            if let error = self.loginViewModel.error {
-                CustomAlertView.showAlertControllerWith(title: error.title ?? "", message: error.errorDescription, onVc: self, buttons: ["OK"], completion: nil)
+        if rejectPackage == false
+        {
+            self.loginViewModel.showAlertClosure = {
+                if let error = self.loginViewModel.error {
+                    CustomAlertView.showAlertControllerWith(title: error.title ?? "", message: error.errorDescription, onVc: self, buttons: ["OK"], completion: nil)
+                }
             }
         }
+        if rejectPackage == true
+        {
+            
+            lblDescription.text = descriptionText
+            lblDescription.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+            btnLogout.setTitle("Reject/ Cancel Delivery", for: .normal)
+        }
 
-
+    
 //        self.dismiss(animated: true) {
 //            self.cancelCallBack(true)
 //        }
@@ -44,6 +59,16 @@ class VDLogoutVC: VDBaseVC {
     }
 
     @IBAction func logoutBtn(_ sender: UIButton) {
-        loginViewModel.logoutApi()
+        
+        if rejectPackage == true{
+            self.dismiss(animated: true) {
+                self.sucessCallback(true)
+            }
+        }
+        else
+        {
+            loginViewModel.logoutApi()
+
+        }
     }
 }

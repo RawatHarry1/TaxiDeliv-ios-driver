@@ -24,7 +24,7 @@ class VCFeedbackVC: VCBaseVC {
     var viewModel = FeedbackVM()
     var objEndTripModal: EndRideModel?
     var callBackRatingSuccess : ((Int) -> ())?
-    var ratings = 5
+    var ratings = 3
     var viewcontrollerType = 1
     //  To create ViewModel
     static func create() -> VCFeedbackVC {
@@ -45,7 +45,7 @@ class VCFeedbackVC: VCBaseVC {
         lblFare.text = "\(objEndTripModal?.currency ?? "") \(objEndTripModal?.fare ?? 0)"
         titleLabelAttributes((objEndTripModal?.customer_name ?? ""))
         callBacks()
-        ratingLbl.text = "Best"
+        ratingLbl.text = "Good"
     }
 
     private func callBacks() {
@@ -137,11 +137,11 @@ class VCFeedbackVC: VCBaseVC {
 
     func setStarImages(_ count: Int) {
 
-        starOne.image = UIImage(named: "star")
-        starTwo.image = UIImage(named: "star")
-        starThree.image = UIImage(named: "star")
-        starfour.image = UIImage(named: "star")
-        starFive.image = UIImage(named: "star")
+        starOne.image = UIImage(named: "star 1")
+        starTwo.image = UIImage(named: "star 1")
+        starThree.image = UIImage(named: "star 1")
+        starfour.image = UIImage(named: "star 1")
+        starFive.image = UIImage(named: "star 1")
 
 //        1 Star- Worst
 //        2 Star- Bad
@@ -150,22 +150,22 @@ class VCFeedbackVC: VCBaseVC {
 //        5 Star- Best
 
         if count == 1 {
-            starTwo.image = UIImage(named: "starDisable")
-            starThree.image = UIImage(named: "starDisable")
-            starfour.image = UIImage(named: "starDisable")
-            starFive.image = UIImage(named: "starDisable")
+            starTwo.image = UIImage(named: "starDisable 1")
+            starThree.image = UIImage(named: "starDisable 1")
+            starfour.image = UIImage(named: "starDisable 1")
+            starFive.image = UIImage(named: "starDisable 1")
             ratingLbl.text = "Worst"
         } else if count == 2 {
-            starThree.image = UIImage(named: "starDisable")
-            starfour.image = UIImage(named: "starDisable")
-            starFive.image = UIImage(named: "starDisable")
+            starThree.image = UIImage(named: "starDisable 1")
+            starfour.image = UIImage(named: "starDisable 1")
+            starFive.image = UIImage(named: "starDisable 1")
             ratingLbl.text = "Bad"
         } else if count == 3 {
-            starfour.image = UIImage(named: "starDisable")
-            starFive.image = UIImage(named: "starDisable")
+            starfour.image = UIImage(named: "starDisable 1")
+            starFive.image = UIImage(named: "starDisable 1")
             ratingLbl.text = "Good"
         } else if count == 4 {
-            starFive.image = UIImage(named: "starDisable")
+            starFive.image = UIImage(named: "starDisable 1")
             ratingLbl.text = "Better"
         } else if count == 5 {
            // starFive.image = UIImage(named: "starDisable")

@@ -10,6 +10,7 @@ import CoreLocation
 
 class VDRideCompleteVC: VDBaseVC {
 
+    @IBOutlet weak var packageTblHeader: UIView!
     @IBOutlet weak var collectionViewImages: UICollectionView!
     @IBOutlet weak var tblHeightConstant: NSLayoutConstraint!
     @IBOutlet weak var tblView: UITableView!
@@ -47,6 +48,7 @@ class VDRideCompleteVC: VDBaseVC {
         obj.screenTyoe = type
         return obj
     }
+    @IBOutlet weak var chatIcon: UIImageView!
     
     var currentLat = 0.0
     var currentLong = 0.0
@@ -70,8 +72,15 @@ class VDRideCompleteVC: VDBaseVC {
         btnAccept.isHidden = (screenTyoe == 0)
         titleLabel.text = (screenTyoe == 0) ? "Ride Completed" : "Accept Trip"
         imgCall.isHidden = (screenTyoe == 0)
+        chatIcon.isHidden = (screenTyoe == 0)
         rideDetailsView.isHidden = (screenTyoe == 0)
-
+        
+        if titleLabel.text! == "Accept Trip"
+        {
+            btnChat.isHidden = true
+            viewDot.isHidden = true
+            chatIcon.isHidden = true
+        }
         if screenTyoe == 0 {
             btnAccept.isHidden = false
             self.btnAccept.setTitle("Rate the customer", for: .normal)
@@ -166,7 +175,6 @@ class VDRideCompleteVC: VDBaseVC {
     }
 
     func drawDashedLine() {
-        dashLineView.addDashedBorder()
         dashedView.addDashedSmallBorder()
     }
 
@@ -288,7 +296,7 @@ class VDRideCompleteVC: VDBaseVC {
                 })
             }
         } else if screenTyoe == 2 {
-            RideStatus = .acceptedRide
+           
             self.navigationController?.popViewController(animated: true)
         }else{
             let story = UIStoryboard(name: "Ratings", bundle: nil)
@@ -392,6 +400,8 @@ extension VDRideCompleteVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         DispatchQueue.main.async {
             self.tblHeightConstant.constant = self.tblView.contentSize.height
+            tableView.isHidden = tableView.numberOfRows(inSection: 0) == 0 ? true : false
+            self.packageTblHeader.isHidden = tableView.numberOfRows(inSection: 0) == 0 ? true : false
         }
     }
 }

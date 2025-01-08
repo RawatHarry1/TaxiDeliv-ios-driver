@@ -24,6 +24,7 @@ class VDHomeVC: VDBaseVC {
     @IBOutlet weak private(set) var newRideReqDetails: UIView!
     @IBOutlet weak private(set) var cancelRideWhileProcess: VDButton!
     @IBOutlet weak private(set) var rideProcessingView: UIView!
+    @IBOutlet weak var btnbottom: NSLayoutConstraint!
     @IBOutlet weak private(set) var rideStatusView: UIView!
     @IBOutlet weak private(set) var btnChat: UIButton!
     @IBOutlet weak private(set) var cancelRideBtn: VDButton!
@@ -128,7 +129,7 @@ class VDHomeVC: VDBaseVC {
     func callIndidLoad(){
       //  DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             // Code to be executed after a delay
-       //     self.homeViewModel.fetchAvailableRide()
+     // self.homeViewModel.fetchAvailableRide()
       //  }
         
     }
@@ -182,7 +183,7 @@ class VDHomeVC: VDBaseVC {
         checkMapType()
         UIApplication.shared.isIdleTimerDisabled = true
         loginWithAccessToken()
-     //   self.homeViewModel.fetchAvailableRide()
+    //    self.homeViewModel.fetchAvailableRide()
         checkLocationServices()
         checkNotificationStatusAndPrompt()
         let isDriverAvailablecheck = VDUserDefaults.value(forKey: .isDriverAvailable)
@@ -207,7 +208,14 @@ class VDHomeVC: VDBaseVC {
         if let value = isDriverAvailable.rawValue as? Bool {
             self.handleDriverAvailability(value)
         }
-
+        if RideStatus == .none
+        {
+            self.mapView.clear()
+        }
+      if   RideStatus != .availableRide
+        {
+          self.homeViewModel.fetchAvailableRide()
+      }
         if let notificationModel = sharedAppDelegate.notficationDetails {
             if notificationModel.service_type == 2{
                 viewDelivery.isHidden = false
@@ -257,7 +265,7 @@ class VDHomeVC: VDBaseVC {
         rideProcessingView.addShadowView(color: VDColors.buttonBorder.color)
         rideProcessingView.roundCorner([.topLeft, .topRight], radius: 20)
         rideStatusView.addShadowView(color: VDColors.buttonBorder.color)
-        rideStatusView.roundCorner([.topLeft, .topRight], radius: 20)
+        rideStatusView.roundCorner([.topLeft, .topRight], radius: 30)
 //        rideStatusView.isHidden = false
         // Assuming you have a reference to your mapView
         let googleLogoCover = UIView()
@@ -468,7 +476,7 @@ extension VDHomeVC {
         } else {
             VDUserDefaults.save(value: false, forKey: .isDriverAvailable)
             self.availabilityButton.isSelected = false
-            self.offlineView.isHidden = false
+            self.offlineView.isHidden = docPendingView.isHidden == false ? true : false
             self.titleLbl.text = "Offline"
         }
     }
@@ -559,19 +567,24 @@ extension VDHomeVC {
             newRideReqView.isHidden = true
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = true
+            self.btnbottom.constant = 20
+            btnChat.isHidden = true
+            self.availabilityButton.isHidden = false
+            
             self.mapView.clear()
 //            stopTimer() // Stop timer to update driver location when driver is not taking any rides
         case .availableRide :
             newRideReqView.isHidden = false
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = true
-            
+            self.btnbottom.constant = 20
             updateAvailableRidePopUp()
         case .acceptedRide :
            // Write code for driver is in proress to pick up driver
             newRideReqView.isHidden = true
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = false
+            self.btnbottom.constant = 370
             cancelRideBtn.setTitle("Slide to Mark Arrived", for: .normal)
             btnChat.isHidden = false
 //            let obj = VDRideCompleteVC.create(2)
@@ -587,6 +600,7 @@ extension VDHomeVC {
             newRideReqView.isHidden = true
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = false
+            self.btnbottom.constant = 370
             cancelRideBtn.setTitle("Slide to Start Trip", for: .normal)
 
         case .customerPickedUp :
@@ -595,6 +609,7 @@ extension VDHomeVC {
             newRideReqView.isHidden = true
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = false
+            self.btnbottom.constant = 370
             cancelRideBtn.setTitle("Slide to Complete Trip", for: .normal)
             btnChat.isHidden = false
 //            if sharedAppDelegate.isFromNotification {
@@ -804,6 +819,7 @@ extension VDHomeVC {
         verificationPopUpActionBtn.setTitle(type.buttonText, for: .normal)
         verificationPopUpActionBtn.isHidden = type.showButton
         docPendingView.isHidden = false
+        offlineView.isHidden = true
         
     }
     
@@ -863,6 +879,7 @@ extension VDHomeVC {
             self.newRideReqView.isHidden = true
             self.rideProcessingView.isHidden = true
             self.rideStatusView.isHidden = false
+            self.btnbottom.constant = 370
             RideStatus = .customerPickedUp
             self.updateUIAccordingtoRideStatus()
             //self.mapView.clear()
@@ -920,6 +937,7 @@ extension VDHomeVC {
                 self.newRideReqView.isHidden = true
                 self.rideProcessingView.isHidden = true
                 self.rideStatusView.isHidden = false
+                self.btnbottom.constant = 370
                 self.updateUIAccordingtoRideStatus()
             } else if RideStatus == .availableRide {
               //  btnChat.isHidden = false
@@ -930,6 +948,7 @@ extension VDHomeVC {
                 self.newRideReqView.isHidden = true
                 self.rideProcessingView.isHidden = true
                 self.rideStatusView.isHidden = false
+                self.btnbottom.constant = 370
                 self.updateUIAccordingtoRideStatus()
             }else {
                 self.updateUIAccordingtoRideStatus()
@@ -1012,6 +1031,7 @@ extension VDHomeVC {
        
         rideProcessingView.isHidden = true
         rideStatusView.isHidden = false
+        self.btnbottom.constant = 370
     }
 
     @IBAction func cancelRideOngoing(_ sender: UIButton) {

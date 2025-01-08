@@ -8,11 +8,11 @@
 import UIKit
 
 class PackageListVC: UIViewController, CollectionViewCellDelegate {
-
+    
     @IBOutlet weak var btnContinue: VDButton!
     @IBOutlet weak var tblView: UITableView!
     var viewModel = VDHomeViewModel()
-
+    
     var deliveryPackages : [DeliveryPackages]?
     var viewModal = UploadPhotoViewModal()
     var didPressContinue: (() -> Void)?
@@ -34,18 +34,39 @@ class PackageListVC: UIViewController, CollectionViewCellDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     func displayCancelAlert(_ message: String,title:String,reason : String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        let action = UIAlertAction(title: "Ok", style: .default, handler: {_ in
-            guard let tripID = sharedAppDelegate.notficationDetails?.trip_id else {return}
-            guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
-            self.viewModel.cancelRideApi(tripID, customerID, reason)
-           self.navigationController?.popToRootViewController(animated: true)
-            SKToast.show(withMessage: "Ride has been Cancelled by you.")
-
-        })
-        alert.addAction(action)
-       // UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
-        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+        let story = UIStoryboard(name: "PostLogin", bundle:nil)
+        let vc = story.instantiateViewController(withIdentifier: "VDLogoutVC") as! VDLogoutVC
+        vc.descriptionText = message
+        vc.rejectPackage = true
+        vc.modalPresentationStyle = .overFullScreen
+        vc.cancelCallBack = { cancel in
+            if cancel {
+                
+            }
+     
+        }
+        vc.sucessCallback = { sucess in
+            if sucess {
+                guard let tripID = sharedAppDelegate.notficationDetails?.trip_id else {return}
+               guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
+                self.viewModel.cancelRideApi(tripID, customerID, reason)
+              //  SKToast.show(withMessage: "Ride has been Cancelled by you.")
+                self.navigationController?.popToRootViewController(animated: true)
+               
+            }
+        }
+        self.present(vc, animated: true)
+        //        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        //        let action = UIAlertAction(title: "Ok", style: .default, handler: {_ in
+        //            guard let tripID = sharedAppDelegate.notficationDetails?.trip_id else {return}
+        //            guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
+        //            self.viewModel.cancelRideApi(tripID, customerID, reason)
+    
+        //
+        //        })
+        //        alert.addAction(action)
+        //       // UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+        //        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -201,6 +222,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
   
                                 if self.viewModal.objPackageStatusModal?.message ?? "" != ""{
                                     self.displayCancelAlert(self.viewModal.objPackageStatusModal?.message ?? "", title: "", reason: reasonStr)
+                                 
                                 }
                                 
                                 cell.btnAccept.isEnabled = false
@@ -238,8 +260,9 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                             print("done")
                             
                             self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:reasonStr,AcceptTrip:false,comerFromMarkArive: false, completion: {
-                                if self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "" != ""{
-                                    Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
+                                if self.viewModal.objPackageStatusModal?.message ?? "" != ""{
+                                    self.displayCancelAlert(self.viewModal.objPackageStatusModal?.message ?? "", title: "", reason: reasonStr)
+                                 
                                 }
                                 cell.btnAccept.isEnabled = false
                                 cell.btnreject.isEnabled = false

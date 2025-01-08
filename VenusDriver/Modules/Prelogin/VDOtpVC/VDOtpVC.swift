@@ -62,7 +62,9 @@ class VDOtpVC: VDBaseVC {
                     case .document_upload:
                         self.navigationController?.pushViewController(VDDocumentVC.create(1), animated: true)
                     case .vehicle_info:
-                        self.navigationController?.pushViewController(VDElectricVC.create(), animated: true)
+                       var vc = VDElectricVC.create()
+                        vc.fromOTP = true
+                        self.navigationController?.pushViewController(vc, animated: true)
                     case .bank_details:
                        // VDRouter.goToSaveUserVC()
 //                        self.navigationController?.pushViewController(VDLGMainVC.create(), animated: true)

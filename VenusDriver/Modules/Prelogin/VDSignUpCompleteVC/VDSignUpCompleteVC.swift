@@ -18,7 +18,9 @@ class VDSignUpCompleteVC: VDBaseVC {
 
     override func initialSetup() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            self.navigationController?.pushViewController(VDElectricVC.create(0), animated: true)
+            var vc = VDElectricVC.create(0)
+            vc.fromWelcome = true
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
