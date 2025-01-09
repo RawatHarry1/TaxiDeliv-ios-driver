@@ -22,6 +22,8 @@ class VDHomeViewModel: NSObject{
     var fetchOngoingRideSuccessCallback : ((Bool) -> ()) = { _ in } // Fetch ongoing ride success callback
     var rideCancelledSuccessCallBack : ((BlockDriverModel) -> ()) = { _ in } // Ride Cancelled
     var polylineCallBack: ((String) -> ())?
+    var legsCallBack: (([NSDictionary]) -> ())?
+
     var distanceThresholdValue = 20
     var objFetchOngoingModal : OngoingRideModel?
     var error: CustomError? {
@@ -282,11 +284,18 @@ extension VDHomeViewModel {
             switch result {
             case .success(let data):
                 printDebug(data)
-                if let overview_polyline = data as? [String:Any] {
+                if let overview_polyline = (data as? [String: Any])?["overview_polyline"] as? [String:Any] {
                     let point = overview_polyline["points"] as! String
+
                     self?.polylineCallBack?(point)
                 }
+                if let legs = (data as? [String: Any])?["legs"] as? [NSDictionary] {
+                    print(legs)
+//                    let point = overview_polyline["points"] as! String
+//                    let legs = overview_polyline["points"] as! String
 
+                    self?.legsCallBack?(legs)
+                }
             case .failure(let error):
                 printDebug(error.localizedDescription)
                 SKToast.show(withMessage: error.localizedDescription)

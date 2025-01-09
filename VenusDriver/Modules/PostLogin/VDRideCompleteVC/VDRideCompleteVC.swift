@@ -11,8 +11,10 @@ import CoreLocation
 class VDRideCompleteVC: VDBaseVC {
 
     @IBOutlet weak var packageTblHeader: UIView!
+    @IBOutlet weak var viewSpace: UIView!
     @IBOutlet weak var collectionViewImages: UICollectionView!
     @IBOutlet weak var tblHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var lblSeperator: UILabel!
     @IBOutlet weak var tblView: UITableView!
     @IBOutlet weak var viewDot: UIView!
     @IBOutlet weak var btnChat: UIButton!
@@ -137,7 +139,13 @@ class VDRideCompleteVC: VDBaseVC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        if objDelivery_packages.count == 0
+        {
+            self.tblView.isHidden = true
+            self.packageTblHeader.isHidden = true
+            self.lblSeperator.isHidden = true
+            self.viewSpace.isHidden = false
+        }
     }
     
     @objc func newMessageNotify(notification: Notification) {
@@ -400,8 +408,8 @@ extension VDRideCompleteVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         DispatchQueue.main.async {
             self.tblHeightConstant.constant = self.tblView.contentSize.height
-            tableView.isHidden = tableView.numberOfRows(inSection: 0) == 0 ? true : false
-            self.packageTblHeader.isHidden = tableView.numberOfRows(inSection: 0) == 0 ? true : false
+            self.tblView.isHidden = self.tblView.numberOfRows(inSection: 0) == 0 ? true : false
+            self.packageTblHeader.isHidden = self.tblView.numberOfRows(inSection: 0) == 0 ? true : false
         }
     }
 }
