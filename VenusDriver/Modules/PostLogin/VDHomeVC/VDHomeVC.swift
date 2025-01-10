@@ -212,8 +212,9 @@ class VDHomeVC: VDBaseVC {
         {
             self.mapView.clear()
         }
-      if   RideStatus != .availableRide
+      if   RideStatus != .availableRide &&  cancelRideBtn.title(for: .normal) != "Complete Trip"
         {
+        print(cancelRideBtn.title(for: .normal))
           self.homeViewModel.fetchAvailableRide()
       }
         if let notificationModel = sharedAppDelegate.notficationDetails {
@@ -231,8 +232,11 @@ class VDHomeVC: VDBaseVC {
                 updateAvailableRidePopUp()
 
             } else if notificationModel.status == rideStatus.markArrived.rawValue || notificationModel.status == rideStatus.acceptedRide.rawValue || notificationModel.status == rideStatus.customerPickedUp.rawValue{
-
-                homeViewModel.fetchAvailableRide()
+               if cancelRideBtn.title(for: .normal) != "Complete Trip"
+                {
+                   homeViewModel.fetchAvailableRide()
+                }
+                
                 updateUIAccordingtoRideStatus()
               
             }
@@ -391,48 +395,39 @@ class VDHomeVC: VDBaseVC {
             }
             else
             {
-                                let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
-                                let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
-                                vc.comesFromMardArrive = true
-                                vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
-                                vc.didPressContinue = {
-                                    if let tripID = sharedAppDelegate.notficationDetails?.trip_id  {
-                                        var att = [String:Any]()
-                                        att["tripId"] = tripID
-                                        att["customerId"] = sharedAppDelegate.notficationDetails?.customer_id ?? ""
-                
-                                        if let locationCreds = LocationTracker.shared.lastLocation {
-                                            att["pickupLongitude"] = locationCreds.coordinate.longitude
-                                            att["pickupLatitude"] = locationCreds.coordinate.latitude
-                                        }
-                                        self.homeViewModel.startTrip(att)
-                                    }
-                
-                                }
-                                self.navigationController?.pushViewController(vc, animated: true)
-
-            }
+            
+                    let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
+                    vc.comesFromMardArrive = true
+                    vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
+                    vc.didPressContinue = {
+                        if let tripID = sharedAppDelegate.notficationDetails?.trip_id  {
+                            var att = [String:Any]()
+                            att["tripId"] = tripID
+                            att["customerId"] = sharedAppDelegate.notficationDetails?.customer_id ?? ""
+                            
+                            if let locationCreds = LocationTracker.shared.lastLocation {
+                                att["pickupLongitude"] = locationCreds.coordinate.longitude
+                                att["pickupLatitude"] = locationCreds.coordinate.latitude
+                            }
+                            self.homeViewModel.startTrip(att)
+                        }
+                        
+                    }
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            
             
         } else {
-            
-            if UserModel.currentUser.login?.service_type == 1 {
-                var attributes = [String: Any]()
-                if let locationCreds = LocationTracker.shared.lastLocation {
-                    attributes["dropLatitude"] = locationCreds.coordinate.latitude
-                    attributes["dropLongitude"] = locationCreds.coordinate.longitude
-                }
-                attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
-                attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
-                attributes["rideTime"] = 12
-                attributes["waitTime"] = 3
-                homeViewModel.endRideApi(attributes)
-            }else{
-                let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
-                vc.comesFromMardArrive = false
-                vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
-                vc.didPressContinue = {
-              
+            if cancelRideBtn.title(for: .normal)! == "Reach Destination"
+            {
+                cancelRideBtn.setTitle("Complete Trip", for: .normal)
+              //  Best Route
+                setCompleteLbl(string: "Complete Trip")
+            }
+            else
+            {
+                if UserModel.currentUser.login?.service_type == 1 {
                     var attributes = [String: Any]()
                     if let locationCreds = LocationTracker.shared.lastLocation {
                         attributes["dropLatitude"] = locationCreds.coordinate.latitude
@@ -442,14 +437,31 @@ class VDHomeVC: VDBaseVC {
                     attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
                     attributes["rideTime"] = 12
                     attributes["waitTime"] = 3
-                    self.homeViewModel.endRideApi(attributes)
+                    homeViewModel.endRideApi(attributes)
+                }else{
+                    let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
+                    vc.comesFromMardArrive = false
+                    vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
+                    vc.didPressContinue = {
+                        
+                        var attributes = [String: Any]()
+                        if let locationCreds = LocationTracker.shared.lastLocation {
+                            attributes["dropLatitude"] = locationCreds.coordinate.latitude
+                            attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                        }
+                        attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+                        attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+                        attributes["rideTime"] = 12
+                        attributes["waitTime"] = 3
+                        self.homeViewModel.endRideApi(attributes)
+                        
+                        
+                    }
+                    self.navigationController?.pushViewController(vc, animated: true)
                     
-
                 }
-                self.navigationController?.pushViewController(vc, animated: true)
-              
             }
-
            
         }
     }
@@ -707,7 +719,6 @@ extension VDHomeVC {
             OntheWayToDestinationLbl.backgroundColor = VDColors.textFieldBorder.color
         } else if RideStatus == .customerPickedUp {
             completRideLbl.text = "Trip Started"
-            completRideLbl.text = self.bestRouteText
             arrivedRadioImg.image = VDImageAsset.radioEnable.asset
             onTheWayRadioImg.image = VDImageAsset.radioEnable.asset
             radioDestinationImg.image = VDImageAsset.radioDisable.asset
@@ -777,7 +788,8 @@ extension VDHomeVC {
              //   if notificationModel.distanceUnit ?? "" != ""{
                 //    self.distanceLbl.text = "\(distance ?? "")\(notificationModel.distanceUnit ?? "")"
                // }else{
-                self.distanceLbl.text = "\(distance)"
+                
+                self.distanceLbl.text = "\(distance) " + "\(notificationModel.distanceUnit ?? "")"
                 //}
                 
                 self.pickUpLocationLbl.text = notificationModel.pickup_address ?? ""
@@ -975,13 +987,15 @@ extension VDHomeVC {
         }
     }
     
-    func setCompleteLbl()
+    func setCompleteLbl(string : String? = "Best Route")
     {
         // Create an NSMutableAttributedString from the full text
+        
+        self.bestRouteText = self.bestRouteText.replacing("Best Route", with: string!)
         let attributedString = NSMutableAttributedString(string: self.bestRouteText)
 
           // Find the range of "Best Route" to apply bold
-        let bestRouteRange = (self.bestRouteText as NSString).range(of: "Best Route")
+        let bestRouteRange = (self.bestRouteText as NSString).range(of: string!)
 
           // Apply bold font style to "Best Route"
           attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 20), range: bestRouteRange)

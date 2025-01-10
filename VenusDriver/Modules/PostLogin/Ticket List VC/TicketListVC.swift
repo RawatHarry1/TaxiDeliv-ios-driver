@@ -62,6 +62,15 @@ class TicketListVC: UIViewController {
 
 extension TicketListVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.objRaiseTicketVM.objTicketListModal?.data?.isEmpty == true
+        {
+            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+                noDataLabel.text          = "No Tickets Found"
+                noDataLabel.textColor     = UIColor.darkGray
+                noDataLabel.textAlignment = .center
+                tableView.backgroundView  = noDataLabel
+                tableView.separatorStyle  = .none
+        }
         return self.objRaiseTicketVM.objTicketListModal?.data?.count ?? 0
     }
     

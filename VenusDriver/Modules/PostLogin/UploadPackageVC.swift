@@ -138,7 +138,7 @@ extension UploadPackageVC: UICollectionViewDelegate, UICollectionViewDataSource,
 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSizeMake(100, 100)
+        return CGSizeMake((collecetionVw.frame.width / 3) - 5, 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

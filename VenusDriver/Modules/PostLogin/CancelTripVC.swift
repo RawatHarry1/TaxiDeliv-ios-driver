@@ -13,12 +13,15 @@ class CancelTripVC: UIViewController {
     
     @IBOutlet weak var tblView: UITableView!
     var selectedImage: UIImage?
+    var deliveryPackage = false
     var uploadedImages: [UIImage] = []
     var data_img: Data?
     var name_img:String?
     var viewModal = UploadPhotoViewModal()
+    @IBOutlet weak var descriptionLbl: UILabel!
     var arrImages = [String]()
     var selectedIndex = -1
+    @IBOutlet weak var btnConfirm: VDButton!
     var cancelTripCallBack: (([String],String) -> Void)?
     var reason = ""
     override func viewDidLoad() {
@@ -26,6 +29,13 @@ class CancelTripVC: UIViewController {
         self.tblView.rowHeight = 50
         reason = ""
         arrImages.removeAll()
+        if deliveryPackage == true
+        {
+            btnConfirm.setTitle("REJECT", for: .normal)
+            btnConfirm.backgroundColor = UIColor.red
+            descriptionLbl.text = "Reason For Rejection"
+        }
+       
     }
     
     @IBAction func btnDismissAction(_ sender: Any) {

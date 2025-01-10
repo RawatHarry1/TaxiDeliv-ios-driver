@@ -562,7 +562,7 @@ Patrick</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report Issue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCM-bU-C9I">
                                 <rect key="frame" x="70" y="82" width="115.33333333333331" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <color key="textColor" red="0.34901961679999999" green="0.4588235021" blue="0.83137255909999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Your Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HGe-4q-bZW">
@@ -602,10 +602,9 @@ Patrick</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mn0-RZ-IrA">
-                                <rect key="frame" x="96.666666666666686" y="748" width="200" height="50"/>
+                                <rect key="frame" x="30" y="748" width="333" height="50"/>
                                 <color key="backgroundColor" name="buttonSelectedOrange"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="2by-Dh-h2A"/>
                                     <constraint firstAttribute="height" constant="50" id="YlT-g6-s3a"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -625,10 +624,12 @@ Patrick</string>
                         <constraints>
                             <constraint firstItem="I9Z-Dt-pj2" firstAttribute="top" secondItem="BAQ-6x-Lte" secondAttribute="top" constant="15" id="QaV-lw-OiK"/>
                             <constraint firstItem="OCM-bU-C9I" firstAttribute="leading" secondItem="I9Z-Dt-pj2" secondAttribute="trailing" constant="15" id="Sqn-6W-hoV"/>
+                            <constraint firstItem="BAQ-6x-Lte" firstAttribute="trailing" secondItem="mn0-RZ-IrA" secondAttribute="trailing" constant="30" id="Uvi-Jb-Phb"/>
                             <constraint firstItem="BAQ-6x-Lte" firstAttribute="bottom" secondItem="mn0-RZ-IrA" secondAttribute="bottom" constant="20" id="VdD-vP-dky"/>
                             <constraint firstItem="mn0-RZ-IrA" firstAttribute="centerX" secondItem="pW7-ke-Alb" secondAttribute="centerX" id="bRf-t7-t79"/>
                             <constraint firstItem="I9Z-Dt-pj2" firstAttribute="leading" secondItem="BAQ-6x-Lte" secondAttribute="leading" constant="15" id="c9k-nR-1i8"/>
                             <constraint firstItem="OCM-bU-C9I" firstAttribute="centerY" secondItem="I9Z-Dt-pj2" secondAttribute="centerY" id="fI8-4S-VTy"/>
+                            <constraint firstItem="mn0-RZ-IrA" firstAttribute="leading" secondItem="BAQ-6x-Lte" secondAttribute="leading" constant="30" id="fYb-s5-vpZ"/>
                             <constraint firstItem="HGe-4q-bZW" firstAttribute="leading" secondItem="I9Z-Dt-pj2" secondAttribute="leading" id="gLF-Nf-ryu"/>
                             <constraint firstItem="N4C-Ke-xdm" firstAttribute="top" secondItem="HGe-4q-bZW" secondAttribute="bottom" constant="15" id="hSY-Zy-TiZ"/>
                             <constraint firstItem="N4C-Ke-xdm" firstAttribute="leading" secondItem="BAQ-6x-Lte" secondAttribute="leading" constant="15" id="hYm-Xj-u90"/>
@@ -660,7 +661,7 @@ Patrick</string>
         <image name="star 1" width="33.333332061767578" height="33.333332061767578"/>
         <image name="starDisable 1" width="33.333332061767578" height="33.333332061767578"/>
         <namedColor name="buttonSelectedOrange">
-            <color red="0.0" green="0.23529411764705882" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.0" green="0.23499999940395355" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.10199999809265137" green="0.093999996781349182" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -678,10 +679,10 @@ Patrick</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

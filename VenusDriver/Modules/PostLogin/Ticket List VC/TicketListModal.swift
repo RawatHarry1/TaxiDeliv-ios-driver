@@ -15,7 +15,7 @@ struct TicketListData : Codable {
     let subject : String?
     let description : String?
     let status : Int?
-    let admin_id : String?
+    let admin_id : Int?
     let response_at : String?
     let admin_response : String?
     let created_at : String?

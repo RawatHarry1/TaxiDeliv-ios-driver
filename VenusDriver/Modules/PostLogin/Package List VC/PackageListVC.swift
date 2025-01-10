@@ -204,6 +204,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
         cell.didPressReject = {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "CancelTripVC") as! CancelTripVC
             vc.modalPresentationStyle = .overFullScreen
+            vc.deliveryPackage = true
             vc.cancelTripCallBack = { imageArr,reasonStr in
                 print(imageArr)
                 print(reasonStr)
@@ -213,7 +214,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                         cell.imagesStackView.isHidden = false
                         cell.imagesArr = imageArr
                         cell.collectionViewImages.reloadData()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
                             
                             
                             self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:reasonStr,AcceptTrip:false,comerFromMarkArive:true, completion: {
@@ -221,14 +222,37 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                                 
   
                                 if self.viewModal.objPackageStatusModal?.message ?? "" != ""{
-                                    self.displayCancelAlert(self.viewModal.objPackageStatusModal?.message ?? "", title: "", reason: reasonStr)
+                          
+                                    let story = UIStoryboard(name: "PostLogin", bundle:nil)
+                                    let vc = story.instantiateViewController(withIdentifier: "VDLogoutVC") as! VDLogoutVC
+                                    vc.descriptionText = self.viewModal.objPackageStatusModal?.message ?? ""
+                                    vc.rejectPackage = true
+                                    vc.modalPresentationStyle = .overFullScreen
+                                    vc.cancelCallBack = { cancel in
+                                        if cancel {
+                                            
+                                        }
+                                 
+                                    }
+                                    vc.sucessCallback = { sucess in
+                                        if sucess {
+                                            cell.btnAccept.isEnabled = false
+                                            cell.btnreject.isEnabled = false
+                                            cell.btnAccept.alpha = 0.4
+                                            cell.btnreject.alpha = 0.4
+                                            guard let tripID = sharedAppDelegate.notficationDetails?.trip_id else {return}
+                                           guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
+                                            self.viewModel.cancelRideApi(tripID, customerID, reasonStr)
+                                          //  SKToast.show(withMessage: "Ride has been Cancelled by you.")
+                                            self.navigationController?.popToRootViewController(animated: true)
+                                           
+                                        }
+                                    }
+                                    self.present(vc, animated: true)
                                  
                                 }
                                 
-                                cell.btnAccept.isEnabled = false
-                                cell.btnreject.isEnabled = false
-                                cell.btnAccept.alpha = 0.4
-                                cell.btnreject.alpha = 0.4
+                            
                                 //  if imageArr.count != 0{
                                 if self.comesFromMardArrive == true{
                                     if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
@@ -256,18 +280,40 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                         cell.deliveryStackView.isHidden = false
                         cell.deliveryImagesArr = imageArr
                         cell.collectionVwDropOffImgs.reloadData()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
                             print("done")
                             
                             self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:reasonStr,AcceptTrip:false,comerFromMarkArive: false, completion: {
                                 if self.viewModal.objPackageStatusModal?.message ?? "" != ""{
-                                    self.displayCancelAlert(self.viewModal.objPackageStatusModal?.message ?? "", title: "", reason: reasonStr)
+                          
+                                    let story = UIStoryboard(name: "PostLogin", bundle:nil)
+                                    let vc = story.instantiateViewController(withIdentifier: "VDLogoutVC") as! VDLogoutVC
+                                    vc.descriptionText = self.viewModal.objPackageStatusModal?.message ?? ""
+                                    vc.rejectPackage = true
+                                    vc.modalPresentationStyle = .overFullScreen
+                                    vc.cancelCallBack = { cancel in
+                                        if cancel {
+                                            
+                                        }
+                                 
+                                    }
+                                    vc.sucessCallback = { sucess in
+                                        if sucess {
+                                            cell.btnAccept.isEnabled = false
+                                            cell.btnreject.isEnabled = false
+                                            cell.btnAccept.alpha = 0.4
+                                            cell.btnreject.alpha = 0.4
+                                            guard let tripID = sharedAppDelegate.notficationDetails?.trip_id else {return}
+                                           guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
+                                            self.viewModel.cancelRideApi(tripID, customerID, reasonStr)
+                                          //  SKToast.show(withMessage: "Ride has been Cancelled by you.")
+                                            self.navigationController?.popToRootViewController(animated: true)
+                                           
+                                        }
+                                    }
+                                    self.present(vc, animated: true)
                                  
                                 }
-                                cell.btnAccept.isEnabled = false
-                                cell.btnreject.isEnabled = false
-                                cell.btnAccept.alpha = 0.4
-                                cell.btnreject.alpha = 0.4
                                 
                                 if self.comesFromMardArrive == true{
                                     if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
