@@ -24,6 +24,9 @@ class PackageListVC: UIViewController, CollectionViewCellDelegate {
         super.viewDidLoad()
         btnContinue.alpha = 0.4
         btnContinue.isEnabled = false
+        if RideStatus == .markArrived {
+           
+        }
     }
     
     @IBAction func btnContinueAction(_ sender: Any) {
@@ -86,7 +89,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
         if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 5{
             cell.lblStatus.text = "Not Picked"
             cell.lblStatus.textColor = .systemRed
-            cell.viewStatus.isHidden = false
+            cell.viewStatus.isHidden = true
             cell.btnAccept.isEnabled = false
             cell.btnreject.isEnabled = false
             cell.btnAccept.alpha = 0.4
@@ -104,44 +107,78 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
         }
         
         if comesFromMardArrive == true{
-            if self.imgArr.count  > 0{
+            
+            if self.deliveryPackages?[indexPath.row].package_image_while_pickup?.count ?? 0 > 0
+            {
                 cell.btnAccept.isEnabled = false
                 cell.btnreject.isEnabled = false
                 cell.btnAccept.alpha = 0.4
                 cell.btnreject.alpha = 0.4
-                cell.imagesArr = self.imgArr
+                cell.imagesArr = self.deliveryPackages?[indexPath.row].package_image_while_pickup
                 cell.collectionViewImages.reloadData()
                 cell.imagesStackView.isHidden = false
-            }else{
-                cell.btnAccept.isEnabled = true
-                cell.btnreject.isEnabled = true
-                cell.btnAccept.alpha = 1
-                cell.btnreject.alpha = 1
-                cell.imagesStackView.isHidden = true
+                self.btnContinue.alpha = 1
+                self.btnContinue.isEnabled = true
+
             }
-            cell.deliveryStackView.isHidden = true
-            cell.btnAccept.setTitle("ACCEPT", for: .normal)
-            cell.btnreject.setTitle("REJECT", for: .normal)
-        }else{
-            if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 5{
-                cell.imagesStackView.isHidden = false
-                cell.deliveryStackView.isHidden = false
-                cell.mainStack.isHidden = false
-            }else{
-                if self.deliveryImages.count > 0{
+            else
+            {
+                if self.imgArr.count  > 0{
                     cell.btnAccept.isEnabled = false
                     cell.btnreject.isEnabled = false
                     cell.btnAccept.alpha = 0.4
                     cell.btnreject.alpha = 0.4
-                    cell.deliveryImagesArr = self.deliveryImages
-                    cell.collectionVwDropOffImgs.reloadData()
-                    cell.deliveryStackView.isHidden = false
+                    cell.imagesArr = self.imgArr
+                    cell.collectionViewImages.reloadData()
+                    cell.imagesStackView.isHidden = false
                 }else{
                     cell.btnAccept.isEnabled = true
                     cell.btnreject.isEnabled = true
                     cell.btnAccept.alpha = 1
                     cell.btnreject.alpha = 1
-                    cell.deliveryStackView.isHidden = true
+                    cell.imagesStackView.isHidden = true
+                }
+            }
+         
+            cell.deliveryStackView.isHidden = true
+            cell.btnAccept.setTitle("ACCEPT", for: .normal)
+            cell.btnreject.setTitle("REJECT", for: .normal)
+        }else{
+            if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 5{
+                cell.mainStack.isHidden = false
+                cell.imagesStackView.isHidden = true
+                cell.deliveryStackView.isHidden = true
+            }else{
+                if self.deliveryPackages?[indexPath.row].package_image_while_drop_off?.count ?? 0 > 0
+                {
+                    cell.btnAccept.isEnabled = false
+                    cell.btnreject.isEnabled = false
+                    cell.btnAccept.alpha = 0.4
+                    cell.btnreject.alpha = 0.4
+                    cell.deliveryImagesArr = self.deliveryPackages?[indexPath.row].package_image_while_drop_off
+                    cell.collectionVwDropOffImgs.reloadData()
+                    cell.deliveryStackView.isHidden = false
+                    self.btnContinue.alpha = 1
+                    self.btnContinue.isEnabled = true
+
+                }
+                else
+                {
+                    if self.deliveryImages.count > 0{
+                        cell.btnAccept.isEnabled = false
+                        cell.btnreject.isEnabled = false
+                        cell.btnAccept.alpha = 0.4
+                        cell.btnreject.alpha = 0.4
+                        cell.deliveryImagesArr = self.deliveryImages
+                        cell.collectionVwDropOffImgs.reloadData()
+                        cell.deliveryStackView.isHidden = false
+                    }else{
+                        cell.btnAccept.isEnabled = true
+                        cell.btnreject.isEnabled = true
+                        cell.btnAccept.alpha = 1
+                        cell.btnreject.alpha = 1
+                        cell.deliveryStackView.isHidden = true
+                    }
                 }
                 cell.imagesStackView.isHidden = false
                
@@ -221,7 +258,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                                 
                                 
   
-                                if self.viewModal.objPackageStatusModal?.message ?? "" != ""{
+                                if self.viewModal.objPackageStatusModal?.flag ?? 0 != 143{
                           
                                     let story = UIStoryboard(name: "PostLogin", bundle:nil)
                                     let vc = story.instantiateViewController(withIdentifier: "VDLogoutVC") as! VDLogoutVC
@@ -250,6 +287,13 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                                     }
                                     self.present(vc, animated: true)
                                  
+                                }
+                                else
+                                {
+                                    cell.btnAccept.isEnabled = false
+                                    cell.btnreject.isEnabled = false
+                                    cell.btnAccept.alpha = 0.4
+                                    cell.btnreject.alpha = 0.4
                                 }
                                 
                             
@@ -347,6 +391,19 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
             }
             self.present(vc, animated: true)
             
+        }
+        if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 5{
+        
+            cell.btnAccept.isEnabled = false
+            cell.btnreject.isEnabled = false
+            cell.btnAccept.alpha = 0.4
+            cell.btnreject.alpha = 0.4
+      
+        }else{
+            cell.btnAccept.isEnabled = true
+            cell.btnreject.isEnabled = true
+            cell.btnAccept.alpha = 1
+            cell.btnreject.alpha = 1
         }
         return cell
     }

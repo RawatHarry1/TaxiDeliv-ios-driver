@@ -39,7 +39,9 @@ class CardsVC: UIViewController {
         tblViewCards.register(UINib(nibName: "CardsTblCell", bundle: nil), forCellReuseIdentifier: "CardsTblCell")
         getCardApi()
         tblViewCards.rowHeight = 60
-        
+        self.viewStack.layer.cornerRadius = 6
+        self.viewStack.addShadowView(width : 0, height : 0,opacidade : 0.3, radius:2)
+
         if sideMenuHide == true{
             btnBack.setImage(UIImage(named: "backbutton"), for: .normal)
         }else{
@@ -143,12 +145,16 @@ class CardsVC: UIViewController {
 }
 
 extension CardsVC: UITableViewDelegate,UITableViewDataSource{
+    @objc func cardDelete(_ sender : UIButton )
+    {
+        let obj = self.objCardsVM.objGetCardModal?.data?[sender.tag]
+        self.deleteCardAlert(id: obj?.card_id ?? "")
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.objCardsVM.objGetCardModal?.data?.count ?? 0 > 0{
             lblNoDataFound.isHidden = true
-            viewStack.isHidden = false
         }else{
-            viewStack.isHidden = true
             lblNoDataFound.isHidden = false
         }
         return self.objCardsVM.objGetCardModal?.data?.count ?? 0
@@ -159,6 +165,10 @@ extension CardsVC: UITableViewDelegate,UITableViewDataSource{
         let obj = self.objCardsVM.objGetCardModal?.data?[indexPath.row]
         cell.lblCardNumber.text = "**** **** **** \(obj?.last_4 ?? "")"
         cell.lblCardType.text = obj?.brand
+        cell.imgDelete.isHidden = false
+        cell.btnDelete.isHidden = false
+        cell.btnDelete.tag = indexPath.row
+        cell.btnDelete.addTarget(self, action: #selector(cardDelete), for: .touchUpInside)
         
         if comesFromAccount == true{
             cell.imgViewRadio.isHidden = true
@@ -179,9 +189,9 @@ extension CardsVC: UITableViewDelegate,UITableViewDataSource{
                     self.dismiss(animated: true) {
                         self.didPressSelecrCard!(obj!)
                     }
-                   
-                   
+                    self.navigationController?.popViewController(animated: true)
                     
+                   
                 }
             }else{
               
@@ -192,23 +202,23 @@ extension CardsVC: UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let obj = self.objCardsVM.objGetCardModal?.data?[indexPath.row]
-           // Create a delete action
-           let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
-               // Handle the delete action
-               self.deleteCardAlert(id: obj?.card_id ?? "")
-              
-               handler(true)
-           }
-           
-           // Create a configuration with the delete action
-           let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-           configuration.performsFirstActionWithFullSwipe = true // Optional: Enable full swipe to trigger the action
-           
-           return configuration
-       
-   }
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let obj = self.objCardsVM.objGetCardModal?.data?[indexPath.row]
+//           // Create a delete action
+//           let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
+//               // Handle the delete action
+//               self.deleteCardAlert(id: obj?.card_id ?? "")
+//              
+//               handler(true)
+//           }
+//           
+//           // Create a configuration with the delete action
+//           let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+//           configuration.performsFirstActionWithFullSwipe = true // Optional: Enable full swipe to trigger the action
+//           
+//           return configuration
+//       
+//   }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         emptyObj = nil
@@ -218,7 +228,7 @@ extension CardsVC: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         DispatchQueue.main.async {
-            self.tblHeightConstant.constant = self.tblViewCards.contentSize.height
+            self.tblHeightConstant.constant = CGFloat(60 * self.tblViewCards.numberOfRows(inSection: 0)) + 10
         }
     }
 }

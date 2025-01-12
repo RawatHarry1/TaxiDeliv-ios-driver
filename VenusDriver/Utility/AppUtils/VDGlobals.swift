@@ -119,6 +119,26 @@ func ConvertDateFormater(date: String) -> String {
     return timeStamp
 }
 
+func ConvertDateFormaterRideDetail(date: String) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+
+    guard let date = dateFormatter.date(from: date) else {
+//            assert(false, "no date from string")
+        return ""
+    }
+
+    dateFormatter.dateFormat = "dd/MM/yyyy, h:mm a"//"yyyy MMM EEEE HH:mm"
+    dateFormatter.timeZone = TimeZone.current//NSTimeZone(name: "UTC") as TimeZone?
+    dateFormatter.amSymbol = "AM"
+    dateFormatter.pmSymbol = "PM"
+
+    let timeStamp = dateFormatter.string(from: date)
+
+    return timeStamp
+}
+
 func ConvertDateToLocalTimeZone(date: String) -> Date {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"

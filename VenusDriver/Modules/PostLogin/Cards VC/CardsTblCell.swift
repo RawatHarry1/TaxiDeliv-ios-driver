@@ -9,11 +9,14 @@ import UIKit
 
 class CardsTblCell: UITableViewCell {
 
+    @IBOutlet weak var btnDelete: UIButton!
+    @IBOutlet weak var imgDelete: UIImageView!
     @IBOutlet weak var imgViewRadio: UIImageView!
     @IBOutlet weak var lblCardType: UILabel!
     @IBOutlet weak var lblCardNumber: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        btnDelete.setTitle("", for: .normal)
         // Initialization code
     }
 

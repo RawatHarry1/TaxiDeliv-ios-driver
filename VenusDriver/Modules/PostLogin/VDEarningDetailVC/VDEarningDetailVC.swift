@@ -7,7 +7,15 @@
 
 import UIKit
 
-class VDEarningDetailVC: VDBaseVC {
+class VDEarningDetailVC: VDBaseVC, CollectionViewCellDelegate {
+    func didSelectItem(url: String) {
+        // Navigate to a new view controller
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "ImageViewerVC") as! ImageViewerVC
+        detailVC.url = url
+        detailVC.modalPresentationStyle = .overFullScreen
+        self.present(detailVC, animated: true)
+    }
+    
 
     // MARK: - Outlets
     @IBOutlet weak var btnDownloadInvoiceOutlet: UIButton!
@@ -22,7 +30,10 @@ class VDEarningDetailVC: VDBaseVC {
     @IBOutlet weak var rideFareLbl: UILabel!
     @IBOutlet weak var subtotalLbl: UILabel!
     @IBOutlet weak var waitingTimeLbl: UILabel!
-
+    @IBOutlet var tblView: UITableView!
+    
+    @IBOutlet var heightTblView: NSLayoutConstraint!
+    @IBOutlet var stackViewParent: UIStackView!
     var viewModel: VDEarningDetailViewModel = VDEarningDetailViewModel()
     var tripID: Int?
     var rideStarus = ""
@@ -32,6 +43,7 @@ class VDEarningDetailVC: VDBaseVC {
         let obj = VDEarningDetailVC.instantiate(fromAppStoryboard: .postLogin)
         return obj
     }
+    var delivery_packages: [DeliveryPackageHistoryData]?
 
     override func initialSetup() {
         
@@ -45,7 +57,9 @@ class VDEarningDetailVC: VDBaseVC {
         if let tripID = tripID {
             let attributes = ["tripId" : tripID]
             viewModel.fetchBookingHistory(attributes)
-        } else { printDebug("======tripID not found===========")}
+        } else { 
+            printDebug("======tripID not found===========")
+        }
 
         viewModel.bookingHistorysuccessCallBack = { details in
             printDebug(details)
@@ -67,7 +81,20 @@ class VDEarningDetailVC: VDBaseVC {
             }
             self.rideImgView.setImage(withUrl: details.tracking_image ?? "") { status, image in}
             self.waitingTimeLbl.text = "\((details.wait_time ?? 0)) mins"
-            self.dateLbl.text = ConvertDateFormater(date: details.created_at ?? "")
+            self.dateLbl.text = ConvertDateFormaterRideDetail(date: details.created_at ?? "")
+            self.stackViewParent.isHidden = true
+            if details.delivery_packages?.count ?? 0 > 0
+            {
+                self.tblView.delegate = self
+                self.tblView.dataSource = self
+                self.delivery_packages = details.delivery_packages
+                self.stackViewParent.isHidden = false
+                DispatchQueue.main.async {
+                    self.tblView.reloadData()
+                }
+                
+                
+            }
            
            
 
@@ -81,6 +108,15 @@ class VDEarningDetailVC: VDBaseVC {
         }
     }
     
+    @IBOutlet var lblPackageSize: UILabel!
+    @IBOutlet var btnArrow: UIImageView!
+    @IBOutlet var stackMainView: UIStackView!
+    @IBOutlet var lblPackageType: UILabel!
+    @IBOutlet var lblQuantity: UILabel!
+    @IBAction func btnShowHideStackView(_ sender: UIButton) {
+        tblView.isHidden = tblView.isHidden == true ? false : true
+        btnArrow.image = tblView.isHidden == true ? UIImage(named: "upArrow") : UIImage(named: "arrowDown2")
+    }
     @IBAction func btnRaiseATicket(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "RaiseTicketVC") as! RaiseTicketVC
         vc.rideId = "\(tripID ?? 0)"
@@ -162,3 +198,33 @@ extension VDEarningDetailVC {
         print("User cancelled the document picker")
     }
 }
+
+extension VDEarningDetailVC: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.delivery_packages?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView.register(UINib(nibName: "PackageThreeCell", bundle: nil), forCellReuseIdentifier: "PackageThreeCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PackageThreeCell", for: indexPath) as! PackageThreeCell
+        let obj = self.delivery_packages?[indexPath.row]
+        cell.lblSize.text = obj?.package_size ?? ""
+        cell.lblPackageType.text = obj?.package_type ?? ""
+        cell.delegate = self
+        cell.lblQuantity.text = String(describing: obj?.package_quantity ?? 0)
+        cell.objDelivery_packages = obj
+        cell.selectionStyle = .none
+        tableView.separatorStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        DispatchQueue.main.async {
+            
+            self.heightTblView.constant = self.tblView.contentSize.height
+            self.tblView.isHidden = self.tblView.numberOfRows(inSection: 0) == 0 ? true : false
+        }
+    }
+}
+
+

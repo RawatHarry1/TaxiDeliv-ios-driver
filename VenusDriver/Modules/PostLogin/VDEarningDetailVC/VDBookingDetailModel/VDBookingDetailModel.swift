@@ -33,6 +33,7 @@ struct BookingDetailModel : Codable {
    let tracking_image : String?
     let net_customer_tax: Double?
     let venus_commission: Double?
+    var delivery_packages: [DeliveryPackageHistoryData]?
 
     enum CodingKeys: String, CodingKey {
 
@@ -61,6 +62,8 @@ struct BookingDetailModel : Codable {
         case tracking_image = "tracking_image"
         case net_customer_tax = "net_customer_tax"
         case venus_commission = "venus_commission"
+        case delivery_packages = "delivery_packages"
+
     }
 
     init(from decoder: Decoder) throws {
@@ -90,6 +93,25 @@ struct BookingDetailModel : Codable {
         tracking_image = try values.decodeIfPresent(String.self, forKey: .tracking_image)
         net_customer_tax = try values.decodeIfPresent(Double.self, forKey: .net_customer_tax)
         venus_commission = try values.decodeIfPresent(Double.self, forKey: .venus_commission)
+        delivery_packages  = try values.decodeIfPresent([DeliveryPackageHistoryData].self, forKey: .delivery_packages)
+        
+        do {
+            delivery_packages = try values.decodeIfPresent([DeliveryPackageHistoryData].self, forKey: .delivery_packages)
+        } catch {
+            print("Error decoding delivery_packages: \(error)")
+        }
     }
 
+}
+
+struct DeliveryPackageHistoryData: Codable {
+    var package_quantity: Int?
+    var id: String?
+    var package_type: String?
+    var package_image_while_drop_off: [String]?
+    var package_image_while_pickup: [String]?
+    var package_images_by_customer: [String]?
+
+    var package_size: String?
+    var description: String?
 }

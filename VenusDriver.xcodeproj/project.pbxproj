@@ -556,6 +556,14 @@
 		0CF9E1FC2A34BA3600F8DAAC /* VDIntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF9E1FB2A34BA3600F8DAAC /* VDIntroVC.swift */; };
 		0CF9E2042A34C07500F8DAAC /* VDIntroCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF9E2022A34C07500F8DAAC /* VDIntroCollectionCell.swift */; };
 		0CF9E2052A34C07500F8DAAC /* VDIntroCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CF9E2032A34C07500F8DAAC /* VDIntroCollectionCell.xib */; };
+		1B34D5A52D3423D5009F0D0F /* PackageThreeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B34D5A12D3420DF009F0D0F /* PackageThreeCell.swift */; };
+		1B34D5A62D3423DC009F0D0F /* PackageThreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B34D5A22D3420DF009F0D0F /* PackageThreeCell.xib */; };
+		1B34D5AB2D342D3A009F0D0F /* ImageCollCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B34D5A72D342BE7009F0D0F /* ImageCollCell.swift */; };
+		1B34D5AC2D342D3A009F0D0F /* ImageCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B34D5A82D342BE7009F0D0F /* ImageCollCell.xib */; };
+		1B34D5B12D342DAD009F0D0F /* ImageCollCellMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B34D5AE2D342DA3009F0D0F /* ImageCollCellMain.xib */; };
+		1B34D5B22D342DAD009F0D0F /* ImageCollCellMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B34D5AD2D342DA3009F0D0F /* ImageCollCellMain.swift */; };
+		1B34D5BF2D3458A5009F0D0F /* CardsTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B34D5BB2D34588C009F0D0F /* CardsTblCell.xib */; };
+		1B34D5C02D3458A5009F0D0F /* CardsTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B34D5BC2D34588D009F0D0F /* CardsTblCell.swift */; };
 		207ED5E72ACF01CF00820E1B /* MohaliSector79.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 207ED5E62ACF01CF00820E1B /* MohaliSector79.gpx */; };
 		207ED5E82ACF01CF00820E1B /* MohaliSector79.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 207ED5E62ACF01CF00820E1B /* MohaliSector79.gpx */; };
 		207ED5EA2ACF03E700820E1B /* BlockDriverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207ED5E92ACF03E700820E1B /* BlockDriverModel.swift */; };
@@ -569,10 +577,6 @@
 		CF08C7A92C819B35007A981A /* ConfirmCardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C79E2C819B35007A981A /* ConfirmCardModal.swift */; };
 		CF08C7AA2C819B35007A981A /* GetCardsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C79F2C819B35007A981A /* GetCardsModal.swift */; };
 		CF08C7AB2C819B35007A981A /* GetCardsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C79F2C819B35007A981A /* GetCardsModal.swift */; };
-		CF08C7AC2C819B35007A981A /* CardsTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C7A12C819B35007A981A /* CardsTblCell.swift */; };
-		CF08C7AD2C819B35007A981A /* CardsTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C7A12C819B35007A981A /* CardsTblCell.swift */; };
-		CF08C7AE2C819B35007A981A /* CardsTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF08C7A22C819B35007A981A /* CardsTblCell.xib */; };
-		CF08C7AF2C819B35007A981A /* CardsTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF08C7A22C819B35007A981A /* CardsTblCell.xib */; };
 		CF08C7B02C819B35007A981A /* CardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C7A32C819B35007A981A /* CardsVC.swift */; };
 		CF08C7B12C819B35007A981A /* CardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C7A32C819B35007A981A /* CardsVC.swift */; };
 		CF08C7B22C819B35007A981A /* CardsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C7A42C819B35007A981A /* CardsVM.swift */; };
@@ -926,6 +930,14 @@
 		0CF9E1FB2A34BA3600F8DAAC /* VDIntroVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDIntroVC.swift; sourceTree = "<group>"; };
 		0CF9E2022A34C07500F8DAAC /* VDIntroCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDIntroCollectionCell.swift; sourceTree = "<group>"; };
 		0CF9E2032A34C07500F8DAAC /* VDIntroCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VDIntroCollectionCell.xib; sourceTree = "<group>"; };
+		1B34D5A12D3420DF009F0D0F /* PackageThreeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageThreeCell.swift; sourceTree = "<group>"; };
+		1B34D5A22D3420DF009F0D0F /* PackageThreeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageThreeCell.xib; sourceTree = "<group>"; };
+		1B34D5A72D342BE7009F0D0F /* ImageCollCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollCell.swift; sourceTree = "<group>"; };
+		1B34D5A82D342BE7009F0D0F /* ImageCollCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollCell.xib; sourceTree = "<group>"; };
+		1B34D5AD2D342DA3009F0D0F /* ImageCollCellMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollCellMain.swift; sourceTree = "<group>"; };
+		1B34D5AE2D342DA3009F0D0F /* ImageCollCellMain.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollCellMain.xib; sourceTree = "<group>"; };
+		1B34D5BB2D34588C009F0D0F /* CardsTblCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardsTblCell.xib; sourceTree = "<group>"; };
+		1B34D5BC2D34588D009F0D0F /* CardsTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsTblCell.swift; sourceTree = "<group>"; };
 		207ED5E62ACF01CF00820E1B /* MohaliSector79.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = MohaliSector79.gpx; sourceTree = "<group>"; };
 		207ED5E92ACF03E700820E1B /* BlockDriverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockDriverModel.swift; sourceTree = "<group>"; };
 		233ABF851EFB8CB83848BC3E /* Pods-VenusDriver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VenusDriver.release.xcconfig"; path = "Target Support Files/Pods-VenusDriver/Pods-VenusDriver.release.xcconfig"; sourceTree = "<group>"; };
@@ -937,8 +949,6 @@
 		CF08C79D2C819B35007A981A /* CardsModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsModal.swift; sourceTree = "<group>"; };
 		CF08C79E2C819B35007A981A /* ConfirmCardModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCardModal.swift; sourceTree = "<group>"; };
 		CF08C79F2C819B35007A981A /* GetCardsModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCardsModal.swift; sourceTree = "<group>"; };
-		CF08C7A12C819B35007A981A /* CardsTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsTblCell.swift; sourceTree = "<group>"; };
-		CF08C7A22C819B35007A981A /* CardsTblCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardsTblCell.xib; sourceTree = "<group>"; };
 		CF08C7A32C819B35007A981A /* CardsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsVC.swift; sourceTree = "<group>"; };
 		CF08C7A42C819B35007A981A /* CardsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsVM.swift; sourceTree = "<group>"; };
 		CF1038502D0957DA00682919 /* MapSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsVC.swift; sourceTree = "<group>"; };
@@ -1372,6 +1382,12 @@
 				0C04B1E32A7B9D81001E9B86 /* VDEarningDetailsViewModel */,
 				0C04B1E02A7B9D56001E9B86 /* VDBookingDetailModel */,
 				0C1FD7582A40C4E70027E2CA /* VDEarningDetailVC.swift */,
+				1B34D5A12D3420DF009F0D0F /* PackageThreeCell.swift */,
+				1B34D5AD2D342DA3009F0D0F /* ImageCollCellMain.swift */,
+				1B34D5AE2D342DA3009F0D0F /* ImageCollCellMain.xib */,
+				1B34D5A72D342BE7009F0D0F /* ImageCollCell.swift */,
+				1B34D5A82D342BE7009F0D0F /* ImageCollCell.xib */,
+				1B34D5A22D3420DF009F0D0F /* PackageThreeCell.xib */,
 			);
 			path = VDEarningDetailVC;
 			sourceTree = "<group>";
@@ -2454,10 +2470,10 @@
 			isa = PBXGroup;
 			children = (
 				CF08C7A02C819B35007A981A /* Cards Modal */,
-				CF08C7A12C819B35007A981A /* CardsTblCell.swift */,
-				CF08C7A22C819B35007A981A /* CardsTblCell.xib */,
 				CF08C7A32C819B35007A981A /* CardsVC.swift */,
 				CF08C7A42C819B35007A981A /* CardsVM.swift */,
+				1B34D5BC2D34588D009F0D0F /* CardsTblCell.swift */,
+				1B34D5BB2D34588C009F0D0F /* CardsTblCell.xib */,
 			);
 			path = "Cards VC";
 			sourceTree = "<group>";
@@ -2676,7 +2692,6 @@
 				0C61E61C2A3EE5FA002CFB7E /* proximanova-semiboldit.otf in Resources */,
 				0C61E6112A3EE5FA002CFB7E /* proximanova-mediumit.otf in Resources */,
 				0C61E61A2A3EE5FA002CFB7E /* proximanovacond-light.otf in Resources */,
-				CF08C7AE2C819B35007A981A /* CardsTblCell.xib in Resources */,
 				207ED5E72ACF01CF00820E1B /* MohaliSector79.gpx in Resources */,
 				0CC23AAF2A6FAB6500343306 /* VDElectricListCell.xib in Resources */,
 				0C8A5F3B2A323EB00048A615 /* SFUIText-LightItalic.ttf in Resources */,
@@ -2773,6 +2788,7 @@
 			files = (
 				0CED86E62A7A6686007959D6 /* VDCardDetailCell.xib in Resources */,
 				0CD15EC52A6AD65600123A1C /* VDDocumentCell.xib in Resources */,
+				1B34D5BF2D3458A5009F0D0F /* CardsTblCell.xib in Resources */,
 				0CD15EC62A6AD65600123A1C /* VDRatingsTableCell.xib in Resources */,
 				0CD15EC72A6AD65600123A1C /* proximanova-black.otf in Resources */,
 				0CD15EC82A6AD65600123A1C /* proximanova-thinit.otf in Resources */,
@@ -2842,8 +2858,11 @@
 				0CD15EFA2A6AD65600123A1C /* VDNotificationHeaderCell.xib in Resources */,
 				0CD15EFB2A6AD65600123A1C /* Proxima Nova Alt Bold.otf in Resources */,
 				0CD15EFC2A6AD65600123A1C /* SFUIText-BoldItalic.ttf in Resources */,
+				1B34D5B12D342DAD009F0D0F /* ImageCollCellMain.xib in Resources */,
+				1B34D5AC2D342D3A009F0D0F /* ImageCollCell.xib in Resources */,
 				0CD15EFD2A6AD65600123A1C /* proximanovacond-semiboldit.otf in Resources */,
 				0CD15EFE2A6AD65600123A1C /* proximanovacond-regularit.otf in Resources */,
+				1B34D5A62D3423DC009F0D0F /* PackageThreeCell.xib in Resources */,
 				0CD15EFF2A6AD65600123A1C /* VDSideMenuCell.xib in Resources */,
 				0CD15F002A6AD65600123A1C /* proximanovacond-thin.otf in Resources */,
 				0C840B2E2AAA493400F6ABAB /* InfoPlist.strings in Resources */,
@@ -2863,7 +2882,6 @@
 				0CD15F0E2A6AD65600123A1C /* proximanovaexcn-semibold.otf in Resources */,
 				0CED86C82A7A6543007959D6 /* VDWalletHeaderCell.xib in Resources */,
 				0CD15F0F2A6AD65600123A1C /* proximanovacond-blackit.otf in Resources */,
-				CF08C7AF2C819B35007A981A /* CardsTblCell.xib in Resources */,
 				0CD15F102A6AD65600123A1C /* proximanova-extrabold.otf in Resources */,
 				0CD15F112A6AD65600123A1C /* proximanovaexcn-medium.otf in Resources */,
 				0CD15F122A6AD65600123A1C /* proximanovacond-extrabold.otf in Resources */,
@@ -3142,7 +3160,6 @@
 				0CD15F4B2A6C094000123A1C /* VDView.swift in Sources */,
 				0C4940B82AB039E700A6E35F /* WebServices+Wallet.swift in Sources */,
 				0CBBB0DF2A35CC0100F1EDD0 /* VDHomeVC+MapView.swift in Sources */,
-				CF08C7AC2C819B35007A981A /* CardsTblCell.swift in Sources */,
 				0CADA54D2A36483D00E1D0C1 /* VDPayoutInfoVC.swift in Sources */,
 				0C442A122B8CFCAB00F583C0 /* Webservices+GoogleMapsAPI.swift in Sources */,
 				0CED86F12A7ACD5D007959D6 /* VDAccountModel.swift in Sources */,
@@ -3225,6 +3242,7 @@
 				CF477CC92C45327E0059B122 /* Singleton.swift in Sources */,
 				CF704C9E2D096EB800D83A3B /* TicketListVC.swift in Sources */,
 				0C01A5CF2A6E917300B98ADF /* VDCreateProfileModel.swift in Sources */,
+				1B34D5B22D342DAD009F0D0F /* ImageCollCellMain.swift in Sources */,
 				0CD15E6A2A6AD65600123A1C /* VDEarningDetailVC.swift in Sources */,
 				0CF659CB2AAE2E1700E98D8F /* VDSideMenuViewModel.swift in Sources */,
 				0C01A5B52A6DBAA400B98ADF /* VDLoginViewModel.swift in Sources */,
@@ -3273,6 +3291,7 @@
 				CFCC5E302CE4A56700E4C1B6 /* CancelTripVC.swift in Sources */,
 				CF477CC32C4510FE0059B122 /* ReceiverTblCell.swift in Sources */,
 				0CD15E752A6AD65600123A1C /* VDControllerType+ViewModelProtocol.swift in Sources */,
+				1B34D5AB2D342D3A009F0D0F /* ImageCollCell.swift in Sources */,
 				0CC586C42A9AAFD900D168B8 /* VDWalletViewModel.swift in Sources */,
 				0CED86E22A7A6686007959D6 /* VDPromoCodesVC.swift in Sources */,
 				0C01A5C72A6DD37400B98ADF /* LoginModel.swift in Sources */,
@@ -3317,6 +3336,7 @@
 				0CD15E8C2A6AD65600123A1C /* SKToast.swift in Sources */,
 				0CB3C17B2A6F27EB00A51576 /* VCElectricViewModel.swift in Sources */,
 				0CD15E8D2A6AD65600123A1C /* VDSupportVC.swift in Sources */,
+				1B34D5C02D3458A5009F0D0F /* CardsTblCell.swift in Sources */,
 				0CD15E8E2A6AD65600123A1C /* VDForgotPasswordVC.swift in Sources */,
 				0CD15F4C2A6C097D00123A1C /* VDView.swift in Sources */,
 				0CD15E8F2A6AD65600123A1C /* VDColors.swift in Sources */,
@@ -3328,7 +3348,6 @@
 				0CD15E932A6AD65600123A1C /* VDRatingsVC.swift in Sources */,
 				0C04B1E72A7B9E3F001E9B86 /* VDEarningDetailsViewModel.swift in Sources */,
 				0C11CAAD2A9D1E8000C5EE87 /* VDNotificationViewModel.swift in Sources */,
-				CF08C7AD2C819B35007A981A /* CardsTblCell.swift in Sources */,
 				0CC23AB62A6FC70900343306 /* VDUploadDocumentViewModel.swift in Sources */,
 				0CD15E942A6AD65600123A1C /* VDBookingCell.swift in Sources */,
 				0CD15E952A6AD65600123A1C /* VDEarningVC.swift in Sources */,
@@ -3415,6 +3434,7 @@
 				0C01A5CE2A6E917000B98ADF /* VDCreateProfileViewModel.swift in Sources */,
 				CFCC5E232CE4726000E4C1B6 /* PackageListTblCell.swift in Sources */,
 				0CD15EBD2A6AD65600123A1C /* IQTitleBarButtonItem.swift in Sources */,
+				1B34D5A52D3423D5009F0D0F /* PackageThreeCell.swift in Sources */,
 				CF704C982D096EB800D83A3B /* RaiseTicketVC.swift in Sources */,
 				0CED86D02A7A6543007959D6 /* VDWalletTCPopUp.swift in Sources */,
 				0C01A5BD2A6DBCE000B98ADF /* StringConstant.swift in Sources */,
@@ -3573,19 +3593,22 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
-				DEVELOPMENT_TEAM = 9R3NLR89HG;
+				DEVELOPMENT_TEAM = 4RNEWLY2A4;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VenusDriver/Resources/Plist/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to upload files";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "VenusDriver app wants you to enable location";
 				INFOPLIST_KEY_NSLocationUsageDescription = "VenusDriver app wants you to enable location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow to upload files";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3615,19 +3638,22 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
-				DEVELOPMENT_TEAM = 9R3NLR89HG;
+				DEVELOPMENT_TEAM = 4RNEWLY2A4;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VenusDriver/Resources/Plist/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to upload files";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "VenusDriver app wants you to enable location";
 				INFOPLIST_KEY_NSLocationUsageDescription = "VenusDriver app wants you to enable location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow to upload files";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3657,7 +3683,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 18;
-				DEVELOPMENT_TEAM = 9R3NLR89HG;
+				DEVELOPMENT_TEAM = F9S8GQ7577;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3680,7 +3706,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.superDriver;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.superDriveruiijh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -3703,7 +3729,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 18;
-				DEVELOPMENT_TEAM = 9R3NLR89HG;
+				DEVELOPMENT_TEAM = F9S8GQ7577;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3726,7 +3752,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.app.superDriver;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.superDriveruiijh;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
