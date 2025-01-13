@@ -12,6 +12,7 @@ struct PackageStatusModal: Codable{
     var message: String?
     var deliveryRestriction : String?
     var data: MessageData?
+    var can_end : Int?
 }
 
 struct MessageData: Codable{

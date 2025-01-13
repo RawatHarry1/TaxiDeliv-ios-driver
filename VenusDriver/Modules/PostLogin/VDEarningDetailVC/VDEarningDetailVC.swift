@@ -215,6 +215,30 @@ extension VDEarningDetailVC: UITableViewDelegate, UITableViewDataSource{
         cell.objDelivery_packages = obj
         cell.selectionStyle = .none
         tableView.separatorStyle = .none
+        if  (obj?.package_image_while_pickup?.count ?? 0) == 0{
+            cell.pickUpImagesStack.isHidden = true
+            cell.lblPickedUpSeperator.isHidden = true
+        }
+        else
+        {
+            cell.pickUpImagesStack.isHidden = false
+            cell.lblPickedUpSeperator.isHidden = false
+
+        }
+        if  (obj?.package_image_while_drop_off?.count ?? 0) == 0{
+            cell.lblDeliveredSeparator.isHidden = true
+            cell.lblDeliveredIImages.isHidden = true
+            cell.deliveredImageView.isHidden = true
+            cell.heightCell.constant = 300
+            
+        }
+        else
+        {
+            cell.lblDeliveredSeparator.isHidden = false
+            cell.lblDeliveredIImages.isHidden = false
+            cell.deliveredImageView.isHidden = false
+            cell.heightCell.constant = 536
+        }
         return cell
     }
     

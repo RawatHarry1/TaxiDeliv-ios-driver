@@ -13,7 +13,13 @@ class PackageThreeCell: UITableViewCell {
     @IBOutlet weak var lblQuantity: UILabel!
     @IBOutlet weak var lblPackageType: UILabel!
     @IBOutlet weak var lblSize: UILabel!
+    @IBOutlet weak var lblPickedUpSeperator: UILabel!
     
+    @IBOutlet weak var heightCell: NSLayoutConstraint!
+    @IBOutlet weak var lblDeliveredIImages: UILabel!
+    @IBOutlet weak var deliveredImageView: UIView!
+    @IBOutlet weak var pickUpImagesStack: UIStackView!
+    @IBOutlet weak var lblDeliveredSeparator: UILabel!
     @IBOutlet weak var collectionViewImages: UICollectionView!
     
     @IBOutlet var collectionViewDropOff: UICollectionView!
@@ -68,7 +74,7 @@ extension PackageThreeCell: UICollectionViewDelegate, UICollectionViewDataSource
         if collectionView == collectionViewImages
         {
 
-            cell.imgMain.setImage(objDelivery_packages?.package_image_while_pickup?[indexPath.row] ?? "", placeHolder: nil)
+            cell.imgMain.setImage(objDelivery_packages?.package_images_by_customer?[indexPath.row] ?? "", placeHolder: nil)
        
         }
         else if collectionView == collectionViewPickup

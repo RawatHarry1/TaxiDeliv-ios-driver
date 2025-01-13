@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 class PackageDetailTblCell: UITableViewCell {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var lblQuantity: UILabel!
@@ -51,7 +51,12 @@ extension PackageDetailTblCell: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagesCollectionCell", for: indexPath) as! ImagesCollectionCell
-        cell.imgViewImages.setImage(objDelivery_packages?.image?[indexPath.row] ?? "", placeHolder: nil)
+        var url = URL(string:  objDelivery_packages?.image?[indexPath.row] ?? "")
+//        var url1 = URL(string:   "https://picsum.photos/id/237/200/300")
+        cell.imgViewImages.sd_setImage(with: url, placeholderImage: nil, options: [.refreshCached, .highPriority], completed: nil)
+
+//        cell.imgViewImages.sd_setImage(with: url1 , placeholderImage: nil)
+//        cell.imgViewImages.sd_setImage(with: url , placeholderImage: nil)
         return cell
     }
     

@@ -123,6 +123,15 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
             }
             else
             {
+                if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 5{
+        
+                    cell.btnAccept.isEnabled = false
+                    cell.btnreject.isEnabled = false
+                    cell.btnAccept.alpha = 0.4
+                    cell.btnreject.alpha = 0.4
+        
+                }
+                else{
                 if self.imgArr.count  > 0{
                     cell.btnAccept.isEnabled = false
                     cell.btnreject.isEnabled = false
@@ -132,11 +141,13 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                     cell.collectionViewImages.reloadData()
                     cell.imagesStackView.isHidden = false
                 }else{
-                    cell.btnAccept.isEnabled = true
-                    cell.btnreject.isEnabled = true
-                    cell.btnAccept.alpha = 1
-                    cell.btnreject.alpha = 1
-                    cell.imagesStackView.isHidden = true
+                 
+                        cell.btnAccept.isEnabled = true
+                        cell.btnreject.isEnabled = true
+                        cell.btnAccept.alpha = 1
+                        cell.btnreject.alpha = 1
+                        cell.imagesStackView.isHidden = true
+                    }
                 }
             }
          
@@ -145,12 +156,16 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
             cell.btnreject.setTitle("REJECT", for: .normal)
         }else{
             if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 5{
+                cell.lblStatus.text = "Not Picked"
+                cell.lblStatus.textColor = .systemRed
+                cell.viewStatus.isHidden = false
                 cell.mainStack.isHidden = false
                 cell.imagesStackView.isHidden = true
                 cell.deliveryStackView.isHidden = true
             }else{
                 if self.deliveryPackages?[indexPath.row].package_image_while_drop_off?.count ?? 0 > 0
                 {
+                    cell.viewStatus.isHidden = true
                     cell.btnAccept.isEnabled = false
                     cell.btnreject.isEnabled = false
                     cell.btnAccept.alpha = 0.4
@@ -173,11 +188,14 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                         cell.collectionVwDropOffImgs.reloadData()
                         cell.deliveryStackView.isHidden = false
                     }else{
+                          
+                          
                         cell.btnAccept.isEnabled = true
                         cell.btnreject.isEnabled = true
                         cell.btnAccept.alpha = 1
                         cell.btnreject.alpha = 1
                         cell.deliveryStackView.isHidden = true
+                        
                     }
                 }
                 cell.imagesStackView.isHidden = false
@@ -258,7 +276,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                                 
                                 
   
-                                if self.viewModal.objPackageStatusModal?.flag ?? 0 != 143{
+                                if self.viewModal.objPackageStatusModal?.message ?? ""  != "status updated successfully"{
                           
                                     let story = UIStoryboard(name: "PostLogin", bundle:nil)
                                     let vc = story.instantiateViewController(withIdentifier: "VDLogoutVC") as! VDLogoutVC
@@ -290,6 +308,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                                 }
                                 else
                                 {
+                                    self.deliveryPackages?[indexPath.row].delivery_status = 5
                                     cell.btnAccept.isEnabled = false
                                     cell.btnreject.isEnabled = false
                                     cell.btnAccept.alpha = 0.4
@@ -328,7 +347,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                             print("done")
                             
                             self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:reasonStr,AcceptTrip:false,comerFromMarkArive: false, completion: {
-                                if self.viewModal.objPackageStatusModal?.message ?? "" != ""{
+                                if self.viewModal.objPackageStatusModal?.message ?? ""  != "status updated successfully"{
                           
                                     let story = UIStoryboard(name: "PostLogin", bundle:nil)
                                     let vc = story.instantiateViewController(withIdentifier: "VDLogoutVC") as! VDLogoutVC
@@ -358,7 +377,13 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                                     self.present(vc, animated: true)
                                  
                                 }
-                                
+                                else
+                                {
+                                    cell.btnAccept.isEnabled = false
+                                    cell.btnreject.isEnabled = false
+                                    cell.btnAccept.alpha = 0.4
+                                    cell.btnreject.alpha = 0.4
+                                }
                                 if self.comesFromMardArrive == true{
                                     if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
                                         self.btnContinue.alpha = 1
@@ -392,19 +417,19 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
             self.present(vc, animated: true)
             
         }
-        if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 5{
-        
-            cell.btnAccept.isEnabled = false
-            cell.btnreject.isEnabled = false
-            cell.btnAccept.alpha = 0.4
-            cell.btnreject.alpha = 0.4
-      
-        }else{
-            cell.btnAccept.isEnabled = true
-            cell.btnreject.isEnabled = true
-            cell.btnAccept.alpha = 1
-            cell.btnreject.alpha = 1
-        }
+//        if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 5{
+//        
+//            cell.btnAccept.isEnabled = false
+//            cell.btnreject.isEnabled = false
+//            cell.btnAccept.alpha = 0.4
+//            cell.btnreject.alpha = 0.4
+//      
+//        }else{
+//            cell.btnAccept.isEnabled = true
+//            cell.btnreject.isEnabled = true
+//            cell.btnAccept.alpha = 1
+//            cell.btnreject.alpha = 1
+//        }
         return cell
     }
     

@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 
 class VDRideCompleteVC: VDBaseVC {
-
+    var objDelivery_packages = [DeliveryPackageData]()
     @IBOutlet weak var packageTblHeader: UIView!
     @IBOutlet weak var viewSpace: UIView!
     @IBOutlet weak var collectionViewImages: UICollectionView!
@@ -139,7 +139,7 @@ class VDRideCompleteVC: VDBaseVC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if objDelivery_packages.count == 0
+        if self.objDelivery_packages.isEmpty == true
         {
             self.tblView.isHidden = true
             self.packageTblHeader.isHidden = true
@@ -393,15 +393,18 @@ extension UIView {
 }
 extension VDRideCompleteVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objDelivery_packages.count 
+        return self.objDelivery_packages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PackageDetailTblCell", for: indexPath) as! PackageDetailTblCell
-        let obj = objDelivery_packages[indexPath.row]
+        let obj = self.objDelivery_packages[indexPath.row]
         cell.lblSize.text = obj.package_size ?? ""
         cell.lblPackageType.text = obj.type ?? ""
+        cell.lblQuantity.text = obj.quantity ?? ""
         cell.objDelivery_packages = obj
+        cell.collectionViewImages.reloadData()
+        cell.collectionViewImages.reloadData()
         return cell
     }
     

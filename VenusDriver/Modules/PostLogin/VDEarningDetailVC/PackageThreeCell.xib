@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -473,9 +473,15 @@
                 <outlet property="collectionViewDropOff" destination="IB7-RU-w0Q" id="mrV-Jc-2Wn"/>
                 <outlet property="collectionViewImages" destination="E4L-IW-SkP" id="cCD-8H-Zd2"/>
                 <outlet property="collectionViewPickup" destination="5WO-YQ-7xD" id="PMK-gA-zBX"/>
+                <outlet property="deliveredImageView" destination="upF-Oa-OCS" id="sqd-5y-PLc"/>
+                <outlet property="heightCell" destination="WOI-dW-RM2" id="f9c-uN-7zA"/>
+                <outlet property="lblDeliveredIImages" destination="wus-JV-iBo" id="kjy-e0-tqg"/>
+                <outlet property="lblDeliveredSeparator" destination="RyX-4w-fK9" id="XI2-VV-1Sx"/>
                 <outlet property="lblPackageType" destination="KCc-tJ-NHy" id="mSR-EA-qFN"/>
+                <outlet property="lblPickedUpSeperator" destination="yTY-vt-mt5" id="6Vk-hQ-7Qg"/>
                 <outlet property="lblQuantity" destination="Nqw-Ib-tar" id="Vu1-Tj-cp1"/>
                 <outlet property="lblSize" destination="pGl-7v-0SB" id="QwL-Ua-rLS"/>
+                <outlet property="pickUpImagesStack" destination="33H-KP-FfL" id="65Y-gw-wTo"/>
             </connections>
             <point key="canvasLocation" x="-146.56488549618319" y="387.32394366197184"/>
         </tableViewCell>
@@ -483,7 +489,7 @@
     <resources>
         <image name="anz" width="24" height="24"/>
         <namedColor name="buttonSelectedOrange">
-            <color red="0.0" green="0.23529411764705882" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.0" green="0.23499999940395355" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="scrollViewTexturedBackgroundColor">
             <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

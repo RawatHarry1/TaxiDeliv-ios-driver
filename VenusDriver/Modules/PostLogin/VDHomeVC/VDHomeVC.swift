@@ -218,6 +218,7 @@ class VDHomeVC: VDBaseVC {
           self.homeViewModel.fetchAvailableRide()
       }
         if let notificationModel = sharedAppDelegate.notficationDetails {
+            self.objDelivery_packages = notificationModel.delivery_packages
             if notificationModel.service_type == 2{
                 viewDelivery.isHidden = false
             }else{
@@ -232,10 +233,10 @@ class VDHomeVC: VDBaseVC {
                 updateAvailableRidePopUp()
 
             } else if notificationModel.status == rideStatus.markArrived.rawValue || notificationModel.status == rideStatus.acceptedRide.rawValue || notificationModel.status == rideStatus.customerPickedUp.rawValue{
-               if cancelRideBtn.title(for: .normal) != "Complete Trip"
-                {
+//               if cancelRideBtn.title(for: .normal) != "Complete Trip"
+//                {
                    homeViewModel.fetchAvailableRide()
-                }
+//                }
                 
                 updateUIAccordingtoRideStatus()
               
@@ -750,7 +751,7 @@ extension VDHomeVC {
 
     func updateAvailableRidePopUp() {
         if let notificationModel = sharedAppDelegate.notficationDetails {
-            self.objDelivery_packages = notificationModel.delivery_packages
+        //    self.objDelivery_packages = notificationModel.delivery_packages
             tripID = notificationModel.trip_id
             customerID = notificationModel.customer_id ?? ""
             profileImg = notificationModel.customer_image ?? ""
@@ -956,8 +957,10 @@ extension VDHomeVC {
             RideStatus = .none
             sharedAppDelegate.notficationDetails = nil
             sharedAppDelegate.isFromNotification = false
+            
             self.updateUIAccordingtoRideStatus()
             let obj = VDRideCompleteVC.create(0)
+            obj.objDelivery_packages = self.objDelivery_packages ?? []
             obj.endRideModel = endRideStatus
             obj.modalPresentationStyle = .overFullScreen
             self.navigationController?.pushViewController(obj, animated: true)
@@ -1081,6 +1084,7 @@ extension VDHomeVC {
             self.dismiss(animated: true) {
                 let obj = VDRideCompleteVC.instantiate(fromAppStoryboard: .postLogin)
                 obj.screenTyoe = 1
+                obj.objDelivery_packages = self.objDelivery_packages ?? []
                 //let obj = VDRideCompleteVC.create(1)
                 obj.modalPresentationStyle = .overFullScreen
                 obj.markArrived = { status  in
