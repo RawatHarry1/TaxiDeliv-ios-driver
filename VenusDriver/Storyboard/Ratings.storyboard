@@ -180,7 +180,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wm-oD-Uzj">
-                                        <rect key="frame" x="30" y="30" width="333" height="56"/>
+                                        <rect key="frame" x="30" y="30" width="333" height="67.333333333333329"/>
                                         <string key="text">How was your ride with
 Patrick</string>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="24"/>
@@ -188,13 +188,13 @@ Patrick</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vic-wT-zaS">
-                                        <rect key="frame" x="171.66666666666666" y="136" width="50" height="23.333333333333343"/>
+                                        <rect key="frame" x="169" y="147.33333333333334" width="55" height="28"/>
                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xzo-gI-XD6">
-                                        <rect key="frame" x="30" y="175.33333333333331" width="333" height="26"/>
+                                        <rect key="frame" x="30" y="191.33333333333331" width="333" height="26"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="K3G-y5-2V0">
                                                 <rect key="frame" x="74" y="0.0" width="185" height="26"/>
@@ -361,7 +361,7 @@ Patrick</string>
                                         </constraints>
                                     </view>
                                     <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PNL-1d-XWM">
-                                        <rect key="frame" x="30" y="231.33333333333331" width="333" height="42"/>
+                                        <rect key="frame" x="30" y="247.33333333333331" width="333" height="42"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gw5-6I-qz2">
                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="40"/>
@@ -442,13 +442,13 @@ Patrick</string>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ride Fare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ7-DV-kQ5">
-                                        <rect key="frame" x="30" y="273.33333333333331" width="71" height="20.333333333333314"/>
+                                        <rect key="frame" x="30" y="289.33333333333331" width="71" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="buttonSelectedOrange"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxo-tE-bDg">
-                                        <rect key="frame" x="30" y="308.66666666666669" width="333" height="1"/>
+                                        <rect key="frame" x="30" y="324.66666666666669" width="333" height="1"/>
                                         <color key="backgroundColor" name="textColorGrey"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="HjA-Zd-7B7"/>
@@ -458,19 +458,19 @@ Patrick</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIn-Dn-uPY">
-                                        <rect key="frame" x="318.33333333333331" y="273.33333333333331" width="44.666666666666686" height="20.333333333333314"/>
+                                        <rect key="frame" x="318.33333333333331" y="289.33333333333331" width="44.666666666666686" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="buttonSelectedOrange"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer paid by wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-Kh-1m8">
-                                        <rect key="frame" x="30" y="324.66666666666669" width="183" height="20.333333333333314"/>
+                                        <rect key="frame" x="30" y="340.66666666666669" width="183" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGreenColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbv-rN-3ye">
-                                        <rect key="frame" x="321.66666666666669" y="324.66666666666669" width="41.333333333333314" height="20.333333333333314"/>
+                                        <rect key="frame" x="321.66666666666669" y="340.66666666666669" width="41.333333333333314" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemGreenColor"/>
                                         <nil key="highlightedColor"/>
@@ -648,7 +648,7 @@ Patrick</string>
     </scenes>
     <designables>
         <designable name="8NX-ji-JlU">
-            <size key="intrinsicContentSize" width="51" height="31"/>
+            <size key="intrinsicContentSize" width="57" height="35"/>
         </designable>
     </designables>
     <resources>
@@ -661,7 +661,7 @@ Patrick</string>
         <image name="star 1" width="33.333332061767578" height="33.333332061767578"/>
         <image name="starDisable 1" width="33.333332061767578" height="33.333332061767578"/>
         <namedColor name="buttonSelectedOrange">
-            <color red="0.0" green="0.23499999940395355" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.0" green="0.23529411764705882" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.10199999809265137" green="0.093999996781349182" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

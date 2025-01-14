@@ -1605,8 +1605,26 @@ email@gmail.com</string>
         </scene>
     </scenes>
     <designables>
+        <designable name="18u-zr-iXj">
+            <size key="intrinsicContentSize" width="172.66666666666666" height="34"/>
+        </designable>
+        <designable name="2wH-K5-fvr">
+            <size key="intrinsicContentSize" width="207.66666666666666" height="34"/>
+        </designable>
+        <designable name="4Bk-Xj-M7z">
+            <size key="intrinsicContentSize" width="131.33333333333334" height="34"/>
+        </designable>
+        <designable name="7CI-8w-EuG">
+            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
+        </designable>
         <designable name="87B-9L-EgJ">
             <size key="intrinsicContentSize" width="224" height="19.666666666666668"/>
+        </designable>
+        <designable name="A1l-O2-zqs">
+            <size key="intrinsicContentSize" width="86" height="34"/>
+        </designable>
+        <designable name="DcG-7u-rTC">
+            <size key="intrinsicContentSize" width="207.66666666666666" height="34"/>
         </designable>
         <designable name="EN1-0m-6PK">
             <size key="intrinsicContentSize" width="124" height="32"/>
@@ -1614,17 +1632,68 @@ email@gmail.com</string>
         <designable name="EWJ-Ud-n6u">
             <size key="intrinsicContentSize" width="49" height="32"/>
         </designable>
+        <designable name="EoL-OQ-IRM">
+            <size key="intrinsicContentSize" width="101" height="34"/>
+        </designable>
+        <designable name="FDa-tF-OfA">
+            <size key="intrinsicContentSize" width="102" height="34"/>
+        </designable>
+        <designable name="G0G-rj-xwu">
+            <size key="intrinsicContentSize" width="142.33333333333334" height="34"/>
+        </designable>
         <designable name="KKv-gD-MyO">
             <size key="intrinsicContentSize" width="112" height="32"/>
         </designable>
+        <designable name="MXE-IQ-DLT">
+            <size key="intrinsicContentSize" width="271" height="34"/>
+        </designable>
+        <designable name="Vp5-Ya-bPq">
+            <size key="intrinsicContentSize" width="111" height="34"/>
+        </designable>
+        <designable name="XNF-en-MxQ">
+            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
+        </designable>
+        <designable name="Yi3-O1-955">
+            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
+        </designable>
+        <designable name="cbe-bW-EPr">
+            <size key="intrinsicContentSize" width="271" height="34"/>
+        </designable>
         <designable name="dOr-HO-WBW">
             <size key="intrinsicContentSize" width="112" height="32"/>
+        </designable>
+        <designable name="ec5-rM-3zq">
+            <size key="intrinsicContentSize" width="203" height="34"/>
+        </designable>
+        <designable name="ecC-Qc-DfZ">
+            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
+        </designable>
+        <designable name="h0F-S5-tJA">
+            <size key="intrinsicContentSize" width="172.66666666666666" height="34"/>
         </designable>
         <designable name="i8X-I3-RDy">
             <size key="intrinsicContentSize" width="48" height="32"/>
         </designable>
         <designable name="iGm-ie-onz">
             <size key="intrinsicContentSize" width="56" height="32"/>
+        </designable>
+        <designable name="k7D-58-yUn">
+            <size key="intrinsicContentSize" width="207.66666666666666" height="34"/>
+        </designable>
+        <designable name="lKq-1d-yXX">
+            <size key="intrinsicContentSize" width="192" height="34"/>
+        </designable>
+        <designable name="mfj-L1-EgV">
+            <size key="intrinsicContentSize" width="100.33333333333333" height="34"/>
+        </designable>
+        <designable name="raN-mi-P6n">
+            <size key="intrinsicContentSize" width="207.66666666666666" height="34"/>
+        </designable>
+        <designable name="utr-2H-rhW">
+            <size key="intrinsicContentSize" width="195.66666666666666" height="34"/>
+        </designable>
+        <designable name="vdi-lR-TGn">
+            <size key="intrinsicContentSize" width="318" height="34"/>
         </designable>
         <designable name="wcO-dl-GbF">
             <size key="intrinsicContentSize" width="48" height="32"/>
@@ -1648,7 +1717,7 @@ email@gmail.com</string>
             <color red="0.43900001049041748" green="0.43900001049041748" blue="0.43900001049041748" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="buttonSelectedOrange">
-            <color red="0.0" green="0.23499999940395355" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.0" green="0.23529411764705882" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.10199999809265137" green="0.093999996781349182" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

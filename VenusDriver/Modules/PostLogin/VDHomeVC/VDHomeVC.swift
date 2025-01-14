@@ -17,7 +17,10 @@ var navigateToChat = false
 
 class VDHomeVC: VDBaseVC {
     // MARK: - Outlets
+    @IBOutlet weak var heightTopView: NSLayoutConstraint!
     @IBOutlet weak private(set) var availabilityButton: UIButton!
+    @IBOutlet weak var chattingBtn: UIButton!
+    @IBOutlet weak var instructionsText: UILabel!
     @IBOutlet weak private(set) var offlineView: VDView!
     @IBOutlet weak private(set) var mapView: GMSMapView!
     @IBOutlet weak private(set) var newRideReqView: UIView!
@@ -48,6 +51,7 @@ class VDHomeVC: VDBaseVC {
     @IBOutlet weak var verificationPopUpMessageLbl: UILabel!
     @IBOutlet weak var verificationPopUpActionBtn: VDButton!
 
+    @IBOutlet weak var viewDriverOnRide: UIView!
     //Timer to update location
     private var timerToUpdateDriverLocation: Timer?
     private let timerIntervalToRefersh: TimeInterval = 4.0
@@ -63,9 +67,14 @@ class VDHomeVC: VDBaseVC {
     @IBOutlet weak var onTheWayRadioImg: UIImageView!
     @IBOutlet weak var radioDestinationImg: UIImageView!
 
+    @IBOutlet weak var btnSound: UIButton!
     @IBOutlet weak var pickToOnTheWayLbl: UILabel!
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var OntheWayToDestinationLbl: UILabel!
 
+    @IBOutlet weak var lblHideShowStatus: UILabel!
+    @IBOutlet weak var hideShowRideStatusView: UIView!
+    @IBOutlet weak var btnCall: UIButton!
     // MARK: - Variables
    // var locationManager = CLLocationManager()
      var homeViewModel: VDHomeViewModel = VDHomeViewModel()
@@ -81,7 +90,7 @@ class VDHomeVC: VDBaseVC {
     var mapDetailValue = 0
     private var driverMarker = GMSMarker()
     private var currentMarker = GMSMarker()
-
+    var phoneNo = ""
     var completeGmsPath : GMSPath?
     var travelledGmsPath : GMSPath?
     var completePolyline : GMSPolyline?
@@ -96,11 +105,15 @@ class VDHomeVC: VDBaseVC {
     var currentLat = 0.0
     var currentLong = 0.0
     var cameraUpdateOnce = true
+    var turnInitiated = false
     var coordinates = CLLocation()
     let speechSynthesizer = AVSpeechSynthesizer()
     var routeCoordinates:  [CLLocationCoordinate2D] = []
     var announcedSteps = Set<Int>()
     var isSpeaking: Bool = false
+    var stepsModel: [Step] = []
+    var selectedStepsModel : Step?
+    var stepsModelDuplicate: [Step] = []
     // TODO: - DEINIT METHOD
     deinit {
         //NotificationCenter.default.removeObserver(self)
@@ -112,7 +125,7 @@ class VDHomeVC: VDBaseVC {
         let obj = VDHomeVC.instantiate(fromAppStoryboard: .postLogin)
         return obj
     }
-
+    var inaStep = false
     override func initialSetup() {
         callIndidLoad()
         callBacks()
@@ -120,6 +133,19 @@ class VDHomeVC: VDBaseVC {
       //  let obj = ClientModel.currentClientData
         
         NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+    func showOnRideView()
+    {
+        self.viewDriverOnRide.isHidden = false
+        self.topView.isHidden = true
+        heightTopView.constant = 0
+        
+    }
+    func hideOnRideView()
+    {
+        self.viewDriverOnRide.isHidden = true
+        self.topView.isHidden = false
+        heightTopView.constant = 44
     }
     var bestRouteText = ""
     @objc func appWillEnterForeground() {
@@ -134,6 +160,25 @@ class VDHomeVC: VDBaseVC {
         
     }
     
+    @IBAction func btnSoundAct(_ sender: UIButton) {
+        if btnSound.image(for: .normal) == UIImage(named: "sound")
+        {
+            btnSound.setImage(UIImage(named: "mute"), for: .normal)
+        }
+        else
+        {
+            btnSound.setImage(UIImage(named: "sound"), for: .normal)
+
+        }
+    }
+    @IBAction func btnCallAct(_ sender: UIButton) {
+        guard let url = URL(string: "telprompt://\(phoneNo)"),
+               UIApplication.shared.canOpenURL(url) else {
+               return
+           }
+           UIApplication.shared.open(url, options: [:], completionHandler: nil)
+
+    }
     func checkMapType(){
         
         self.mapTypeValue = UserDefaults.standard.value(forKey: "mapType") as? Int ?? 0
@@ -178,12 +223,44 @@ class VDHomeVC: VDBaseVC {
           // Restore default screen behavior
           UIApplication.shared.isIdleTimerDisabled = false
       }
+    // Gesture recognizer handler
+    var mapBottomInsets = 400
     
+      @objc func handleTapGesture(_ gesture: UITapGestureRecognizer) {
+          if lblHideShowStatus.text! == ("View Map")
+          {
+              lblHideShowStatus.text = "Show Details"
+              self.rideStatusView.isHidden = true
+              self.btnbottom.constant = 20
+              mapBottomInsets = 80
+              let mapInsets = UIEdgeInsets(top: 150, left: 30, bottom: CGFloat(mapBottomInsets), right: 30)
+              mapView.padding = mapInsets
+              view.layoutIfNeeded()
+          }
+          else{
+              lblHideShowStatus.text = "View Map"
+              self.rideStatusView.isHidden = false
+              self.btnbottom.constant = 350
+              mapBottomInsets = 400
+              let mapInsets = UIEdgeInsets(top: 150, left: 30, bottom: CGFloat(mapBottomInsets), right: 30)
+              mapView.padding = mapInsets
+              view.layoutIfNeeded()
+          }
+          
+      }
     override func viewWillAppear(_ animated: Bool) {
         checkMapType()
         UIApplication.shared.isIdleTimerDisabled = true
+        lblHideShowStatus.text = "View Map"
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+            self.view.addGestureRecognizer(tapGesture)
+        self.hideShowRideStatusView.addGestureRecognizer(tapGesture)
+
+        btnSound.addShadowViewOne()
+        viewDriverOnRide.addShadowViewOne()
         loginWithAccessToken()
-    //    self.homeViewModel.fetchAvailableRide()
+    //  self.homeViewModel.fetchAvailableRide()
         checkLocationServices()
         checkNotificationStatusAndPrompt()
         let isDriverAvailablecheck = VDUserDefaults.value(forKey: .isDriverAvailable)
@@ -219,6 +296,7 @@ class VDHomeVC: VDBaseVC {
       }
         if let notificationModel = sharedAppDelegate.notficationDetails {
             self.objDelivery_packages = notificationModel.delivery_packages
+            
             if notificationModel.service_type == 2{
                 viewDelivery.isHidden = false
             }else{
@@ -272,6 +350,7 @@ class VDHomeVC: VDBaseVC {
         rideStatusView.addShadowView(color: VDColors.buttonBorder.color)
         rideStatusView.roundCorner([.topLeft, .topRight], radius: 30)
 //        rideStatusView.isHidden = false
+        
         // Assuming you have a reference to your mapView
         let googleLogoCover = UIView()
         
@@ -606,6 +685,7 @@ extension VDHomeVC {
             newRideReqView.isHidden = true
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = true
+            self.hideOnRideView()
             self.btnbottom.constant = 20
             btnChat.isHidden = true
             self.availabilityButton.isHidden = false
@@ -616,6 +696,7 @@ extension VDHomeVC {
             newRideReqView.isHidden = false
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = true
+            self.hideOnRideView()
             self.btnbottom.constant = 20
             updateAvailableRidePopUp()
         case .acceptedRide :
@@ -623,7 +704,8 @@ extension VDHomeVC {
             newRideReqView.isHidden = true
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = false
-            self.btnbottom.constant = 400
+            self.showOnRideView()
+            self.btnbottom.constant = 350
             cancelRideBtn.setTitle("Slide to Mark Arrived", for: .normal)
             btnChat.isHidden = false
 //            let obj = VDRideCompleteVC.create(2)
@@ -639,7 +721,8 @@ extension VDHomeVC {
             newRideReqView.isHidden = true
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = false
-            self.btnbottom.constant = 400
+            self.showOnRideView()
+            self.btnbottom.constant = 350
             if UserModel.currentUser.login?.service_type != 1 {
                 cancelRideBtn.setTitle("Slide to start delivery", for: .normal)
 
@@ -655,7 +738,8 @@ extension VDHomeVC {
             newRideReqView.isHidden = true
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = false
-            self.btnbottom.constant = 400
+            self.showOnRideView()
+            self.btnbottom.constant = 350
             if UserModel.currentUser.login?.service_type == 1 {
                 cancelRideBtn.setTitle("Slide to Complete Trip", for: .normal)
             }
@@ -899,7 +983,7 @@ extension VDHomeVC {
     func callBacks() {
         // TODO: - FetchOngoingRideCallBack
         homeViewModel.fetchOngoingRideSuccessCallback = { [weak self] status in
-           
+            
             self?.fetchOnGoingRideSuccess()
         }
         
@@ -926,7 +1010,7 @@ extension VDHomeVC {
             sharedAppDelegate.notficationDetails = nil
             self.updateUIAccordingtoRideStatus()
         }
-
+        
         // TODO: - MARK ARRIVED CALLBACK
         homeViewModel.markArrivedSuccessCallBack = { status in
             self.shouldUpdateCamera = true
@@ -934,9 +1018,9 @@ extension VDHomeVC {
             self.updateUIAccordingtoRideStatus()
             self.homeViewModel.fetchAvailableRide()
             self.isStartTrip = false
-           // self.tripStartedAction()
+            // self.tripStartedAction()
         }
-
+        
         // TODO: - TripStartedSuccessCallBack
         homeViewModel.tripStartedSuccessCallBack = { tripStarted in
             self.shouldUpdateCamera = true
@@ -944,13 +1028,14 @@ extension VDHomeVC {
             self.newRideReqView.isHidden = true
             self.rideProcessingView.isHidden = true
             self.rideStatusView.isHidden = false
-            self.btnbottom.constant = 400
+            self.showOnRideView()
+            self.btnbottom.constant = 350
             RideStatus = .customerPickedUp
             self.updateUIAccordingtoRideStatus()
             //self.mapView.clear()
             self.tripStartedAction()
         }
-
+        
         // TODO: - EndRideSuccessCallBack
         homeViewModel.endRideSuccessCallBack = { endRideStatus in
             self.shouldUpdateCamera = true
@@ -964,32 +1049,106 @@ extension VDHomeVC {
             obj.endRideModel = endRideStatus
             obj.modalPresentationStyle = .overFullScreen
             self.navigationController?.pushViewController(obj, animated: true)
-                //present(obj, animated: true)
+            //present(obj, animated: true)
         }
-
+        
         // TODO: - Draw polyline callback
         //
         homeViewModel.polylineCallBack = { polyline in
-           
+            
             self.polyLinePath = polyline
             self.drawpolyLineForRide(polyline)
-           // self.showPath(polyStr: polyline)
+            // self.showPath(polyStr: polyline)
         }
         homeViewModel.legsCallBack = { legs in
             // Safely unwrap the first leg, and its duration and distance properties
             guard let firstLeg = legs.first else { return }
-
+            
             // Safely extract duration and distance text, using nil coalescing for fallback
             let durationText = ((firstLeg["duration"] as? NSDictionary)?["text"] as? String) ?? ""
             let distanceText = ((firstLeg["distance"] as? NSDictionary)?["text"] as? String) ?? ""
-
+            
             // Construct the final string
             self.bestRouteText = "Best Route (\(durationText)) \(distanceText)"
-          
+            
             self.setCompleteLbl()
+            
+            // Extract steps from the first leg
+            if let stepsArray = firstLeg["steps"] as? [[String: Any]] {
+                // Parse the steps array into an array of Step objects (you can convert it to a model if needed)
+                self.stepsModel = []
+                for stepDict in stepsArray {
+                    if let step = self.parseStep(from: stepDict) {
+                        self.stepsModel.append(step)
+                    }
+                }
+            }
+            self.stepsModelDuplicate =  self.stepsModel
+            print(self.stepsModel.count)
+            self.setUpStepsView()
         }
+        
     }
     
+    func setUpStepsView()
+    {
+        setPlainTextFromHTML(htmlString: self.stepsModelDuplicate[0].htmlInstructions, label: self.instructionsText)
+     
+    }
+    func setPlainTextFromHTML(htmlString: String, label: UILabel) {
+        guard let data = htmlString.data(using: .unicode) else {
+            return
+        }
+        
+        do {
+            // Create an attributed string from the HTML string
+            let attributedString = try NSAttributedString(
+                data: data,
+                options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue],
+                documentAttributes: nil
+            )
+            
+            // Extract plain text from the attributed string (by just using the string property)
+            let plainText = attributedString.string
+            
+            // Set the plain text to the label
+            label.text = plainText
+            
+        } catch {
+            print("Error creating attributed string from HTML: \(error)")
+        }
+    }
+    // Example parsing function to convert a dictionary into a Step model
+    func parseStep(from dictionary: [String: Any]) -> Step? {
+        guard let distanceDict = dictionary["distance"] as? [String: Any],
+              let durationDict = dictionary["duration"] as? [String: Any],
+              let endLocationDict = dictionary["end_location"] as? [String: Any],
+              let startLocationDict = dictionary["start_location"] as? [String: Any],
+              let polylineDict = dictionary["polyline"] as? [String: Any] else {
+            return nil
+        }
+        
+        let distanceText = distanceDict["text"] as? String ?? ""
+        let distanceValue = distanceDict["value"] as? Int ?? 0
+        let durationText = durationDict["text"] as? String ?? ""
+        let durationValue = durationDict["value"] as? Int ?? 0
+        let lat = endLocationDict["lat"] as? Double
+        let lng = endLocationDict["lng"] as? Double
+        let startLat = startLocationDict["lat"] as? Double
+        let startLng = startLocationDict["lng"] as? Double
+        let polylinePoints = polylineDict["points"] as? String ?? ""
+        let htmlInstructions = dictionary["html_instructions"] as? String ?? ""
+        let maneuver = dictionary["maneuver"] as? String
+        
+        let distance = Distance(text: distanceText, value: distanceValue)
+        let duration = Duration(text: durationText, value: durationValue)
+        let endLocation = Location(lat: lat, lng: lng)
+        let startLocation = Location(lat: startLat, lng: startLng)
+        let polyline = Polyline(points: polylinePoints)
+        let travelMode = TravelMode(rawValue: dictionary["travel_mode"] as? String ?? "") ?? .driving
+        
+        return SaloneRide.Step(distance: distance, duration: duration, endLocation: endLocation, htmlInstructions: htmlInstructions, polyline: polyline, startLocation: startLocation, travelMode: travelMode, maneuver: maneuver)
+    }
     func setCompleteLbl(string : String? = "Best Route")
     {
         // Create an NSMutableAttributedString from the full text
@@ -1001,11 +1160,11 @@ extension VDHomeVC {
         let bestRouteRange = (self.bestRouteText as NSString).range(of: string!)
 
           // Apply bold font style to "Best Route"
-          attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 20), range: bestRouteRange)
+          attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 17), range: bestRouteRange)
 
           // Apply regular font style to the rest of the text (duration and distance)
         let restOfTextRange = NSRange(location: bestRouteRange.location + bestRouteRange.length, length: self.bestRouteText.count - bestRouteRange.length)
-          attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 17), range: restOfTextRange)
+          attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 14), range: restOfTextRange)
           self.completRideLbl.attributedText = attributedString
     }
     
@@ -1022,6 +1181,7 @@ extension VDHomeVC {
             tripID = notification.trip_id
             self.lblReceiverName.text = notification.recipient_name ?? ""
             self.lblReceiverPhoneNumber.text = notification.recipient_phone_no ?? ""
+            self.phoneNo = notification.recipient_phone_no ?? ""
             self.profileImg = notification.customer_image ?? ""
             self.profileName = notification.customer_name ?? ""
             
@@ -1036,7 +1196,8 @@ extension VDHomeVC {
                 self.newRideReqView.isHidden = true
                 self.rideProcessingView.isHidden = true
                 self.rideStatusView.isHidden = false
-                self.btnbottom.constant = 400
+                self.showOnRideView()
+                self.btnbottom.constant = 350
                 self.updateUIAccordingtoRideStatus()
             } else if RideStatus == .availableRide {
               //  btnChat.isHidden = false
@@ -1047,7 +1208,8 @@ extension VDHomeVC {
                 self.newRideReqView.isHidden = true
                 self.rideProcessingView.isHidden = true
                 self.rideStatusView.isHidden = false
-                self.btnbottom.constant = 400
+                self.showOnRideView()
+                self.btnbottom.constant = 350
                 self.updateUIAccordingtoRideStatus()
             }else {
                 self.updateUIAccordingtoRideStatus()
@@ -1131,7 +1293,8 @@ extension VDHomeVC {
        
         rideProcessingView.isHidden = true
         rideStatusView.isHidden = false
-        self.btnbottom.constant = 400
+        self.showOnRideView()
+        self.btnbottom.constant = 350
     }
 
     @IBAction func cancelRideOngoing(_ sender: UIButton) {
@@ -1203,7 +1366,119 @@ extension VDHomeVC {
         timerToUpdateDriverLocation?.invalidate()
         timerToUpdateDriverLocation = nil
     }
+    // Step 1: Function to check if the current location is within bounds of a given step
+    // Step 1: Calculate the distance between two locations
+    func distanceBetween(_ location1: CLLocation, _ location2: CLLocation) -> CLLocationDistance {
+        return location1.distance(from: location2)
+    }
+    func bearing(from start: CLLocation, to end: CLLocation) -> Double {
+        let startLatitude = start.coordinate.latitude
+        let startLongitude = start.coordinate.longitude
+        let endLatitude = end.coordinate.latitude
+        let endLongitude = end.coordinate.longitude
 
+        let deltaLongitude = endLongitude - startLongitude
+
+        let y = sin(deltaLongitude) * cos(endLatitude)
+        let x = cos(startLatitude) * sin(endLatitude) - sin(startLatitude) * cos(endLatitude) * cos(deltaLongitude)
+        let bearing = atan2(y, x)
+
+        return bearing * 180 / .pi // Convert from radians to degrees
+    }
+    // Step 2: Check if the current location is within a reasonable proximity to the route (between start and end locations)
+    func isCurrentLocationBetween(startLocation: CLLocation, endLocation: CLLocation, currentLocation: CLLocation, tolerance: CLLocationDistance = 50) -> Bool {
+        // Get the bearing between the start and end points
+        let bearingStartToEnd = bearing(from: startLocation, to: endLocation)
+        
+        // Get the distance between the current location and the start location
+        let distanceToStart = distanceBetween(currentLocation, startLocation)
+        let distanceToEnd = distanceBetween(currentLocation, endLocation)
+
+        // Check if the current location is within the tolerance distance of the line between the two points
+        let maxDistance = max(distanceToStart, distanceToEnd)
+        
+        // Ensure the current location is within the bounding box (between start and end)
+        // We check if the distance to the start and the distance to the end are approximately in the right range
+        if distanceToStart <= maxDistance && distanceToEnd <= maxDistance {
+            // If within tolerance distance, consider the location between the two points
+            return distanceToStart <= maxDistance + tolerance && distanceToEnd <= maxDistance + tolerance
+        }
+        
+        return false
+    }
+    func isCurrentLocationWithinBounds(currentLocation: CLLocation, step: Step) -> Bool {
+        guard let startLatitude =  step.startLocation.lat,
+              let startLongitude = step.startLocation.lng,
+              let endLatitude = step.endLocation.lat ,
+              let endLongitude = step.endLocation.lng else {
+            return false
+        }
+
+        // Convert start and end locations into CLLocation
+        let startLocation = CLLocation(latitude: startLatitude, longitude: startLongitude)
+        let endLocation = CLLocation(latitude: endLatitude, longitude: endLongitude)
+
+        // Check if current location is between start and end location latitudes and longitudes
+        let isLatitudeInRange = currentLocation.coordinate.latitude >= min(startLatitude, endLatitude) &&
+                                currentLocation.coordinate.latitude <= max(startLatitude, endLatitude)
+        
+        let isLongitudeInRange = currentLocation.coordinate.longitude >= min(startLongitude, endLongitude) &&
+                                 currentLocation.coordinate.longitude <= max(startLongitude, endLongitude)
+
+        return isLatitudeInRange && isLongitudeInRange
+    }
+    
+    
+
+    // Step 2: Function to update the label when reaching the instruction step
+    func updateInstructionLabelForCurrentLocation(currentLocation: CLLocation, steps: [Step]) {
+        if self.inaStep == false
+        {
+            for step  in steps {
+                
+                if distanceBetween( CLLocation(latitude: CLLocationDegrees(step.startLocation.lat ?? 0.0), longitude: CLLocationDegrees(step.startLocation.lng ?? 0.0)),currentLocation ) <= 50
+                {
+                    self.inaStep = true
+                    self.selectedStepsModel = step
+                    print("You are between the start and end points." + step.htmlInstructions)
+                    self.setPlainTextFromHTML(htmlString: step.htmlInstructions, label: self.instructionsText)
+                }
+                else {
+                    // Current location is not between start and end
+                    print("You are not between the start and end points.")
+                }
+            }
+            }
+        if self.inaStep == true
+        {
+            if distanceBetween( CLLocation(latitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lat ?? 0.0), longitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lng ?? 0.0)),currentLocation ) < 100
+            {
+                turnInitiated = true
+                if self.selectedStepsModel?.maneuver == "turn-right"
+                {
+                    giveSpeechInstruction( "Turn right")
+                }
+                if self.selectedStepsModel?.maneuver == "turn-left"
+                {
+                    giveSpeechInstruction( "Turn left")
+                }
+                
+            }
+            if turnInitiated == true
+            {
+                if distanceBetween( CLLocation(latitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lat ?? 0.0), longitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lng ?? 0.0)),currentLocation ) <= 50
+                {
+                    
+                }else
+                {
+                    speechSynthesizer.stopSpeaking(at: .immediate)
+                    turnInitiated = false
+                    self.inaStep = false
+                }
+                
+            }
+        }
+    }
     @objc private func apiCallforRefreshNearbyDriver(_ timer: TimeInterval) {
         var objc = [String:Any]()
         guard let trips = sharedAppDelegate.notficationDetails else { return }
@@ -1219,6 +1494,8 @@ extension VDHomeVC {
             if let currentLocation = LocationTracker.shared.lastLocation {
                 let savedLocation = CLLocationCoordinate2D(latitude: (trips.drop_latitude ?? "0.0").double ?? 0.0, longitude: (trips.drop_longitude ?? "0.0").double ?? 0.0)
                 let calculatedDistance : Int = Int(GMSGeometryDistance(savedLocation, currentLocation.coordinate))
+                print(calculatedDistance)
+                self.updateInstructionLabelForCurrentLocation(currentLocation: currentLocation, steps: self.stepsModel)
                 //   if (calculatedDistance > 20) {
                
                
@@ -1402,7 +1679,7 @@ extension VDHomeVC {
         DispatchQueue.main.async {
             let driverCord = "\(latestCoordinates.latitude)"  + "," +  "\(latestCoordinates.longitude)"
             let locCord = "\(destination.latitude)"  + "," +  "\(destination.longitude)"
-            self.homeViewModel.getNewPolyline("\(locCord)", "\(driverCord)")
+            self.homeViewModel.getNewPolyline("\(driverCord)","\(locCord)")
            // let driverBearing = self.calculateBearing(from: latestCoordinates, to: destination)
             self.updateMarkersPositionForRide(self.driverBearing, latestCoordinates, destination, false , shouldUpdateCameraMovement)
         }
@@ -1485,7 +1762,7 @@ extension VDHomeVC {
       //##############################  END #########################################
     func updateMarkersPositionForRide(_ driverBearing: Double, _ driverCoordinates: CLLocationCoordinate2D, _ destinationCoordinates: CLLocationCoordinate2D, _ isNewCoordinates: Bool = false, _ shouldUpdateCameraMovement: Bool = false) {
         
-        let mapInsets = UIEdgeInsets(top: 150, left: 30, bottom: 400, right: 30)
+        let mapInsets = UIEdgeInsets(top: 150, left: 30, bottom: CGFloat(mapBottomInsets), right: 30)
         mapView.padding = mapInsets
         view.layoutIfNeeded()
         
@@ -1909,9 +2186,9 @@ extension VDHomeVC {
                 speechSynthesizer.stopSpeaking(at: .immediate)
                 // Determine if it's a left or right turn or continue straight
                 if angleDifference > 15 && angleDifference < 180 {
-                    giveSpeechInstruction("Turn left")
+                //    giveSpeechInstruction("Turn left")
                 } else if angleDifference < -15 && angleDifference > -180 {
-                    giveSpeechInstruction("Turn right")
+                 //   giveSpeechInstruction("Turn right")
                 } else {
                     //giveSpeechInstruction("Continue straight")
                 }

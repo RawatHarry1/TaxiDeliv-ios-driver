@@ -328,7 +328,13 @@ func addShadowView(width: CGFloat = 2.0, height: CGFloat = 2.0, opacidade: Float
         self.layer.shadowOpacity = opacidade
         self.layer.masksToBounds = maskToBounds
     }
-    
+    func addShadowViewOne() {
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+            self.layer.shadowOffset = CGSize(width: 0, height: 0)
+            self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.8
+            self.layer.masksToBounds = false
+        }
     var globalPoint:CGPoint? {
         return self.superview?.convert(self.frame.origin, to: nil)
     }
