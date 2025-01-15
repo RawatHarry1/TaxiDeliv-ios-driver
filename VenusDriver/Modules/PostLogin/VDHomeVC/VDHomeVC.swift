@@ -80,7 +80,9 @@ class VDHomeVC: VDBaseVC {
      var homeViewModel: VDHomeViewModel = VDHomeViewModel()
      var tripID: String?
     var customerID = ""
+    var previousLocationSaved : CLLocation?
     var isUpdateOnce = true
+    var muted = false
     var profileImg = ""
     var profileName = ""
     var markerUser : GMSMarker?
@@ -164,10 +166,13 @@ class VDHomeVC: VDBaseVC {
         if btnSound.image(for: .normal) == UIImage(named: "sound")
         {
             btnSound.setImage(UIImage(named: "mute"), for: .normal)
+            muted = true
+            speechSynthesizer.stopSpeaking(at: .immediate)
         }
         else
         {
             btnSound.setImage(UIImage(named: "sound"), for: .normal)
+            muted = false
 
         }
     }
@@ -248,7 +253,10 @@ class VDHomeVC: VDBaseVC {
           }
           
       }
+    var countMain = 0;
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+        self.mapView.isMyLocationEnabled = false
         checkMapType()
         UIApplication.shared.isIdleTimerDisabled = true
         lblHideShowStatus.text = "View Map"
@@ -777,7 +785,7 @@ extension VDHomeVC {
 
     func updateOngoingRideStatusPopUp() {
         if RideStatus == .acceptedRide {
-            completRideLbl.text = "Ride Accepted"
+          //  completRideLbl.text = "Ride Accepted"
 
             arrivedRadioImg.image = VDImageAsset.radioDisable.asset
             onTheWayRadioImg.image = VDImageAsset.radioDisable.asset
@@ -790,7 +798,7 @@ extension VDHomeVC {
             pickToOnTheWayLbl.backgroundColor = VDColors.textFieldBorder.color
             OntheWayToDestinationLbl.backgroundColor = VDColors.textFieldBorder.color
         } else if RideStatus == .markArrived {
-            completRideLbl.text = "Marked Arrived"
+          //  completRideLbl.text = "Marked Arrived"
             setCompleteLbl()
             arrivedRadioImg.image = VDImageAsset.radioEnable.asset
             onTheWayRadioImg.image = VDImageAsset.radioDisable.asset
@@ -803,7 +811,7 @@ extension VDHomeVC {
             pickToOnTheWayLbl.backgroundColor = VDColors.textFieldBorder.color
             OntheWayToDestinationLbl.backgroundColor = VDColors.textFieldBorder.color
         } else if RideStatus == .customerPickedUp {
-            completRideLbl.text = "Trip Started"
+           // completRideLbl.text = "Trip Started"
             arrivedRadioImg.image = VDImageAsset.radioEnable.asset
             onTheWayRadioImg.image = VDImageAsset.radioEnable.asset
             radioDestinationImg.image = VDImageAsset.radioDisable.asset
@@ -1055,7 +1063,10 @@ extension VDHomeVC {
         // TODO: - Draw polyline callback
         //
         homeViewModel.polylineCallBack = { polyline in
-            
+            self.turnInitiated = false
+            self.inaStep = false
+            self.selectedStepsModel = nil
+
             self.polyLinePath = polyline
             self.drawpolyLineForRide(polyline)
             // self.showPath(polyStr: polyline)
@@ -1354,11 +1365,10 @@ extension VDHomeVC {
 
     // Function to start the timer
     private func startTimerToUpdateDriverLocation() {
-        DispatchQueue.global(qos: .background).async {
             self.stopTimer()
-            delay(withSeconds: 2) {
-                self.timerToUpdateDriverLocation = Timer.scheduledTimer(timeInterval: self.timerIntervalToRefersh, target: self, selector: #selector(self.apiCallforRefreshNearbyDriver(_ :)), userInfo: nil, repeats: true)
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2)
+        {
+            self.timerToUpdateDriverLocation = Timer.scheduledTimer(timeInterval: self.timerIntervalToRefersh, target: self, selector: #selector(self.apiCallforRefreshNearbyDriver(_ :)), userInfo: nil, repeats: true)
         }
     }
 
@@ -1432,54 +1442,95 @@ extension VDHomeVC {
 
     // Step 2: Function to update the label when reaching the instruction step
     func updateInstructionLabelForCurrentLocation(currentLocation: CLLocation, steps: [Step]) {
-        if self.inaStep == false
-        {
-            for step  in steps {
-                
-                if distanceBetween( CLLocation(latitude: CLLocationDegrees(step.startLocation.lat ?? 0.0), longitude: CLLocationDegrees(step.startLocation.lng ?? 0.0)),currentLocation ) <= 50
-                {
+        // 1. Check if the user is between the start and end of the current step
+        if self.inaStep == false {
+            for step in steps {
+                if distanceBetween(
+                    CLLocation(latitude: CLLocationDegrees(step.startLocation.lat ?? 0.0),
+                              longitude: CLLocationDegrees(step.startLocation.lng ?? 0.0)),
+                    currentLocation
+                ) <= 50 {
                     self.inaStep = true
                     self.selectedStepsModel = step
                     print("You are between the start and end points." + step.htmlInstructions)
                     self.setPlainTextFromHTML(htmlString: step.htmlInstructions, label: self.instructionsText)
-                }
-                else {
-                    // Current location is not between start and end
+                } else {
                     print("You are not between the start and end points.")
                 }
             }
-            }
-        if self.inaStep == true
-        {
-            if distanceBetween( CLLocation(latitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lat ?? 0.0), longitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lng ?? 0.0)),currentLocation ) < 100
-            {
+        }
+
+        // 2. Turn initiation and progress
+        if self.inaStep == true {
+            // Check if the user is within 100 meters of the step's end location to give turn instructions
+            print(distanceBetween(
+                CLLocation(latitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lat ?? 0.0),
+                          longitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lng ?? 0.0)),
+                currentLocation
+            ))
+            
+            if distanceBetween(
+                CLLocation(latitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lat ?? 0.0),
+                          longitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lng ?? 0.0)),
+                currentLocation
+            ) <= 100 {
                 turnInitiated = true
-                if self.selectedStepsModel?.maneuver == "turn-right"
-                {
-                    giveSpeechInstruction( "Turn right")
-                }
-                if self.selectedStepsModel?.maneuver == "turn-left"
-                {
-                    giveSpeechInstruction( "Turn left")
-                }
                 
+                // Give speech instructions based on maneuver
+               
+             
             }
-            if turnInitiated == true
-            {
-                if distanceBetween( CLLocation(latitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lat ?? 0.0), longitude: CLLocationDegrees(self.selectedStepsModel?.endLocation.lng ?? 0.0)),currentLocation ) <= 50
-                {
+
+            // 3. After the turn is initiated, check for turn completion
+                if turnInitiated == true {
                     
-                }else
-                {
-                    speechSynthesizer.stopSpeaking(at: .immediate)
-                    turnInitiated = false
-                    self.inaStep = false
+                    // Get the current heading (course) from the user's location (in degrees)
+                    let userHeading = currentLocation.course
+
+                    // Now, calculate the expected heading based on the maneuver ("turn-right" or "turn-left")
+                    var expectedHeading: Double?
+
+                    if let maneuver = self.selectedStepsModel?.maneuver {
+                        switch maneuver {
+                        case "turn-right":
+                            // A right turn usually means a 90-degree turn clockwise
+                            expectedHeading = userHeading + 90
+                            
+                        case "turn-left":
+                            // A left turn usually means a 90-degree turn counterclockwise
+                            expectedHeading = userHeading - 90
+                            
+                        default:
+                            // If no turn is specified, the expected heading is just the current heading
+                            expectedHeading = userHeading
+                        }
+                        
+                        // Ensure the expectedHeading stays within the range of 0-360 degrees
+                        if expectedHeading! >= 360 {
+                            expectedHeading! -= 360
+                        } else if expectedHeading! < 0 {
+                            expectedHeading! += 360
+                        }
+                    }
+
+                    // Now that we have calculated the expected heading, you can compare it to the user's current heading
+                    if let expectedHeading = expectedHeading {
+                        // Define a tolerance range (e.g., 20 degrees) for completing the turn
+                        let headingDifference = abs(userHeading - expectedHeading)
+                        
+                        if headingDifference < 20 { // 20-degree tolerance for completing the turn
+                            print("Turn completed!")
+                            turnInitiated = false
+                            self.inaStep = false
+                            self.selectedStepsModel = nil
+                        }
+                    }
+
                 }
-                
-            }
         }
     }
     @objc private func apiCallforRefreshNearbyDriver(_ timer: TimeInterval) {
+       // SKToast.show(withMessage: "Refresh")
         var objc = [String:Any]()
         guard let trips = sharedAppDelegate.notficationDetails else { return }
         
@@ -1492,13 +1543,23 @@ extension VDHomeVC {
             objc["tripID"] = trips.trip_id
             
             if let currentLocation = LocationTracker.shared.lastLocation {
+                self.updateInstructionLabelForCurrentLocation(currentLocation: currentLocation, steps: self.stepsModel)
+//
+//              if previousLocationSaved != nil
+//                {
+//                  if (currentLocation.distance(from: previousLocationSaved!) < 10)
+//                  {
+//                      return
+//                  }
+//              }
+//                    
+//                    
+//                    previousLocationSaved = currentLocation;
                 let savedLocation = CLLocationCoordinate2D(latitude: (trips.drop_latitude ?? "0.0").double ?? 0.0, longitude: (trips.drop_longitude ?? "0.0").double ?? 0.0)
                 let calculatedDistance : Int = Int(GMSGeometryDistance(savedLocation, currentLocation.coordinate))
-                print(calculatedDistance)
-                self.updateInstructionLabelForCurrentLocation(currentLocation: currentLocation, steps: self.stepsModel)
                 //   if (calculatedDistance > 20) {
-               
-               
+                
+                
                 
                 objc["engagementId"] = tripID
                 if let operatorToken = ClientModel.currentClientData.operatorToken {
@@ -1516,17 +1577,17 @@ extension VDHomeVC {
                 //                    tripStartedAction()
                 var destination = CLLocationCoordinate2D(latitude: (trips.latitude ?? "0.0").double ?? 0.0, longitude: (trips.longitude ?? "0.0").double ?? 0.0)
                 
-//                if RideStatus != .none{
-//                    for (index, coordinate) in routeCoordinates.enumerated() {
-//                            let pointLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-//                            let distance = currentLocation.distance(from: pointLocation)
-//
-//                            if distance <= 100 && !announcedSteps.contains(index) { // Announce within 100 meters
-//                                announceTurn(at: index)
-//                                announcedSteps.insert(index)
-//                            }
-//                        }
-//                }
+                //                if RideStatus != .none{
+                //                    for (index, coordinate) in routeCoordinates.enumerated() {
+                //                            let pointLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                //                            let distance = currentLocation.distance(from: pointLocation)
+                //
+                //                            if distance <= 100 && !announcedSteps.contains(index) { // Announce within 100 meters
+                //                                announceTurn(at: index)
+                //                                announcedSteps.insert(index)
+                //                            }
+                //                        }
+                //                }
                 
                 
                 
@@ -1538,8 +1599,8 @@ extension VDHomeVC {
                 
                 var source = CLLocation(latitude: (trips.drop_latitude ?? "0.0").double ?? 0.0, longitude: (trips.drop_longitude ?? "0.0").double ?? 0.0)
                 
-               
-             //   let driverBearing = self.calculateBearing(from: currentLocation.coordinate, to: destination)
+                
+                //   let driverBearing = self.calculateBearing(from: currentLocation.coordinate, to: destination)
                 DispatchQueue.main.async {
                     self.getTurnInstructions()
                     //self.showMarker(Source: source.coordinate, Destination: destination)
@@ -1552,7 +1613,7 @@ extension VDHomeVC {
                 //                    return
                 //                }
                 
-            } else {
+             }else {
                 return
             }
         } else {
@@ -2186,11 +2247,11 @@ extension VDHomeVC {
                 speechSynthesizer.stopSpeaking(at: .immediate)
                 // Determine if it's a left or right turn or continue straight
                 if angleDifference > 15 && angleDifference < 180 {
-                //    giveSpeechInstruction("Turn left")
+                    giveSpeechInstruction("Turn right")
                 } else if angleDifference < -15 && angleDifference > -180 {
-                 //   giveSpeechInstruction("Turn right")
+                    giveSpeechInstruction("Turn left")
                 } else {
-                    //giveSpeechInstruction("Continue straight")
+                 // giveSpeechInstruction("Continue straight")
                 }
             }
         }
@@ -2432,10 +2493,11 @@ extension VDHomeVC{
         let utterance = AVSpeechUtterance(string: direction)
           utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
           utterance.rate = 0.5
-
-          if !speechSynthesizer.isSpeaking {
-              speechSynthesizer.speak(utterance)
-          }
+        if muted == false{
+            if !speechSynthesizer.isSpeaking {
+                speechSynthesizer.speak(utterance)
+            }
+        }
     }
     
     func getNextPolylineCoordinate(currentCoordinates: CLLocationCoordinate2D, polylineCoordinates: [CLLocationCoordinate2D]) -> CLLocationCoordinate2D? {
@@ -2467,9 +2529,12 @@ extension VDHomeVC{
     }
     
     func giveSpeechInstruction(_ instruction: String) {
+        if muted == false{
             let speechUtterance = AVSpeechUtterance(string: instruction)
             speechSynthesizer.speak(speechUtterance)
         isSpeaking = true
+
+        }
         }
     
     func decodePolyline(_ encodedPolyline: String) -> [CLLocationCoordinate2D]? {

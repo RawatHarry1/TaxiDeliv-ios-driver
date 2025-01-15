@@ -35,7 +35,9 @@ class VDSideMenuVC: VDBaseVC {
             self.sideMenuController?.rootViewController = VDAboutAppVC.create(urls)
         }
     }
-    
+//    override func viewDidLoad() {
+//        self.navigationController?.navigationBar.isHidden = true
+//    }
     override func viewWillAppear(_ animated: Bool) {
         reloadData()
     }
@@ -102,7 +104,7 @@ extension VDSideMenuVC: UITableViewDelegate, UITableViewDataSource {
         sideMenuController.hideLeftView()
         switch indexPath.row {
         case 0:
-            sideMenuController.rootViewController = VDHomeVC.create()
+            sideMenuController.rootViewController = UINavigationController(rootViewController: VDHomeVC.create())
         case 1:
            
           sideMenuController.rootViewController = VDAccountVC.create()
