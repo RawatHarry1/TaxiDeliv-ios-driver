@@ -96,7 +96,7 @@ extension VDSideMenuVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 7{
             return 0
         }
-        return 60
+        return 50
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

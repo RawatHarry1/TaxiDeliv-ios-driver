@@ -58,9 +58,9 @@ extension VDNotificationVC: UITableViewDelegate, UITableViewDataSource {
         return cell ?? UITableViewCell()
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 74
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 74
+//    }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "VDNotificationHeaderCell") as? VDNotificationHeaderCell

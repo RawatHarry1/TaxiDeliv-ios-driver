@@ -168,7 +168,7 @@ extension VDHomeViewModel {
             attributes["engagementId"] = engagementID
             attributes["customerId"] = customerId
             attributes["cancellationReason"] = cancellationReason
-            attributes["by_operator"] = 1
+            attributes["by_operator"] = 0
             return attributes
         }
 

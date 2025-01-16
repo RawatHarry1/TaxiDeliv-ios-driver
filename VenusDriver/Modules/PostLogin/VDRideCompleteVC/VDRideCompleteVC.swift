@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreLocation
-
+import SDWebImage
 class VDRideCompleteVC: VDBaseVC {
     var objDelivery_packages = [DeliveryPackageData]()
     @IBOutlet weak var packageTblHeader: UIView!
@@ -85,7 +85,7 @@ class VDRideCompleteVC: VDBaseVC {
         }
         if screenTyoe == 0 {
             btnAccept.isHidden = false
-            self.btnAccept.setTitle("Rate the customer", for: .normal)
+            self.btnAccept.setTitle("Rate customer", for: .normal)
             updateEndRidePopUp()
         } else {
             //btnAccept.isHidden = true
@@ -200,13 +200,14 @@ class VDRideCompleteVC: VDBaseVC {
         if let notificationModel = sharedAppDelegate.notficationDetails {
             if (notificationModel.status == notificationTypes.new_ride_request.rawValue) || (notificationModel.status == rideStatus.acceptedRide.rawValue) {
                 if let urlStr = notificationModel.customer_image {
-                    self.customerImg.setImage(withUrl: urlStr) { status, image in
-                        if status {
-                            if let img = image {
-                                self.customerImg.image = img
-                            }
-                        }
-                    }
+                    self.customerImg.sd_setImage(with: URL(string: urlStr), placeholderImage: VDImageAsset.imgPlaceholder.asset, options: [.refreshCached, .highPriority], completed: nil)
+//                    self.customerImg.setImage(withUrl: urlStr) { status, image in
+//                        if status {
+//                            if let img = image {
+//                                self.customerImg.image = img
+//                            }
+//                        }
+//                    }
                 } else {
                     self.customerImg.image = VDImageAsset.imgPlaceholder.asset
                 }
@@ -258,13 +259,7 @@ class VDRideCompleteVC: VDBaseVC {
 //                self.timeLbl.text = endRide.driver_ride_date ?? ""
             }
             if let urlStr = endRide.customer_image {
-                self.customerImg.setImage(withUrl: urlStr) { status, image in
-                    if status {
-                        if let img = image {
-                            self.customerImg.image = img
-                        }
-                    }
-                }
+                self.customerImg.sd_setImage(with: URL(string: urlStr), placeholderImage: VDImageAsset.imgPlaceholder.asset, options: [.refreshCached, .highPriority], completed: nil)
             } else {
                 self.customerImg.image = VDImageAsset.imgPlaceholder.asset
             }
@@ -316,7 +311,7 @@ class VDRideCompleteVC: VDBaseVC {
     }
     
     func faliurAlert(strg: String){
-        let refreshAlert = UIAlertController(title: "Venus Taxi", message: strg, preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: "", message: strg, preferredStyle: UIAlertController.Style.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             RideStatus = .none

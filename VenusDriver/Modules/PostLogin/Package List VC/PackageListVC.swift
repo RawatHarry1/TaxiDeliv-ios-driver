@@ -25,7 +25,7 @@ class PackageListVC: UIViewController, CollectionViewCellDelegate {
         btnContinue.alpha = 0.4
         btnContinue.isEnabled = false
         if RideStatus == .markArrived {
-           
+            
         }
     }
     
@@ -46,16 +46,16 @@ class PackageListVC: UIViewController, CollectionViewCellDelegate {
             if cancel {
                 
             }
-     
+            
         }
         vc.sucessCallback = { sucess in
             if sucess {
                 guard let tripID = sharedAppDelegate.notficationDetails?.trip_id else {return}
-               guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
+                guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
                 self.viewModel.cancelRideApi(tripID, customerID, reason)
-              //  SKToast.show(withMessage: "Ride has been Cancelled by you.")
+                //  SKToast.show(withMessage: "Ride has been Cancelled by you.")
                 self.navigationController?.popToRootViewController(animated: true)
-               
+                
             }
         }
         self.present(vc, animated: true)
@@ -64,7 +64,7 @@ class PackageListVC: UIViewController, CollectionViewCellDelegate {
         //            guard let tripID = sharedAppDelegate.notficationDetails?.trip_id else {return}
         //            guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
         //            self.viewModel.cancelRideApi(tripID, customerID, reason)
-    
+        
         //
         //        })
         //        alert.addAction(action)
@@ -119,29 +119,29 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                 cell.imagesStackView.isHidden = false
                 self.btnContinue.alpha = 1
                 self.btnContinue.isEnabled = true
-
+                
             }
             else
             {
                 if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 5{
-        
+                    
                     cell.btnAccept.isEnabled = false
                     cell.btnreject.isEnabled = false
                     cell.btnAccept.alpha = 0.4
                     cell.btnreject.alpha = 0.4
-        
+                    
                 }
                 else{
-                if self.imgArr.count  > 0{
-                    cell.btnAccept.isEnabled = false
-                    cell.btnreject.isEnabled = false
-                    cell.btnAccept.alpha = 0.4
-                    cell.btnreject.alpha = 0.4
-                    cell.imagesArr = self.imgArr
-                    cell.collectionViewImages.reloadData()
-                    cell.imagesStackView.isHidden = false
-                }else{
-                 
+                    if self.imgArr.count  > 0{
+                        cell.btnAccept.isEnabled = false
+                        cell.btnreject.isEnabled = false
+                        cell.btnAccept.alpha = 0.4
+                        cell.btnreject.alpha = 0.4
+                        cell.imagesArr = self.imgArr
+                        cell.collectionViewImages.reloadData()
+                        cell.imagesStackView.isHidden = false
+                    }else{
+                        
                         cell.btnAccept.isEnabled = true
                         cell.btnreject.isEnabled = true
                         cell.btnAccept.alpha = 1
@@ -150,7 +150,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                     }
                 }
             }
-         
+            
             cell.deliveryStackView.isHidden = true
             cell.btnAccept.setTitle("ACCEPT", for: .normal)
             cell.btnreject.setTitle("REJECT", for: .normal)
@@ -175,7 +175,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                     cell.deliveryStackView.isHidden = false
                     self.btnContinue.alpha = 1
                     self.btnContinue.isEnabled = true
-
+                    
                 }
                 else
                 {
@@ -188,8 +188,8 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                         cell.collectionVwDropOffImgs.reloadData()
                         cell.deliveryStackView.isHidden = false
                     }else{
-                          
-                          
+                        
+                        
                         cell.btnAccept.isEnabled = true
                         cell.btnreject.isEnabled = true
                         cell.btnAccept.alpha = 1
@@ -199,7 +199,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                     }
                 }
                 cell.imagesStackView.isHidden = false
-               
+                
                 cell.mainStack.isHidden = false
             }
             cell.btnAccept.setTitle("DELIVERED", for: .normal)
@@ -212,7 +212,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
             vc.acceptTripCallBack = { imageArr in
                 print(imageArr)
                 if imageArr.count != 0{
- 
+                    
                     self.imgArr = imageArr
                     self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:"",AcceptTrip:true,comerFromMarkArive:self.comesFromMardArrive, completion: {
                         
@@ -263,173 +263,173 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
             vc.cancelTripCallBack = { imageArr,reasonStr in
                 print(imageArr)
                 print(reasonStr)
-              
-                    
-                    if self.comesFromMardArrive == true{
-                        cell.imagesStackView.isHidden = false
-                        cell.imagesArr = imageArr
-                        cell.collectionViewImages.reloadData()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
-                            
-                            
-                            self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:reasonStr,AcceptTrip:false,comerFromMarkArive:true, completion: {
-                                
-                                
-  
-                                if self.viewModal.objPackageStatusModal?.message ?? ""  != "status updated successfully"{
-                          
-                                    let story = UIStoryboard(name: "PostLogin", bundle:nil)
-                                    let vc = story.instantiateViewController(withIdentifier: "VDLogoutVC") as! VDLogoutVC
-                                    vc.descriptionText = self.viewModal.objPackageStatusModal?.message ?? ""
-                                    vc.rejectPackage = true
-                                    vc.modalPresentationStyle = .overFullScreen
-                                    vc.cancelCallBack = { cancel in
-                                        if cancel {
-                                            
-                                        }
-                                 
-                                    }
-                                    vc.sucessCallback = { sucess in
-                                        if sucess {
-                                            cell.btnAccept.isEnabled = false
-                                            cell.btnreject.isEnabled = false
-                                            cell.btnAccept.alpha = 0.4
-                                            cell.btnreject.alpha = 0.4
-                                            guard let tripID = sharedAppDelegate.notficationDetails?.trip_id else {return}
-                                           guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
-                                            self.viewModel.cancelRideApi(tripID, customerID, reasonStr)
-                                          //  SKToast.show(withMessage: "Ride has been Cancelled by you.")
-                                            self.navigationController?.popToRootViewController(animated: true)
-                                           
-                                        }
-                                    }
-                                    self.present(vc, animated: true)
-                                 
-                                }
-                                else
-                                {
-                                    self.deliveryPackages?[indexPath.row].delivery_status = 5
-                                    cell.btnAccept.isEnabled = false
-                                    cell.btnreject.isEnabled = false
-                                    cell.btnAccept.alpha = 0.4
-                                    cell.btnreject.alpha = 0.4
-                                }
-                                
-                            
-                                //  if imageArr.count != 0{
-                                if self.comesFromMardArrive == true{
-                                    if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
-                                        self.btnContinue.alpha = 1
-                                        self.btnContinue.isEnabled = true
-                                        if imageArr.count != 0{
-                                            self.imgArr = imageArr
-                                            self.tblView.reloadRows(at: [indexPath], with: .automatic)
-                                        }
-                                      
-                                    }
-                                }else{
-                                    if self.viewModal.objPackageStatusModal?.data?.can_end == 1{
-                                        self.btnContinue.alpha = 1
-                                        self.btnContinue.isEnabled = true
-                                        if imageArr.count != 0{
-                                            self.deliveryImages = imageArr
-                                            self.tblView.reloadRows(at: [indexPath], with: .automatic)
-                                        }
-                                    }
-                                }
-                            })
-                        }
-                    }else{
-                        cell.deliveryStackView.isHidden = false
-                        cell.deliveryImagesArr = imageArr
-                        cell.collectionVwDropOffImgs.reloadData()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
-                            print("done")
-                            
-                            self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:reasonStr,AcceptTrip:false,comerFromMarkArive: false, completion: {
-                                if self.viewModal.objPackageStatusModal?.message ?? ""  != "status updated successfully"{
-                          
-                                    let story = UIStoryboard(name: "PostLogin", bundle:nil)
-                                    let vc = story.instantiateViewController(withIdentifier: "VDLogoutVC") as! VDLogoutVC
-                                    vc.descriptionText = self.viewModal.objPackageStatusModal?.message ?? ""
-                                    vc.rejectPackage = true
-                                    vc.modalPresentationStyle = .overFullScreen
-                                    vc.cancelCallBack = { cancel in
-                                        if cancel {
-                                            
-                                        }
-                                 
-                                    }
-                                    vc.sucessCallback = { sucess in
-                                        if sucess {
-                                            cell.btnAccept.isEnabled = false
-                                            cell.btnreject.isEnabled = false
-                                            cell.btnAccept.alpha = 0.4
-                                            cell.btnreject.alpha = 0.4
-                                            guard let tripID = sharedAppDelegate.notficationDetails?.trip_id else {return}
-                                           guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
-                                            self.viewModel.cancelRideApi(tripID, customerID, reasonStr)
-                                          //  SKToast.show(withMessage: "Ride has been Cancelled by you.")
-                                            self.navigationController?.popToRootViewController(animated: true)
-                                           
-                                        }
-                                    }
-                                    self.present(vc, animated: true)
-                                 
-                                }
-                                else
-                                {
-                                    cell.btnAccept.isEnabled = false
-                                    cell.btnreject.isEnabled = false
-                                    cell.btnAccept.alpha = 0.4
-                                    cell.btnreject.alpha = 0.4
-                                }
-                                if self.comesFromMardArrive == true{
-                                    if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
-                                        self.btnContinue.alpha = 1
-                                        self.btnContinue.isEnabled = true
-                                        if imageArr.count != 0{
-                                            self.imgArr = imageArr
-                                            self.tblView.reloadRows(at: [indexPath], with: .automatic)
-                                        }
-                                    }
-                                }else{
-                                    if self.viewModal.objPackageStatusModal?.data?.can_end == 1{
-                                        self.btnContinue.alpha = 1
-                                        self.btnContinue.isEnabled = true
-                                        if imageArr.count != 0{
-                                            self.deliveryImages = imageArr
-                                            self.tblView.reloadRows(at: [indexPath], with: .automatic)
-                                        }
-                                    }
-                                }
-                            })
-                        }
+                
+                
+                if self.comesFromMardArrive == true{
+                    cell.imagesStackView.isHidden = false
+                    cell.imagesArr = imageArr
+                    cell.collectionViewImages.reloadData()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
                         
                         
+                        self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:reasonStr,AcceptTrip:false,comerFromMarkArive:true, completion: {
+                            
+                            
+                            
+                            if self.viewModal.objPackageStatusModal?.data?.message  != nil{
+                                
+                                let story = UIStoryboard(name: "PostLogin", bundle:nil)
+                                let vc = story.instantiateViewController(withIdentifier: "VDLogoutVC") as! VDLogoutVC
+                                vc.descriptionText = self.viewModal.objPackageStatusModal?.message ?? ""
+                                vc.rejectPackage = true
+                                vc.modalPresentationStyle = .overFullScreen
+                                vc.cancelCallBack = { cancel in
+                                    if cancel {
+                                        
+                                    }
+                                    
+                                }
+                                vc.sucessCallback = { sucess in
+                                    if sucess {
+                                        cell.btnAccept.isEnabled = false
+                                        cell.btnreject.isEnabled = false
+                                        cell.btnAccept.alpha = 0.4
+                                        cell.btnreject.alpha = 0.4
+                                        guard let tripID = sharedAppDelegate.notficationDetails?.trip_id else {return}
+                                        guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
+                                        self.viewModel.cancelRideApi(tripID, customerID, reasonStr)
+                                        //  SKToast.show(withMessage: "Ride has been Cancelled by you.")
+                                        self.navigationController?.popToRootViewController(animated: true)
+                                        
+                                    }
+                                }
+                                self.present(vc, animated: true)
+                                
+                            }
+                            else
+                            {
+                                self.deliveryPackages?[indexPath.row].delivery_status = 5
+                                cell.btnAccept.isEnabled = false
+                                cell.btnreject.isEnabled = false
+                                cell.btnAccept.alpha = 0.4
+                                cell.btnreject.alpha = 0.4
+                            }
+                            
+                            
+                            //  if imageArr.count != 0{
+                            if self.comesFromMardArrive == true{
+                                if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
+                                    self.btnContinue.alpha = 1
+                                    self.btnContinue.isEnabled = true
+                                    if imageArr.count != 0{
+                                        self.imgArr = imageArr
+                                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
+                                    }
+                                    
+                                }
+                            }else{
+                                if self.viewModal.objPackageStatusModal?.data?.can_end == 1{
+                                    self.btnContinue.alpha = 1
+                                    self.btnContinue.isEnabled = true
+                                    if imageArr.count != 0{
+                                        self.deliveryImages = imageArr
+                                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
+                                    }
+                                }
+                            }
+                        })
                     }
-                    self.tblView.reloadData()
+                }else{
+                    cell.deliveryStackView.isHidden = false
+                    cell.deliveryImagesArr = imageArr
+                    cell.collectionVwDropOffImgs.reloadData()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
+                        print("done")
+                        
+                        self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:reasonStr,AcceptTrip:false,comerFromMarkArive: false, completion: {
+                            if self.viewModal.objPackageStatusModal?.data?.message  != nil{
+                                
+                                let story = UIStoryboard(name: "PostLogin", bundle:nil)
+                                let vc = story.instantiateViewController(withIdentifier: "VDLogoutVC") as! VDLogoutVC
+                                vc.descriptionText = self.viewModal.objPackageStatusModal?.message ?? ""
+                                vc.rejectPackage = true
+                                vc.modalPresentationStyle = .overFullScreen
+                                vc.cancelCallBack = { cancel in
+                                    if cancel {
+                                        
+                                    }
+                                    
+                                }
+                                vc.sucessCallback = { sucess in
+                                    if sucess {
+                                        cell.btnAccept.isEnabled = false
+                                        cell.btnreject.isEnabled = false
+                                        cell.btnAccept.alpha = 0.4
+                                        cell.btnreject.alpha = 0.4
+                                        guard let tripID = sharedAppDelegate.notficationDetails?.trip_id else {return}
+                                        guard let customerID = sharedAppDelegate.notficationDetails?.customer_id else {return}
+                                        self.viewModel.cancelRideApi(tripID, customerID, reasonStr)
+                                        //  SKToast.show(withMessage: "Ride has been Cancelled by you.")
+                                        self.navigationController?.popToRootViewController(animated: true)
+                                        
+                                    }
+                                }
+                                self.present(vc, animated: true)
+                                
+                            }
+                            else
+                            {
+                                cell.btnAccept.isEnabled = false
+                                cell.btnreject.isEnabled = false
+                                cell.btnAccept.alpha = 0.4
+                                cell.btnreject.alpha = 0.4
+                            }
+                            if self.comesFromMardArrive == true{
+                                if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
+                                    self.btnContinue.alpha = 1
+                                    self.btnContinue.isEnabled = true
+                                    if imageArr.count != 0{
+                                        self.imgArr = imageArr
+                                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
+                                    }
+                                }
+                            }else{
+                                if self.viewModal.objPackageStatusModal?.data?.can_end == 1{
+                                    self.btnContinue.alpha = 1
+                                    self.btnContinue.isEnabled = true
+                                    if imageArr.count != 0{
+                                        self.deliveryImages = imageArr
+                                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
+                                    }
+                                }
+                            }
+                        })
+                    }
                     
                     
-                    
-               // }
+                }
+                self.tblView.reloadData()
+                
+                
+                
+                // }
             }
             self.present(vc, animated: true)
             
         }
-//        if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 5{
-//        
-//            cell.btnAccept.isEnabled = false
-//            cell.btnreject.isEnabled = false
-//            cell.btnAccept.alpha = 0.4
-//            cell.btnreject.alpha = 0.4
-//      
-//        }else{
-//            cell.btnAccept.isEnabled = true
-//            cell.btnreject.isEnabled = true
-//            cell.btnAccept.alpha = 1
-//            cell.btnreject.alpha = 1
-//        }
+        //        if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 5{
+        //
+        //            cell.btnAccept.isEnabled = false
+        //            cell.btnreject.isEnabled = false
+        //            cell.btnAccept.alpha = 0.4
+        //            cell.btnreject.alpha = 0.4
+        //
+        //        }else{
+        //            cell.btnAccept.isEnabled = true
+        //            cell.btnreject.isEnabled = true
+        //            cell.btnAccept.alpha = 1
+        //            cell.btnreject.alpha = 1
+        //        }
         return cell
     }
     

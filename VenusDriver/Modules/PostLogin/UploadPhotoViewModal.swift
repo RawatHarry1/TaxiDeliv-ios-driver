@@ -18,6 +18,7 @@ struct PackageStatusModal: Codable{
 struct MessageData: Codable{
     var can_start: Int?
     var can_end: Int?
+    var message: String?
 }
 
 class UploadPhotoViewModal {

@@ -51,7 +51,7 @@ class NeedHelpVC: UIViewController, UITextViewDelegate {
     }
     
     func alert(){
-        let refreshAlert = UIAlertController(title: "Venus Taxi", message: "Please enter feedback.", preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: "", message: "Please enter feedback.", preferredStyle: UIAlertController.Style.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
           print("Handle Ok logic here")
@@ -62,7 +62,7 @@ class NeedHelpVC: UIViewController, UITextViewDelegate {
     }
     
     func SubmitAlert(){
-        let refreshAlert = UIAlertController(title: "Venus Taxi", message: "Your feedback submitted successfully!.", preferredStyle: UIAlertController.Style.alert)
+        let refreshAlert = UIAlertController(title: "", message: "Your feedback submitted successfully!.", preferredStyle: UIAlertController.Style.alert)
 
         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
           print("Handle Ok logic here")

@@ -96,7 +96,7 @@ extension PackageThreeCell: UICollectionViewDelegate, UICollectionViewDataSource
         if collectionView == collectionViewImages
         {
 
-            urlStr = objDelivery_packages?.package_image_while_pickup?[indexPath.row] ?? ""
+            urlStr = objDelivery_packages?.package_images_by_customer?[indexPath.row] ?? ""
        
         }
         else if collectionView == collectionViewPickup

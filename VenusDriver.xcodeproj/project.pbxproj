@@ -571,6 +571,7 @@
 		4F1557D6F752152A793303BB /* Pods_VenusDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4646EDF69101DF2D03A7CA7E /* Pods_VenusDriver.framework */; };
 		6FF438039530F1B147E201A2 /* Pods_VenusDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4646EDF69101DF2D03A7CA7E /* Pods_VenusDriver.framework */; };
 		A0E8A714081FA83C2C78A645 /* Pods_SaloneRide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFAB59E297552D8E5EABC69 /* Pods_SaloneRide.framework */; };
+		BDA3181B2D38EB2E00EBA84B /* SlideToActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA318192D38E97F00EBA84B /* SlideToActionButton.swift */; };
 		BDE747F62D366FEF005B04B5 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE747F52D366FEF005B04B5 /* StepsModel.swift */; };
 		CF08C7A62C819B35007A981A /* CardsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C79D2C819B35007A981A /* CardsModal.swift */; };
 		CF08C7A72C819B35007A981A /* CardsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C79D2C819B35007A981A /* CardsModal.swift */; };
@@ -947,6 +948,7 @@
 		7CFAB59E297552D8E5EABC69 /* Pods_SaloneRide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaloneRide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		821362B34291289AD6706CA7 /* Pods-SaloneRide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaloneRide.debug.xcconfig"; path = "Target Support Files/Pods-SaloneRide/Pods-SaloneRide.debug.xcconfig"; sourceTree = "<group>"; };
 		B39F1E5CBDB467DD5506C603 /* Pods-SaloneRide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaloneRide.release.xcconfig"; path = "Target Support Files/Pods-SaloneRide/Pods-SaloneRide.release.xcconfig"; sourceTree = "<group>"; };
+		BDA318192D38E97F00EBA84B /* SlideToActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideToActionButton.swift; sourceTree = "<group>"; };
 		BDE747F52D366FEF005B04B5 /* StepsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
 		CF08C79D2C819B35007A981A /* CardsModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsModal.swift; sourceTree = "<group>"; };
 		CF08C79E2C819B35007A981A /* ConfirmCardModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCardModal.swift; sourceTree = "<group>"; };
@@ -1507,6 +1509,7 @@
 				0C2887FE2A35C22C009436BA /* VDHomeVC.swift */,
 				0CBBB0DE2A35CC0100F1EDD0 /* VDHomeVC+MapView.swift */,
 				0CBBB0E02A35CCDA00F1EDD0 /* LocationTracker.swift */,
+				BDA318192D38E97F00EBA84B /* SlideToActionButton.swift */,
 			);
 			path = VDHomeVC;
 			sourceTree = "<group>";
@@ -3300,6 +3303,7 @@
 				0C01A5C72A6DD37400B98ADF /* LoginModel.swift in Sources */,
 				CF89ED272C367AD400DC7125 /* NeedHelpVC.swift in Sources */,
 				0C4940B62AB038F700A6E35F /* WebServices+Vehicles.swift in Sources */,
+				BDA3181B2D38EB2E00EBA84B /* SlideToActionButton.swift in Sources */,
 				0CC9583D2B828D9A00717A92 /* LogHelper.swift in Sources */,
 				0CD15E762A6AD65600123A1C /* VDOtpVC.swift in Sources */,
 				CF3127272C9C404E00E8F2BE /* TypeCollectionCell.swift in Sources */,

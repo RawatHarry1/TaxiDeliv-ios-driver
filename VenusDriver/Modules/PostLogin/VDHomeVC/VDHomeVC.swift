@@ -15,7 +15,8 @@ import AVFoundation
 var navigateToChatOnce = false
 var navigateToChat = false
 
-class VDHomeVC: VDBaseVC {
+class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate {
+   
     // MARK: - Outlets
     @IBOutlet weak var heightTopView: NSLayoutConstraint!
     @IBOutlet weak private(set) var availabilityButton: UIButton!
@@ -46,12 +47,12 @@ class VDHomeVC: VDBaseVC {
     @IBOutlet weak var pickUpLocationLbl: UILabel!
     @IBOutlet weak var dropLocationLbl: UILabel!
     
+    @IBOutlet weak var viewInstructions: UIView!
     //Verification Popup
     @IBOutlet weak var verificationPopUpIconImg: UIImageView!
     @IBOutlet weak var verificationPopUpMessageLbl: UILabel!
     @IBOutlet weak var verificationPopUpActionBtn: VDButton!
 
-    @IBOutlet weak var viewDriverOnRide: UIView!
     //Timer to update location
     private var timerToUpdateDriverLocation: Timer?
     private let timerIntervalToRefersh: TimeInterval = 4.0
@@ -136,16 +137,28 @@ class VDHomeVC: VDBaseVC {
         
         NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
+    
+    
+    @IBOutlet weak var slideToActionBtn: SlideToActionButton!
+    
     func showOnRideView()
     {
-        self.viewDriverOnRide.isHidden = false
+        self.btnChat.isHidden = false
+        self.btnCall.isHidden = UserModel.currentUser.login?.service_type == 1 ? true : false
+        self.hideShowRideStatusView.isHidden = false
+        self.viewInstructions.isHidden = false
+        self.btnSound.isHidden = false
         self.topView.isHidden = true
         heightTopView.constant = 0
         
     }
     func hideOnRideView()
     {
-        self.viewDriverOnRide.isHidden = true
+        self.btnChat.isHidden = true
+        self.btnCall.isHidden = true
+        self.hideShowRideStatusView.isHidden = true
+        self.viewInstructions.isHidden = true
+        self.btnSound.isHidden = true
         self.topView.isHidden = false
         heightTopView.constant = 44
     }
@@ -163,7 +176,7 @@ class VDHomeVC: VDBaseVC {
     }
     
     @IBAction func btnSoundAct(_ sender: UIButton) {
-        if btnSound.image(for: .normal) == UIImage(named: "sound")
+        if muted == false
         {
             btnSound.setImage(UIImage(named: "mute"), for: .normal)
             muted = true
@@ -245,7 +258,7 @@ class VDHomeVC: VDBaseVC {
           else{
               lblHideShowStatus.text = "View Map"
               self.rideStatusView.isHidden = false
-              self.btnbottom.constant = 350
+              self.btnbottom.constant = UserModel.currentUser.login?.service_type == 1 ? 300  : 350
               mapBottomInsets = 400
               let mapInsets = UIEdgeInsets(top: 150, left: 30, bottom: CGFloat(mapBottomInsets), right: 30)
               mapView.padding = mapInsets
@@ -256,6 +269,8 @@ class VDHomeVC: VDBaseVC {
     var countMain = 0;
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+      
+        slideToActionBtn.delegate = self
         self.mapView.isMyLocationEnabled = false
         checkMapType()
         UIApplication.shared.isIdleTimerDisabled = true
@@ -266,7 +281,7 @@ class VDHomeVC: VDBaseVC {
         self.hideShowRideStatusView.addGestureRecognizer(tapGesture)
 
         btnSound.addShadowViewOne()
-        viewDriverOnRide.addShadowViewOne()
+        hideShowRideStatusView.addShadowViewOne()
         loginWithAccessToken()
     //  self.homeViewModel.fetchAvailableRide()
         checkLocationServices()
@@ -297,7 +312,7 @@ class VDHomeVC: VDBaseVC {
         {
             self.mapView.clear()
         }
-      if   RideStatus != .availableRide &&  cancelRideBtn.title(for: .normal) != "Complete Trip"
+        if   RideStatus != .availableRide &&  RideStatus != .rideCompleted
         {
         print(cancelRideBtn.title(for: .normal))
           self.homeViewModel.fetchAvailableRide()
@@ -319,10 +334,10 @@ class VDHomeVC: VDBaseVC {
                 updateAvailableRidePopUp()
 
             } else if notificationModel.status == rideStatus.markArrived.rawValue || notificationModel.status == rideStatus.acceptedRide.rawValue || notificationModel.status == rideStatus.customerPickedUp.rawValue{
-//               if cancelRideBtn.title(for: .normal) != "Complete Trip"
-//                {
+               if RideStatus != .rideCompleted
+                {
                    homeViewModel.fetchAvailableRide()
-//                }
+                }
                 
                 updateUIAccordingtoRideStatus()
               
@@ -419,7 +434,144 @@ class VDHomeVC: VDBaseVC {
         }
         
     }
+    func didFinishSliding() {
+        slideToActionBtn.reset();
+            if RideStatus == .none{
+                self.availabilityButton.isHidden = false
+            }else{
+                self.availabilityButton.isHidden = true
+            }
+            if RideStatus == .acceptedRide {
+                
+    //            if UserModel.currentUser.login?.service_type == 1 {
+                    
+                    if let tripID = sharedAppDelegate.notficationDetails?.trip_id  {
+                        var att = [String:Any]()
+                        att["tripId"] = tripID
+                        att["customerId"] = sharedAppDelegate.notficationDetails?.customer_id ?? ""
 
+                        if let locationCreds = LocationTracker.shared.lastLocation {
+                            att["pickupLongitude"] = locationCreds.coordinate.longitude
+                            att["pickupLatitude"] = locationCreds.coordinate.latitude
+                        }
+                        homeViewModel.markArrivedTrip(att)
+                    }
+                    
+    //            }else{
+    //                let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
+    //                let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
+    //                vc.comesFromMardArrive = true
+    //                vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
+    //                vc.didPressContinue = {
+    //                    if let tripID = sharedAppDelegate.notficationDetails?.trip_id  {
+    //                        var att = [String:Any]()
+    //                        att["tripId"] = tripID
+    //                        att["customerId"] = sharedAppDelegate.notficationDetails?.customer_id ?? ""
+    //
+    //                        if let locationCreds = LocationTracker.shared.lastLocation {
+    //                            att["pickupLongitude"] = locationCreds.coordinate.longitude
+    //                            att["pickupLatitude"] = locationCreds.coordinate.latitude
+    //                        }
+    //                        self.homeViewModel.markArrivedTrip(att)
+    //                    }
+    //
+    //                }
+    //                self.navigationController?.pushViewController(vc, animated: true)
+    //            }
+                
+                
+           
+            } else if RideStatus == .markArrived {
+                if UserModel.currentUser.login?.service_type == 1 {
+                    var att = [String:Any]()
+                    att["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+                    att["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+                    
+                    if let locationCreds = LocationTracker.shared.lastLocation {
+                        att["pickupLongitude"] = locationCreds.coordinate.longitude
+                        att["pickupLatitude"] = locationCreds.coordinate.latitude
+                    } else {
+                        SKToast.show(withMessage: "Not able to fetch your location.")
+                        return
+                    }
+                    homeViewModel.startTrip(att)
+                }
+                else
+                {
+                
+                        let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
+                        vc.comesFromMardArrive = true
+                        vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
+                        vc.didPressContinue = {
+                            if let tripID = sharedAppDelegate.notficationDetails?.trip_id  {
+                                var att = [String:Any]()
+                                att["tripId"] = tripID
+                                att["customerId"] = sharedAppDelegate.notficationDetails?.customer_id ?? ""
+                                
+                                if let locationCreds = LocationTracker.shared.lastLocation {
+                                    att["pickupLongitude"] = locationCreds.coordinate.longitude
+                                    att["pickupLatitude"] = locationCreds.coordinate.latitude
+                                }
+                                self.homeViewModel.startTrip(att)
+                            }
+                            
+                        }
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                
+                
+            } else {
+                if cancelRideBtn.title(for: .normal)! == "Reach Destination"
+                {
+                    cancelRideBtn.setTitle("Complete Trip", for: .normal)
+                    slideToActionBtn.setLblText("Complete Trip")
+                  //  Best Route
+                    setCompleteLbl(string: "Complete Trip")
+                    RideStatus = .rideCompleted
+                   
+                }
+                else
+                {
+                    if UserModel.currentUser.login?.service_type == 1 {
+                        var attributes = [String: Any]()
+                        if let locationCreds = LocationTracker.shared.lastLocation {
+                            attributes["dropLatitude"] = locationCreds.coordinate.latitude
+                            attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                        }
+                        attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+                        attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+                        attributes["rideTime"] = 12
+                        attributes["waitTime"] = 3
+                        homeViewModel.endRideApi(attributes)
+                    }else{
+                        let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
+                        vc.comesFromMardArrive = false
+                        vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
+                        vc.didPressContinue = {
+                            
+                            var attributes = [String: Any]()
+                            if let locationCreds = LocationTracker.shared.lastLocation {
+                                attributes["dropLatitude"] = locationCreds.coordinate.latitude
+                                attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                            }
+                            attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+                            attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+                            attributes["rideTime"] = 12
+                            attributes["waitTime"] = 3
+                            self.homeViewModel.endRideApi(attributes)
+                            
+                            
+                        }
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        
+                    }
+                }
+               
+            }
+        }
+    
     @objc func cancelRideOnSwipe() {
         if RideStatus == .none{
             self.availabilityButton.isHidden = false
@@ -510,8 +662,11 @@ class VDHomeVC: VDBaseVC {
             if cancelRideBtn.title(for: .normal)! == "Reach Destination"
             {
                 cancelRideBtn.setTitle("Complete Trip", for: .normal)
+                slideToActionBtn.setLblText("Complete Trip")
               //  Best Route
                 setCompleteLbl(string: "Complete Trip")
+                RideStatus = .rideCompleted
+               
             }
             else
             {
@@ -713,8 +868,9 @@ extension VDHomeVC {
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = false
             self.showOnRideView()
-            self.btnbottom.constant = 350
+            self.btnbottom.constant = UserModel.currentUser.login?.service_type == 1 ? 300  : 350
             cancelRideBtn.setTitle("Slide to Mark Arrived", for: .normal)
+            slideToActionBtn.setLblText("Slide to Mark Arrived")
             btnChat.isHidden = false
 //            let obj = VDRideCompleteVC.create(2)
 ////            obj.endRideModel = endRideStatus
@@ -724,19 +880,21 @@ extension VDHomeVC {
 //            obj.modalPresentationStyle = .overFullScreen
 //            self.navigationController?.pushViewController(obj, animated: true)
 ////            present(obj, animated: true)
-
+       
+            
         case .markArrived :
             newRideReqView.isHidden = true
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = false
             self.showOnRideView()
-            self.btnbottom.constant = 350
+            self.btnbottom.constant = UserModel.currentUser.login?.service_type == 1 ? 300  : 350
             if UserModel.currentUser.login?.service_type != 1 {
                 cancelRideBtn.setTitle("Slide to start delivery", for: .normal)
-
+                slideToActionBtn.setLblText("Slide to start delivery")
             }
             else{
                 cancelRideBtn.setTitle("Slide to Start Trip", for: .normal)
+                slideToActionBtn.setLblText("Slide to Start Trip")
 
             }
 
@@ -747,15 +905,16 @@ extension VDHomeVC {
             rideProcessingView.isHidden = true
             rideStatusView.isHidden = false
             self.showOnRideView()
-            self.btnbottom.constant = 350
-            if UserModel.currentUser.login?.service_type == 1 {
-                cancelRideBtn.setTitle("Slide to Complete Trip", for: .normal)
-            }
-            else
-            {
+            self.btnbottom.constant = UserModel.currentUser.login?.service_type == 1 ? 300  : 350
+//            if UserModel.currentUser.login?.service_type == 1 {
+//                cancelRideBtn.setTitle("Slide to Complete Trip", for: .normal)
+//            }
+//            else
+//            {
                 cancelRideBtn.setTitle("Reach Destination", for: .normal)
+            slideToActionBtn.setLblText("Reach Destination")
 
-            }
+//            }
             btnChat.isHidden = false
 //            if sharedAppDelegate.isFromNotification {
 //                newRideReqView.isHidden = true
@@ -775,7 +934,16 @@ extension VDHomeVC {
 //                }
 //                homeViewModel.startTrip(att)
 //            }
-
+            
+        case .rideCompleted :
+            newRideReqView.isHidden = true
+            rideProcessingView.isHidden = true
+            rideStatusView.isHidden = false
+            self.showOnRideView()
+            self.btnbottom.constant = UserModel.currentUser.login?.service_type == 1 ? 300  : 350
+            cancelRideBtn.setTitle("Complete Trip", for: .normal)
+            slideToActionBtn.setLblText("Complete Trip")
+            btnChat.isHidden = false
         default:
            
             self.availabilityButton.isUserInteractionEnabled = true
@@ -1037,8 +1205,11 @@ extension VDHomeVC {
             self.rideProcessingView.isHidden = true
             self.rideStatusView.isHidden = false
             self.showOnRideView()
-            self.btnbottom.constant = 350
+            self.btnbottom.constant = UserModel.currentUser.login?.service_type == 1 ? 300  : 350
+          
             RideStatus = .customerPickedUp
+            
+            
             self.updateUIAccordingtoRideStatus()
             //self.mapView.clear()
             self.tripStartedAction()
@@ -1082,7 +1253,15 @@ extension VDHomeVC {
             // Construct the final string
             self.bestRouteText = "Best Route (\(durationText)) \(distanceText)"
             
-            self.setCompleteLbl()
+            if RideStatus == .rideCompleted
+            {
+            self.setCompleteLbl(string: "Complete Trip")
+            }
+            else
+            {
+                self.setCompleteLbl()
+            }
+            
             
             // Extract steps from the first leg
             if let stepsArray = firstLeg["steps"] as? [[String: Any]] {
@@ -1163,8 +1342,10 @@ extension VDHomeVC {
     func setCompleteLbl(string : String? = "Best Route")
     {
         // Create an NSMutableAttributedString from the full text
+       
+            self.bestRouteText = self.bestRouteText.replacing("Best Route", with: string!)
+
         
-        self.bestRouteText = self.bestRouteText.replacing("Best Route", with: string!)
         let attributedString = NSMutableAttributedString(string: self.bestRouteText)
 
           // Find the range of "Best Route" to apply bold
@@ -1208,7 +1389,7 @@ extension VDHomeVC {
                 self.rideProcessingView.isHidden = true
                 self.rideStatusView.isHidden = false
                 self.showOnRideView()
-                self.btnbottom.constant = 350
+                self.btnbottom.constant = UserModel.currentUser.login?.service_type == 1 ? 300  : 350
                 self.updateUIAccordingtoRideStatus()
             } else if RideStatus == .availableRide {
               //  btnChat.isHidden = false
@@ -1220,7 +1401,7 @@ extension VDHomeVC {
                 self.rideProcessingView.isHidden = true
                 self.rideStatusView.isHidden = false
                 self.showOnRideView()
-                self.btnbottom.constant = 350
+                self.btnbottom.constant = UserModel.currentUser.login?.service_type == 1 ? 300  : 350
                 self.updateUIAccordingtoRideStatus()
             }else {
                 self.updateUIAccordingtoRideStatus()
@@ -1305,7 +1486,7 @@ extension VDHomeVC {
         rideProcessingView.isHidden = true
         rideStatusView.isHidden = false
         self.showOnRideView()
-        self.btnbottom.constant = 350
+        self.btnbottom.constant = UserModel.currentUser.login?.service_type == 1 ? 300  : 350
     }
 
     @IBAction func cancelRideOngoing(_ sender: UIButton) {

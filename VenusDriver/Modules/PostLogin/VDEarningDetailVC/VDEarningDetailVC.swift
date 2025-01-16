@@ -225,12 +225,19 @@ extension VDEarningDetailVC: UITableViewDelegate, UITableViewDataSource{
             cell.lblPickedUpSeperator.isHidden = false
 
         }
-        if  (obj?.package_image_while_drop_off?.count ?? 0) == 0{
+        if  (obj?.package_image_while_drop_off?.count ?? 0) == 0 && (obj?.package_image_while_pickup?.count ?? 0) == 0{
             cell.lblDeliveredSeparator.isHidden = true
             cell.lblDeliveredIImages.isHidden = true
             cell.deliveredImageView.isHidden = true
             cell.heightCell.constant = 300
             
+        }
+        else if (obj?.package_image_while_drop_off?.count ?? 0) == 0
+        {
+            cell.lblDeliveredSeparator.isHidden = true
+            cell.lblDeliveredIImages.isHidden = true
+            cell.deliveredImageView.isHidden = true
+            cell.heightCell.constant = 420
         }
         else
         {

@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,6 +44,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BNV-J8-utb" secondAttribute="trailing" constant="20" id="BAV-U6-oBj"/>
                             <constraint firstItem="BNV-J8-utb" firstAttribute="leading" secondItem="yje-pB-uEv" secondAttribute="trailing" constant="14" id="HLh-Fr-Lou"/>
+                            <constraint firstAttribute="bottom" secondItem="BNV-J8-utb" secondAttribute="bottom" constant="21" id="IQW-wZ-2xs"/>
                             <constraint firstItem="BNV-J8-utb" firstAttribute="top" secondItem="UhR-GJ-Ks5" secondAttribute="top" constant="21" id="eMS-zg-KWg"/>
                             <constraint firstItem="BNV-J8-utb" firstAttribute="centerY" secondItem="UhR-GJ-Ks5" secondAttribute="centerY" id="j5F-xa-a5g"/>
                             <constraint firstItem="yje-pB-uEv" firstAttribute="leading" secondItem="UhR-GJ-Ks5" secondAttribute="leading" constant="30" id="l0l-HF-0CO"/>
