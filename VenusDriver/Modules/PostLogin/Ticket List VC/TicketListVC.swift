@@ -33,8 +33,9 @@ class TicketListVC: UIViewController {
     }
 
     @IBAction func btnBackAction(_ sender: Any) {
-        guard let sideMenuController = sideMenuController else { return }
-        sideMenuController.showLeftView()
+//        guard let sideMenuController = sideMenuController else { return }
+//        sideMenuController.showLeftView()
+        self.dismiss(animated: true)
     }
     
     func convertUTCToLocalDate(utcDateString: String) -> String? {

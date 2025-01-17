@@ -14,6 +14,7 @@ class CancelTripVC: UIViewController {
     @IBOutlet weak var tblView: UITableView!
     var selectedImage: UIImage?
     var deliveryPackage = false
+    var comesFromMardArrive = false
     var uploadedImages: [UIImage] = []
     var data_img: Data?
     var name_img:String?
@@ -31,7 +32,7 @@ class CancelTripVC: UIViewController {
         arrImages.removeAll()
         if deliveryPackage == true
         {
-            btnConfirm.setTitle("REJECT", for: .normal)
+            btnConfirm.setTitle( comesFromMardArrive == true ?  "REJECT" : "NOT DELIVERED", for: .normal)
             btnConfirm.backgroundColor = UIColor.red
             descriptionLbl.text = "Reason For Rejection"
         }

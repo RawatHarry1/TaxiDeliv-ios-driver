@@ -260,6 +260,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "CancelTripVC") as! CancelTripVC
             vc.modalPresentationStyle = .overFullScreen
             vc.deliveryPackage = true
+            vc.comesFromMardArrive = self.comesFromMardArrive
             vc.cancelTripCallBack = { imageArr,reasonStr in
                 print(imageArr)
                 print(reasonStr)

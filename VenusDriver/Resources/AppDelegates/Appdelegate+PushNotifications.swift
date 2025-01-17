@@ -22,7 +22,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         if let userInfo = response.notification.request.content.userInfo as NSDictionary? as? [String: Any] {
             switch notificationTypes(rawValue: (userInfo["notification_type"] as? String) ?? "0") {
             case .new_ride_request , .schedule:
-                
+                RideStatus = .availableRide
                 if let data = (userInfo["notificationDetails"] as? String)?.data(using: .utf8), let model = try? JSONDecoder().decode(PushNotification.self, from: data)  {
                     printDebug(model)
                     DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
@@ -178,6 +178,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         printDebug(userInfo)
         switch notificationTypes(rawValue: (userInfo["notification_type"] as? String) ?? "0") {
         case .new_ride_request , .schedule:
+            RideStatus = .availableRide
             if let data = (userInfo["notificationDetails"] as? String)?.data(using: .utf8), let model = try? JSONDecoder().decode(PushNotification.self, from: data)  {
                 printDebug(model)
                 DispatchQueue.global().asyncAfter(deadline: .now() + 2) {

@@ -153,7 +153,7 @@ let titleLabel: UILabel = {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .center
     label.textColor = UIColor.white
-    label.font = .systemFont(ofSize: 14, weight: .regular)
+    label.font = .systemFont(ofSize: 17, weight: .regular)
     label.text = ""
     return label
 }()

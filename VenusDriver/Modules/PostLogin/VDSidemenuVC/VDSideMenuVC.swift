@@ -96,7 +96,7 @@ extension VDSideMenuVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 7{
             return 0
         }
-        return 50
+        return 45
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -145,8 +145,11 @@ extension VDSideMenuVC: UITableViewDelegate, UITableViewDataSource {
 //            }
             
         case 11:
-            print("tickets")
-            sideMenuController.rootViewController = TicketListVC.create()
+   
+            let story = UIStoryboard(name: "PostLogin", bundle:nil)
+            let vc = story.instantiateViewController(withIdentifier: "TicketListVC") as! TicketListVC//VDLogoutVC.create()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
         case 12:
             print("Delete Account")
             self.deleteAccount()

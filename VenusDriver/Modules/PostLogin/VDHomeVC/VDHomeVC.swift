@@ -312,7 +312,8 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate {
         {
             self.mapView.clear()
         }
-        if   RideStatus != .availableRide &&  RideStatus != .rideCompleted
+        if   RideStatus != .availableRide
+                //&&  RideStatus != .rideCompleted
         {
         print(cancelRideBtn.title(for: .normal))
           self.homeViewModel.fetchAvailableRide()
@@ -1018,13 +1019,14 @@ extension VDHomeVC {
             profileName = notificationModel.customer_name ?? ""
             if notificationModel.status == notificationTypes.new_ride_request.rawValue {
                 if let urlStr = notificationModel.customer_image {
-                    self.customerProfileImg.setImage(withUrl: urlStr) { status, image in
-                        if status {
-                            if let img = image {
-                                self.customerProfileImg.image = img
-                            }
-                        }
-                    }
+                    self.customerProfileImg.sd_setImage(with: URL(string: urlStr), placeholderImage: VDImageAsset.imgPlaceholder.asset, options: [.refreshCached, .highPriority], completed: nil)
+//                    self.customerProfileImg.setImage(withUrl: urlStr) { status, image in
+//                        if status {
+//                            if let img = image {
+//                                self.customerProfileImg.image = img
+//                            }
+//                        }
+//                    }
                 } else {
                     self.customerProfileImg.image = VDImageAsset.imgPlaceholder.asset
                 }

@@ -9,6 +9,7 @@ import UIKit
 import MobileCoreServices
 import Foundation
 import UIKit.UITableView
+import SDWebImage
 class VDChatVC: VDBaseVC {
 
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -40,8 +41,8 @@ class VDChatVC: VDBaseVC {
                NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         lblName.text = name
      
-            self.imgViewProfile.setImage(withUrl: profileImg) { status, image in}
-
+//            self.imgViewProfile.setImage(withUrl: profileImg) { status, image in}
+        self.imgViewProfile.sd_setImage(with: URL(string: profileImg), placeholderImage: VDImageAsset.imgPlaceholder.asset, options: [.refreshCached, .highPriority], completed: nil)
         let listner = "\(tripID)_\(UserModel.currentUser.login?.user_id ?? 0)"
         VCSocketServices.shared.listnMessage(listnr: listner)
         VCSocketServices.shared.listneAllMessage()

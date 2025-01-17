@@ -85,7 +85,7 @@ class VDRideCompleteVC: VDBaseVC {
         }
         if screenTyoe == 0 {
             btnAccept.isHidden = false
-            self.btnAccept.setTitle("Rate customer", for: .normal)
+            self.btnAccept.setTitle("Rate Customer", for: .normal)
             updateEndRidePopUp()
         } else {
             //btnAccept.isHidden = true
