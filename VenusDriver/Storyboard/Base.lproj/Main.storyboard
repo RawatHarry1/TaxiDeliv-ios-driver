@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,16 +19,13 @@
         <!--SplashVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="VDSplashVC" id="BYZ-38-t0r" customClass="VDSplashVC" customModule="SaloneRide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VDSplashVC" id="BYZ-38-t0r" customClass="VDSplashVC" customModule="MarsDriver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashbackgroundLogo" translatesAutoresizingMaskIntoConstraints="NO" id="s37-np-4nV">
-                                <rect key="frame" x="0.0" y="238" width="393" height="614"/>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="1yO-lM-k83">
-                                <rect key="frame" x="0.0" y="155.66666666666666" width="393" height="199.99999999999997"/>
+                                <rect key="frame" x="0.0" y="338.66666666666669" width="393" height="200.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Yme-Ta-oU8"/>
                                 </constraints>
@@ -37,12 +34,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1yO-lM-k83" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.6" id="4iv-wL-fOP"/>
-                            <constraint firstAttribute="bottom" secondItem="s37-np-4nV" secondAttribute="bottom" id="64t-ms-v9N"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s37-np-4nV" secondAttribute="trailing" id="DcM-5e-h4z"/>
+                            <constraint firstItem="1yO-lM-k83" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="LXX-To-DbY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1yO-lM-k83" secondAttribute="trailing" id="MdF-IT-H1J"/>
-                            <constraint firstItem="s37-np-4nV" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.720657" id="UGz-En-enu"/>
-                            <constraint firstItem="s37-np-4nV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kS6-wS-hta"/>
                             <constraint firstItem="1yO-lM-k83" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lDR-SN-wzj"/>
                             <constraint firstItem="1yO-lM-k83" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pAE-Ya-OqW"/>
                         </constraints>
@@ -73,12 +66,12 @@
         <!--IntroVC-->
         <scene sceneID="xx3-2q-dCS">
             <objects>
-                <viewController storyboardIdentifier="VDIntroVC" id="Alh-TV-MVm" customClass="VDIntroVC" customModule="SaloneRide" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VDIntroVC" id="Alh-TV-MVm" customClass="VDIntroVC" customModule="MarsDriver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rQK-9g-GbE">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxg-TU-Brr" customClass="VDButton" customModule="SaloneRide" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxg-TU-Brr" customClass="VDButton" customModule="MarsDriver" customModuleProvider="target">
                                 <rect key="frame" x="30" y="686" width="333" height="46"/>
                                 <color key="backgroundColor" name="buttonSelectedOrange"/>
                                 <constraints>
@@ -188,12 +181,11 @@
     </designables>
     <resources>
         <image name="splashLogo" width="341.33334350585938" height="341.33334350585938"/>
-        <image name="splashbackgroundLogo" width="614" height="614"/>
         <namedColor name="buttonBorder">
             <color red="0.43900001049041748" green="0.43900001049041748" blue="0.43900001049041748" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="buttonSelectedOrange">
-            <color red="0.0" green="0.23499999940395355" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.85882352941176465" green="0.20784313725490197" blue="0.16078431372549021" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.10199999809265137" green="0.093999996781349182" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
