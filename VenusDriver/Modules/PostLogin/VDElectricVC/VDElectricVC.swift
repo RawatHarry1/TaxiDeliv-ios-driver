@@ -73,6 +73,9 @@ class VDElectricVC: VDBaseVC, UITextFieldDelegate {
                     self.viewModel.fetchDocumentsList(self.selectedCity?.city_id ?? 0, rideType: self.selectedID, completion: {
                         self.listTableView.reloadData()
                     })
+                    if ClientModel.currentClientData.enabled_service! != 3{
+                        filterCities()
+                    }
                     
                     selectedVehicleType = nil
                     vehicleTypeTF.text = ""
