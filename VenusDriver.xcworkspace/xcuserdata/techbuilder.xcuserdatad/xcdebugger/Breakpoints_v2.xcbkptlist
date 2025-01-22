@@ -1960,7 +1960,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "51B94056-6DC4-4633-9530-B6462E469072"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../Mars App/TaxiDeliv-ios-driver/VenusDriver/Modules/Prelogin/VDSplash/VDSplashVC.swift"
@@ -1969,6 +1969,38 @@
             startingLineNumber = "85"
             endingLineNumber = "85"
             landmarkName = "apiClientConfigure2()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "884CC7F1-746E-4573-90E4-3F48A63097FF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Mars App/TaxiDeliv-ios-driver/VenusDriver/Modules/PostLogin/VDEarningDetailVC/VDEarningDetailsViewModel/VDEarningDetailsViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "fetchBookingHistory(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CEDAE8CF-4447-40BC-86DD-E11A1BA192C7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Mars App/TaxiDeliv-ios-driver/VenusDriver/AppController/RestAPI Controller/Webservices+RideHistory.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "getBookingDetail(parameters:response:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
