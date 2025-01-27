@@ -34,8 +34,12 @@ class VDRideCompleteVC: VDBaseVC {
     @IBOutlet weak var lblNotes: UILabel!
     @IBOutlet weak var btnCancel: UIButton!
     
+    @IBOutlet weak var rentalTop: NSLayoutConstraint!
+    @IBOutlet weak var rentalBottom: NSLayoutConstraint!
+    @IBOutlet weak var rentalTitleLbl: UILabel!
+    @IBOutlet weak var rentalDateLbl: UILabel!
     var screenTyoe = 0 // 0 completed , 1 accept ride , 2 ride accepted
-
+    var isRental = false
     var viewModel = VDHomeViewModel()
     var tripID: String?
     var markArrived:((Int) -> Void)?
@@ -44,6 +48,7 @@ class VDRideCompleteVC: VDBaseVC {
     var profileImg = ""
     var customerID = ""
     var profileName = ""
+    var dateRentalDrop = ""
     //  To create ViewModel
     static func create(_ type: Int = 0) -> VDRideCompleteVC {
         let obj = VDRideCompleteVC.instantiate(fromAppStoryboard: .postLogin)
@@ -71,8 +76,28 @@ class VDRideCompleteVC: VDBaseVC {
             btnAccept.setTitle("Go to Pick-Up", for: .normal)
             self.btnCancel.isHidden = false
         }
+        var rentalText = isRental == true ? " (Rental)" : ""
+        if isRental == true
+        {
+            self.rentalDateLbl.text = dateRentalDrop
+            self.rentalDateLbl.isHidden = false
+            self.rentalTitleLbl.isHidden = false
+            self.rentalTop.constant = 25
+            self.rentalBottom.constant = 20
+        }
+        else
+        {
+            self.rentalDateLbl.text = ""
+            self.rentalTitleLbl.text = ""
+            self.rentalDateLbl.isHidden = true
+            self.rentalTitleLbl.isHidden = true
+            self.rentalTop.constant = 0
+            self.rentalBottom.constant = 20
+
+        }
         btnAccept.isHidden = (screenTyoe == 0)
-        titleLabel.text = (screenTyoe == 0) ? "Ride Completed" : "Accept Trip"
+        titleLabel.text = (screenTyoe == 0) ? ("Ride Completed") : ("Accept Trip" + rentalText)
+        titleLabel.text = (screenTyoe == 0) ? ("Ride Completed") : ("Accept Trip" + rentalText)
         imgCall.isHidden = (screenTyoe == 0)
         chatIcon.isHidden = (screenTyoe == 0)
         rideDetailsView.isHidden = (screenTyoe == 0)

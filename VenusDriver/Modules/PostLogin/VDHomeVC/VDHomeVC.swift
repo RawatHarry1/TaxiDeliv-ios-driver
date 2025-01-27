@@ -17,6 +17,9 @@ var navigateToChat = false
 
 class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate {
    
+    @IBOutlet weak var rentalView: UIView!
+    @IBOutlet weak var rentalTimeLbl: UILabel!
+    @IBOutlet weak var lblRental: UILabel!
     // MARK: - Outlets
     @IBOutlet weak var heightTopView: NSLayoutConstraint!
     @IBOutlet weak private(set) var availabilityButton: UIButton!
@@ -1032,6 +1035,19 @@ extension VDHomeVC {
                 }
 
                 self.customerNameLbl.text = notificationModel.customer_name ?? ""
+              if  notificationModel.is_for_rental == 1{
+                  self.lblRental.isHidden = false
+                  self.rentalView.isHidden = false
+                  self.rentalTimeLbl.text = formatDateString(notificationModel.rental_drop_date ?? "")
+
+                }
+                else
+                {
+                    self.lblRental.isHidden = true
+                       self.rentalView.isHidden = true
+
+                }
+                
                 
                 if let estimatedFare = notificationModel.estimated_driver_fare,
                    let currency = notificationModel.currency{
@@ -1060,7 +1076,24 @@ extension VDHomeVC {
             }
         }
     }
-    
+    func formatDateString(_ dateString: String) -> String? {
+        // Define the input format (ISO 8601 format)
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        // Convert the string to a Date object
+        if let date = inputFormatter.date(from: dateString) {
+            
+            // Define the output format
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = "EEE, MMM dd hh:mm a"
+            outputFormatter.locale = Locale(identifier: "en_US") // Ensure English locale
+            
+            // Convert the Date object to the desired format
+            return outputFormatter.string(from: date)
+        }
+        return nil
+    }
     func formatToOneDecimalPlace(from string: String) -> String? {
         // Convert the string to a Double
         guard let number = Double(string) else {
@@ -1228,6 +1261,7 @@ extension VDHomeVC {
             let obj = VDRideCompleteVC.create(0)
             obj.objDelivery_packages = self.objDelivery_packages ?? []
             obj.endRideModel = endRideStatus
+           
             obj.modalPresentationStyle = .overFullScreen
             self.navigationController?.pushViewController(obj, animated: true)
             //present(obj, animated: true)
@@ -1438,15 +1472,19 @@ extension VDHomeVC {
     func openAcceptRideScreen() {
        // DispatchQueue.main.async {
             self.dismiss(animated: true) {
-                let obj = VDRideCompleteVC.instantiate(fromAppStoryboard: .postLogin)
-                obj.screenTyoe = 1
-                obj.objDelivery_packages = self.objDelivery_packages ?? []
-                //let obj = VDRideCompleteVC.create(1)
-                obj.modalPresentationStyle = .overFullScreen
-                obj.markArrived = { status  in
-                    self.updateUIAccordingtoRideStatus()
+                if let notificationModel = sharedAppDelegate.notficationDetails {
+                    let obj = VDRideCompleteVC.instantiate(fromAppStoryboard: .postLogin)
+                    obj.screenTyoe = 1
+                    obj.dateRentalDrop = self.formatDateString(notificationModel.rental_drop_date ?? "") ?? ""
+                    obj.isRental = notificationModel.is_for_rental == 1 ? true : false
+                    obj.objDelivery_packages = self.objDelivery_packages ?? []
+                    //let obj = VDRideCompleteVC.create(1)
+                    obj.modalPresentationStyle = .overFullScreen
+                    obj.markArrived = { status  in
+                        self.updateUIAccordingtoRideStatus()
+                    }
+                    self.navigationController?.pushViewController(obj, animated: true)
                 }
-                self.navigationController?.pushViewController(obj, animated: true)
             }
       //  }
      

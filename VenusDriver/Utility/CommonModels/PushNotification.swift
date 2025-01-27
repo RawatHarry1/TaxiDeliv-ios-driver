@@ -36,7 +36,8 @@ struct PushNotification : Codable {
     var customer_ame: String?
     var service_type : Int?
     var delivery_packages: [DeliveryPackageData]?
-    
+    var is_for_rental :  Int?
+    var rental_drop_date : String?
             
         
                 
@@ -70,6 +71,8 @@ struct PushNotification : Codable {
         case customer_ame = "customer_ame"
         case service_type = "service_type"
         case delivery_packages = "delivery_packages"
+        case is_for_rental = "is_for_rental"
+        case rental_drop_date = "rental_drop_date"
         
     }
 
@@ -159,7 +162,14 @@ struct PushNotification : Codable {
         customer_ame = try values.decodeIfPresent(String.self, forKey: .customer_ame)
         service_type = try values.decodeIfPresent(Int.self, forKey: .service_type)
         delivery_packages  = try values.decodeIfPresent([DeliveryPackageData].self, forKey: .delivery_packages)
-        
+        do {
+            is_for_rental = try values.decodeIfPresent(Int.self, forKey: .is_for_rental)
+        }
+        catch {
+            let str_is_for_rental = try values.decodeIfPresent(String.self, forKey: .is_for_rental)
+            is_for_rental = Int(str_is_for_rental ?? "0")
+        }
+        rental_drop_date = try values.decodeIfPresent(String.self, forKey: .rental_drop_date)
         do {
             delivery_packages = try values.decodeIfPresent([DeliveryPackageData].self, forKey: .delivery_packages)
         } catch {
@@ -198,7 +208,8 @@ struct PushNotification : Codable {
         customer_ame = nil
         service_type = nil
         delivery_packages = nil
-       
+        is_for_rental = nil
+        rental_drop_date = nil
     }
 }
 

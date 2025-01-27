@@ -3348,16 +3348,16 @@ Go online to start accepting rides!</string>
                                 </constraints>
                             </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clq-Kt-odh">
-                                <rect key="frame" x="0.0" y="359.5" width="375" height="307.5"/>
+                                <rect key="frame" x="0.0" y="335" width="375" height="332"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ain-gt-B0d">
-                                        <rect key="frame" x="10" y="10" width="355" height="279.5"/>
+                                        <rect key="frame" x="10" y="10" width="355" height="304"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qna-lI-Lqh">
-                                                <rect key="frame" x="0.0" y="0.0" width="355" height="68"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="92.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileImgDummy" translatesAutoresizingMaskIntoConstraints="NO" id="A1D-oM-568">
-                                                        <rect key="frame" x="20" y="12" width="44" height="44"/>
+                                                        <rect key="frame" x="20" y="24.5" width="44" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="44" id="8gW-Nz-8pT"/>
                                                             <constraint firstAttribute="height" constant="44" id="gxO-S0-qHM"/>
@@ -3369,13 +3369,13 @@ Go online to start accepting rides!</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Esher" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuE-yv-moa">
-                                                        <rect key="frame" x="76" y="24" width="47.5" height="20.5"/>
+                                                        <rect key="frame" x="76" y="36" width="47.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BIW-yo-bkK">
-                                                        <rect key="frame" x="244.5" y="14" width="90.5" height="42.5"/>
+                                                        <rect key="frame" x="244.5" y="14" width="90.5" height="64.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USD 20.43" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ND-9P-ydp">
                                                                 <rect key="frame" x="0.0" y="0.0" width="90.5" height="20.5"/>
@@ -3389,6 +3389,12 @@ Go online to start accepting rides!</string>
                                                                 <color key="textColor" red="0.35686274509803922" green="0.35686274509803922" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rental" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bb-BR-f77">
+                                                                <rect key="frame" x="0.0" y="46.5" width="90.5" height="18"/>
+                                                                <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
+                                                                <color key="textColor" name="buttonSelectedOrange"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                         </subviews>
                                                     </stackView>
                                                 </subviews>
@@ -3398,14 +3404,14 @@ Go online to start accepting rides!</string>
                                                     <constraint firstItem="BIW-yo-bkK" firstAttribute="top" secondItem="Qna-lI-Lqh" secondAttribute="top" constant="14" id="8QZ-yD-Jo4"/>
                                                     <constraint firstAttribute="trailing" secondItem="BIW-yo-bkK" secondAttribute="trailing" constant="20" id="Bpf-b2-xIq"/>
                                                     <constraint firstItem="A1D-oM-568" firstAttribute="centerY" secondItem="Qna-lI-Lqh" secondAttribute="centerY" id="Fnu-3L-nZY"/>
-                                                    <constraint firstAttribute="height" constant="68" id="Uza-cS-WGT"/>
+                                                    <constraint firstAttribute="bottom" secondItem="BIW-yo-bkK" secondAttribute="bottom" constant="14" id="SSY-c5-tJh"/>
                                                     <constraint firstItem="BIW-yo-bkK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JuE-yv-moa" secondAttribute="trailing" constant="6" id="WwL-da-5k3"/>
                                                     <constraint firstItem="JuE-yv-moa" firstAttribute="centerY" secondItem="A1D-oM-568" secondAttribute="centerY" id="l3o-IT-ry5"/>
                                                     <constraint firstItem="A1D-oM-568" firstAttribute="leading" secondItem="Qna-lI-Lqh" secondAttribute="leading" constant="20" id="txA-Kl-Rx3"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bel-qk-XCQ">
-                                                <rect key="frame" x="0.0" y="78" width="355" height="135.5"/>
+                                                <rect key="frame" x="0.0" y="102.5" width="355" height="135.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPz-ob-ZAy">
                                                         <rect key="frame" x="0.0" y="0.0" width="355" height="63"/>
@@ -3491,10 +3497,52 @@ Go online to start accepting rides!</string>
                                                             <constraint firstAttribute="trailing" secondItem="v1E-71-wYT" secondAttribute="trailing" constant="20" id="sk8-yS-F6e"/>
                                                         </constraints>
                                                     </view>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w2N-jY-2Fj">
+                                                        <rect key="frame" x="0.0" y="135.5" width="355" height="28"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ldf-if-fLs">
+                                                                <rect key="frame" x="20" y="0.0" width="315" height="8"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Rental End Date And Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDj-0l-lkq">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="315" height="0.0"/>
+                                                                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="11"/>
+                                                                        <color key="textColor" red="0.35686274509999999" green="0.35686274509999999" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="105 William St, Chicago, US" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeF-ik-zZw">
+                                                                        <rect key="frame" x="0.0" y="8" width="315" height="0.0"/>
+                                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MoA-Ex-3jn">
+                                                                <rect key="frame" x="20" y="27" width="315" height="1"/>
+                                                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="Dqq-uB-fj7"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="ldf-if-fLs" secondAttribute="bottom" constant="20" id="1HQ-Yv-E97"/>
+                                                            <constraint firstAttribute="bottom" secondItem="MoA-Ex-3jn" secondAttribute="bottom" id="46K-ai-sF5"/>
+                                                            <constraint firstItem="ldf-if-fLs" firstAttribute="top" secondItem="w2N-jY-2Fj" secondAttribute="top" id="MHY-CR-kXN"/>
+                                                            <constraint firstItem="ldf-if-fLs" firstAttribute="leading" secondItem="w2N-jY-2Fj" secondAttribute="leading" constant="20" id="WIn-5e-SVv"/>
+                                                            <constraint firstItem="MoA-Ex-3jn" firstAttribute="leading" secondItem="w2N-jY-2Fj" secondAttribute="leading" constant="20" id="ZVE-QR-cgx"/>
+                                                            <constraint firstAttribute="trailing" secondItem="MoA-Ex-3jn" secondAttribute="trailing" constant="20" id="ari-TX-co4"/>
+                                                            <constraint firstAttribute="trailing" secondItem="ldf-if-fLs" secondAttribute="trailing" constant="20" id="cEY-Hb-vg9"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OlO-Ll-FcR">
-                                                <rect key="frame" x="0.0" y="223.5" width="355" height="56"/>
+                                                <rect key="frame" x="0.0" y="248" width="355" height="56"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Euq-yb-N68">
                                                         <rect key="frame" x="20" y="10" width="315" height="46"/>
@@ -4106,6 +4154,7 @@ Go online to start accepting rides!</string>
                         <outlet property="lblHideShowStatus" destination="Pub-xL-jkZ" id="6Ji-dB-0za"/>
                         <outlet property="lblReceiverName" destination="2iQ-8Y-LTs" id="geq-v0-Ww2"/>
                         <outlet property="lblReceiverPhoneNumber" destination="Ege-tC-OH9" id="96A-qE-BXn"/>
+                        <outlet property="lblRental" destination="3bb-BR-f77" id="Xar-Sw-0GQ"/>
                         <outlet property="mapView" destination="gX8-WM-RZe" id="5xZ-vj-jaV"/>
                         <outlet property="newRideReqDetails" destination="Qna-lI-Lqh" id="gD3-KK-yue"/>
                         <outlet property="newRideReqView" destination="clq-Kt-odh" id="owg-PP-LOO"/>
@@ -4115,6 +4164,8 @@ Go online to start accepting rides!</string>
                         <outlet property="pickToOnTheWayLbl" destination="3Dw-o5-ees" id="3Lu-JR-cWf"/>
                         <outlet property="pickUpLocationLbl" destination="DD2-Sy-xU5" id="zx6-6Z-D1l"/>
                         <outlet property="radioDestinationImg" destination="x43-lJ-sOz" id="eOH-9C-Tet"/>
+                        <outlet property="rentalTimeLbl" destination="QeF-ik-zZw" id="lCH-ii-pIy"/>
+                        <outlet property="rentalView" destination="w2N-jY-2Fj" id="LV2-Bt-x4X"/>
                         <outlet property="rideProcessingView" destination="JPY-5f-VjT" id="XkW-XI-hQ4"/>
                         <outlet property="rideStatusView" destination="pGM-Zw-oLx" id="BJy-BF-EUD"/>
                         <outlet property="slideToActionBtn" destination="fre-me-8w2" id="q5U-uN-4Kw"/>
@@ -4167,7 +4218,7 @@ Go online to start accepting rides!</string>
                                 <rect key="frame" x="0.0" y="64" width="430" height="1436"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiP-bK-s1z">
-                                        <rect key="frame" x="0.0" y="0.0" width="430" height="1138.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="430" height="1184"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ride Completed" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdh-KI-RDu">
                                                 <rect key="frame" x="30" y="30" width="370" height="31.5"/>
@@ -4176,7 +4227,7 @@ Go online to start accepting rides!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYc-uc-CBi">
-                                                <rect key="frame" x="16" y="81.5" width="398" height="468"/>
+                                                <rect key="frame" x="16" y="81.5" width="398" height="513.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileImgDummy" translatesAutoresizingMaskIntoConstraints="NO" id="XeP-uH-7vs">
                                                         <rect key="frame" x="30" y="30" width="80" height="80"/>
@@ -4197,10 +4248,10 @@ Go online to start accepting rides!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="GrI-RV-1nX">
-                                                        <rect key="frame" x="30" y="130" width="338" height="179.5"/>
+                                                        <rect key="frame" x="30" y="130" width="338" height="225"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0u4-ns-Ous">
-                                                                <rect key="frame" x="0.0" y="0.0" width="338" height="179.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="338" height="225"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="July 24, 2020, 9:58 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvP-fF-EUf">
                                                                         <rect key="frame" x="0.0" y="0.0" width="338" height="18.5"/>
@@ -4209,7 +4260,7 @@ Go online to start accepting rides!</string>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBc-tQ-uVe">
-                                                                        <rect key="frame" x="0.0" y="178.5" width="338" height="1"/>
+                                                                        <rect key="frame" x="0.0" y="224" width="338" height="1"/>
                                                                         <color key="backgroundColor" name="textColorGrey"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="1" id="Wki-0K-IyL"/>
@@ -4219,37 +4270,43 @@ Go online to start accepting rides!</string>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sRy-39-WHd">
-                                                                        <rect key="frame" x="0.0" y="18.5" width="338" height="148"/>
+                                                                        <rect key="frame" x="0.0" y="18.5" width="338" height="193.5"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WSe-8L-hr0">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="338" height="148"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="338" height="193.5"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick-Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqj-qa-sRV">
-                                                                                        <rect key="frame" x="25" y="20" width="39" height="27.5"/>
+                                                                                        <rect key="frame" x="25" y="20" width="39" height="13.5"/>
                                                                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="11"/>
                                                                                         <color key="textColor" name="textColorGrey"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199 Brown Estate Apt. 866" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gp-2X-FSr">
-                                                                                        <rect key="frame" x="25" y="50.5" width="293" height="18"/>
+                                                                                        <rect key="frame" x="25" y="36.5" width="293" height="18"/>
                                                                                         <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="15"/>
                                                                                         <color key="textColor" red="0.13333333333333333" green="0.16862745098039217" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ub-Hv-U2Q">
-                                                                                        <rect key="frame" x="25" y="93.5" width="57.5" height="13.5"/>
+                                                                                        <rect key="frame" x="25" y="79.5" width="57.5" height="13.5"/>
                                                                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="11"/>
                                                                                         <color key="textColor" name="textColorGrey"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199 Brown Estate Apt. 866" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pw6-AP-egc">
-                                                                                        <rect key="frame" x="25" y="110" width="293" height="18"/>
+                                                                                        <rect key="frame" x="25" y="96" width="293" height="18"/>
+                                                                                        <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="15"/>
+                                                                                        <color key="textColor" red="0.1333333333" green="0.16862745100000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199 Brown Estate Apt. 866" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQN-LS-EGy">
+                                                                                        <rect key="frame" x="25" y="155.5" width="313" height="18"/>
                                                                                         <fontDescription key="fontDescription" name="SFUIText-Medium" family="SF UI Text" pointSize="15"/>
                                                                                         <color key="textColor" red="0.1333333333" green="0.16862745100000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94V-zZ-VXs">
-                                                                                        <rect key="frame" x="0.0" y="53.5" width="12" height="12"/>
+                                                                                        <rect key="frame" x="0.0" y="39.5" width="12" height="12"/>
                                                                                         <color key="backgroundColor" name="buttonSelectedOrange"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="12" id="THd-IZ-Kyr"/>
@@ -4262,7 +4319,7 @@ Go online to start accepting rides!</string>
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0d-uL-PiA">
-                                                                                        <rect key="frame" x="0.0" y="113" width="12" height="12"/>
+                                                                                        <rect key="frame" x="0.0" y="99" width="12" height="12"/>
                                                                                         <color key="backgroundColor" red="0.10588235294117647" green="0.10980392156862745" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="12" id="4Uw-IZ-3Q8"/>
@@ -4275,33 +4332,45 @@ Go online to start accepting rides!</string>
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9a-2b-TCg">
-                                                                                        <rect key="frame" x="5" y="65.5" width="2" height="47.5"/>
+                                                                                        <rect key="frame" x="5" y="51.5" width="2" height="47.5"/>
                                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="width" constant="2" id="jMT-7n-3C1"/>
                                                                                         </constraints>
                                                                                     </view>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rental End Date And Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KeV-vs-fTl">
+                                                                                        <rect key="frame" x="25" y="139" width="131" height="13.5"/>
+                                                                                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="11"/>
+                                                                                        <color key="textColor" name="textColorGrey"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
                                                                                 </subviews>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstItem="d9a-2b-TCg" firstAttribute="top" secondItem="94V-zZ-VXs" secondAttribute="bottom" id="8bd-6e-4Gv"/>
+                                                                                    <constraint firstItem="KeV-vs-fTl" firstAttribute="leading" secondItem="WSe-8L-hr0" secondAttribute="leading" constant="25" id="Azk-0U-Ui9"/>
                                                                                     <constraint firstItem="2Gp-2X-FSr" firstAttribute="top" secondItem="Sqj-qa-sRV" secondAttribute="bottom" constant="3" id="D9y-fQ-BsP"/>
                                                                                     <constraint firstItem="2Gp-2X-FSr" firstAttribute="leading" secondItem="WSe-8L-hr0" secondAttribute="leading" constant="25" id="EDa-C6-ntD"/>
                                                                                     <constraint firstItem="d9a-2b-TCg" firstAttribute="centerX" secondItem="94V-zZ-VXs" secondAttribute="centerX" id="L94-ee-Ab5"/>
                                                                                     <constraint firstItem="94V-zZ-VXs" firstAttribute="leading" secondItem="WSe-8L-hr0" secondAttribute="leading" id="NJW-W8-pVJ"/>
                                                                                     <constraint firstItem="3ub-Hv-U2Q" firstAttribute="leading" secondItem="WSe-8L-hr0" secondAttribute="leading" constant="25" id="Rze-KI-wtg"/>
+                                                                                    <constraint firstItem="fQN-LS-EGy" firstAttribute="top" secondItem="KeV-vs-fTl" secondAttribute="bottom" constant="3" id="UaL-fk-9Sp"/>
                                                                                     <constraint firstItem="W0d-uL-PiA" firstAttribute="centerY" secondItem="Pw6-AP-egc" secondAttribute="centerY" id="V6t-ri-e6V"/>
                                                                                     <constraint firstItem="Sqj-qa-sRV" firstAttribute="leading" secondItem="WSe-8L-hr0" secondAttribute="leading" constant="25" id="VsR-2U-Krb"/>
                                                                                     <constraint firstItem="94V-zZ-VXs" firstAttribute="centerY" secondItem="2Gp-2X-FSr" secondAttribute="centerY" id="Vvc-Rh-cTT"/>
                                                                                     <constraint firstItem="Pw6-AP-egc" firstAttribute="leading" secondItem="WSe-8L-hr0" secondAttribute="leading" constant="25" id="W7N-k9-fjP"/>
+                                                                                    <constraint firstItem="fQN-LS-EGy" firstAttribute="top" secondItem="KeV-vs-fTl" secondAttribute="bottom" constant="3" id="aGl-cq-NLf"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="Pw6-AP-egc" secondAttribute="trailing" constant="20" id="acO-Kd-SbT"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="2Gp-2X-FSr" secondAttribute="trailing" constant="20" id="bqo-pg-Eaa"/>
                                                                                     <constraint firstItem="W0d-uL-PiA" firstAttribute="top" secondItem="d9a-2b-TCg" secondAttribute="bottom" id="d7y-6K-ObQ"/>
                                                                                     <constraint firstItem="Sqj-qa-sRV" firstAttribute="top" secondItem="WSe-8L-hr0" secondAttribute="top" constant="20" id="fPd-uW-Ko1"/>
+                                                                                    <constraint firstItem="fQN-LS-EGy" firstAttribute="leading" secondItem="WSe-8L-hr0" secondAttribute="leading" constant="25" id="fg2-mB-yMB"/>
                                                                                     <constraint firstItem="Pw6-AP-egc" firstAttribute="top" secondItem="3ub-Hv-U2Q" secondAttribute="bottom" constant="3" id="h9O-tQ-QLJ"/>
+                                                                                    <constraint firstItem="KeV-vs-fTl" firstAttribute="top" secondItem="Pw6-AP-egc" secondAttribute="bottom" constant="25" id="kkZ-3h-RTk"/>
                                                                                     <constraint firstItem="W0d-uL-PiA" firstAttribute="leading" secondItem="WSe-8L-hr0" secondAttribute="leading" id="nLI-AN-4iG"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="fQN-LS-EGy" secondAttribute="trailing" id="o88-zV-Ec3"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="fQN-LS-EGy" secondAttribute="bottom" constant="20" id="ufP-1Q-n1i"/>
                                                                                     <constraint firstItem="3ub-Hv-U2Q" firstAttribute="top" secondItem="2Gp-2X-FSr" secondAttribute="bottom" constant="25" id="uwK-ba-TjX"/>
-                                                                                    <constraint firstAttribute="bottom" secondItem="Pw6-AP-egc" secondAttribute="bottom" constant="20" id="wce-IN-5ll"/>
                                                                                 </constraints>
                                                                             </view>
                                                                         </subviews>
@@ -4386,13 +4455,13 @@ Go online to start accepting rides!</string>
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FARE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROD-1c-axz">
-                                                        <rect key="frame" x="180.5" y="349.5" width="37" height="18.5"/>
+                                                        <rect key="frame" x="180.5" y="395" width="37" height="18.5"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="15"/>
                                                         <color key="textColor" red="0.67450980392156867" green="0.69411764705882351" blue="0.75294117647058822" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="viW-kv-Ssb">
-                                                        <rect key="frame" x="199" y="384" width="0.0" height="51.5"/>
+                                                        <rect key="frame" x="199" y="429.5" width="0.0" height="51.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="51.329999999999998" id="URa-tm-qZl"/>
                                                         </constraints>
@@ -4401,7 +4470,7 @@ Go online to start accepting rides!</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="incl. Tax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAS-n3-ab0">
-                                                        <rect key="frame" x="173" y="439.5" width="52.5" height="18.5"/>
+                                                        <rect key="frame" x="173" y="485" width="52.5" height="18.5"/>
                                                         <color key="tintColor" name="buttonSelectedOrange"/>
                                                         <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="15"/>
                                                         <color key="textColor" red="0.67450980390000004" green="0.69411764710000001" blue="0.75294117650000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -4459,14 +4528,14 @@ Go online to start accepting rides!</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-vE-CyE">
-                                                        <rect key="frame" x="0.0" y="310.5" width="398" height="1"/>
+                                                        <rect key="frame" x="0.0" y="356" width="398" height="1"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="lNu-6C-pVd"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROT-5J-7gJ">
-                                                        <rect key="frame" x="0.0" y="304" width="14" height="14"/>
+                                                        <rect key="frame" x="0.0" y="349.5" width="14" height="14"/>
                                                         <color key="backgroundColor" name="buttonSelectedOrange"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="14" id="83C-lx-IQl"/>
@@ -4479,7 +4548,7 @@ Go online to start accepting rides!</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMd-RF-jdj">
-                                                        <rect key="frame" x="384" y="304" width="14" height="14"/>
+                                                        <rect key="frame" x="384" y="349.5" width="14" height="14"/>
                                                         <color key="backgroundColor" name="buttonSelectedOrange"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="14" id="4KK-Eh-fXO"/>
@@ -4492,7 +4561,7 @@ Go online to start accepting rides!</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgM-mt-8KI">
-                                                        <rect key="frame" x="10" y="458" width="378" height="0.0"/>
+                                                        <rect key="frame" x="10" y="503.5" width="378" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -4543,7 +4612,7 @@ Go online to start accepting rides!</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="EO9-Pc-a7q">
-                                                <rect key="frame" x="0.0" y="599.5" width="430" height="445"/>
+                                                <rect key="frame" x="0.0" y="645" width="430" height="445"/>
                                                 <subviews>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t35-Gz-Xq8">
                                                         <rect key="frame" x="0.0" y="-40" width="430" height="40"/>
@@ -4886,7 +4955,7 @@ Go online to start accepting rides!</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cDx-Zb-Us3">
-                                                <rect key="frame" x="38" y="1064.5" width="354" height="46"/>
+                                                <rect key="frame" x="38" y="1110" width="354" height="46"/>
                                                 <subviews>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybJ-3i-lsD">
                                                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="46"/>
@@ -4931,7 +5000,7 @@ Go online to start accepting rides!</string>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYO-7N-mSL">
-                                                <rect key="frame" x="20" y="579.5" width="390" height="1"/>
+                                                <rect key="frame" x="20" y="625" width="390" height="1"/>
                                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="w1p-2E-oUg"/>
@@ -5004,6 +5073,10 @@ Go online to start accepting rides!</string>
                         <outlet property="lblSeperator" destination="JYO-7N-mSL" id="mKj-Or-mW4"/>
                         <outlet property="packageTblHeader" destination="J7P-kr-KMd" id="FHc-1C-3Dy"/>
                         <outlet property="pickUpLbl" destination="2Gp-2X-FSr" id="AYQ-0v-jXB"/>
+                        <outlet property="rentalBottom" destination="ufP-1Q-n1i" id="8Ro-tn-rdw"/>
+                        <outlet property="rentalDateLbl" destination="fQN-LS-EGy" id="Sdl-af-kff"/>
+                        <outlet property="rentalTitleLbl" destination="KeV-vs-fTl" id="9DO-jR-Pyb"/>
+                        <outlet property="rentalTop" destination="kkZ-3h-RTk" id="4Rd-aq-9tK"/>
                         <outlet property="rideDetailsView" destination="WSe-8L-hr0" id="LUG-gw-YmJ"/>
                         <outlet property="tblHeightConstant" destination="FJu-Fl-vom" id="sJR-2T-uYk"/>
                         <outlet property="tblView" destination="L6M-Nv-oU1" id="jVt-Ub-f9F"/>
@@ -5744,13 +5817,13 @@ Go online to start accepting rides!</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSB-1A-2RP">
-                                <rect key="frame" x="18" y="84" width="58" height="35"/>
+                                <rect key="frame" x="18" y="84" width="61" height="42"/>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="30"/>
                                 <color key="textColor" red="0.1333333333" green="0.16862745100000001" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tRr-3E-lqI">
-                                <rect key="frame" x="0.0" y="119" width="375" height="548"/>
+                                <rect key="frame" x="0.0" y="126" width="375" height="541"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
