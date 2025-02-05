@@ -14,6 +14,7 @@ class VDLogoutVC: VDBaseVC {
     @IBOutlet weak var btnLogout: UIButton!
     private var loginViewModel: VDLoginViewModel = VDLoginViewModel()
 
+    @IBOutlet var btnNo: VDButton!
     // MARK: -> Outlets
     var cancelCallBack : ((Bool) -> ()) = { _ in }
     // MARK: -> Outlets
@@ -43,6 +44,7 @@ class VDLogoutVC: VDBaseVC {
             lblDescription.text = descriptionText
             lblDescription.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
             btnLogout.setTitle("Reject/ Cancel Delivery", for: .normal)
+            btnNo.setTitle("Don't reject", for: .normal)
             btnLogout.setTitleColor(UIColor.black, for: .normal)
         }
 

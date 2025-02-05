@@ -72,10 +72,12 @@ class VDRideCompleteVC: VDBaseVC {
         if screenTyoe == 2 {
             self.btnBack.isHidden = true
             btnAccept.isHidden = false
-            titleLabel.text = "Trip Accepted"
+            titleLabel.text = UserModel.currentUser.login?.service_type == 2 ? "Delivery Accepted" : "Trip Accepted"
             btnAccept.setTitle("Go to Pick-Up", for: .normal)
             self.btnCancel.isHidden = false
         }
+        
+        
         var rentalText = isRental == true ? " (Rental)" : ""
         if isRental == true
         {
@@ -101,7 +103,19 @@ class VDRideCompleteVC: VDBaseVC {
         imgCall.isHidden = (screenTyoe == 0)
         chatIcon.isHidden = (screenTyoe == 0)
         rideDetailsView.isHidden = (screenTyoe == 0)
-        
+        if UserModel.currentUser.login?.service_type == 2
+        {
+            titleLabel.text = (screenTyoe == 0) ? ("Delivery Completed") : ("Accept Delivery" + rentalText)
+            titleLabel.text = (screenTyoe == 0) ? ("Delivery Completed") : ("Accept Delivery" + rentalText)
+            if titleLabel.text! == "Accept Delivery"
+            {
+                btnChat.isHidden = true
+                viewDot.isHidden = true
+                chatIcon.isHidden = true
+            }
+            btnCancel.setTitle("Cancel Delivery", for: .normal)
+        }
+       
         if titleLabel.text! == "Accept Trip"
         {
             btnChat.isHidden = true
@@ -117,10 +131,12 @@ class VDRideCompleteVC: VDBaseVC {
             self.btnAccept.setTitle("Accept", for: .normal)
             updateAvailableRidePopUp()
         }
-
+      
         viewModel.rideDetailsCallBack = { rideDetails in
             self.tripID = self.viewModel.rideDetails.tripId ?? ""
             self.btnChat.isHidden = false
+//            self.viewDot.isHidden = false
+            self.chatIcon.isHidden = false
             self.screenTyoe = 2
             self.btnBack.isHidden = true
             self.btnAccept.isHidden = false

@@ -56,7 +56,13 @@ class UploadFileAlert: NSObject {
         vc.present(alertController, animated: true, completion: nil)
 
     }
+    public func alertReject(_ vc: UIViewController , _ filefor: UploadFileFor, _ showPDF: Bool = true , _ imgDelegate: UploadFileAlertDelegates){
+        presentedOnVC = vc
+        currentType = filefor
+        delegate = imgDelegate
+            self.showCamera()
 
+    }
 
     public func showCamera()  {
         picker = UIImagePickerController()

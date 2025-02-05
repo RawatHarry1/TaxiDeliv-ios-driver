@@ -143,7 +143,7 @@ extension CancelTripVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         if indexPath.item < uploadedImages.count {
             
         }else{
-            UploadFileAlert.sharedInstance.alert(self, .profile , false, self)
+            UploadFileAlert.sharedInstance.alertReject(self, .profile , false, self)
         }
     }
     

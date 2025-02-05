@@ -91,7 +91,7 @@ class SlideToActionButton: UIView {
             leadingThumbnailViewConstraint!,
             handleView.topAnchor.constraint(equalTo: topAnchor),
             handleView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            handleView.widthAnchor.constraint(equalToConstant: 80),
+            handleView.widthAnchor.constraint(equalToConstant: 60),
             draggedView.topAnchor.constraint(equalTo: topAnchor),
             draggedView.bottomAnchor.constraint(equalTo: bottomAnchor),
             draggedView.leadingAnchor.constraint(equalTo: leadingAnchor),

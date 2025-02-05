@@ -144,8 +144,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "69"
             endingLineNumber = "69"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
+            landmarkName = "PackageThreeCell"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -194,6 +194,108 @@
             endingLineNumber = "84"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06991C12-3E18-4D88-9AF7-107E64BA1604"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Modules/PostLogin/VDCancelRideVC/VDCancelRideVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "VDCancelRideVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "06991C12-3E18-4D88-9AF7-107E64BA1604 - b967d373163a3e41"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDCancelRideVC.btnCancel.getter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paramveersingh/Desktop/techbuilder%20projects/TaxiDeliv-ios-driver/VenusDriver/Modules/PostLogin/VDCancelRideVC/VDCancelRideVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "06991C12-3E18-4D88-9AF7-107E64BA1604 - ff0254bd7713f65d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDCancelRideVC.btnCancel.setter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paramveersingh/Desktop/techbuilder%20projects/TaxiDeliv-ios-driver/VenusDriver/Modules/PostLogin/VDCancelRideVC/VDCancelRideVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "06991C12-3E18-4D88-9AF7-107E64BA1604 - 10ec24ddb16a9a51"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDCancelRideVC.btnCancel.modify : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paramveersingh/Desktop/techbuilder%20projects/TaxiDeliv-ios-driver/VenusDriver/Modules/PostLogin/VDCancelRideVC/VDCancelRideVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15">
+               </Location>
+               <Location
+                  uuid = "06991C12-3E18-4D88-9AF7-107E64BA1604 - 96d58c294dd4efed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDCancelRideVC.btnCancel.modify : Swift.Optional&lt;__C.UIButton&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paramveersingh/Desktop/techbuilder%20projects/TaxiDeliv-ios-driver/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0">
+               </Location>
+               <Location
+                  uuid = "06991C12-3E18-4D88-9AF7-107E64BA1604 - 6de85807ea10c13a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDCancelRideVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; SaloneRide.VDCancelRideVC"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paramveersingh/Desktop/techbuilder%20projects/TaxiDeliv-ios-driver/VenusDriver/Modules/PostLogin/VDCancelRideVC/VDCancelRideVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15">
+               </Location>
+               <Location
+                  uuid = "06991C12-3E18-4D88-9AF7-107E64BA1604 - e2bc902801dc49a9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SaloneRide.VDCancelRideVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;SaloneRide.VDCancelRideVC&gt;"
+                  moduleName = "SaloneRide"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paramveersingh/Desktop/techbuilder%20projects/TaxiDeliv-ios-driver/VenusDriver/Modules/PostLogin/VDCancelRideVC/VDCancelRideVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
