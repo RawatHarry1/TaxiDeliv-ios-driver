@@ -162,6 +162,7 @@ class VDRideCompleteVC: VDBaseVC {
             if cancelModel.driver_blocked_multiple_cancelation?.blocked == 1 {
                 var userModel = UserModel.currentUser
                 userModel.login?.driver_blocked_multiple_cancelation?.blocked = 1
+                userModel.passcode = UserModel.currentUser.passcode
                 UserModel.currentUser = userModel
             } else {
                 SKToast.show(withMessage: "Ride has been cancelled by you.")

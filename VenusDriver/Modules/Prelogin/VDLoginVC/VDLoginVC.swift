@@ -15,6 +15,7 @@ class VDLoginVC: VDBaseVC {
     @IBOutlet weak var countryCodeLbl: UILabel!
     @IBOutlet weak var flagLabel: UILabel!
 
+    @IBOutlet var passcodeTF: SkyfieldPhoneTF!
     private var loginViewModel: VDLoginViewModel = VDLoginViewModel()
     var dialcode = ""
     var currentLocation: CLLocation?
@@ -41,6 +42,7 @@ extension VDLoginVC {
         phoneTF.delegate = self
         phoneTF.leftPadding = 70
         phoneTF.addLeftViewPadding(70)
+        passcodeTF.keyboardType = .default
         callBacks()
     }
     
@@ -56,6 +58,7 @@ extension VDLoginVC {
             let vc = VDOtpVC.create()
             vc.phoneNumber = self.phoneTF.text ?? ""
             vc.countryCode = self.dialcode
+            vc.passcode = self.passcodeTF.text ?? ""
             vc.comesFromSignIn = true
             vc.currentLocation = self.currentLocation
             self.navigationController?.pushViewController(vc, animated: true)
@@ -142,7 +145,7 @@ extension VDLoginVC{
               // Location is authorized, you can start getting location updates
               locationManager.startUpdatingLocation()
               self.view.endEditing(true)
-            loginViewModel.validateLoginDetails(dialcode,phoneTF.text ?? "", currentLocation)
+              loginViewModel.validateLoginDetails(dialcode,phoneTF.text ?? "", currentLocation,passcode: self.passcodeTF.text ?? "")
           case .denied, .restricted:
               // User denied location services, show alert
               showAlertForLocationSettings()

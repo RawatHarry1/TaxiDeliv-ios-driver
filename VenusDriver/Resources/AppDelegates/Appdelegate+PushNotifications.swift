@@ -53,6 +53,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
                         var currentUser = UserModel.currentUser
                         currentUser.login?.actual_credit_balance = model.driverBalanceData?.wallet_balance
                         currentUser.login?.min_driver_balance = model.driverBalanceData?.min_driver_balance
+                        currentUser.passcode = UserModel.currentUser.passcode
                         UserModel.currentUser = currentUser
                     }
                     NotificationCenter.default.post(name: .updateWalletBalance, object: nil, userInfo: nil)
@@ -153,6 +154,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
                 var currentUser = UserModel.currentUser
                 currentUser.login?.actual_credit_balance = model.driverBalanceData?.wallet_balance
                 currentUser.login?.min_driver_balance = model.driverBalanceData?.min_driver_balance
+                currentUser.passcode = UserModel.currentUser.passcode
                 UserModel.currentUser = currentUser
             }
             NotificationCenter.default.post(name: .updateWalletBalance, object: nil, userInfo: nil)
@@ -217,6 +219,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
                 var currentUser = UserModel.currentUser
                 currentUser.login?.actual_credit_balance = model.driverBalanceData?.wallet_balance
                 currentUser.login?.min_driver_balance = model.driverBalanceData?.min_driver_balance
+                currentUser.passcode = UserModel.currentUser.passcode
                 UserModel.currentUser = currentUser
             }
             NotificationCenter.default.post(name: .updateWalletBalance, object: nil, userInfo: nil)

@@ -11,6 +11,7 @@ struct UserModel : Codable {
     let flag : Int?
     let access_token : String?
     var login : LoginModel?
+    var passcode : String?
 
     // MARK: - Parameters
     static var currentUser = UserModel.getFromUserDefaults() {
@@ -77,6 +78,7 @@ struct UserModel : Codable {
         case flag = "flag"
         case access_token = "access_token"
         case login = "login"
+        case passcode = "passcode"
     }
 
     init(from decoder: Decoder) throws {
@@ -84,12 +86,14 @@ struct UserModel : Codable {
         flag = try values.decodeIfPresent(Int.self, forKey: .flag)
         access_token = try values.decodeIfPresent(String.self, forKey: .access_token)
         login = try values.decodeIfPresent(LoginModel.self, forKey: .login)
+        passcode = try values.decodeIfPresent(String.self, forKey: .passcode)
     }
 
     init() {
         flag = nil
         access_token = nil
         login = nil
+        passcode = nil
     }
 
     // MARK: - Custom Functions

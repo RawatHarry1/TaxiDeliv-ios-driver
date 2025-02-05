@@ -997,11 +997,11 @@ extension VDHomeVC {
         }
         if UserModel.currentUser.login?.service_type == 1 {
             
-            completeRideLbl.text = "Smart Driver Ride Completed"
+            completeRideLbl.text = "Mars Driver Ride Completed"
         }
         else
         {
-            completeRideLbl.text = "Smart Driver Delivery Completed"
+            completeRideLbl.text = "Mars Driver Delivery Completed"
 
         }
 
@@ -1204,6 +1204,7 @@ extension VDHomeVC {
             // Update the latest doc status in application
             var currentUser = UserModel.currentUser
             currentUser.login!.driver_document_status?.requiredDocsStatus = docStatus
+            currentUser.passcode = UserModel.currentUser.passcode
             UserModel.currentUser = currentUser
             self?.validateUserStatus(docStatus)
             self?.changeAvailabilitySuccess(status, docStatus)

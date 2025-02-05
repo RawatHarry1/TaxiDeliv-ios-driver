@@ -17,6 +17,7 @@ class VDOtpVC: VDBaseVC {
     // MARK: - Variables
     var phoneNumber = ""
     var countryCode = ""
+    var passcode = ""
     var fullText = ""
     var comesFromSignIn = false
     var currentLocation: CLLocation?
@@ -47,8 +48,10 @@ class VDOtpVC: VDBaseVC {
             }
         }
         
-        self.loginViewModel.otpVerifiedCallBack = { userModel in
+        self.loginViewModel.otpVerifiedCallBack = { userMainModel in
+            var userModel = userMainModel
             if let loginModel = userModel.login {
+                userModel.passcode = self.passcode
                 UserModel.currentUser = userModel
                 if UserModel.isAllStepsCompleted(loginModel.registration_step_completed!, loginModel.mandatory_registration_steps ?? Mandatory_registration_steps()) {
                     VDRouter.goToSaveUserVC()
@@ -121,6 +124,11 @@ extension VDOtpVC: OTPDelegate {
             if let location = LocationTracker.shared.lastLocation {
                 attribute["latitude"] = location.coordinate.latitude
                 attribute["longitude"] = location.coordinate.longitude
+            }
+            if self.passcode != ""
+            {
+                attribute["passcode"] = self.passcode 
+
             }
 
             loginViewModel.loginWithOtp(attribute, failer: { errorMessage in

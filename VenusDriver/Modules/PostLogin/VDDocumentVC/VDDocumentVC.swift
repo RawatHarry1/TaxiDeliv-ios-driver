@@ -56,6 +56,7 @@ class VDDocumentVC: VDBaseVC {
                     } else {
                         currentUser.login!.driver_document_status?.requiredDocsStatus = DocumentStatus.rejected.rawValue
                     }
+                    currentUser.passcode = UserModel.currentUser.passcode
                     UserModel.currentUser = currentUser
                 }
             }

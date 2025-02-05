@@ -32,7 +32,7 @@ class VDLoginViewModel: NSObject{
 
 //MARK: LOGIN API'S
 extension VDLoginViewModel {
-    func validateLoginDetails(_ dial_code: String, _ phone: String, _ location: CLLocation?){
+    func validateLoginDetails(_ dial_code: String, _ phone: String, _ location: CLLocation?,passcode : String? = ""){
         if phone == "" {
             error = CustomError(title: "", description: Const_Str.phone_invalid, code: 0)
             return
@@ -50,6 +50,11 @@ extension VDLoginViewModel {
             attributes["phoneNo"] = phone
             attributes["longitude"] = location?.coordinate.longitude
             attributes["latitude"] = location?.coordinate.latitude
+            if passcode != ""
+            {
+                attributes["passcode"] = passcode
+
+            }
             loginWithPhoneNumber(attributes)
         }
     }

@@ -120,7 +120,8 @@ extension WebServices {
             switch result {
             case .success(let json):
                 let data = try! json[APIKeys.data.rawValue].rawData()
-                let model = try! JSONDecoder().decode(UserModel.self, from: data)
+                var model = try! JSONDecoder().decode(UserModel.self, from: data)
+                model.passcode = UserModel.currentUser.passcode
                 UserModel.currentUser = model
                 response(.success(model))
             case .failure(let error):

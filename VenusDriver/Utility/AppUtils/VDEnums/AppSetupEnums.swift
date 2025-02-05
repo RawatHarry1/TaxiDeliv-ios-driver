@@ -27,7 +27,7 @@ enum AppEnvironment: String {
     /// ''baseURL": the primary url on which apis function
     var baseURL: String {
         switch self {
-        case .dev: return "https://dev-rides.venustaxi.in"
+        case .dev: return "https://tbm-dev-rides.venustaxi.in"
         case .qa: return "http://43.204.229.91:8080"
         case .stage: return "https://chuki-rides.venustaxi.in" //https://chuki-rides.venustaxi.in
         case .production: return "https://super-app-rides.venustaxi.in"
@@ -37,7 +37,7 @@ enum AppEnvironment: String {
     /// ''socketUrl": the primary url on which socket function
     var socketUrl: String {
         switch self {
-        case .dev: return "https://dev-rides-api.venustaxi.in"
+        case .dev: return "https://tbm-dev-rides.venustaxi.in"
         case .qa: return "https://43.204.229.91:4012"
         case .stage: return "https://chuki-rides-api.venustaxi.in"
         case .production: return "https://super-app-rides-api.venustaxi.in"

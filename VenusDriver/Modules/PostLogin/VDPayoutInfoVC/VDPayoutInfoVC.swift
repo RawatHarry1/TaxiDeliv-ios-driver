@@ -27,6 +27,7 @@ class VDPayoutInfoVC: VDBaseVC {
         viewModel.successCallBack = { status in
             var userData = UserModel.currentUser
             userData.login?.registration_step_completed?.is_bank_details_completed = true
+            userData.passcode = UserModel.currentUser.passcode
             UserModel.currentUser = userData
             self.loginViewModel.loginWithAccessToken()
             VDRouter.goToSaveUserVC() // Set Root View As VDLGMainVC
@@ -52,6 +53,7 @@ class VDPayoutInfoVC: VDBaseVC {
         if (accountHolderNameTF.text ?? "") == "" && (accountNumberTF.text ?? "").trimmed == "" && (bankNameTF.text ?? "") == "" {
             var userData = UserModel.currentUser
             userData.login?.registration_step_completed?.is_bank_details_completed = true
+            userData.passcode = UserModel.currentUser.passcode
             UserModel.currentUser = userData
             self.loginViewModel.loginWithAccessToken()
 //            VDRouter.goToSaveUserVC()
@@ -64,6 +66,7 @@ class VDPayoutInfoVC: VDBaseVC {
     @IBAction func btnSkipAction(_ sender: Any) {
         var userData = UserModel.currentUser
         userData.login?.registration_step_completed?.is_bank_details_completed = true
+        userData.passcode = UserModel.currentUser.passcode
         UserModel.currentUser = userData
         self.loginViewModel.loginWithAccessToken()
     }
