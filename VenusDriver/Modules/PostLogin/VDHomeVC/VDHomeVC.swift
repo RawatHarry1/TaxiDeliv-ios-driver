@@ -2595,7 +2595,7 @@ extension VDHomeVC{
     func showNotificationAlert() {
         let alert = UIAlertController(
             title: "Notifications Disabled",
-            message: "Enable notifications for Super Driver Driver? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
+            message: "Enable notifications for Mars Driver Driver? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
             preferredStyle: .alert
         )
 
