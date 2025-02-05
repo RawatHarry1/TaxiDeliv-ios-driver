@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Delivery Driver Screen1.png",
+      "filename" : "Driver Screen1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Delivery Driver Screen1 1.png",
+      "filename" : "Driver Screen1 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Delivery Driver Screen1 2.png",
+      "filename" : "Driver Screen1 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

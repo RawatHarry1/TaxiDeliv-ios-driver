@@ -17,7 +17,7 @@ var objDelivery_packages = [DeliveryPackageData]()
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var player: AVAudioPlayer?
     var window:UIWindow?
-    var appEnvironment: AppEnvironment = .dev
+    var appEnvironment: AppEnvironment = .stage
     var isFromNotification = false
     var walletUpdateNotificationClicked = false
     var notficationDetails: PushNotification?

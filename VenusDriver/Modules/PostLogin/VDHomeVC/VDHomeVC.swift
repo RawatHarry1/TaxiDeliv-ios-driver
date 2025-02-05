@@ -997,11 +997,11 @@ extension VDHomeVC {
         }
         if UserModel.currentUser.login?.service_type == 1 {
             
-            completeRideLbl.text = "Mars Driver Ride Completed"
+            completeRideLbl.text = "Venus Driver Ride Completed"
         }
         else
         {
-            completeRideLbl.text = "Mars Driver Delivery Completed"
+            completeRideLbl.text = "Venus Driver Delivery Completed"
 
         }
 
@@ -2596,7 +2596,7 @@ extension VDHomeVC{
     func showNotificationAlert() {
         let alert = UIAlertController(
             title: "Notifications Disabled",
-            message: "Enable notifications for Mars Driver Driver? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
+            message: "Enable notifications for Venus Driver Driver? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
             preferredStyle: .alert
         )
 
