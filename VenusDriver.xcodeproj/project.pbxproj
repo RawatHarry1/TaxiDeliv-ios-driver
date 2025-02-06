@@ -572,6 +572,7 @@
 		6FF438039530F1B147E201A2 /* Pods_VenusDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4646EDF69101DF2D03A7CA7E /* Pods_VenusDriver.framework */; };
 		A0E8A714081FA83C2C78A645 /* Pods_SaloneRide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFAB59E297552D8E5EABC69 /* Pods_SaloneRide.framework */; };
 		BDA3181B2D38EB2E00EBA84B /* SlideToActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA318192D38E97F00EBA84B /* SlideToActionButton.swift */; };
+		BDC4FF7A2D547BB400FB26A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDC4FF782D547BAF00FB26A0 /* GoogleService-Info.plist */; };
 		BDE747F62D366FEF005B04B5 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE747F52D366FEF005B04B5 /* StepsModel.swift */; };
 		CF08C7A62C819B35007A981A /* CardsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C79D2C819B35007A981A /* CardsModal.swift */; };
 		CF08C7A72C819B35007A981A /* CardsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08C79D2C819B35007A981A /* CardsModal.swift */; };
@@ -611,8 +612,6 @@
 		CF704C9E2D096EB800D83A3B /* TicketListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C922D096EB800D83A3B /* TicketListVC.swift */; };
 		CF704C9F2D096EB800D83A3B /* TicketTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C932D096EB800D83A3B /* TicketTblCell.swift */; };
 		CF704CA02D096EB800D83A3B /* TicketTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF704C932D096EB800D83A3B /* TicketTblCell.swift */; };
-		CF81FE312CC7B4E900ABE41A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF81FE302CC7B4E900ABE41A /* GoogleService-Info.plist */; };
-		CF81FE322CC7B4E900ABE41A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF81FE302CC7B4E900ABE41A /* GoogleService-Info.plist */; };
 		CF89ED272C367AD400DC7125 /* NeedHelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF89ED252C367A1000DC7125 /* NeedHelpVC.swift */; };
 		CF89ED282C36AF2F00DC7125 /* NeedHelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF89ED252C367A1000DC7125 /* NeedHelpVC.swift */; };
 		CF989E842CE20D18002FB3E3 /* UploadPackageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF989E832CE20D18002FB3E3 /* UploadPackageVC.swift */; };
@@ -949,6 +948,7 @@
 		821362B34291289AD6706CA7 /* Pods-SaloneRide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaloneRide.debug.xcconfig"; path = "Target Support Files/Pods-SaloneRide/Pods-SaloneRide.debug.xcconfig"; sourceTree = "<group>"; };
 		B39F1E5CBDB467DD5506C603 /* Pods-SaloneRide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaloneRide.release.xcconfig"; path = "Target Support Files/Pods-SaloneRide/Pods-SaloneRide.release.xcconfig"; sourceTree = "<group>"; };
 		BDA318192D38E97F00EBA84B /* SlideToActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideToActionButton.swift; sourceTree = "<group>"; };
+		BDC4FF782D547BAF00FB26A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BDE747F52D366FEF005B04B5 /* StepsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
 		CF08C79D2C819B35007A981A /* CardsModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsModal.swift; sourceTree = "<group>"; };
 		CF08C79E2C819B35007A981A /* ConfirmCardModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCardModal.swift; sourceTree = "<group>"; };
@@ -970,7 +970,6 @@
 		CF704C912D096EB800D83A3B /* TicketListModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketListModal.swift; sourceTree = "<group>"; };
 		CF704C922D096EB800D83A3B /* TicketListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketListVC.swift; sourceTree = "<group>"; };
 		CF704C932D096EB800D83A3B /* TicketTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTblCell.swift; sourceTree = "<group>"; };
-		CF81FE302CC7B4E900ABE41A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF89ED252C367A1000DC7125 /* NeedHelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedHelpVC.swift; sourceTree = "<group>"; };
 		CF989E832CE20D18002FB3E3 /* UploadPackageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPackageVC.swift; sourceTree = "<group>"; };
 		CF989E852CE20D61002FB3E3 /* UploadCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCollectionCell.swift; sourceTree = "<group>"; };
@@ -2174,7 +2173,7 @@
 				0CD15F3D2A6BED6F00123A1C /* SaloneStoryboards */,
 				0CD15F3C2A6BED6000123A1C /* SaloneAppController */,
 				0CD15F382A6AE53700123A1C /* GlobalValuesPropertyList.plist */,
-				CF81FE302CC7B4E900ABE41A /* GoogleService-Info.plist */,
+				BDC4FF782D547BAF00FB26A0 /* GoogleService-Info.plist */,
 				0CD15F2E2A6ADDA800123A1C /* sloneInfo.plist */,
 				0CD15F2F2A6ADF7600123A1C /* Assets.xcassets */,
 				0CD15F312A6AE25400123A1C /* Colors.xcassets */,
@@ -2743,7 +2742,6 @@
 				0C61E61E2A3EE5FA002CFB7E /* proximanova-semibold.otf in Resources */,
 				0C1FD75E2A40C8810027E2CA /* VDNotificationHeaderCell.xib in Resources */,
 				0C140ED12A30F8C100206A54 /* Proxima Nova Alt Bold.otf in Resources */,
-				CF81FE312CC7B4E900ABE41A /* GoogleService-Info.plist in Resources */,
 				0C8A5F3C2A323EB00048A615 /* SFUIText-BoldItalic.ttf in Resources */,
 				0C61E63B2A3EE5FA002CFB7E /* proximanovacond-semiboldit.otf in Resources */,
 				0C61E6292A3EE5FA002CFB7E /* proximanovacond-regularit.otf in Resources */,
@@ -2804,7 +2802,6 @@
 				0CD15ECC2A6AD65600123A1C /* Proxima Nova Bold.otf in Resources */,
 				0CD15ECD2A6AD65600123A1C /* proximanovaexcn-regularit.otf in Resources */,
 				0CD15ECE2A6AD65600123A1C /* proximanova-regularit.otf in Resources */,
-				CF81FE322CC7B4E900ABE41A /* GoogleService-Info.plist in Resources */,
 				0CD15ECF2A6AD65600123A1C /* proximanova-extraboldit.otf in Resources */,
 				0CD15ED02A6AD65600123A1C /* proximanova-medium.otf in Resources */,
 				0C1C0A272A6C5BF50007DC45 /* VDFAQCell.xib in Resources */,
@@ -2836,6 +2833,7 @@
 				0CD15EE32A6AD65600123A1C /* SFUIText-Medium.ttf in Resources */,
 				0CD15EE42A6AD65600123A1C /* proximanovaexcn-semiboldit.otf in Resources */,
 				0CD15EE52A6AD65600123A1C /* proximanovacond-mediumit.otf in Resources */,
+				BDC4FF7A2D547BB400FB26A0 /* GoogleService-Info.plist in Resources */,
 				0CD15F402A6BEE0300123A1C /* SaloneMain.storyboard in Resources */,
 				0CD15EE62A6AD65600123A1C /* proximanovacond-thinit.otf in Resources */,
 				0CD15EE72A6AD65600123A1C /* SFUIText-MediumItalic.ttf in Resources */,
@@ -3690,7 +3688,7 @@
 				CODE_SIGN_ENTITLEMENTS = SaloneRide.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 9R3NLR89HG;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				EXCLUDED_ARCHS = "";
@@ -3736,7 +3734,7 @@
 				CODE_SIGN_ENTITLEMENTS = SaloneRide.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 30;
 				DEVELOPMENT_TEAM = 9R3NLR89HG;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				EXCLUDED_ARCHS = "";

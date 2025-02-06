@@ -63,11 +63,11 @@ class VDElectricVC: VDBaseVC, UITextFieldDelegate {
         vehicleNumberTF.delegate = self
         listTableView.delegate  = self
         listTableView.dataSource = self
-     //   if let cityId = UserModel.currentUser.login?.city {
+        if let cityId = UserModel.currentUser.login?.city {
             if let _cityList = ClientModel.currentClientData.city_list {
                 self.cityList = _cityList
-//                let city = _cityList.filter({($0.city_id ?? 0) == cityId})
-                let city = _cityList
+                let city = _cityList.filter({($0.city_id ?? 0) == cityId})
+//                let city = _cityList
                 
                 if city.count > 0 {
                     self.selectedCity = city[0]
@@ -80,15 +80,15 @@ class VDElectricVC: VDBaseVC, UITextFieldDelegate {
                     vehicleTypeTF.text = ""
                     vehicleModelID = nil
                     vehicleModelTF.text = ""
-                    viewModel.fetchDocumentsList(city[0].city_id ?? 0, rideType: self.selectedID, completion: {
-                        self.listTableView.reloadData()
-                    })
+                 
                 }
                
             }
-          
+            viewModel.fetchDocumentsList(cityId, rideType: self.selectedID, completion: {
+                self.listTableView.reloadData()
+            })
 
-      //  }
+        }
         listTableView.register(UINib(nibName: "VDElectricListCell", bundle: nil), forCellReuseIdentifier: "VDElectricListCell")
 
         viewModel.successCallBack = { status in
