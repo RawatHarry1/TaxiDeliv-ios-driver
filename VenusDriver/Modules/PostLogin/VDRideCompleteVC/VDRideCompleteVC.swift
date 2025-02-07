@@ -49,6 +49,7 @@ class VDRideCompleteVC: VDBaseVC {
     var customerID = ""
     var profileName = ""
     var dateRentalDrop = ""
+    
     //  To create ViewModel
     static func create(_ type: Int = 0) -> VDRideCompleteVC {
         let obj = VDRideCompleteVC.instantiate(fromAppStoryboard: .postLogin)
