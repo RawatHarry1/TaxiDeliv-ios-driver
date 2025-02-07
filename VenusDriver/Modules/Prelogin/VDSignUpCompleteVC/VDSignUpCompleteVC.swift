@@ -10,6 +10,7 @@ import LGSideMenuController
 
 class VDSignUpCompleteVC: VDBaseVC {
 
+    @IBOutlet weak var imgCheck: UIImageView!
     //  To create ViewModel
     static func create() -> UIViewController {
         let obj = VDSignUpCompleteVC.instantiate(fromAppStoryboard: .preLogin)
@@ -17,6 +18,7 @@ class VDSignUpCompleteVC: VDBaseVC {
     }
 
     override func initialSetup() {
+        imgCheck.image = imgCheck.image?.withRenderingMode(.alwaysTemplate)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             var vc = VDElectricVC.create(0)
             vc.fromWelcome = true
