@@ -35,7 +35,7 @@
                                     <constraint firstAttribute="width" secondItem="gM4-Wk-Tvr" secondAttribute="height" multiplier="1:0.714" id="zLB-w5-uvH"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mars Driver" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vP0-55-8T8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VYBA Driver" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vP0-55-8T8">
                                 <rect key="frame" x="30" y="458.66666666666669" width="333" height="29.333333333333314"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="24"/>
                                 <color key="textColor" name="textColor"/>
@@ -200,7 +200,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uv5-U5-ogt">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="500"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="561.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nm-hO-28Y">
                                                 <rect key="frame" x="30" y="30.000000000000004" width="333" height="62.333333333333343"/>
@@ -211,7 +211,7 @@ Thanks for going green!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NFY-va-RqH">
-                                                <rect key="frame" x="30" y="122.33333333333334" width="333" height="120"/>
+                                                <rect key="frame" x="30" y="122.33333333333334" width="333" height="60"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtR-ek-NhX">
                                                         <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
@@ -294,8 +294,8 @@ Thanks for going green!</string>
                                                             <constraint firstItem="12d-qm-lSo" firstAttribute="top" secondItem="RtR-ek-NhX" secondAttribute="top" id="xUq-BY-cSM"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zkg-lO-SRO">
-                                                        <rect key="frame" x="0.0" y="59.999999999999972" width="333" height="60"/>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zkg-lO-SRO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter passcode (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KRm-qw-rmz" customClass="SkyfieldPhoneTF" customModule="SaloneRide" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
@@ -317,7 +317,7 @@ Thanks for going green!</string>
                                                         </constraints>
                                                     </view>
                                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email or mobile number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MXE-IQ-DLT" customClass="SkyfieldTF" customModule="SaloneRide" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="119.99999999999997" width="333" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
                                                         <color key="tintColor" name="buttonSelectedOrange"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="C6N-G3-Fok"/>
@@ -327,7 +327,7 @@ Thanks for going green!</string>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="18u-zr-iXj" customClass="SkyfieldTF" customModule="SaloneRide" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="119.99999999999997" width="333" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
                                                         <color key="tintColor" name="buttonSelectedOrange"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="EAp-PY-4TA"/>
@@ -339,7 +339,7 @@ Thanks for going green!</string>
                                                 </subviews>
                                             </stackView>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRw-Qz-aCV">
-                                                <rect key="frame" x="30" y="258.33333333333331" width="120" height="17"/>
+                                                <rect key="frame" x="30" y="198.33333333333331" width="120" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Amk-Pq-NVz"/>
                                                     <constraint firstAttribute="height" constant="17" id="zxf-xd-UHc"/>
@@ -351,7 +351,7 @@ Thanks for going green!</string>
                                                 </state>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2N-7n-Huz">
-                                                <rect key="frame" x="245" y="258.33333333333331" width="118" height="17"/>
+                                                <rect key="frame" x="245" y="198.33333333333331" width="118" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="N7M-Sp-Prr"/>
                                                 </constraints>
@@ -364,7 +364,7 @@ Thanks for going green!</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcO-dl-GbF" customClass="VDButton" customModule="SaloneRide" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="315.33333333333331" width="333" height="46"/>
+                                                <rect key="frame" x="30" y="255.33333333333331" width="333" height="46"/>
                                                 <color key="backgroundColor" name="buttonSelectedOrange"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="LQJ-r1-k4L"/>
@@ -384,7 +384,7 @@ Thanks for going green!</string>
                                                 </connections>
                                             </button>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJ8-RJ-zMf">
-                                                <rect key="frame" x="186.66666666666666" y="401.33333333333331" width="20" height="20"/>
+                                                <rect key="frame" x="186.66666666666666" y="341.33333333333331" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="RSe-eU-eh0"/>
                                                 </constraints>
@@ -393,10 +393,10 @@ Thanks for going green!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="JZ3-ma-zIT">
-                                                <rect key="frame" x="30" y="451.33333333333337" width="333" height="18.666666666666686"/>
+                                                <rect key="frame" x="30" y="391.33333333333331" width="333" height="139.99999999999994"/>
                                                 <subviews>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxC-HK-4d4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="214" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="46"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="qtN-ew-EcK"/>
@@ -419,7 +419,7 @@ Thanks for going green!</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBm-dd-hcg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="214" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="46"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="weN-I6-4WL"/>
@@ -442,7 +442,7 @@ Thanks for going green!</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sJ-Qd-JqF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="214" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="46"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="sCn-SI-3UW"/>
@@ -464,7 +464,19 @@ Thanks for going green!</string>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashLogo" translatesAutoresizingMaskIntoConstraints="NO" id="yfc-mR-m1v">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="140"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="140" id="BHP-VN-pvz"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="yfc-mR-m1v" firstAttribute="top" secondItem="JZ3-ma-zIT" secondAttribute="top" id="4Qu-ji-PD3"/>
+                                                    <constraint firstItem="yfc-mR-m1v" firstAttribute="leading" secondItem="JZ3-ma-zIT" secondAttribute="leading" id="LaX-uC-95S"/>
+                                                    <constraint firstAttribute="trailing" secondItem="yfc-mR-m1v" secondAttribute="trailing" id="QOg-GI-wHj"/>
+                                                    <constraint firstAttribute="bottom" secondItem="yfc-mR-m1v" secondAttribute="bottom" id="dkB-Hw-E5u"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -927,7 +939,7 @@ Thanks for going green!</string>
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hkj-tM-AxW">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="337.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="277.33333333333331"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create An Account" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feC-HX-mc3">
                                                 <rect key="frame" x="30" y="30" width="333" height="31.333333333333329"/>
@@ -936,7 +948,7 @@ Thanks for going green!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MPU-3W-cu4">
-                                                <rect key="frame" x="30" y="91.333333333333343" width="333" height="120"/>
+                                                <rect key="frame" x="30" y="91.333333333333343" width="333" height="60"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmi-df-AUV">
                                                         <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
@@ -1019,7 +1031,7 @@ Thanks for going green!</string>
                                                         </constraints>
                                                     </view>
                                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email or mobile number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbe-bW-EPr" customClass="SkyfieldTF" customModule="SaloneRide" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="60" width="333" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
                                                         <color key="tintColor" name="buttonSelectedOrange"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="d8x-u8-bsu"/>
@@ -1028,8 +1040,8 @@ Thanks for going green!</string>
                                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rY-ie-fBd">
-                                                        <rect key="frame" x="0.0" y="60" width="333" height="60"/>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rY-ie-fBd">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter passcode (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cJZ-g7-ITU" customClass="SkyfieldPhoneTF" customModule="SaloneRide" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
@@ -1051,7 +1063,7 @@ Thanks for going green!</string>
                                                         </constraints>
                                                     </view>
                                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h0F-S5-tJA" customClass="SkyfieldTF" customModule="SaloneRide" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="119.99999999999997" width="333" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
                                                         <color key="tintColor" name="buttonSelectedOrange"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="Vkf-7F-bSc"/>
@@ -1061,7 +1073,7 @@ Thanks for going green!</string>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lKq-1d-yXX" customClass="SkyfieldTF" customModule="SaloneRide" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="119.99999999999997" width="333" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
                                                         <color key="tintColor" name="buttonSelectedOrange"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="KNx-7H-cE9"/>
@@ -1073,7 +1085,7 @@ Thanks for going green!</string>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGm-ie-onz" customClass="VDButton" customModule="SaloneRide" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="271.33333333333331" width="333" height="46"/>
+                                                <rect key="frame" x="30" y="211.33333333333331" width="333" height="46"/>
                                                 <color key="backgroundColor" name="buttonSelectedOrange"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="FRN-7M-rAe"/>
@@ -1687,12 +1699,13 @@ email@gmail.com</string>
         <image name="check" width="124.33333587646484" height="124.33333587646484"/>
         <image name="checkBoxOrange" width="15" height="15"/>
         <image name="checkEmail" width="162" height="116.66666412353516"/>
-        <image name="chooselogin" width="375" height="288"/>
+        <image name="chooselogin" width="341.33334350585938" height="341.33334350585938"/>
         <image name="countryFlag" width="20" height="12"/>
         <image name="cross" width="46" height="46"/>
         <image name="facebook" width="24" height="24"/>
         <image name="googleLogo" width="20" height="20"/>
         <image name="imgPlaceholder" width="132" height="132"/>
+        <image name="splashLogo" width="341.33334350585938" height="341.33334350585938"/>
         <namedColor name="buttonBorder">
             <color red="0.43900001049041748" green="0.43900001049041748" blue="0.43900001049041748" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

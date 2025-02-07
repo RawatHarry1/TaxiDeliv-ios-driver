@@ -1,10 +1,10 @@
 /* Bundle name */
-"CFBundleDisplayName" = "Mars Driver";//"Salone Ride Driver"
+"CFBundleDisplayName" = "VYBA Driver";//"Salone Ride Driver"
 /* Privacy - Camera Usage Description */
 "NSCameraUsageDescription" = "Need to access your camera to capture a photo to add or update profile pictures and verification documents.";
 /* Privacy - Location Always and When In Use Usage Description */
-"NSLocationAlwaysAndWhenInUseUsageDescription" = "Mars Driver uses this to update your location & let you receive nearby ride requests and show your availability as per your current location to Mars Driver user. You can always change this later in your phone’s settings.";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "VYBA Driver uses this to update your location & let you receive nearby ride requests and show your availability as per your current location to VYBA Driver user. You can always change this later in your phone’s settings.";
 /* Privacy - Location When In Use Usage Description */
-"NSLocationWhenInUseUsageDescription" = "Mars Driver uses this to update your location & let you receive nearby ride requests and show your availability as per your current location to Mars Driver user. You can always change this later in your phone’s settings.";
+"NSLocationWhenInUseUsageDescription" = "VYBA Driver uses this to update your location & let you receive nearby ride requests and show your availability as per your current location to VYBA Driver user. You can always change this later in your phone’s settings.";
 /* Privacy - Photo Library Usage Description */
-"NSPhotoLibraryUsageDescription" = "Mars Driver Need to access photo library to select a photo to add or update profile pictures and verification documents.";
+"NSPhotoLibraryUsageDescription" = "VYBA Driver Need to access photo library to select a photo to add or update profile pictures and verification documents.";
