@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "msg.png",
+      "filename" : "output-onlinepngtools-12.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "msg copy 2.png",
+      "filename" : "output-onlinepngtools-12 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "msg copy.png",
+      "filename" : "output-onlinepngtools-12 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -69,6 +69,7 @@ class VDRideCompleteVC: VDBaseVC {
         self.btnChat.isHidden = true
         viewDot.isHidden = true
         self.btnCancel.isHidden = true
+        chatIcon.image = chatIcon.image?.withRenderingMode(.alwaysTemplate)
         if screenTyoe == 2 {
             self.btnBack.isHidden = true
             btnAccept.isHidden = false

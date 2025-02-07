@@ -272,7 +272,7 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate {
     var countMain = 0;
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
-      
+        btnChat.setImage(UIImage(named: "msg")?.withRenderingMode(.alwaysTemplate), for: .normal)
         slideToActionBtn.delegate = self
         self.mapView.isMyLocationEnabled = false
         checkMapType()
@@ -756,8 +756,10 @@ extension VDHomeVC {
         if isAvailable  {
             VDUserDefaults.save(value: true, forKey: .isDriverAvailable)
             self.availabilityButton.isSelected = true
+            self.availabilityButton.setImage(self.availabilityButton.image(for: .selected)?.withRenderingMode(.alwaysTemplate), for: .selected)
             self.offlineView.isHidden = true
             self.titleLbl.text = "Online"
+            
         } else {
             VDUserDefaults.save(value: false, forKey: .isDriverAvailable)
             self.availabilityButton.isSelected = false
