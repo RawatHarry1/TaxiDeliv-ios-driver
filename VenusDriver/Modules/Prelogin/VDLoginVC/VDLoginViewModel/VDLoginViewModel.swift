@@ -69,9 +69,10 @@ extension VDLoginViewModel {
             case .success(let data):
                 printDebug(data)
                 self?.successCallBack(true)
-            case .failure(let error):
-                printDebug(error.localizedDescription)
-                SKToast.show(withMessage: error.localizedDescription)
+            case .failure(let error2):
+                printDebug(error2.localizedDescription)
+                self?.error = CustomError(title: "", description: error2.localizedDescription, code: 0)
+//                SKToast.show(withMessage: error.localizedDescription)
             }
         }
     }

@@ -9,6 +9,7 @@ import UIKit
 
 class VDElectricVC: VDBaseVC, UITextFieldDelegate {
  
+    @IBOutlet weak var lblSelectDriverType: UILabel!
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var vehicleYearTF: SkyfieldTF!
@@ -51,13 +52,21 @@ class VDElectricVC: VDBaseVC, UITextFieldDelegate {
     override func initialSetup() {
         
         if ClientModel.currentClientData.enabled_service! == 3{
+            lblSelectDriverType.isHidden = false
             collectionView.isHidden = false
+            lblSelectDriverType.text = "Select Driver Type"
+            
         }else if ClientModel.currentClientData.enabled_service! == 2{
             selectedID = 2
             collectionView.isHidden = true
+            lblSelectDriverType.isHidden = true
+            lblSelectDriverType.text = ""
         }else{
             selectedID = 1
             collectionView.isHidden = true
+            lblSelectDriverType.isHidden = true
+            lblSelectDriverType.text = ""
+
         }
         
         vehicleNumberTF.delegate = self
