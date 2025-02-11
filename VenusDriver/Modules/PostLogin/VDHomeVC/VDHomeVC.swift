@@ -15,7 +15,17 @@ import AVFoundation
 var navigateToChatOnce = false
 var navigateToChat = false
 
-class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate {
+class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
+    func feedbackSuccess() {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+        {
+            self.mapView.clear()
+         
+        }
+        
+    }
+    
    
     @IBOutlet weak var rentalView: UIView!
     @IBOutlet weak var rentalTimeLbl: UILabel!
@@ -270,7 +280,9 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate {
           
       }
     var countMain = 0;
+    var feedbackOpen = false
     override func viewWillAppear(_ animated: Bool) {
+        feedbackOpen = false
         self.navigationController?.navigationBar.isHidden = true
         btnChat.setImage(UIImage(named: "msg")?.withRenderingMode(.alwaysTemplate), for: .normal)
         slideToActionBtn.delegate = self
@@ -314,11 +326,13 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate {
         if RideStatus == .none
         {
             self.mapView.clear()
+//            self.travelledPolyline = nil
+//            self.completePolyline = nil
         }
         if   RideStatus != .availableRide
                 //&&  RideStatus != .rideCompleted
         {
-        print(cancelRideBtn.title(for: .normal))
+//        print(cancelRideBtn.title(for: .normal))
           self.homeViewModel.fetchAvailableRide()
       }
         if let notificationModel = sharedAppDelegate.notficationDetails {
@@ -395,8 +409,21 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate {
     @objc func observerForNewRideRequest(notification: Notification) {
             if let notificationModel = sharedAppDelegate.notficationDetails {
 //                if type.rawValue == notificationTypes.new_ride_request.rawValue {
+             
+//                if notificationModel.is_ror == 1{
+//                    newRideReqView.isHidden = false
+//        //            rideProcessingView.isHidden = true
+//        //            rideStatusView.isHidden = true
+//        //            self.hideOnRideView()
+//        //            self.btnbottom.constant = 20
+//                    updateAvailableRidePopUp()
+//                }
+//                else
+//                {
                     RideStatus = .availableRide
-                    updateUIAccordingtoRideStatus()
+                updateUIAccordingtoRideStatus(isRor:  notificationModel.is_ror == 1 ? true : false )
+
+//                }
 //                }
 //            }
         }
@@ -821,7 +848,7 @@ extension VDHomeVC {
         }
     }
 
-    func updateUIAccordingtoRideStatus() {
+    func updateUIAccordingtoRideStatus(isRor : Bool? = false) {
         self.availabilityButton.isUserInteractionEnabled = false
         if timerToUpdateDriverLocation == nil {
             startTimerToUpdateDriverLocation()
@@ -862,12 +889,25 @@ extension VDHomeVC {
             self.mapView.clear()
 //            stopTimer() // Stop timer to update driver location when driver is not taking any rides
         case .availableRide :
-            newRideReqView.isHidden = false
-            rideProcessingView.isHidden = true
-            rideStatusView.isHidden = true
-            self.hideOnRideView()
-            self.btnbottom.constant = 20
-            updateAvailableRidePopUp()
+            if isRor == true
+            {
+                newRideReqView.isHidden = false
+//                rideProcessingView.isHidden = true
+//                rideStatusView.isHidden = true
+//                self.hideOnRideView()
+//                self.btnbottom.constant = 20
+                updateAvailableRidePopUp()
+
+            }
+            else
+            {
+                newRideReqView.isHidden = false
+                rideProcessingView.isHidden = true
+                rideStatusView.isHidden = true
+                self.hideOnRideView()
+                self.btnbottom.constant = 20
+                updateAvailableRidePopUp()
+            }
         case .acceptedRide :
            // Write code for driver is in proress to pick up driver
             newRideReqView.isHidden = true
@@ -955,6 +995,8 @@ extension VDHomeVC {
             self.availabilityButton.isUserInteractionEnabled = true
             break
         }
+        
+   
     }
 
     func updateOngoingRideStatusPopUp() {
@@ -999,11 +1041,11 @@ extension VDHomeVC {
         }
         if UserModel.currentUser.login?.service_type == 1 {
             
-            completeRideLbl.text = "Mars Driver Ride Completed"
+            completeRideLbl.text = "Smart Driver Ride Completed"
         }
         else
         {
-            completeRideLbl.text = "Mars Driver Delivery Completed"
+            completeRideLbl.text = "Smart Driver Delivery Completed"
 
         }
 
@@ -1407,7 +1449,24 @@ extension VDHomeVC {
         }
 
         if let notification = sharedAppDelegate.notficationDetails {
+            
+            
             let status = notification.status ?? "0"
+            if status == "21"
+            {
+               
+                if feedbackOpen == false
+                {
+                    self.feedbackOpen = true
+                    let story = UIStoryboard(name: "Ratings", bundle: nil)
+                    let vc = story.instantiateViewController(withIdentifier: "VCFeedbackVC") as! VCFeedbackVC
+                    vc.notficationDetails = notification
+                    vc.feedbackSucess = self
+                    vc.isROR = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+return
+            }
             RideStatus = rideStatus(rawValue: status) ?? .none
             tripID = notification.trip_id
             self.lblReceiverName.text = notification.recipient_name ?? ""
@@ -1443,9 +1502,15 @@ extension VDHomeVC {
                 self.btnbottom.constant = UserModel.currentUser.login?.service_type == 1 ? 300  : 350
                 self.updateUIAccordingtoRideStatus()
             }else {
-                self.updateUIAccordingtoRideStatus()
+                if status != "21"
+                {
+                    self.updateUIAccordingtoRideStatus()
+                }
             }
-            self.tripStartedAction()
+          if status != "21"
+            {
+              self.tripStartedAction()
+          }
 
         } else {
             tripID = nil
@@ -1481,6 +1546,7 @@ extension VDHomeVC {
                     obj.dateRentalDrop = self.formatDateString(notificationModel.rental_drop_date ?? "") ?? ""
                     obj.isRental = notificationModel.is_for_rental == 1 ? true : false
                     obj.objDelivery_packages = self.objDelivery_packages ?? []
+                    obj.isRoR = notificationModel.is_ror == 1 ? true : false
                     //let obj = VDRideCompleteVC.create(1)
                     obj.modalPresentationStyle = .overFullScreen
                     obj.markArrived = { status  in
@@ -1545,6 +1611,8 @@ extension VDHomeVC {
         }
         attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
         homeViewModel.rejectRideApi(attributes)
+        homeViewModel.fetchAvailableRide()
+        
     }
 
     @IBAction func centerLocationBtn(_ sender: UIButton) {
@@ -2598,7 +2666,7 @@ extension VDHomeVC{
     func showNotificationAlert() {
         let alert = UIAlertController(
             title: "Notifications Disabled",
-            message: "Enable notifications for Mars Driver Driver? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
+            message: "Enable notifications for Smart Driver Driver? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
             preferredStyle: .alert
         )
 

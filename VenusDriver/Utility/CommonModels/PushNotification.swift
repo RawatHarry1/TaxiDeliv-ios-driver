@@ -14,6 +14,9 @@ struct PushNotification : Codable {
     var estimated_driver_fare : String?
     var status : String?
     var estimated_distance : String?
+    let paid_using_wallet : Int?
+    let fare : Int?
+
     var dry_eta : String?
     var currency : String?
     var customer_id : String?
@@ -38,10 +41,13 @@ struct PushNotification : Codable {
     var delivery_packages: [DeliveryPackageData]?
     var is_for_rental :  Int?
     var rental_drop_date : String?
+    var is_ror : Int?
             
         
                 
     enum CodingKeys: String, CodingKey {
+        case paid_using_wallet = "paid_using_wallet"
+        case fare = "fare"
 
         case title = "title"
         case pickup_address = "pickup_address"
@@ -73,7 +79,7 @@ struct PushNotification : Codable {
         case delivery_packages = "delivery_packages"
         case is_for_rental = "is_for_rental"
         case rental_drop_date = "rental_drop_date"
-        
+        case is_ror = "is_ror"
     }
 
     init(from decoder: Decoder) throws {
@@ -111,6 +117,9 @@ struct PushNotification : Codable {
         estimated_distance = try values.decodeIfPresent(String.self, forKey: .estimated_distance)
         dry_eta = try values.decodeIfPresent(String.self, forKey: .dry_eta)
         currency = try values.decodeIfPresent(String.self, forKey: .currency)
+        paid_using_wallet = try values.decodeIfPresent(Int.self, forKey: .paid_using_wallet)
+        fare = try values.decodeIfPresent(Int.self, forKey: .fare)
+
         do {
             customer_id = try values.decodeIfPresent(String.self, forKey: .customer_id)
         }
@@ -162,6 +171,7 @@ struct PushNotification : Codable {
         customer_ame = try values.decodeIfPresent(String.self, forKey: .customer_ame)
         service_type = try values.decodeIfPresent(Int.self, forKey: .service_type)
         delivery_packages  = try values.decodeIfPresent([DeliveryPackageData].self, forKey: .delivery_packages)
+        is_ror = try values.decodeIfPresent(Int.self, forKey: .is_ror)
         do {
             is_for_rental = try values.decodeIfPresent(Int.self, forKey: .is_for_rental)
         }
@@ -210,6 +220,10 @@ struct PushNotification : Codable {
         delivery_packages = nil
         is_for_rental = nil
         rental_drop_date = nil
+        is_ror = nil
+        paid_using_wallet = nil
+        fare = nil
+
     }
 }
 

@@ -9,7 +9,8 @@ import UIKit
 
 class NeedHelpVC: UIViewController, UITextViewDelegate {
 
-    
+    var isROR = false
+    var notficationDetails: PushNotification?
     var viewModel = FeedbackVM()
     var objEndTripModal: EndRideModel?
     
@@ -35,13 +36,28 @@ class NeedHelpVC: UIViewController, UITextViewDelegate {
         }
        
         var params : JSONDictionary {
-            let att: [String:Any] = [
-                "support_id": "11",
-                "issue_title": txtView.text ?? "",
-                "ride_date" : objEndTripModal?.driver_ride_date ?? "",
-                "engagement_id": objEndTripModal?.engagement_id ?? 0,
-            ] as [String : Any]
-            return att
+            if self.isROR == true
+            {
+                let att: [String:Any] = [
+                    "support_id": "11",
+                    "issue_title": txtView.text ?? "",
+                    "ride_date" : notficationDetails?.date ?? "",
+                    "engagement_id": notficationDetails?.trip_id ?? 0,
+                ] as [String : Any]
+                return att
+            }
+            else
+            {
+                let att: [String:Any] = [
+                    "support_id": "11",
+                    "issue_title": txtView.text ?? "",
+                    "ride_date" : objEndTripModal?.driver_ride_date ?? "",
+                    "engagement_id": objEndTripModal?.engagement_id ?? 0,
+                ] as [String : Any]
+                return att
+
+            }
+         
         }
         viewModel.generateSupportTicket(params) {
             //self.dismiss(animated: true, completion: {

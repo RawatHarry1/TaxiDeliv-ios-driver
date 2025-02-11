@@ -6,9 +6,13 @@
 //
 
 import UIKit
-
+protocol feedbackSucess
+{
+    func feedbackSuccess()
+}
 class VCFeedbackVC: VCBaseVC {
-
+    @IBOutlet weak var btnClose: UIButton!
+    var isROR = false
     // MARK: -> Outlets
     @IBOutlet weak var feebackTV: UITextView!
     @IBOutlet weak var starOne: UIImageView!
@@ -20,12 +24,13 @@ class VCFeedbackVC: VCBaseVC {
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var lblFare: UILabel!
     @IBOutlet weak var lblWallet: UILabel!
-    
+    var notficationDetails: PushNotification?
     var viewModel = FeedbackVM()
     var objEndTripModal: EndRideModel?
     var callBackRatingSuccess : ((Int) -> ())?
     var ratings = 3
     var viewcontrollerType = 1
+    var feedbackSucess : feedbackSucess?
     //  To create ViewModel
     static func create() -> VCFeedbackVC {
         let obj = VCFeedbackVC.instantiate(fromAppStoryboard: .postLogin)
@@ -35,15 +40,27 @@ class VCFeedbackVC: VCBaseVC {
     override func initialSetup() {
         feebackTV.textContainerInset = UIEdgeInsets.zero
         feebackTV.textContainer.lineFragmentPadding = 0
+        
+        //        feebackTV.backgroundColor = UIColor.lightGray
+        //        feebackTV.textColor = VCColors.textColorGrey.color
+        //        feebackTV.text = "Share feedback with driver."
+        //        feebackTV.delegate = self
+        //        descLbl.text = "How was your ride with \(selectedTrip?.driver_name ?? "")"
+        if isROR == false
+        {
+            lblWallet.text = "\(objEndTripModal?.currency ?? "") \(objEndTripModal?.paid_using_wallet ?? 0)"
+            lblFare.text = "\(objEndTripModal?.currency ?? "") \(objEndTripModal?.fare ?? 0)"
+            titleLabelAttributes((objEndTripModal?.customer_name ?? ""))
+            btnClose.isHidden = false
+        }
+        else
+        {
+            btnClose.isHidden = true
+            lblWallet.text = "\(notficationDetails?.currency ?? "") \(notficationDetails?.paid_using_wallet ?? 0)"
+            lblFare.text = "\(notficationDetails?.currency ?? "") " + (notficationDetails?.estimated_driver_fare ?? "0")
+            titleLabelAttributes((notficationDetails?.customer_name ?? ""))
 
-//        feebackTV.backgroundColor = UIColor.lightGray
-//        feebackTV.textColor = VCColors.textColorGrey.color
-//        feebackTV.text = "Share feedback with driver."
-//        feebackTV.delegate = self
-//        descLbl.text = "How was your ride with \(selectedTrip?.driver_name ?? "")"
-        lblWallet.text = "\(objEndTripModal?.currency ?? "") \(objEndTripModal?.paid_using_wallet ?? 0)"
-        lblFare.text = "\(objEndTripModal?.currency ?? "") \(objEndTripModal?.fare ?? 0)"
-        titleLabelAttributes((objEndTripModal?.customer_name ?? ""))
+        }
         callBacks()
         ratingLbl.text = "Good"
     }
@@ -111,15 +128,39 @@ class VCFeedbackVC: VCBaseVC {
 //            return
 //        }
         var params : JSONDictionary {
-            let att: [String:Any] = [
-                "customer_id": objEndTripModal?.customer_id ?? 0,
-                "given_rating": ratings,
-                "engagement_id": objEndTripModal?.engagement_id ?? 0,
-            ] as [String : Any]
-            return att
+            if self.isROR == true
+            {
+                                let att: [String:Any] = [
+                                    "customer_id": notficationDetails?.customer_id ?? 0,
+                                    "given_rating": ratings,
+                                    "engagement_id": notficationDetails?.trip_id ?? 0,
+                                ] as [String : Any]
+                                return att
+            }
+            else
+            {
+                let att: [String:Any] = [
+                    "customer_id": objEndTripModal?.customer_id ?? 0,
+                    "given_rating": ratings,
+                    "engagement_id": objEndTripModal?.engagement_id ?? 0,
+                ] as [String : Any]
+                return att
+                
+            }
         }
+        
         viewModel.rateCustomer(params) {
-            VDRouter.goToSaveUserVC()
+            if self.isROR == true
+            {
+                RideStatus = .none
+                self.feedbackSucess?.feedbackSuccess()
+                self.navigationController?.popViewController(animated: true)
+            }
+            else
+            {
+                VDRouter.goToSaveUserVC()
+            }
+            
         }
     }
 
@@ -127,10 +168,24 @@ class VCFeedbackVC: VCBaseVC {
 //        if self.viewcontrollerType == 1 {
 //            self.dismiss(animated: true)
 //        } else {
+        if self.isROR == true
+        {
+            let story = UIStoryboard(name: "Ratings", bundle: nil)
+            let vc = story.instantiateViewController(withIdentifier: "NeedHelpVC") as! NeedHelpVC
+            vc.notficationDetails = self.notficationDetails
+            vc.isROR = true
+        self.navigationController?.pushViewController(vc, animated: true)
+
+        }
+        else
+        {
             let story = UIStoryboard(name: "Ratings", bundle: nil)
             let vc = story.instantiateViewController(withIdentifier: "NeedHelpVC") as! NeedHelpVC
             vc.objEndTripModal = objEndTripModal
+        
         self.navigationController?.pushViewController(vc, animated: true)
+
+        }
        // }
     }
     

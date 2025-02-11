@@ -523,6 +523,7 @@ Patrick</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnClose" destination="snS-o5-hUt" id="cFD-ZZ-H8n"/>
                         <outlet property="descLbl" destination="2Wm-oD-Uzj" id="Abx-ld-dGg"/>
                         <outlet property="feebackTV" destination="Gw5-6I-qz2" id="fab-ox-KRt"/>
                         <outlet property="lblFare" destination="dIn-Dn-uPY" id="k1r-t5-1oa"/>
@@ -661,7 +662,7 @@ Patrick</string>
         <image name="star 1" width="33.333332061767578" height="33.333332061767578"/>
         <image name="starDisable 1" width="33.333332061767578" height="33.333332061767578"/>
         <namedColor name="buttonSelectedOrange">
-            <color red="0.0" green="0.23529411764705882" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.0" green="0.23499999940395355" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.10199999809265137" green="0.093999996781349182" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -80,7 +80,7 @@ extension VDSplashVC {
     private func apiClientConfigure2() {
         var paramToModifyVehicleDetails: JSONDictionary {
             var param = [
-                "packageName": "com.app.earthDriver",
+                "packageName": "com.app.superDriver",
             ] as [String: Any]
             
             if let passcode = UserModel.currentUser.passcode
@@ -131,7 +131,7 @@ extension VDSplashVC {
     private func apiClientConfigure() {
         var paramToModifyVehicleDetails: JSONDictionary {
             var param = [
-                "packageName": "com.app.earthDriver",
+                "packageName": "com.app.superDriver",
             ] as [String: Any]
             if let passcode = UserModel.currentUser.passcode
             {

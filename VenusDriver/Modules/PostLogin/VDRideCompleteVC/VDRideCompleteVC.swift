@@ -49,6 +49,7 @@ class VDRideCompleteVC: VDBaseVC {
     var customerID = ""
     var profileName = ""
     var dateRentalDrop = ""
+    var isRoR = false
     //  To create ViewModel
     static func create(_ type: Int = 0) -> VDRideCompleteVC {
         let obj = VDRideCompleteVC.instantiate(fromAppStoryboard: .postLogin)
@@ -134,16 +135,24 @@ class VDRideCompleteVC: VDBaseVC {
         }
       
         viewModel.rideDetailsCallBack = { rideDetails in
-            self.tripID = self.viewModel.rideDetails.tripId ?? ""
-            self.btnChat.isHidden = false
-//            self.viewDot.isHidden = false
-            self.chatIcon.isHidden = false
-            self.screenTyoe = 2
-            self.btnBack.isHidden = true
-            self.btnAccept.isHidden = false
-            self.titleLabel.text = "Trip Accepted"
-            self.btnAccept.setTitle("Go to Pick-Up", for: .normal)
-            self.btnCancel.isHidden = false
+            if self.isRoR == true
+            {
+                self.navigationController?.popViewController(animated: true)
+            }
+            else
+            {
+                self.tripID = self.viewModel.rideDetails.tripId ?? ""
+                self.btnChat.isHidden = false
+    //            self.viewDot.isHidden = false
+                self.chatIcon.isHidden = false
+                self.screenTyoe = 2
+                self.btnBack.isHidden = true
+                self.btnAccept.isHidden = false
+                self.titleLabel.text = "Trip Accepted"
+                self.btnAccept.setTitle("Go to Pick-Up", for: .normal)
+                self.btnCancel.isHidden = false
+
+            }
         }
 
         viewModel.tripStartedSuccessCallBack = { status in
@@ -335,7 +344,11 @@ class VDRideCompleteVC: VDBaseVC {
                 att["customerId"] = sharedAppDelegate.notficationDetails?.customer_id ?? ""
                 att["longitude"] = self.currentLong
                 att["latitude"] = self.currentLat
-                
+                if self.isRoR == true
+                {
+                    att["is_ror"] = 1
+
+                }
               
                 viewModel.acceptRideApi(att, completionFaliur: { str in
                     self.faliurAlert(strg: str)
