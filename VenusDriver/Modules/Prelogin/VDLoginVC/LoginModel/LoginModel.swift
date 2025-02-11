@@ -156,6 +156,7 @@ struct LoginModel : Codable {
     var delivery_cancellation_reasons: [String]?
     var enabled_service : Int?
     var support_ticket_reasons : [String]?
+    var services_config : [Service]?
     
     enum CodingKeys: String, CodingKey {
         case stripeCredentials = "stripeCredentials"
@@ -205,6 +206,7 @@ struct LoginModel : Codable {
         case delivery_cancellation_reasons = "delivery_cancellation_reasons"
         case enabled_service = "enabled_service"
         case support_ticket_reasons = "support_ticket_reasons"
+        case services_config = "services_config"
     }
 
     init(from decoder: Decoder) throws {
@@ -264,6 +266,7 @@ struct LoginModel : Codable {
         delivery_cancellation_reasons = try values.decodeIfPresent([String].self, forKey: .delivery_cancellation_reasons)
         enabled_service = try values.decodeIfPresent(Int.self, forKey: .enabled_service)
         support_ticket_reasons = try values.decodeIfPresent([String].self, forKey: .support_ticket_reasons)
+        services_config = try values.decodeIfPresent([Service].self, forKey: .services_config)
     }
 
 
@@ -315,6 +318,7 @@ struct LoginModel : Codable {
         stripeCredentials = nil
         service_type = nil
         delivery_cancellation_reasons = nil
+        services_config = nil
     }
 }
 
@@ -472,6 +476,39 @@ struct DefaultVehicleDetails : Codable {
         model_name = try values.decodeIfPresent(String.self, forKey: .model_name)
     }
 
+}
+struct ServicesConfig: Codable {
+    let authenticationWithOTP: Int?
+    let customerPackageImages: Int?
+    let driverPackageImages: Int?
+    let enableLuggageFare: Int?
+    let luggageFare: Int?
+    let minimumDistance: Int?
+    let rideOnRide: Int?
+    let tourVehicle: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case authenticationWithOTP = "authentication_with_otp"
+        case customerPackageImages = "customer_package_images"
+        case driverPackageImages = "driver_package_images"
+        case enableLuggageFare = "enable_luggage_fare"
+        case luggageFare = "luggage_fare"
+        case minimumDistance = "minimum_distance"
+        case rideOnRide = "ride_on_ride"
+        case tourVehicle = "tour_vehicle"
+    }
+}
+
+struct Service: Codable {
+    let config: ServicesConfig?
+    let regionID: Int?
+    let vehicleType: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case config
+        case regionID = "region_id"
+        case vehicleType = "vehicle_type"
+    }
 }
 
 struct DriverDocStatus : Codable {

@@ -565,16 +565,40 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
                 else
                 {
                     if UserModel.currentUser.login?.service_type == 1 {
-                        var attributes = [String: Any]()
-                        if let locationCreds = LocationTracker.shared.lastLocation {
-                            attributes["dropLatitude"] = locationCreds.coordinate.latitude
-                            attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                        if UserModel.currentUser.login?.services_config?[0].config?.authenticationWithOTP == 1
+                        {
+                            var attributes = [String: Any]()
+                    
+                            attributes["user_id"] = sharedAppDelegate.notficationDetails?.customer_id
+                            attributes["engagement_id"] = sharedAppDelegate.notficationDetails?.trip_id
+                            homeViewModel.generateRideEndOtp(attributes,response: { [weak self] (result) in
+                                switch result {
+                                case .success(let data):
+                                    print("otp")
+
+                                    self?.endRideWithOTP(otp: "")
+                                case .failure(let error):
+                                    
+                                    printDebug(error.localizedDescription)
+                                    SKToast.show(withMessage: error.localizedDescription)
+                                }
+                            })
+
+                            
                         }
-                        attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
-                        attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
-                        attributes["rideTime"] = 12
-                        attributes["waitTime"] = 3
-                        homeViewModel.endRideApi(attributes)
+                        else
+                        {
+                            var attributes = [String: Any]()
+                            if let locationCreds = LocationTracker.shared.lastLocation {
+                                attributes["dropLatitude"] = locationCreds.coordinate.latitude
+                                attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                            }
+                            attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+                            attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+                            attributes["rideTime"] = 12
+                            attributes["waitTime"] = 3
+                            homeViewModel.endRideApi(attributes)
+                        }
                     }else{
                         let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
@@ -602,7 +626,25 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
                
             }
         }
-    
+    func endRideWithOTP(otp : String){
+        let vc = VDOtpVC.create()                             
+        vc.rideCompleteOtpCallBack = { otp in
+            var attributes = [String: Any]()
+            if let locationCreds = LocationTracker.shared.lastLocation {
+                attributes["dropLatitude"] = locationCreds.coordinate.latitude
+                attributes["dropLongitude"] = locationCreds.coordinate.longitude
+            }
+            attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+            attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+            attributes["rideTime"] = 12
+            attributes["waitTime"] = 3
+            attributes["ride_end_otp"] = otp
+            self.homeViewModel.endRideApi(attributes)
+        }
+        vc.forRideComplete = true
+        self.navigationController?.pushViewController(vc, animated: true)
+
+    }
     @objc func cancelRideOnSwipe() {
         if RideStatus == .none{
             self.availabilityButton.isHidden = false
@@ -702,16 +744,24 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
             else
             {
                 if UserModel.currentUser.login?.service_type == 1 {
-                    var attributes = [String: Any]()
-                    if let locationCreds = LocationTracker.shared.lastLocation {
-                        attributes["dropLatitude"] = locationCreds.coordinate.latitude
-                        attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                    if UserModel.currentUser.login?.services_config?[0].config?.authenticationWithOTP == 1
+                    {
+                        
                     }
-                    attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
-                    attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
-                    attributes["rideTime"] = 12
-                    attributes["waitTime"] = 3
-                    homeViewModel.endRideApi(attributes)
+                    else
+                    {
+                        var attributes = [String: Any]()
+                        if let locationCreds = LocationTracker.shared.lastLocation {
+                            attributes["dropLatitude"] = locationCreds.coordinate.latitude
+                            attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                        }
+                        attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+                        attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+                        attributes["rideTime"] = 12
+                        attributes["waitTime"] = 3
+                        homeViewModel.endRideApi(attributes)
+                    }
+              
                 }else{
                     let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC

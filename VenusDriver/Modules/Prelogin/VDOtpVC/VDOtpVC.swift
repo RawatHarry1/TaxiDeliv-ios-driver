@@ -23,15 +23,23 @@ class VDOtpVC: VDBaseVC {
     var currentLocation: CLLocation?
     private var loginViewModel: VDLoginViewModel = VDLoginViewModel()
     var otpStackView = OTPStackView()
-
+     var forRideComplete = false
     //  To create ViewModel
     static func create() -> VDOtpVC {
         let obj = VDOtpVC.instantiate(fromAppStoryboard: .preLogin)
         return obj
     }
-
+    var rideCompleteOtpCallBack : ((String) -> ()) = { _ in }
     override func initialSetup() {
-        fullText = "Enter the 4-digit code sent to you at\n \(countryCode)\(phoneNumber)"
+        if forRideComplete == true
+        {
+            fullText = "Enter the 4-digit code sent to customer"
+        }
+        else
+        {
+            fullText = "Enter the 4-digit code sent to you at\n \(countryCode)\(phoneNumber)"
+
+        }
         otpView.addSubview(otpStackView)
         otpStackView.delegate = self
 
@@ -115,29 +123,38 @@ class VDOtpVC: VDBaseVC {
 extension VDOtpVC: OTPDelegate {
     func didChangeValidity(isValid: Bool) {
         if isValid {
-            let otp = self.otpStackView.getOTP()
-
-            var attribute = [String : Any]()
-            attribute["loginOtp"] = otp
-            attribute["phoneNo"] = phoneNumber
-            attribute["countryCode"] = countryCode
-            if let location = LocationTracker.shared.lastLocation {
-                attribute["latitude"] = location.coordinate.latitude
-                attribute["longitude"] = location.coordinate.longitude
-            }
-            if self.passcode != ""
+            if self.forRideComplete == true
             {
-                attribute["passcode"] = self.passcode 
-
+                let otp = self.otpStackView.getOTP()
+                rideCompleteOtpCallBack(otp)
             }
+            else
+            {
+                let otp = self.otpStackView.getOTP()
 
-            loginViewModel.loginWithOtp(attribute, failer: { errorMessage in
-                print("Error: \(errorMessage)")
-                
-                let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            })
+                var attribute = [String : Any]()
+                attribute["loginOtp"] = otp
+                attribute["phoneNo"] = phoneNumber
+                attribute["countryCode"] = countryCode
+                if let location = LocationTracker.shared.lastLocation {
+                    attribute["latitude"] = location.coordinate.latitude
+                    attribute["longitude"] = location.coordinate.longitude
+                }
+                if self.passcode != ""
+                {
+                    attribute["passcode"] = self.passcode
+
+                }
+
+                loginViewModel.loginWithOtp(attribute, failer: { errorMessage in
+                    print("Error: \(errorMessage)")
+                    
+                    let alert = UIAlertController(title: "", message: errorMessage, preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
+           
         }
     }
 }

@@ -182,7 +182,18 @@ extension WebServices {
             }
         }
     }
-
+    // MARK: - To Send OTP Trip
+    static func generateRideEndOtpAPI(parameters: JSONDictionary, response: @escaping ((Result<(Any?), Error>) -> Void)) {
+        commonPostWithRawJSONAPI(parameters: parameters, endPoint: .generate_ride_end_otp, loader: true) { (result) in
+            switch result {
+            case .success(let json):
+                printDebug(json)
+                response(.success(nil))
+            case .failure(let error):
+                response(.failure(error))
+            }
+        }
+    }
     // MARK: - To Fetch Ongoing Trip
     static func fetchOngoingTrip(parameters: JSONDictionary, response: @escaping ((Result<(Any?), Error>) -> Void)) {
         commonGetAPI(parameters: parameters, endPoint: .fetchOngoingTrip, loader: true) { (result) in

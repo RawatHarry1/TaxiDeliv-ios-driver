@@ -270,6 +270,26 @@ extension VDHomeViewModel {
         })
     }
 
+    func generateRideEndOtp(_ attributes: [String: Any],response: @escaping ((Result<(Any?), Error>) -> Void)) {
+        var param: JSONDictionary {
+            return attributes
+        }
+
+        WebServices.generateRideEndOtpAPI(parameters: param, response: { [weak self] (result) in
+            switch result {
+            case .success(let data):
+                print("otp")
+                response(.success(nil))
+
+//                guard let endRide = data as? EndRideModel else { return }
+//                self?.endRideDetails = endRide
+            case .failure(let error):
+                response(.failure(error))
+                printDebug(error.localizedDescription)
+                SKToast.show(withMessage: error.localizedDescription)
+            }
+        })
+    }
 
     func getNewPolyline(_ origin: String, _ destination: String) {
         var params : JSONDictionary  {

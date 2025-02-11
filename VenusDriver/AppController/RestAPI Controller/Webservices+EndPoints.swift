@@ -53,6 +53,7 @@ extension WebServices {
         case update_delivery_package_status = "/update_delivery_package_status"
         case generate_ticket = "/generate_ticket"
         case list_support_tickets = "/list_support_tickets"
+        case generate_ride_end_otp = "/generate_ride_end_otp"
         
         // MARK: - API url path
         var path: String {
