@@ -10,6 +10,7 @@ protocol CollectionViewCellDelegate: AnyObject {
     func didSelectItem(url: String)
 }
 class PackageListTblCell: UITableViewCell {
+    @IBOutlet weak var lblTopDelivery: UILabel!
     @IBOutlet weak var btnAccept: UIButton!
     @IBOutlet weak var imagesStackView: UIStackView!
     @IBOutlet weak var baseView: UIView!
@@ -79,7 +80,11 @@ extension PackageListTblCell: UICollectionViewDelegate, UICollectionViewDataSour
             
                 
             }else{
-                cell.imgViewImages.setImage(deliveryPackages?.package_image_while_pickup?[indexPath.row] ?? "", placeHolder: nil)
+                if deliveryPackages?.package_image_while_pickup?.count ?? 0 > 0
+                {
+                    cell.imgViewImages.setImage(deliveryPackages?.package_image_while_pickup?[indexPath.row] ?? "", placeHolder: nil)
+
+                }
             }
             
             return cell

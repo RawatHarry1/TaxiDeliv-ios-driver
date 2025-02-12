@@ -532,8 +532,12 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
                 
                         let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
+                    vc.driver_package_images = UserModel.currentUser.login?.services_config?[0].config?.driverPackageImages == 1
+
                         vc.comesFromMardArrive = true
                         vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
+                    vc.can_start = self.homeViewModel.objFetchOngoingModal?.can_start == 1
+                    vc.can_end = self.homeViewModel.objFetchOngoingModal?.can_end == 1
                         vc.didPressContinue = {
                             if let tripID = sharedAppDelegate.notficationDetails?.trip_id  {
                                 var att = [String:Any]()
@@ -603,19 +607,47 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
                         let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
                         vc.comesFromMardArrive = false
+                        vc.can_start = self.homeViewModel.objFetchOngoingModal?.can_start == 1
+                        vc.can_end = self.homeViewModel.objFetchOngoingModal?.can_end == 1
+
+                        vc.driver_package_images = UserModel.currentUser.login?.services_config?[0].config?.driverPackageImages == 1
                         vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
                         vc.didPressContinue = {
-                            
-                            var attributes = [String: Any]()
-                            if let locationCreds = LocationTracker.shared.lastLocation {
-                                attributes["dropLatitude"] = locationCreds.coordinate.latitude
-                                attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                            if UserModel.currentUser.login?.services_config?[0].config?.authenticationWithOTP == 1
+                            {
+                                var attributes = [String: Any]()
+                        
+                                attributes["user_id"] = sharedAppDelegate.notficationDetails?.customer_id
+                                attributes["engagement_id"] = sharedAppDelegate.notficationDetails?.trip_id
+                                self.homeViewModel.generateRideEndOtp(attributes,response: { [weak self] (result) in
+                                    switch result {
+                                    case .success(let data):
+                                        print("otp")
+
+                                        self?.endRideWithOTP(otp: "")
+                                    case .failure(let error):
+                                        
+                                        printDebug(error.localizedDescription)
+                                        SKToast.show(withMessage: error.localizedDescription)
+                                    }
+                                })
+
+                                
                             }
-                            attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
-                            attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
-                            attributes["rideTime"] = 12
-                            attributes["waitTime"] = 3
-                            self.homeViewModel.endRideApi(attributes)
+                            else
+                            {
+                                var attributes = [String: Any]()
+                                if let locationCreds = LocationTracker.shared.lastLocation {
+                                    attributes["dropLatitude"] = locationCreds.coordinate.latitude
+                                    attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                                }
+                                attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+                                attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+                                attributes["rideTime"] = 12
+                                attributes["waitTime"] = 3
+                                self.homeViewModel.endRideApi(attributes)
+
+                            }
                             
                             
                         }
@@ -711,6 +743,8 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
             
                     let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
+                vc.driver_package_images = UserModel.currentUser.login?.services_config?[0].config?.driverPackageImages == 1
+
                     vc.comesFromMardArrive = true
                     vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
                     vc.didPressContinue = {
