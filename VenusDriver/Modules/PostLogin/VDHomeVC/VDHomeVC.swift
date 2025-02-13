@@ -569,39 +569,91 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
                 else
                 {
                     if UserModel.currentUser.login?.service_type == 1 {
-                        if UserModel.currentUser.login?.services_config?[0].config?.authenticationWithOTP == 1
+                        if UserModel.currentUser.login?.services_config?[0].config?.enableLuggageFare == 1
                         {
-                            var attributes = [String: Any]()
-                    
-                            attributes["user_id"] = sharedAppDelegate.notficationDetails?.customer_id
-                            attributes["engagement_id"] = sharedAppDelegate.notficationDetails?.trip_id
-                            homeViewModel.generateRideEndOtp(attributes,response: { [weak self] (result) in
-                                switch result {
-                                case .success(let data):
-                                    print("otp")
-
-                                    self?.endRideWithOTP(otp: "")
-                                case .failure(let error):
-                                    
-                                    printDebug(error.localizedDescription)
-                                    SKToast.show(withMessage: error.localizedDescription)
-                                }
-                            })
-
                             
+                            let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
+                            let vc = storyboard.instantiateViewController(withIdentifier: "LuggageVC") as!  LuggageVC
+                            vc.modalPresentationStyle = .overCurrentContext
+                            vc.luggageEntered = {
+                                luggageCount in
+                                if UserModel.currentUser.login?.services_config?[0].config?.authenticationWithOTP == 1
+                                {
+                                    var attributes = [String: Any]()
+                            
+                                    attributes["user_id"] = sharedAppDelegate.notficationDetails?.customer_id
+                                    attributes["engagement_id"] = sharedAppDelegate.notficationDetails?.trip_id
+                                    self.homeViewModel.generateRideEndOtp(attributes,response: { [weak self] (result) in
+                                        switch result {
+                                        case .success(let data):
+                                            print("otp")
+
+                                            self?.endRideWithOTP(otp: "",luggageCount: luggageCount)
+                                        case .failure(let error):
+                                            
+                                            printDebug(error.localizedDescription)
+                                            SKToast.show(withMessage: error.localizedDescription)
+                                        }
+                                    })
+
+                                    
+                                }
+                                else
+                                {
+                                    var attributes = [String: Any]()
+                                    if let locationCreds = LocationTracker.shared.lastLocation {
+                                        attributes["dropLatitude"] = locationCreds.coordinate.latitude
+                                        attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                                    }
+                                    attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+                                    attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+                                    attributes["rideTime"] = 12
+                                    attributes["waitTime"] = 3
+                                    attributes["luggage_count"] = luggageCount
+                                    self.homeViewModel.endRideApi(attributes)
+                                }
+                            }
+                            
+                            self.present(vc, animated: true)
+
+                       
                         }
                         else
                         {
-                            var attributes = [String: Any]()
-                            if let locationCreds = LocationTracker.shared.lastLocation {
-                                attributes["dropLatitude"] = locationCreds.coordinate.latitude
-                                attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                            if UserModel.currentUser.login?.services_config?[0].config?.authenticationWithOTP == 1
+                            {
+                                var attributes = [String: Any]()
+                        
+                                attributes["user_id"] = sharedAppDelegate.notficationDetails?.customer_id
+                                attributes["engagement_id"] = sharedAppDelegate.notficationDetails?.trip_id
+                                homeViewModel.generateRideEndOtp(attributes,response: { [weak self] (result) in
+                                    switch result {
+                                    case .success(let data):
+                                        print("otp")
+
+                                        self?.endRideWithOTP(otp: "")
+                                    case .failure(let error):
+                                        
+                                        printDebug(error.localizedDescription)
+                                        SKToast.show(withMessage: error.localizedDescription)
+                                    }
+                                })
+
+                                
                             }
-                            attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
-                            attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
-                            attributes["rideTime"] = 12
-                            attributes["waitTime"] = 3
-                            homeViewModel.endRideApi(attributes)
+                            else
+                            {
+                                var attributes = [String: Any]()
+                                if let locationCreds = LocationTracker.shared.lastLocation {
+                                    attributes["dropLatitude"] = locationCreds.coordinate.latitude
+                                    attributes["dropLongitude"] = locationCreds.coordinate.longitude
+                                }
+                                attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+                                attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+                                attributes["rideTime"] = 12
+                                attributes["waitTime"] = 3
+                                homeViewModel.endRideApi(attributes)
+                            }
                         }
                     }else{
                         let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
@@ -658,8 +710,8 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
                
             }
         }
-    func endRideWithOTP(otp : String){
-        let vc = VDOtpVC.create()                             
+    func endRideWithOTP(otp : String,luggageCount : Int? = 0){
+        let vc = VDOtpVC.create()
         vc.rideCompleteOtpCallBack = { otp in
             var attributes = [String: Any]()
             if let locationCreds = LocationTracker.shared.lastLocation {
@@ -671,6 +723,11 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
             attributes["rideTime"] = 12
             attributes["waitTime"] = 3
             attributes["ride_end_otp"] = otp
+            if luggageCount != 0
+            {
+                attributes["luggage_count"] = luggageCount
+
+            }
             self.homeViewModel.endRideApi(attributes)
         }
         vc.forRideComplete = true

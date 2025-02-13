@@ -8430,6 +8430,141 @@ Go online to start accepting rides!</string>
             </objects>
             <point key="canvasLocation" x="1473" y="3574"/>
         </scene>
+        <!--LuggageVC-->
+        <scene sceneID="59e-qM-kLf">
+            <objects>
+                <viewController storyboardIdentifier="LuggageVC" id="JhD-OS-fbh" customClass="LuggageVC" customModule="SaloneRide" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eL9-bS-s3L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IwH-aM-6jU">
+                                <rect key="frame" x="20" y="208.5" width="335" height="250"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeb-QK-dWx" customClass="VDButton" customModule="SaloneRide" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="184" width="305" height="46"/>
+                                        <color key="backgroundColor" name="buttonSelectedOrange"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="h97-xZ-lel"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" name="textColorWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="23"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnConfirmAction:" destination="JhD-OS-fbh" eventType="touchUpInside" id="the-FT-634"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Luggage Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWJ-ca-i7J">
+                                        <rect key="frame" x="15" y="20" width="305" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVb-cl-4Ul">
+                                        <rect key="frame" x="20" y="90" width="295" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="60E-98-YJH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" name="buttonSelectedOrange"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="pWJ-ca-i7J" firstAttribute="top" secondItem="IwH-aM-6jU" secondAttribute="top" constant="20" id="5v9-oi-sea"/>
+                                    <constraint firstItem="DVb-cl-4Ul" firstAttribute="leading" secondItem="IwH-aM-6jU" secondAttribute="leading" constant="20" id="67u-mI-hfH"/>
+                                    <constraint firstAttribute="height" constant="250" id="7ih-KQ-Ob3"/>
+                                    <constraint firstAttribute="trailing" secondItem="DVb-cl-4Ul" secondAttribute="trailing" constant="20" id="Ijd-Sg-hBa"/>
+                                    <constraint firstItem="pWJ-ca-i7J" firstAttribute="leading" secondItem="IwH-aM-6jU" secondAttribute="leading" constant="15" id="YEN-2q-hV3"/>
+                                    <constraint firstAttribute="trailing" secondItem="pWJ-ca-i7J" secondAttribute="trailing" constant="15" id="dUL-b3-hh6"/>
+                                    <constraint firstAttribute="bottom" secondItem="yeb-QK-dWx" secondAttribute="bottom" constant="20" id="fcv-Mr-8TU"/>
+                                    <constraint firstAttribute="trailing" secondItem="yeb-QK-dWx" secondAttribute="trailing" constant="15" id="fpH-nO-048"/>
+                                    <constraint firstItem="yeb-QK-dWx" firstAttribute="leading" secondItem="IwH-aM-6jU" secondAttribute="leading" constant="15" id="rFt-j5-xUx"/>
+                                    <constraint firstItem="DVb-cl-4Ul" firstAttribute="centerY" secondItem="IwH-aM-6jU" secondAttribute="centerY" constant="-10" id="ve7-PL-hLG"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" systemColor="systemGray4Color"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tpf-hj-Oa3">
+                                <rect key="frame" x="162.5" y="148.5" width="50" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvB-wn-EHN">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="crossWhite"/>
+                                        <connections>
+                                            <action selector="btnDismissAction:" destination="JhD-OS-fbh" eventType="touchUpInside" id="cI7-Hw-8Yx"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.44569205470000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hvB-wn-EHN" firstAttribute="leading" secondItem="Tpf-hj-Oa3" secondAttribute="leading" id="1fA-tG-dTL"/>
+                                    <constraint firstAttribute="bottom" secondItem="hvB-wn-EHN" secondAttribute="bottom" id="ALF-1s-dl7"/>
+                                    <constraint firstItem="hvB-wn-EHN" firstAttribute="top" secondItem="Tpf-hj-Oa3" secondAttribute="top" id="C7n-gM-kMq"/>
+                                    <constraint firstAttribute="height" constant="50" id="Oj6-r9-dun"/>
+                                    <constraint firstAttribute="trailing" secondItem="hvB-wn-EHN" secondAttribute="trailing" id="Ylg-F1-mIR"/>
+                                    <constraint firstAttribute="width" constant="50" id="dt3-AI-cYW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WVG-Ze-dhu"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.3001802885" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IwH-aM-6jU" firstAttribute="centerY" secondItem="eL9-bS-s3L" secondAttribute="centerY" id="3g8-mi-Dh1"/>
+                            <constraint firstItem="IwH-aM-6jU" firstAttribute="centerX" secondItem="eL9-bS-s3L" secondAttribute="centerX" id="EJq-dv-ca2"/>
+                            <constraint firstItem="IwH-aM-6jU" firstAttribute="leading" secondItem="WVG-Ze-dhu" secondAttribute="leading" constant="20" id="HgG-8A-DpS"/>
+                            <constraint firstItem="IwH-aM-6jU" firstAttribute="top" secondItem="Tpf-hj-Oa3" secondAttribute="bottom" constant="10" id="c5J-Ok-qto"/>
+                            <constraint firstItem="WVG-Ze-dhu" firstAttribute="trailing" secondItem="IwH-aM-6jU" secondAttribute="trailing" constant="20" id="imJ-Jx-DN2"/>
+                            <constraint firstItem="Tpf-hj-Oa3" firstAttribute="centerX" secondItem="IwH-aM-6jU" secondAttribute="centerX" id="nDp-rm-2RG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tfLuggage" destination="DVb-cl-4Ul" id="ILj-nP-fQB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oRe-Kn-YIk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2918" y="2786"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="2JA-EI-sGh">
@@ -8533,6 +8668,9 @@ Go online to start accepting rides!</string>
         </designable>
         <designable name="xs8-aO-4WW">
             <size key="intrinsicContentSize" width="50" height="32"/>
+        </designable>
+        <designable name="yeb-QK-dWx">
+            <size key="intrinsicContentSize" width="49" height="32"/>
         </designable>
     </designables>
     <resources>

@@ -574,8 +574,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "964"
-            endingLineNumber = "964"
+            startingLineNumber = "1021"
+            endingLineNumber = "1021"
             landmarkName = "updateUIAccordingtoRideStatus(isRor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -590,8 +590,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "998"
-            endingLineNumber = "998"
+            startingLineNumber = "1055"
+            endingLineNumber = "1055"
             landmarkName = "updateUIAccordingtoRideStatus(isRor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -654,8 +654,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "965"
-            endingLineNumber = "965"
+            startingLineNumber = "1022"
+            endingLineNumber = "1022"
             landmarkName = "updateUIAccordingtoRideStatus(isRor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -766,8 +766,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1554"
-            endingLineNumber = "1554"
+            startingLineNumber = "1611"
+            endingLineNumber = "1611"
             landmarkName = "fetchOnGoingRideSuccess()"
             landmarkType = "7">
          </BreakpointContent>
@@ -846,8 +846,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "977"
-            endingLineNumber = "977"
+            startingLineNumber = "1034"
+            endingLineNumber = "1034"
             landmarkName = "updateUIAccordingtoRideStatus(isRor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -862,8 +862,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "980"
-            endingLineNumber = "980"
+            startingLineNumber = "1037"
+            endingLineNumber = "1037"
             landmarkName = "updateUIAccordingtoRideStatus(isRor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -910,8 +910,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1379"
-            endingLineNumber = "1379"
+            startingLineNumber = "1436"
+            endingLineNumber = "1436"
             landmarkName = "callBacks()"
             landmarkType = "7">
          </BreakpointContent>
@@ -926,8 +926,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "936"
-            endingLineNumber = "936"
+            startingLineNumber = "993"
+            endingLineNumber = "993"
             landmarkName = "updateUIAccordingtoRideStatus(isRor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -942,8 +942,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "938"
-            endingLineNumber = "938"
+            startingLineNumber = "995"
+            endingLineNumber = "995"
             landmarkName = "updateUIAccordingtoRideStatus(isRor:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -958,8 +958,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "784"
-            endingLineNumber = "784"
+            startingLineNumber = "841"
+            endingLineNumber = "841"
             landmarkName = "cancelRideOnSwipe()"
             landmarkType = "7">
          </BreakpointContent>
@@ -974,8 +974,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "783"
-            endingLineNumber = "783"
+            startingLineNumber = "840"
+            endingLineNumber = "840"
             landmarkName = "cancelRideOnSwipe()"
             landmarkType = "7">
          </BreakpointContent>
@@ -990,8 +990,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "787"
-            endingLineNumber = "787"
+            startingLineNumber = "844"
+            endingLineNumber = "844"
             landmarkName = "cancelRideOnSwipe()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1006,8 +1006,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "781"
-            endingLineNumber = "781"
+            startingLineNumber = "838"
+            endingLineNumber = "838"
             landmarkName = "cancelRideOnSwipe()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1022,25 +1022,9 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "780"
-            endingLineNumber = "780"
+            startingLineNumber = "837"
+            endingLineNumber = "837"
             landmarkName = "cancelRideOnSwipe()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8483D42A-B1CD-4722-BF57-2CEB057ECB3F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "591"
-            endingLineNumber = "591"
-            landmarkName = "didFinishSliding()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1361,6 +1345,22 @@
             startingLineNumber = "141"
             endingLineNumber = "141"
             landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9D4D2A53-EDFC-4713-AF34-3E6C31698011"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "582"
+            endingLineNumber = "582"
+            landmarkName = "didFinishSliding()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

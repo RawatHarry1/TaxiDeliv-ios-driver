@@ -571,6 +571,7 @@
 		4F1557D6F752152A793303BB /* Pods_VenusDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4646EDF69101DF2D03A7CA7E /* Pods_VenusDriver.framework */; };
 		6FF438039530F1B147E201A2 /* Pods_VenusDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4646EDF69101DF2D03A7CA7E /* Pods_VenusDriver.framework */; };
 		A0E8A714081FA83C2C78A645 /* Pods_SaloneRide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFAB59E297552D8E5EABC69 /* Pods_SaloneRide.framework */; };
+		BD577F342D5E068800DB2E89 /* LuggageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD577F322D5E052000DB2E89 /* LuggageVC.swift */; };
 		BDA3181B2D38EB2E00EBA84B /* SlideToActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA318192D38E97F00EBA84B /* SlideToActionButton.swift */; };
 		BDC4FF7A2D547BB400FB26A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDC4FF782D547BAF00FB26A0 /* GoogleService-Info.plist */; };
 		BDE747F62D366FEF005B04B5 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE747F52D366FEF005B04B5 /* StepsModel.swift */; };
@@ -947,6 +948,7 @@
 		7CFAB59E297552D8E5EABC69 /* Pods_SaloneRide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaloneRide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		821362B34291289AD6706CA7 /* Pods-SaloneRide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaloneRide.debug.xcconfig"; path = "Target Support Files/Pods-SaloneRide/Pods-SaloneRide.debug.xcconfig"; sourceTree = "<group>"; };
 		B39F1E5CBDB467DD5506C603 /* Pods-SaloneRide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaloneRide.release.xcconfig"; path = "Target Support Files/Pods-SaloneRide/Pods-SaloneRide.release.xcconfig"; sourceTree = "<group>"; };
+		BD577F322D5E052000DB2E89 /* LuggageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuggageVC.swift; sourceTree = "<group>"; };
 		BDA318192D38E97F00EBA84B /* SlideToActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideToActionButton.swift; sourceTree = "<group>"; };
 		BDC4FF782D547BAF00FB26A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BDE747F52D366FEF005B04B5 /* StepsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
@@ -1454,6 +1456,7 @@
 		0C2887FC2A35C20E009436BA /* PostLogin */ = {
 			isa = PBXGroup;
 			children = (
+				BD577F312D5E050700DB2E89 /* Luggage VC */,
 				CF704C8D2D096EAB00D83A3B /* Assets.xcassets */,
 				CF704C902D096EB600D83A3B /* Raise Ticket VC */,
 				CF704C942D096EB800D83A3B /* Ticket List VC */,
@@ -2461,6 +2464,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BD577F312D5E050700DB2E89 /* Luggage VC */ = {
+			isa = PBXGroup;
+			children = (
+				BD577F322D5E052000DB2E89 /* LuggageVC.swift */,
+			);
+			path = "Luggage VC";
+			sourceTree = "<group>";
+		};
 		CF08C7A02C819B35007A981A /* Cards Modal */ = {
 			isa = PBXGroup;
 			children = (
@@ -3282,6 +3293,7 @@
 				0C4940BC2AB03A7800A6E35F /* WebServices+AboutUs.swift in Sources */,
 				0CE5331B2AB4BFC0004BD906 /* OngoingRideModel.swift in Sources */,
 				0CED86C62A7A6543007959D6 /* VDWalletHeaderCell.swift in Sources */,
+				BD577F342D5E068800DB2E89 /* LuggageVC.swift in Sources */,
 				0C01A5B92A6DBBAF00B98ADF /* CustomAlert.swift in Sources */,
 				0CD15E702A6AD65600123A1C /* VDSideMenuCell.swift in Sources */,
 				CFD79B712C36708E007D2CF4 /* VCBaseVC.swift in Sources */,
