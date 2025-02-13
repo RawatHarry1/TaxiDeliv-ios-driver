@@ -22,7 +22,7 @@ struct UplodPhotoData : Codable {
 
 class UploadPackageVC: UIViewController {
     @IBOutlet weak var collecetionVw: UICollectionView!
-    
+    var driver_package_images = false
     var selectedImage: UIImage?
     var uploadedImages: [UIImage] = []
     var data_img: Data?
@@ -46,8 +46,18 @@ class UploadPackageVC: UIViewController {
         print(arrImages)
       
         if appendedArr.count == 0{
+            if driver_package_images == false
+            {
+                self.dismiss(animated: true) { [self] in
+                    self.acceptTripCallBack!(self.appendedArr)
+                }
+            }
+            else
+            {
+                self.showAlert(withTitle: "Alert", message: "Please Upload Images!!", on: self)
+
+            }
            // SKToast.show(withMessage: "Please Upload Images!!")
-            self.showAlert(withTitle: "Alert", message: "Please Upload Images!!", on: self)
         }else{
             self.dismiss(animated: true) { [self] in
                 self.acceptTripCallBack!(self.appendedArr)

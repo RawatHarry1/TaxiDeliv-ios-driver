@@ -505,6 +505,8 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate {
                 
                         let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
+                    vc.driver_package_images = UserModel.currentUser.login?.services_config?[0].config?.driverPackageImages == 1
+
                         vc.comesFromMardArrive = true
                         vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
                         vc.didPressContinue = {
@@ -551,6 +553,8 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate {
                     }else{
                         let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
                         let vc = storyboard.instantiateViewController(withIdentifier: "PackageListVC") as!  PackageListVC
+                        vc.driver_package_images = UserModel.currentUser.login?.services_config?[0].config?.driverPackageImages == 1
+
                         vc.comesFromMardArrive = false
                         vc.deliveryPackages = self.homeViewModel.objFetchOngoingModal?.deliveryPackages
                         vc.didPressContinue = {

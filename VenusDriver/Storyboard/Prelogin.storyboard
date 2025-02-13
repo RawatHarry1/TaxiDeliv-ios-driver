@@ -203,7 +203,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="500"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nm-hO-28Y">
-                                                <rect key="frame" x="30" y="29.999999999999996" width="333" height="60.666666666666657"/>
+                                                <rect key="frame" x="30" y="30.000000000000004" width="333" height="62.333333333333343"/>
                                                 <string key="text">Welcome Back
 Thanks for going green!</string>
                                                 <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="26"/>
@@ -211,7 +211,7 @@ Thanks for going green!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NFY-va-RqH">
-                                                <rect key="frame" x="30" y="120.66666666666666" width="333" height="120"/>
+                                                <rect key="frame" x="30" y="122.33333333333334" width="333" height="120"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtR-ek-NhX">
                                                         <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
@@ -242,13 +242,13 @@ Thanks for going green!</string>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="m1k-2X-ErR">
-                                                                        <rect key="frame" x="24" y="36.000000000000028" width="8" height="3"/>
+                                                                        <rect key="frame" x="24" y="35.999999999999972" width="8" height="3"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="8" id="p7f-BB-zs8"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+91" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTZ-ZA-cQ0">
-                                                                        <rect key="frame" x="39" y="28.666666666666686" width="26" height="17.666666666666671"/>
+                                                                        <rect key="frame" x="38.666666666666671" y="28.666666666666657" width="26.333333333333329" height="18"/>
                                                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
                                                                         <color key="textColor" name="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -295,7 +295,7 @@ Thanks for going green!</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zkg-lO-SRO">
-                                                        <rect key="frame" x="0.0" y="60.000000000000028" width="333" height="60"/>
+                                                        <rect key="frame" x="0.0" y="59.999999999999972" width="333" height="60"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter passcode (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KRm-qw-rmz" customClass="SkyfieldPhoneTF" customModule="SaloneRide" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
@@ -317,7 +317,7 @@ Thanks for going green!</string>
                                                         </constraints>
                                                     </view>
                                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email or mobile number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MXE-IQ-DLT" customClass="SkyfieldTF" customModule="SaloneRide" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="120.00000000000003" width="333" height="60"/>
+                                                        <rect key="frame" x="0.0" y="119.99999999999997" width="333" height="60"/>
                                                         <color key="tintColor" name="buttonSelectedOrange"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="C6N-G3-Fok"/>
@@ -327,7 +327,7 @@ Thanks for going green!</string>
                                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                     <textField hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="18u-zr-iXj" customClass="SkyfieldTF" customModule="SaloneRide" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="120.00000000000003" width="333" height="60"/>
+                                                        <rect key="frame" x="0.0" y="119.99999999999997" width="333" height="60"/>
                                                         <color key="tintColor" name="buttonSelectedOrange"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="EAp-PY-4TA"/>
@@ -339,7 +339,7 @@ Thanks for going green!</string>
                                                 </subviews>
                                             </stackView>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRw-Qz-aCV">
-                                                <rect key="frame" x="30" y="256.66666666666669" width="120" height="17"/>
+                                                <rect key="frame" x="30" y="258.33333333333331" width="120" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Amk-Pq-NVz"/>
                                                     <constraint firstAttribute="height" constant="17" id="zxf-xd-UHc"/>
@@ -351,7 +351,7 @@ Thanks for going green!</string>
                                                 </state>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2N-7n-Huz">
-                                                <rect key="frame" x="249" y="256.66666666666669" width="114" height="17"/>
+                                                <rect key="frame" x="245" y="258.33333333333331" width="118" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="N7M-Sp-Prr"/>
                                                 </constraints>
@@ -364,7 +364,7 @@ Thanks for going green!</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcO-dl-GbF" customClass="VDButton" customModule="SaloneRide" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="313.66666666666669" width="333" height="46"/>
+                                                <rect key="frame" x="30" y="315.33333333333331" width="333" height="46"/>
                                                 <color key="backgroundColor" name="buttonSelectedOrange"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="LQJ-r1-k4L"/>
@@ -384,7 +384,7 @@ Thanks for going green!</string>
                                                 </connections>
                                             </button>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJ8-RJ-zMf">
-                                                <rect key="frame" x="186.33333333333334" y="399.66666666666669" width="20.333333333333343" height="20"/>
+                                                <rect key="frame" x="186.66666666666666" y="401.33333333333331" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="RSe-eU-eh0"/>
                                                 </constraints>
@@ -393,10 +393,10 @@ Thanks for going green!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="JZ3-ma-zIT">
-                                                <rect key="frame" x="30" y="449.66666666666663" width="333" height="20.333333333333314"/>
+                                                <rect key="frame" x="30" y="451.33333333333337" width="333" height="18.666666666666686"/>
                                                 <subviews>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxC-HK-4d4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="214" height="46"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="qtN-ew-EcK"/>
@@ -419,7 +419,7 @@ Thanks for going green!</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBm-dd-hcg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="214" height="46"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="weN-I6-4WL"/>
@@ -442,7 +442,7 @@ Thanks for going green!</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sJ-Qd-JqF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="214" height="46"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="sCn-SI-3UW"/>
@@ -506,7 +506,7 @@ Thanks for going green!</string>
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVf-Db-CGE">
-                                        <rect key="frame" x="15" y="0.0" width="81" height="44"/>
+                                        <rect key="frame" x="15" y="0.0" width="82" height="44"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1654,26 +1654,8 @@ email@gmail.com</string>
         </scene>
     </scenes>
     <designables>
-        <designable name="18u-zr-iXj">
-            <size key="intrinsicContentSize" width="166.66666666666666" height="34"/>
-        </designable>
-        <designable name="2wH-K5-fvr">
-            <size key="intrinsicContentSize" width="207.66666666666666" height="34"/>
-        </designable>
-        <designable name="4Bk-Xj-M7z">
-            <size key="intrinsicContentSize" width="131.33333333333334" height="34"/>
-        </designable>
-        <designable name="7CI-8w-EuG">
-            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
-        </designable>
         <designable name="87B-9L-EgJ">
             <size key="intrinsicContentSize" width="224" height="19.666666666666668"/>
-        </designable>
-        <designable name="A1l-O2-zqs">
-            <size key="intrinsicContentSize" width="86" height="34"/>
-        </designable>
-        <designable name="DcG-7u-rTC">
-            <size key="intrinsicContentSize" width="207.66666666666666" height="34"/>
         </designable>
         <designable name="EN1-0m-6PK">
             <size key="intrinsicContentSize" width="124" height="32"/>
@@ -1681,50 +1663,11 @@ email@gmail.com</string>
         <designable name="EWJ-Ud-n6u">
             <size key="intrinsicContentSize" width="49" height="32"/>
         </designable>
-        <designable name="EoL-OQ-IRM">
-            <size key="intrinsicContentSize" width="101" height="34"/>
-        </designable>
-        <designable name="FDa-tF-OfA">
-            <size key="intrinsicContentSize" width="102" height="34"/>
-        </designable>
-        <designable name="G0G-rj-xwu">
-            <size key="intrinsicContentSize" width="142.33333333333334" height="34"/>
-        </designable>
         <designable name="KKv-gD-MyO">
             <size key="intrinsicContentSize" width="112" height="32"/>
         </designable>
-        <designable name="KRm-qw-rmz">
-            <size key="intrinsicContentSize" width="199" height="34"/>
-        </designable>
-        <designable name="MXE-IQ-DLT">
-            <size key="intrinsicContentSize" width="259.66666666666669" height="34"/>
-        </designable>
-        <designable name="Vp5-Ya-bPq">
-            <size key="intrinsicContentSize" width="111" height="34"/>
-        </designable>
-        <designable name="XNF-en-MxQ">
-            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
-        </designable>
-        <designable name="Yi3-O1-955">
-            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
-        </designable>
-        <designable name="cJZ-g7-ITU">
-            <size key="intrinsicContentSize" width="209.33333333333334" height="34"/>
-        </designable>
-        <designable name="cbe-bW-EPr">
-            <size key="intrinsicContentSize" width="271" height="34"/>
-        </designable>
         <designable name="dOr-HO-WBW">
             <size key="intrinsicContentSize" width="112" height="32"/>
-        </designable>
-        <designable name="ec5-rM-3zq">
-            <size key="intrinsicContentSize" width="203" height="34"/>
-        </designable>
-        <designable name="ecC-Qc-DfZ">
-            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
-        </designable>
-        <designable name="h0F-S5-tJA">
-            <size key="intrinsicContentSize" width="172.66666666666666" height="34"/>
         </designable>
         <designable name="i8X-I3-RDy">
             <size key="intrinsicContentSize" width="48" height="32"/>
@@ -1732,26 +1675,8 @@ email@gmail.com</string>
         <designable name="iGm-ie-onz">
             <size key="intrinsicContentSize" width="56" height="32"/>
         </designable>
-        <designable name="k7D-58-yUn">
-            <size key="intrinsicContentSize" width="207.66666666666666" height="34"/>
-        </designable>
-        <designable name="lKq-1d-yXX">
-            <size key="intrinsicContentSize" width="192" height="34"/>
-        </designable>
-        <designable name="mfj-L1-EgV">
-            <size key="intrinsicContentSize" width="100.33333333333333" height="34"/>
-        </designable>
-        <designable name="raN-mi-P6n">
-            <size key="intrinsicContentSize" width="199" height="34"/>
-        </designable>
-        <designable name="utr-2H-rhW">
-            <size key="intrinsicContentSize" width="195.66666666666666" height="34"/>
-        </designable>
-        <designable name="vdi-lR-TGn">
-            <size key="intrinsicContentSize" width="318" height="34"/>
-        </designable>
         <designable name="wcO-dl-GbF">
-            <size key="intrinsicContentSize" width="50" height="31"/>
+            <size key="intrinsicContentSize" width="48" height="32"/>
         </designable>
     </designables>
     <resources>
@@ -1765,7 +1690,7 @@ email@gmail.com</string>
         <image name="chooselogin" width="375" height="288"/>
         <image name="countryFlag" width="20" height="12"/>
         <image name="cross" width="46" height="46"/>
-        <image name="facebook" width="20" height="20"/>
+        <image name="facebook" width="24" height="24"/>
         <image name="googleLogo" width="20" height="20"/>
         <image name="imgPlaceholder" width="132" height="132"/>
         <namedColor name="buttonBorder">
