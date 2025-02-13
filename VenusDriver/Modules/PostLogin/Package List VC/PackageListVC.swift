@@ -131,8 +131,8 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
             cell.imagesStackView.isHidden = false
             cell.deliveryStackView.isHidden = false
         }
-        cell.imagesArr = self.deliveryPackages?[indexPath.row].package_image_while_pickup
-        cell.deliveryImagesArr = self.deliveryPackages?[indexPath.row].package_image_while_drop_off
+//        cell.imagesArr = self.deliveryPackages?[indexPath.row].package_image_while_pickup
+//        cell.deliveryImagesArr = self.deliveryPackages?[indexPath.row].package_image_while_drop_off
 
         if comesFromMardArrive == true{
             
@@ -142,7 +142,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                 cell.btnreject.isEnabled = false
                 cell.btnAccept.alpha = 0.4
                 cell.btnreject.alpha = 0.4
-                cell.imagesArr = self.deliveryPackages?[indexPath.row].package_image_while_pickup
+//                cell.imagesArr = self.deliveryPackages?[indexPath.row].package_image_while_pickup
                 cell.collectionViewImages.reloadData()
                 cell.imagesStackView.isHidden = false
 //                self.btnContinue.alpha = 1
@@ -160,32 +160,47 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                 }
                 else{
                  
-                    if self.imgArr.count  > 0{
-                        cell.btnAccept.isEnabled = false
-                        cell.btnreject.isEnabled = false
-                        cell.btnAccept.alpha = 0.4
-                        cell.btnreject.alpha = 0.4
-                        cell.imagesArr = self.imgArr
-                        cell.collectionViewImages.reloadData()
-                        cell.imagesStackView.isHidden = false
-                    }else{
-                        
-                        cell.btnAccept.isEnabled = true
-                        cell.btnreject.isEnabled = true
-                        cell.btnAccept.alpha = 1
-                        cell.btnreject.alpha = 1
-                        cell.imagesStackView.isHidden = true
-                    }
-                    if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 1
-                    {
-                        cell.btnAccept.isEnabled = false
-                        cell.btnreject.isEnabled = false
-                        cell.btnAccept.alpha = 0.4
-                        cell.btnreject.alpha = 0.4
-//                        self.btnContinue.alpha = 1
-//                        self.btnContinue.isEnabled = true
+//                    if self.imgArr.count  > 0{
+//                        cell.btnAccept.isEnabled = false
+//                        cell.btnreject.isEnabled = false
+//                        cell.btnAccept.alpha = 0.4
+//                        cell.btnreject.alpha = 0.4
+//                        cell.imagesArr = self.imgArr
+//                        cell.collectionViewImages.reloadData()
+//                        cell.imagesStackView.isHidden = false
+//                    }
+                    
+//                    else{
+                        if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 1
+                        {
+                            cell.btnAccept.isEnabled = false
+                            cell.btnreject.isEnabled = false
+                            cell.btnAccept.alpha = 0.4
+                            cell.btnreject.alpha = 0.4
 
-                    }
+                        }
+                        else
+                        {
+                            cell.btnAccept.isEnabled = true
+                            cell.btnreject.isEnabled = true
+                            cell.btnAccept.alpha = 1
+                            cell.btnreject.alpha = 1
+
+                        }
+                     
+                        cell.imagesStackView.isHidden = true
+                  //  }
+//                     if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 1
+//                     {
+//                         cell.btnAccept.isEnabled = false
+//                         cell.btnreject.isEnabled = false
+//                         cell.btnAccept.alpha = 0.4
+//                         cell.btnreject.alpha = 0.4
+// //                        self.btnContinue.alpha = 1
+// //                        self.btnContinue.isEnabled = true
+//
+//                     }
+                    
                 }
             }
             
@@ -193,6 +208,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
             cell.btnAccept.setTitle("ACCEPT", for: .normal)
             cell.btnreject.setTitle("REJECT", for: .normal)
         }else{
+            cell.collectionViewImages.reloadData()
             if self.deliveryPackages?[indexPath.row].package_image_while_pickup?.count ?? 0 > 0
             {
                 cell.lblTopDelivery.isHidden = false
@@ -232,16 +248,28 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                         cell.btnreject.isEnabled = false
                         cell.btnAccept.alpha = 0.4
                         cell.btnreject.alpha = 0.4
-                        cell.deliveryImagesArr = self.deliveryImages
+                 //       cell.deliveryImagesArr = self.deliveryImages
                         cell.collectionVwDropOffImgs.reloadData()
                         cell.deliveryStackView.isHidden = false
                     }else{
+                        if self.deliveryPackages?[indexPath.row].delivery_status ?? 0 == 4
+                        {
+                            cell.btnAccept.isEnabled = false
+                            cell.btnreject.isEnabled = false
+                            cell.btnAccept.alpha = 0.4
+                            cell.btnreject.alpha = 0.4
+
+                        }
+                        else
+                        {
+                            cell.btnAccept.isEnabled = true
+                            cell.btnreject.isEnabled = true
+                            cell.btnAccept.alpha = 1
+                            cell.btnreject.alpha = 1
+
+                        }
                         
-                        
-                        cell.btnAccept.isEnabled = true
-                        cell.btnreject.isEnabled = true
-                        cell.btnAccept.alpha = 1
-                        cell.btnreject.alpha = 1
+                    
                         cell.deliveryStackView.isHidden = true
                         
                     }
@@ -265,99 +293,105 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
             cell.btnreject.setTitle("NOT DELIVERED", for: .normal)
         }
         
-        cell.didPressAccept = {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "UploadPackageVC") as! UploadPackageVC
-            vc.driver_package_images = self.driver_package_images
-            vc.modalPresentationStyle = .overFullScreen
-            vc.acceptTripCallBack = { imageArr in
-                print(imageArr)
-                if imageArr.count != 0{
-                    
-                    self.imgArr = imageArr
-                    self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:"",AcceptTrip:true,comerFromMarkArive:self.comesFromMardArrive, completion: {
-                        
-                        if self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "" != ""{
-                            Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
-                        }
-                        
-                        cell.btnAccept.isEnabled = false
-                        cell.btnreject.isEnabled = false
-                        cell.btnAccept.alpha = 0.4
-                        cell.btnreject.alpha = 0.4
-                        
-                        if self.comesFromMardArrive == true{
-                            if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
-                                self.btnContinue.alpha = 1
-                                self.btnContinue.isEnabled = true
-                            }
-                        }else{
-                            if self.viewModal.objPackageStatusModal?.data?.can_end == 1{
-                                self.btnContinue.alpha = 1
-                                self.btnContinue.isEnabled = true
-                            }
-                        }
-                    })
-                    
-                    cell.mainStack.isHidden = false
-                    if self.comesFromMardArrive == true{
-                        cell.imagesStackView.isHidden = false
-                        cell.imagesArr = imageArr
-                        cell.collectionViewImages.reloadData()
-                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
-                    }else{
-                        self.deliveryImages = imageArr
-                        cell.deliveryStackView.isHidden = false
-                        cell.deliveryImagesArr = imageArr
-                        cell.collectionVwDropOffImgs.reloadData()
-                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
-                    }
-                }
-                else
-                {
-                    
-                    self.imgArr = imageArr
-                    self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:"",AcceptTrip:true,comerFromMarkArive:self.comesFromMardArrive, completion: {
-                        
-                        if self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "" != ""{
-                            Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
-                        }
-                        self.deliveryPackages?[indexPath.row].delivery_status = self.comesFromMardArrive == true ? 1 : 4
-                        cell.btnAccept.isEnabled = false
-                        cell.btnreject.isEnabled = false
-                        cell.btnAccept.alpha = 0.4
-                        cell.btnreject.alpha = 0.4
-                        
-                        if self.comesFromMardArrive == true{
-                            if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
-                                self.btnContinue.alpha = 1
-                                self.btnContinue.isEnabled = true
-                            }
-                        }else{
-                            if self.viewModal.objPackageStatusModal?.data?.can_end == 1{
-                                self.btnContinue.alpha = 1
-                                self.btnContinue.isEnabled = true
-                            }
-                        }
-                    })
-                    
-                    cell.mainStack.isHidden = false
-                    if self.comesFromMardArrive == true{
-                        cell.imagesStackView.isHidden = false
-                        cell.imagesArr = imageArr
-                        cell.collectionViewImages.reloadData()
-                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
-                    }else{
-                        self.deliveryImages = imageArr
-                        cell.deliveryStackView.isHidden = false
-                        cell.deliveryImagesArr = imageArr
-                        cell.collectionVwDropOffImgs.reloadData()
-                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
-                    }
-                    self.tblView.reloadData()
-                }
-            }
-            self.present(vc, animated: true)
-        }
+        cell.btnAccept.tag = indexPath.row
+        cell.btnAccept.addTarget(self, action: #selector(didPressAccept), for: .touchUpInside)
+//        cell.didPressAccept = {
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "UploadPackageVC") as! UploadPackageVC
+//            vc.driver_package_images = self.driver_package_images
+//            vc.modalPresentationStyle = .overFullScreen
+//            vc.acceptTripCallBack = { imageArr in
+//                print(imageArr)
+//                if imageArr.count != 0{
+//                    
+//                    self.imgArr = imageArr
+//                    self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:"",AcceptTrip:true,comerFromMarkArive:self.comesFromMardArrive, completion: {
+//                        
+//                        if self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "" != ""{
+//                            Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
+//                        }
+//                        
+//                        cell.btnAccept.isEnabled = false
+//                        cell.btnreject.isEnabled = false
+//                        cell.btnAccept.alpha = 0.4
+//                        cell.btnreject.alpha = 0.4
+//                        
+//                        if self.comesFromMardArrive == true{
+//                            if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
+//                                self.btnContinue.alpha = 1
+//                                self.btnContinue.isEnabled = true
+//                            }
+//                        }else{
+//                            if self.viewModal.objPackageStatusModal?.data?.can_end == 1{
+//                                self.btnContinue.alpha = 1
+//                                self.btnContinue.isEnabled = true
+//                            }
+//                        }
+//                    })
+//                    
+//                    cell.mainStack.isHidden = false
+//                    if self.comesFromMardArrive == true{
+//                        cell.imagesStackView.isHidden = false
+//                        cell.imagesArr = imageArr
+//                        cell.collectionViewImages.reloadData()
+//                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
+//                    }else{
+//                        self.deliveryImages = imageArr
+//                        cell.deliveryStackView.isHidden = false
+//                        cell.deliveryImagesArr = imageArr
+//                        cell.collectionVwDropOffImgs.reloadData()
+//                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
+//                    }
+//                }
+//                else
+//                {
+//                    
+//                    self.imgArr = imageArr
+//                    self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[indexPath.row].package_id ?? 0)", images: imageArr,reason:"",AcceptTrip:true,comerFromMarkArive:self.comesFromMardArrive, completion: {
+//                        
+//                        if self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "" != ""{
+//                            Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
+//                        }
+//                        self.deliveryPackages?[indexPath.row].delivery_status = self.comesFromMardArrive == true ? 1 : 4
+//                        cell.btnAccept.isEnabled = false
+//                        cell.btnreject.isEnabled = false
+//                        cell.btnAccept.alpha = 0.4
+//                        cell.btnreject.alpha = 0.4
+//                        
+//                        if self.comesFromMardArrive == true{
+//                            if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
+//                                self.btnContinue.alpha = 1
+//                                self.btnContinue.isEnabled = true
+//                            }
+//                        }else{
+//                            if self.viewModal.objPackageStatusModal?.data?.can_end == 1{
+//                                self.btnContinue.alpha = 1
+//                                self.btnContinue.isEnabled = true
+//                            }
+//                        }
+//                    })
+//                    
+//                    cell.mainStack.isHidden = false
+//                    if self.comesFromMardArrive == true{
+//                        cell.imagesStackView.isHidden = false
+//                        cell.imagesArr = imageArr
+//                        cell.collectionViewImages.reloadData()
+//                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
+//                    }else{
+//                        self.deliveryImages = imageArr
+//                        cell.deliveryStackView.isHidden = false
+//                        cell.deliveryImagesArr = imageArr
+//                        cell.collectionVwDropOffImgs.reloadData()
+//                        self.tblView.reloadRows(at: [indexPath], with: .automatic)
+//                    }
+//                    DispatchQueue.main.async
+//                    {
+//                        self.tblView.reloadData()
+//                    }
+//                    
+//                }
+//            }
+//            self.present(vc, animated: true)
+//        }
         
         cell.didPressReject = {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "CancelTripVC") as! CancelTripVC
@@ -371,7 +405,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                 
                 if self.comesFromMardArrive == true{
                     cell.imagesStackView.isHidden = false
-                    cell.imagesArr = imageArr
+                    self.deliveryPackages?[indexPath.row].package_image_while_pickup = imageArr
                     cell.collectionViewImages.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
                         
@@ -445,7 +479,7 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
                     }
                 }else{
                     cell.deliveryStackView.isHidden = false
-                    cell.deliveryImagesArr = imageArr
+                    self.deliveryPackages?[indexPath.row].package_image_while_drop_off = imageArr
                     cell.collectionVwDropOffImgs.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
                         print("done")
@@ -537,6 +571,83 @@ extension PackageListVC: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    @objc func didPressAccept(_ sender : UIButton)
+    {
+        
+        var index = sender.tag
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "UploadPackageVC") as! UploadPackageVC
+        vc.driver_package_images = self.driver_package_images
+        vc.modalPresentationStyle = .overFullScreen
+        vc.acceptTripCallBack = { imageArr in
+            print(imageArr)
+            if imageArr.count != 0{
+                
+                self.imgArr = imageArr
+                self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[index].package_id ?? 0)", images: imageArr,reason:"",AcceptTrip:true,comerFromMarkArive:self.comesFromMardArrive, completion: {
+                    
+                    if self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "" != ""{
+                        Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
+                    }
+                    
+                    self.deliveryPackages?[index].delivery_status = self.comesFromMardArrive == true ? 1 : 4
+
+                    if self.comesFromMardArrive == true{
+                        self.deliveryPackages?[index].package_image_while_pickup = imageArr
+                        if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
+                            self.btnContinue.alpha = 1
+                            self.btnContinue.isEnabled = true
+                        }
+                    }else{
+                        self.deliveryPackages?[index].package_image_while_drop_off = imageArr
+                        if self.viewModal.objPackageStatusModal?.data?.can_end == 1{
+                            self.btnContinue.alpha = 1
+                            self.btnContinue.isEnabled = true
+                        }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                    {
+                        self.tblView.reloadData()
+                    }
+                })
+               
+               
+            }
+            else
+            {
+                
+                self.imgArr = imageArr
+                self.viewModal.deliveriPackageApi(tripID: sharedAppDelegate.notficationDetails?.trip_id ?? "", driverID: "\(UserModel.currentUser.login?.user_id ?? 0)", packageId: "\(self.deliveryPackages?[index].package_id ?? 0)", images: imageArr,reason:"",AcceptTrip:true,comerFromMarkArive:self.comesFromMardArrive, completion: {
+                    
+                    if self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "" != ""{
+                        Proxy.shared.displayStatusCodeAlert(self.viewModal.objPackageStatusModal?.deliveryRestriction ?? "", title: "")
+                    }
+                    self.deliveryPackages?[index].delivery_status = self.comesFromMardArrive == true ? 1 : 4
+
+                    
+                    if self.comesFromMardArrive == true{
+                        if self.viewModal.objPackageStatusModal?.data?.can_start == 1{
+                            self.btnContinue.alpha = 1
+                            self.btnContinue.isEnabled = true
+                        }
+                    }else{
+                        if self.viewModal.objPackageStatusModal?.data?.can_end == 1{
+                            self.btnContinue.alpha = 1
+                            self.btnContinue.isEnabled = true
+                        }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1)
+                    {
+                        self.tblView.reloadData()
+                    }
+                })
+                
+
+               
+                
+            }
+        }
+        self.present(vc, animated: true)
+    }
     func didSelectItem(url: String) {
         // Navigate to a new view controller
         let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "ImageViewerVC") as! ImageViewerVC

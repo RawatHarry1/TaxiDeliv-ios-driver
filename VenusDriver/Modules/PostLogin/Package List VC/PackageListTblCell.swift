@@ -27,8 +27,6 @@ class PackageListTblCell: UITableViewCell {
     @IBOutlet weak var btnreject: UIButton!
     var didPressAccept: (()->Void)?
     var didPressReject: (()->Void)?
-    var imagesArr : [String]?
-    var deliveryImagesArr : [String]?
     var deliveryPackages : DeliveryPackages?
     weak var delegate: CollectionViewCellDelegate?
     override func awakeFromNib() {
@@ -49,7 +47,7 @@ class PackageListTblCell: UITableViewCell {
     
     
     @IBAction func btnAcceptAction(_ sender: Any) {
-        self.didPressAccept!()
+      //  self.didPressAccept!()
     }
     
     @IBAction func btnRejectAction(_ sender: Any) {
@@ -61,13 +59,13 @@ extension PackageListTblCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == collectionViewImages{
-            if imagesArr?.count ?? 0 > 0{
-                return imagesArr?.count ?? 0
-            }else{
+//            if imagesArr?.count ?? 0 > 0{
+//                return imagesArr?.count ?? 0
+//            }else{
                 return deliveryPackages?.package_image_while_pickup?.count ?? 0
-            }
+          //  }
         }else{
-            return deliveryImagesArr?.count ?? 0
+            return deliveryPackages?.package_image_while_drop_off?.count ?? 0
         }
     }
     
@@ -75,22 +73,26 @@ extension PackageListTblCell: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == collectionViewImages{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagesCollectionCell", for: indexPath) as! ImagesCollectionCell
             
-            if imagesArr?.count ?? 0 > 0{
-                cell.imgViewImages.setImage(imagesArr?[indexPath.row] ?? "", placeHolder: nil)
-            
-                
-            }else{
+//            if imagesArr?.count ?? 0 > 0{
+//                cell.imgViewImages.setImage(imagesArr?[indexPath.row] ?? "", placeHolder: nil)
+//            
+//                
+//            }else{
                 if deliveryPackages?.package_image_while_pickup?.count ?? 0 > 0
                 {
                     cell.imgViewImages.setImage(deliveryPackages?.package_image_while_pickup?[indexPath.row] ?? "", placeHolder: nil)
 
                 }
-            }
+           // }
             
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagesCollectionCell", for: indexPath) as! ImagesCollectionCell
-            cell.imgViewImages.setImage(deliveryImagesArr?[indexPath.row] ?? "", placeHolder: nil)
+            if deliveryPackages?.package_image_while_drop_off?.count ?? 0 > 0
+            {
+                cell.imgViewImages.setImage(deliveryPackages?.package_image_while_drop_off?[indexPath.row] ?? "", placeHolder: nil)
+
+            }
             return cell
         }
         
@@ -101,33 +103,34 @@ extension PackageListTblCell: UICollectionViewDelegate, UICollectionViewDataSour
         //  guard let tableViewIndexPath = tableViewIndexPath else { return }
         
         if collectionView == collectionViewImages{
-            if imagesArr?.count ?? 0 > 0{
-                let urlStr = self.imagesArr?[indexPath.row] ?? ""
-                
-                delegate?.didSelectItem(url:urlStr)
-            
-                
-            }else{
+            if deliveryPackages?.package_image_while_pickup?.count ?? 0 > 0{
                 let urlStr = deliveryPackages?.package_image_while_pickup?[indexPath.row] ?? ""
                 
                 delegate?.didSelectItem(url:urlStr)
+
+                
             }
-           
         }else{
-            
-            let urlStr = deliveryImagesArr?[indexPath.row] ?? ""
-            delegate?.didSelectItem(url:urlStr)
+            if deliveryPackages?.package_image_while_drop_off?.count ?? 0 > 0{
+                let urlStr = deliveryPackages?.package_image_while_drop_off?[indexPath.row] ?? ""
+                
+                delegate?.didSelectItem(url:urlStr)
+
+                
+            }
+//            let urlStr = deliveryImagesArr?[indexPath.row] ?? ""
+//            delegate?.didSelectItem(url:urlStr)
             
         }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if imagesArr?.count ?? 0 > 0{
+//        if imagesArr?.count ?? 0 > 0{
+//            return CGSizeMake(58, 58)
+//        }else{
             return CGSizeMake(58, 58)
-        }else{
-            return CGSizeMake(58, 58)
-        }
+//        }
        
     }
     

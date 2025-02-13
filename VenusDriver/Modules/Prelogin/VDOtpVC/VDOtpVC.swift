@@ -14,6 +14,7 @@ class VDOtpVC: VDBaseVC {
     @IBOutlet weak var otpView: UIView!
     @IBOutlet weak var otpTitleLbl: UILabel!
 
+    @IBOutlet weak var btnResend: UIButton!
     // MARK: - Variables
     var phoneNumber = ""
     var countryCode = ""
@@ -34,15 +35,17 @@ class VDOtpVC: VDBaseVC {
         if forRideComplete == true
         {
             fullText = "Enter the 4-digit code sent to customer"
+            btnResend.isHidden = true
         }
         else
         {
             fullText = "Enter the 4-digit code sent to you at\n \(countryCode)\(phoneNumber)"
+            btnResend.isHidden = false
 
         }
         otpView.addSubview(otpStackView)
         otpStackView.delegate = self
-
+        
         self.loginViewModel.successCallBack = { status in
             //SKToast.show(withMessage: "4-digit code has been sent.")
             let alert = UIAlertController(title: "", message: "4-digit code has been sent.", preferredStyle: UIAlertController.Style.alert)
