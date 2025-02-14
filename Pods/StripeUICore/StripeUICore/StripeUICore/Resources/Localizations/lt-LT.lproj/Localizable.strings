@@ -1,5 +1,7 @@
 "%@ (optional)" = "%@ (pasirenkamas)";
 
+"(not accepted)" = "(nepriimama)";
+
 "Account number" = "Sąskaitos numeris";
 
 "Address" = "Adresas";
@@ -14,9 +16,13 @@
 
 "BSB number" = "BSB numeris";
 
+"Bank account •••• %@" = "Banko sąskaita •••• %@";
+
 "Billing address is same as shipping" = "Atsiskaitymo ir siuntimo adresai vienodi";
 
 "Cancel" = "Atšaukti";
+
+"Card brand" = "Kortelės prekės ženklas";
 
 "City" = "Miestas";
 
@@ -80,7 +86,7 @@
 
 "Parish" = "Parapija";
 
-"Phone" = "Telefonas";
+"Phone number" = "Telefono numeris";
 
 "Postal code" = "Pašto kodas";
 
@@ -90,13 +96,15 @@
 
 "Remove" = "Pašalinti";
 
-"Remove bank account" = "Pašalinti banko sąskaitą";
+"Remove bank account?" = "Pašalinti banko sąskaitą?";
 
-"Remove bank account ending in %@" = "Pašalinti banko sąskaitą, kurios paskutiniai skaičiai %@";
+"Remove card" = "Pašalinti kortelę";
 
 "Search" = "Paieška";
 
 "Select card brand (optional)" = "Pasirinkite kortelės prekės ženklą (neprivaloma)";
+
+"Sort code" = "Identifikacinis kodas";
 
 "State" = "Valstija";
 
@@ -109,6 +117,8 @@
 "The ID number you entered is incomplete." = "Įvedėte ne visą identifikacinį numerį.";
 
 "The account number you entered is incomplete." = "Įvedėte ne visą sąskaitos numerį.";
+
+"The sort code you entered is invalid." = "Jūsų įvestas identifikacinis kodas negalioja.";
 
 "Town or city" = "Miestelis arba miestas";
 
