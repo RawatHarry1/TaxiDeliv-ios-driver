@@ -35,7 +35,7 @@
                                     <constraint firstAttribute="width" secondItem="gM4-Wk-Tvr" secondAttribute="height" multiplier="1:0.714" id="zLB-w5-uvH"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smart Driver" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vP0-55-8T8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MB Ride Driver" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vP0-55-8T8">
                                 <rect key="frame" x="30" y="458.66666666666669" width="333" height="29.333333333333314"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="24"/>
                                 <color key="textColor" name="textColor"/>
@@ -200,7 +200,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uv5-U5-ogt">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="500"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="659"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nm-hO-28Y">
                                                 <rect key="frame" x="30" y="30.000000000000004" width="333" height="62.333333333333343"/>
@@ -393,10 +393,16 @@ Thanks for going green!</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="JZ3-ma-zIT">
-                                                <rect key="frame" x="30" y="391.33333333333331" width="333" height="78.666666666666686"/>
+                                                <rect key="frame" x="30" y="391.33333333333331" width="333" height="237.66666666666669"/>
                                                 <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chooselogin" translatesAutoresizingMaskIntoConstraints="NO" id="kkt-1u-Alb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="237.66666666666666"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="kkt-1u-Alb" secondAttribute="height" multiplier="1:0.714" id="7YV-j6-KBo"/>
+                                                        </constraints>
+                                                    </imageView>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxC-HK-4d4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="46"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="qtN-ew-EcK"/>
@@ -419,7 +425,7 @@ Thanks for going green!</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBm-dd-hcg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="46"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="weN-I6-4WL"/>
@@ -442,7 +448,7 @@ Thanks for going green!</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sJ-Qd-JqF">
-                                                        <rect key="frame" x="0.0" y="0.0" width="210" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="46"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="46" id="sCn-SI-3UW"/>
@@ -927,16 +933,16 @@ Thanks for going green!</string>
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hkj-tM-AxW">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="276.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="572"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create An Account" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feC-HX-mc3">
-                                                <rect key="frame" x="30" y="30" width="333" height="30.333333333333329"/>
+                                                <rect key="frame" x="30" y="30" width="333" height="31.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="26"/>
                                                 <color key="textColor" name="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MPU-3W-cu4">
-                                                <rect key="frame" x="30" y="90.333333333333343" width="333" height="60"/>
+                                                <rect key="frame" x="30" y="91.333333333333343" width="333" height="60"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmi-df-AUV">
                                                         <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
@@ -973,7 +979,7 @@ Thanks for going green!</string>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+91" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7br-Ey-fWB">
-                                                                        <rect key="frame" x="39" y="28.666666666666657" width="26" height="17.666666666666671"/>
+                                                                        <rect key="frame" x="38.666666666666671" y="28.666666666666657" width="26.333333333333329" height="18"/>
                                                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
                                                                         <color key="textColor" name="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1073,7 +1079,7 @@ Thanks for going green!</string>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGm-ie-onz" customClass="VDButton" customModule="SaloneRide" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="210.33333333333331" width="333" height="46"/>
+                                                <rect key="frame" x="30" y="211.33333333333331" width="333" height="46"/>
                                                 <color key="backgroundColor" name="buttonSelectedOrange"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="FRN-7M-rAe"/>
@@ -1092,19 +1098,102 @@ Thanks for going green!</string>
                                                     <action selector="btnSignUp:" destination="W5r-Ae-83K" eventType="touchUpInside" id="zQn-G2-4DJ"/>
                                                 </connections>
                                             </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="69A-8L-NWA">
+                                                <rect key="frame" x="0.0" y="271.33333333333326" width="393" height="280.66666666666674"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chooselogin" translatesAutoresizingMaskIntoConstraints="NO" id="4e1-rY-jq5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="280.66666666666669"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="4e1-rY-jq5" secondAttribute="height" multiplier="1:0.714" id="3V1-PI-PbJ"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DfU-1p-zck">
+                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="46"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="46" id="I0r-fS-ehF"/>
+                                                        </constraints>
+                                                        <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Connect with Facebook" image="facebook">
+                                                            <color key="titleColor" name="textColor"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="buttonBorder"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCa-u9-hRi">
+                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="46"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="46" id="LSS-qE-bYp"/>
+                                                        </constraints>
+                                                        <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Connect with Google" image="googleLogo">
+                                                            <color key="titleColor" name="textColor"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="buttonBorder"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Nm-Jv-w78">
+                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="46"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="46" id="FLG-Ew-zvT"/>
+                                                        </constraints>
+                                                        <inset key="titleEdgeInsets" minX="12" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="Connect with Apple" image="appleLogo">
+                                                            <color key="titleColor" name="textColor"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="8"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" name="buttonBorder"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="MPU-3W-cu4" firstAttribute="leading" secondItem="Hkj-tM-AxW" secondAttribute="leading" constant="30" id="ABq-df-xH7"/>
                                             <constraint firstItem="MPU-3W-cu4" firstAttribute="centerX" secondItem="Hkj-tM-AxW" secondAttribute="centerX" id="DTP-a8-gyw"/>
                                             <constraint firstItem="iGm-ie-onz" firstAttribute="top" secondItem="MPU-3W-cu4" secondAttribute="bottom" constant="60" id="Mgl-qt-VUn"/>
+                                            <constraint firstAttribute="trailing" secondItem="69A-8L-NWA" secondAttribute="trailing" id="Mm5-7t-LIj"/>
                                             <constraint firstItem="feC-HX-mc3" firstAttribute="leading" secondItem="Hkj-tM-AxW" secondAttribute="leading" constant="30" id="N99-vg-cHa"/>
                                             <constraint firstItem="feC-HX-mc3" firstAttribute="top" secondItem="Hkj-tM-AxW" secondAttribute="top" constant="30" id="OOO-xb-Rg1"/>
                                             <constraint firstItem="iGm-ie-onz" firstAttribute="leading" secondItem="Hkj-tM-AxW" secondAttribute="leading" constant="30" id="R1U-WX-Ltj"/>
+                                            <constraint firstItem="69A-8L-NWA" firstAttribute="leading" secondItem="Hkj-tM-AxW" secondAttribute="leading" id="WRa-4E-Gq6"/>
                                             <constraint firstItem="feC-HX-mc3" firstAttribute="centerX" secondItem="Hkj-tM-AxW" secondAttribute="centerX" id="cnE-Gh-AAM"/>
+                                            <constraint firstAttribute="bottom" secondItem="69A-8L-NWA" secondAttribute="bottom" constant="20" id="hU5-jB-lL4"/>
                                             <constraint firstItem="iGm-ie-onz" firstAttribute="centerX" secondItem="Hkj-tM-AxW" secondAttribute="centerX" id="juv-LY-iBh"/>
                                             <constraint firstItem="MPU-3W-cu4" firstAttribute="top" secondItem="feC-HX-mc3" secondAttribute="bottom" constant="30" id="uQa-ac-SWx"/>
-                                            <constraint firstAttribute="bottom" secondItem="iGm-ie-onz" secondAttribute="bottom" constant="20" id="uhH-2u-fp0"/>
+                                            <constraint firstItem="69A-8L-NWA" firstAttribute="top" secondItem="MPU-3W-cu4" secondAttribute="bottom" constant="120" id="wZF-j2-qW4"/>
                                             <constraint firstAttribute="height" priority="250" constant="500" id="yWq-Mc-yyq"/>
                                         </constraints>
                                     </view>
@@ -1123,7 +1212,7 @@ Thanks for going green!</string>
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49s-Ux-hiD">
-                                        <rect key="frame" x="15" y="0.0" width="74" height="44"/>
+                                        <rect key="frame" x="15" y="0.0" width="75" height="44"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1177,7 +1266,7 @@ Thanks for going green!</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NzI-KG-6Q3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="62" y="4"/>
+            <point key="canvasLocation" x="61.832061068702288" y="3.5211267605633805"/>
         </scene>
         <!--Sign Up CompleteVC-->
         <scene sceneID="zFS-it-Cz7">
@@ -1710,10 +1799,10 @@ email@gmail.com</string>
             <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
         </designable>
         <designable name="cJZ-g7-ITU">
-            <size key="intrinsicContentSize" width="199" height="34"/>
+            <size key="intrinsicContentSize" width="209.33333333333334" height="34"/>
         </designable>
         <designable name="cbe-bW-EPr">
-            <size key="intrinsicContentSize" width="259.66666666666669" height="34"/>
+            <size key="intrinsicContentSize" width="271" height="34"/>
         </designable>
         <designable name="dOr-HO-WBW">
             <size key="intrinsicContentSize" width="112" height="32"/>
@@ -1725,19 +1814,19 @@ email@gmail.com</string>
             <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
         </designable>
         <designable name="h0F-S5-tJA">
-            <size key="intrinsicContentSize" width="166.66666666666666" height="34"/>
+            <size key="intrinsicContentSize" width="172.66666666666666" height="34"/>
         </designable>
         <designable name="i8X-I3-RDy">
             <size key="intrinsicContentSize" width="48" height="32"/>
         </designable>
         <designable name="iGm-ie-onz">
-            <size key="intrinsicContentSize" width="58" height="31"/>
+            <size key="intrinsicContentSize" width="56" height="32"/>
         </designable>
         <designable name="k7D-58-yUn">
-            <size key="intrinsicContentSize" width="199" height="34"/>
+            <size key="intrinsicContentSize" width="207.66666666666666" height="34"/>
         </designable>
         <designable name="lKq-1d-yXX">
-            <size key="intrinsicContentSize" width="185" height="34"/>
+            <size key="intrinsicContentSize" width="192" height="34"/>
         </designable>
         <designable name="mfj-L1-EgV">
             <size key="intrinsicContentSize" width="100.33333333333333" height="34"/>
@@ -1763,17 +1852,17 @@ email@gmail.com</string>
         <image name="check" width="124.33333587646484" height="124.33333587646484"/>
         <image name="checkBoxOrange" width="15" height="15"/>
         <image name="checkEmail" width="162" height="116.66666412353516"/>
-        <image name="chooselogin" width="375" height="288"/>
+        <image name="chooselogin" width="341.33334350585938" height="341.33334350585938"/>
         <image name="countryFlag" width="20" height="12"/>
         <image name="cross" width="46" height="46"/>
-        <image name="facebook" width="20" height="20"/>
+        <image name="facebook" width="24" height="24"/>
         <image name="googleLogo" width="20" height="20"/>
         <image name="imgPlaceholder" width="132" height="132"/>
         <namedColor name="buttonBorder">
             <color red="0.43900001049041748" green="0.43900001049041748" blue="0.43900001049041748" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="buttonSelectedOrange">
-            <color red="0.0" green="0.23499999940395355" blue="0.4309999942779541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.11372549019607843" green="0.74901960784313726" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="textColor">
             <color red="0.10199999809265137" green="0.093999996781349182" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -1182,11 +1182,11 @@ extension VDHomeVC {
         }
         if UserModel.currentUser.login?.service_type == 1 {
             
-            completeRideLbl.text = "Smart Driver Ride Completed"
+            completeRideLbl.text = "MB Ride Driver Ride Completed"
         }
         else
         {
-            completeRideLbl.text = "Smart Driver Delivery Completed"
+            completeRideLbl.text = "MB Ride Driver Delivery Completed"
 
         }
 
@@ -2807,7 +2807,7 @@ extension VDHomeVC{
     func showNotificationAlert() {
         let alert = UIAlertController(
             title: "Notifications Disabled",
-            message: "Enable notifications for Smart Driver Driver? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
+            message: "Enable notifications for MB Ride Driver Driver? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
             preferredStyle: .alert
         )
 
