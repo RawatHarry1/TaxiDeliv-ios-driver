@@ -83,10 +83,10 @@ extension VDSplashVC {
                 "packageName": "com.mrideuk.driver",
             ] as [String: Any]
             
-            if let passcode = UserModel.currentUser.passcode
-            {
-                param["passcode"] = passcode
-            }
+//            if let passcode = UserModel.currentUser.passcode
+//            {
+//                param["passcode"] = passcode
+//            }
             return param
         }
         
@@ -133,10 +133,10 @@ extension VDSplashVC {
             var param = [
                 "packageName": "com.mrideuk.driver",
             ] as [String: Any]
-            if let passcode = UserModel.currentUser.passcode
-            {
-                param["passcode"] = passcode
-            }
+//            if let passcode = UserModel.currentUser.passcode
+//            {
+//                param["passcode"] = passcode
+//            }
             
             return param
         }

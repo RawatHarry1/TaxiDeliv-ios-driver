@@ -8567,18 +8567,6 @@ Go online to start accepting rides!</string>
         </scene>
     </scenes>
     <designables>
-        <designable name="2JA-EI-sGh">
-            <size key="intrinsicContentSize" width="136" height="34"/>
-        </designable>
-        <designable name="55x-5i-unn">
-            <size key="intrinsicContentSize" width="196" height="34"/>
-        </designable>
-        <designable name="8Jj-CF-RaY">
-            <size key="intrinsicContentSize" width="140" height="34"/>
-        </designable>
-        <designable name="95q-tt-Lza">
-            <size key="intrinsicContentSize" width="131.5" height="34"/>
-        </designable>
         <designable name="AEZ-wK-4G3">
             <size key="intrinsicContentSize" width="49" height="32"/>
         </designable>
@@ -8597,17 +8585,8 @@ Go online to start accepting rides!</string>
         <designable name="N1M-Hq-sOq">
             <size key="intrinsicContentSize" width="49" height="32"/>
         </designable>
-        <designable name="ND1-qF-NpS">
-            <size key="intrinsicContentSize" width="115" height="34"/>
-        </designable>
-        <designable name="NWu-Sd-Gup">
-            <size key="intrinsicContentSize" width="105.5" height="34"/>
-        </designable>
         <designable name="PwD-sC-pn1">
             <size key="intrinsicContentSize" width="63" height="34"/>
-        </designable>
-        <designable name="QbO-pb-kRt">
-            <size key="intrinsicContentSize" width="108.5" height="34"/>
         </designable>
         <designable name="QvJ-IG-3Hc">
             <size key="intrinsicContentSize" width="131" height="20"/>
@@ -8618,38 +8597,17 @@ Go online to start accepting rides!</string>
         <designable name="TgL-9N-8b4">
             <size key="intrinsicContentSize" width="30" height="32"/>
         </designable>
-        <designable name="Uid-ci-a1M">
-            <size key="intrinsicContentSize" width="183.5" height="34"/>
-        </designable>
-        <designable name="agd-N2-kjc">
-            <size key="intrinsicContentSize" width="140" height="34"/>
-        </designable>
         <designable name="ame-W5-b71">
             <size key="intrinsicContentSize" width="30" height="32"/>
         </designable>
-        <designable name="azR-zE-9nC">
-            <size key="intrinsicContentSize" width="102" height="34"/>
-        </designable>
-        <designable name="c5u-ZO-DOt">
-            <size key="intrinsicContentSize" width="116.5" height="34"/>
-        </designable>
         <designable name="dvh-L7-GEa">
             <size key="intrinsicContentSize" width="124" height="32"/>
-        </designable>
-        <designable name="eeh-XI-iWC">
-            <size key="intrinsicContentSize" width="127.5" height="34"/>
-        </designable>
-        <designable name="frF-4x-0co">
-            <size key="intrinsicContentSize" width="147" height="34"/>
         </designable>
         <designable name="g66-DR-i31">
             <size key="intrinsicContentSize" width="118" height="34"/>
         </designable>
         <designable name="iAm-Fz-7EC">
             <size key="intrinsicContentSize" width="78" height="32"/>
-        </designable>
-        <designable name="iKV-qK-Tnq">
-            <size key="intrinsicContentSize" width="125" height="34"/>
         </designable>
         <designable name="jQQ-Cy-B4H">
             <size key="intrinsicContentSize" width="30" height="32"/>
@@ -8663,9 +8621,6 @@ Go online to start accepting rides!</string>
         <designable name="p4j-XJ-PA5">
             <size key="intrinsicContentSize" width="57" height="34"/>
         </designable>
-        <designable name="u3C-Ji-y8S">
-            <size key="intrinsicContentSize" width="118" height="34"/>
-        </designable>
         <designable name="xs8-aO-4WW">
             <size key="intrinsicContentSize" width="50" height="32"/>
         </designable>
@@ -8677,7 +8632,7 @@ Go online to start accepting rides!</string>
         <image name="DeleteIcon" width="512" height="512"/>
         <image name="Rectangle" width="512" height="153"/>
         <image name="UploadDocuments" width="34.5" height="128.5"/>
-        <image name="addOrange" width="28" height="28"/>
+        <image name="addOrange" width="21" height="21"/>
         <image name="anz" width="24" height="24"/>
         <image name="arrowDown" width="6" height="3"/>
         <image name="arrowDown2" width="512" height="512"/>
@@ -8719,7 +8674,7 @@ Go online to start accepting rides!</string>
             <color red="0.43900001049041748" green="0.43900001049041748" blue="0.43900001049041748" alpha="0.10000000149011612" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="buttonSelectedOrange">
-            <color red="0.11372549019607843" green="0.74901960784313726" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.0" green="0.23529411764705882" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="notification">
             <color red="0.91399997472763062" green="0.94099998474121094" blue="0.98799997568130493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
