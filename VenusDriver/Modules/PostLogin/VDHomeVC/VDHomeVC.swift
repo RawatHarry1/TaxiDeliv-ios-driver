@@ -2613,7 +2613,17 @@ extension VDHomeVC{
             if UIApplication.shared.canOpenURL(settingsURL) {
                 UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
             }
-        }))
+        }
+                                     
+                                     ))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+            // Take the user to the app's settings
+           print("cancel")
+            
+         
+        }
+                                     
+                                     ))
         present(alert, animated: true, completion: nil)
     }
     

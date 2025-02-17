@@ -1702,7 +1702,7 @@ email@gmail.com</string>
         <image name="chooselogin" width="341.33334350585938" height="341.33334350585938"/>
         <image name="countryFlag" width="20" height="12"/>
         <image name="cross" width="46" height="46"/>
-        <image name="facebook" width="24" height="24"/>
+        <image name="facebook" width="20" height="20"/>
         <image name="googleLogo" width="20" height="20"/>
         <image name="imgPlaceholder" width="132" height="132"/>
         <image name="splashLogo" width="341.33334350585938" height="341.33334350585938"/>

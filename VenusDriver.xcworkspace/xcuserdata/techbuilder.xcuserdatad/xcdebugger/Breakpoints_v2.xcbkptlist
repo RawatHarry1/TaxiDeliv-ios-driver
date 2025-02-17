@@ -1358,9 +1358,9 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2755"
-            endingLineNumber = "2755"
-            landmarkName = "giveSpeechInstruction(_:)"
+            startingLineNumber = "2765"
+            endingLineNumber = "2765"
+            landmarkName = "getPolylineCoordinates(from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1374,10 +1374,10 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2756"
-            endingLineNumber = "2756"
-            landmarkName = "giveSpeechInstruction(_:)"
-            landmarkType = "7">
+            startingLineNumber = "2766"
+            endingLineNumber = "2766"
+            landmarkName = "VDHomeVC"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1390,8 +1390,8 @@
             filePath = "VenusDriver/Modules/PostLogin/VDHomeVC/VDHomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "2758"
-            endingLineNumber = "2758"
+            startingLineNumber = "2768"
+            endingLineNumber = "2768"
             landmarkName = "giveSpeechInstruction(_:)"
             landmarkType = "7">
          </BreakpointContent>
