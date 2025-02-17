@@ -927,16 +927,16 @@ Thanks for going green!</string>
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hkj-tM-AxW">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="276.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="277.33333333333331"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create An Account" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feC-HX-mc3">
-                                                <rect key="frame" x="30" y="30" width="333" height="30.333333333333329"/>
+                                                <rect key="frame" x="30" y="30" width="333" height="31.333333333333329"/>
                                                 <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="26"/>
                                                 <color key="textColor" name="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MPU-3W-cu4">
-                                                <rect key="frame" x="30" y="90.333333333333343" width="333" height="60"/>
+                                                <rect key="frame" x="30" y="91.333333333333343" width="333" height="60"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmi-df-AUV">
                                                         <rect key="frame" x="0.0" y="0.0" width="333" height="60"/>
@@ -973,7 +973,7 @@ Thanks for going green!</string>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+91" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7br-Ey-fWB">
-                                                                        <rect key="frame" x="39" y="28.666666666666657" width="26" height="17.666666666666671"/>
+                                                                        <rect key="frame" x="38.666666666666671" y="28.666666666666657" width="26.333333333333329" height="18"/>
                                                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="15"/>
                                                                         <color key="textColor" name="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1073,7 +1073,7 @@ Thanks for going green!</string>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iGm-ie-onz" customClass="VDButton" customModule="SaloneRide" customModuleProvider="target">
-                                                <rect key="frame" x="30" y="210.33333333333331" width="333" height="46"/>
+                                                <rect key="frame" x="30" y="211.33333333333331" width="333" height="46"/>
                                                 <color key="backgroundColor" name="buttonSelectedOrange"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="46" id="FRN-7M-rAe"/>
@@ -1123,7 +1123,7 @@ Thanks for going green!</string>
                                 <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49s-Ux-hiD">
-                                        <rect key="frame" x="15" y="0.0" width="74" height="44"/>
+                                        <rect key="frame" x="15" y="0.0" width="75" height="44"/>
                                         <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="14"/>
                                         <inset key="contentEdgeInsets" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1655,26 +1655,8 @@ email@gmail.com</string>
         </scene>
     </scenes>
     <designables>
-        <designable name="18u-zr-iXj">
-            <size key="intrinsicContentSize" width="172.66666666666666" height="34"/>
-        </designable>
-        <designable name="2wH-K5-fvr">
-            <size key="intrinsicContentSize" width="207.66666666666666" height="34"/>
-        </designable>
-        <designable name="4Bk-Xj-M7z">
-            <size key="intrinsicContentSize" width="131.33333333333334" height="34"/>
-        </designable>
-        <designable name="7CI-8w-EuG">
-            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
-        </designable>
         <designable name="87B-9L-EgJ">
             <size key="intrinsicContentSize" width="224" height="19.666666666666668"/>
-        </designable>
-        <designable name="A1l-O2-zqs">
-            <size key="intrinsicContentSize" width="86" height="34"/>
-        </designable>
-        <designable name="DcG-7u-rTC">
-            <size key="intrinsicContentSize" width="207.66666666666666" height="34"/>
         </designable>
         <designable name="EN1-0m-6PK">
             <size key="intrinsicContentSize" width="124" height="32"/>
@@ -1682,74 +1664,17 @@ email@gmail.com</string>
         <designable name="EWJ-Ud-n6u">
             <size key="intrinsicContentSize" width="49" height="32"/>
         </designable>
-        <designable name="EoL-OQ-IRM">
-            <size key="intrinsicContentSize" width="101" height="34"/>
-        </designable>
-        <designable name="FDa-tF-OfA">
-            <size key="intrinsicContentSize" width="102" height="34"/>
-        </designable>
-        <designable name="G0G-rj-xwu">
-            <size key="intrinsicContentSize" width="142.33333333333334" height="34"/>
-        </designable>
         <designable name="KKv-gD-MyO">
             <size key="intrinsicContentSize" width="112" height="32"/>
         </designable>
-        <designable name="KRm-qw-rmz">
-            <size key="intrinsicContentSize" width="209.33333333333334" height="34"/>
-        </designable>
-        <designable name="MXE-IQ-DLT">
-            <size key="intrinsicContentSize" width="271" height="34"/>
-        </designable>
-        <designable name="Vp5-Ya-bPq">
-            <size key="intrinsicContentSize" width="111" height="34"/>
-        </designable>
-        <designable name="XNF-en-MxQ">
-            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
-        </designable>
-        <designable name="Yi3-O1-955">
-            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
-        </designable>
-        <designable name="cJZ-g7-ITU">
-            <size key="intrinsicContentSize" width="199" height="34"/>
-        </designable>
-        <designable name="cbe-bW-EPr">
-            <size key="intrinsicContentSize" width="259.66666666666669" height="34"/>
-        </designable>
         <designable name="dOr-HO-WBW">
             <size key="intrinsicContentSize" width="112" height="32"/>
-        </designable>
-        <designable name="ec5-rM-3zq">
-            <size key="intrinsicContentSize" width="203" height="34"/>
-        </designable>
-        <designable name="ecC-Qc-DfZ">
-            <size key="intrinsicContentSize" width="37.333333333333336" height="34"/>
-        </designable>
-        <designable name="h0F-S5-tJA">
-            <size key="intrinsicContentSize" width="166.66666666666666" height="34"/>
         </designable>
         <designable name="i8X-I3-RDy">
             <size key="intrinsicContentSize" width="48" height="32"/>
         </designable>
         <designable name="iGm-ie-onz">
-            <size key="intrinsicContentSize" width="58" height="31"/>
-        </designable>
-        <designable name="k7D-58-yUn">
-            <size key="intrinsicContentSize" width="199" height="34"/>
-        </designable>
-        <designable name="lKq-1d-yXX">
-            <size key="intrinsicContentSize" width="185" height="34"/>
-        </designable>
-        <designable name="mfj-L1-EgV">
-            <size key="intrinsicContentSize" width="100.33333333333333" height="34"/>
-        </designable>
-        <designable name="raN-mi-P6n">
-            <size key="intrinsicContentSize" width="207.66666666666666" height="34"/>
-        </designable>
-        <designable name="utr-2H-rhW">
-            <size key="intrinsicContentSize" width="195.66666666666666" height="34"/>
-        </designable>
-        <designable name="vdi-lR-TGn">
-            <size key="intrinsicContentSize" width="318" height="34"/>
+            <size key="intrinsicContentSize" width="56" height="32"/>
         </designable>
         <designable name="wcO-dl-GbF">
             <size key="intrinsicContentSize" width="48" height="32"/>

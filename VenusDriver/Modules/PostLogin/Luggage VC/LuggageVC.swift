@@ -14,6 +14,7 @@ class LuggageVC: UIViewController, UITextFieldDelegate {
   //  var appendedArr = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        tfLuggage.text = "0"
         tfLuggage.delegate = self
     }
     
@@ -49,22 +50,22 @@ class LuggageVC: UIViewController, UITextFieldDelegate {
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 
-        switch textField {
-            case tfLuggage:
-                //Special case code to handle the phone number field
-                if string == "0" {
-                    if textField.text!.count == 0 {
-                       return false
-                    }
-                    return true
-                }
-
-           
-                //Special case code to handle the name field (if needed.)
-            default:
-            return true
-                //Shared code to handle the other fields the same way
-        }
+//        switch textField {
+//            case tfLuggage:
+//                //Special case code to handle the phone number field
+//                if string == "0" {
+//                    if textField.text!.count == 0 {
+//                       return false
+//                    }
+//                    return true
+//                }
+//
+//           
+//                //Special case code to handle the name field (if needed.)
+//            default:
+//            return true
+//                //Shared code to handle the other fields the same way
+//        }
         return true
     }
 }
