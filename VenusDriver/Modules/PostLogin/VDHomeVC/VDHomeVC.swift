@@ -999,11 +999,11 @@ extension VDHomeVC {
         }
         if UserModel.currentUser.login?.service_type == 1 {
             
-            completeRideLbl.text = "VYBA Driver Ride Completed"
+            completeRideLbl.text = "VYBA Captain Ride Completed"
         }
         else
         {
-            completeRideLbl.text = "VYBA Driver Delivery Completed"
+            completeRideLbl.text = "VYBA Captain Delivery Completed"
 
         }
 
@@ -2598,7 +2598,7 @@ extension VDHomeVC{
     func showNotificationAlert() {
         let alert = UIAlertController(
             title: "Notifications Disabled",
-            message: "Enable notifications for VYBA Driver Driver? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
+            message: "Enable notifications for VYBA Captain? Stay updated with ride requests, customer details, and important trip alerts to ensure seamless service.",
             preferredStyle: .alert
         )
 

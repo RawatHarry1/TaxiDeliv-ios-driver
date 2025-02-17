@@ -841,7 +841,7 @@
 		0C8ADE2A2A42BAA700BBA608 /* VDVehicleListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDVehicleListVC.swift; sourceTree = "<group>"; };
 		0C8ADE2D2A42F66E00BBA608 /* VDVehicleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VDVehicleCell.swift; sourceTree = "<group>"; };
 		0C8ADE2E2A42F66E00BBA608 /* VDVehicleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VDVehicleCell.xib; sourceTree = "<group>"; };
-		0CA596F22A2E38C5002D81AA /* VenusDriver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenusDriver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CA596F22A2E38C5002D81AA /* VYBA Captain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VYBA Captain.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA596F52A2E38C5002D81AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CA596F72A2E38C5002D81AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0CA596FC2A2E38C5002D81AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1851,7 +1851,7 @@
 		0CA596F32A2E38C5002D81AA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0CA596F22A2E38C5002D81AA /* VenusDriver.app */,
+				0CA596F22A2E38C5002D81AA /* VYBA Captain.app */,
 				0CD15F202A6AD65600123A1C /* SaloneRide.app */,
 			);
 			name = Products;
@@ -2583,9 +2583,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0CA596F12A2E38C5002D81AA /* VenusDriver */ = {
+		0CA596F12A2E38C5002D81AA /* VYBA Captain */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CA597092A2E38C7002D81AA /* Build configuration list for PBXNativeTarget "VenusDriver" */;
+			buildConfigurationList = 0CA597092A2E38C7002D81AA /* Build configuration list for PBXNativeTarget "VYBA Captain" */;
 			buildPhases = (
 				B1DA5DF13DE754275EE9FB38 /* [CP] Check Pods Manifest.lock */,
 				0CA596EE2A2E38C5002D81AA /* Sources */,
@@ -2598,7 +2598,7 @@
 			);
 			dependencies = (
 			);
-			name = VenusDriver;
+			name = "VYBA Captain";
 			packageProductDependencies = (
 				0C209C722A68FCD5005929BA /* Reachability */,
 				0C209C752A68FCFC005929BA /* Kingfisher */,
@@ -2606,7 +2606,7 @@
 				0C604FB02A92B097003D0581 /* NVActivityIndicatorView */,
 			);
 			productName = VenusDriver;
-			productReference = 0CA596F22A2E38C5002D81AA /* VenusDriver.app */;
+			productReference = 0CA596F22A2E38C5002D81AA /* VYBA Captain.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0CD15E5B2A6AD65600123A1C /* SaloneRide */ = {
@@ -2651,7 +2651,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0CA596ED2A2E38C5002D81AA /* Build configuration list for PBXProject "VenusDriver" */;
+			buildConfigurationList = 0CA596ED2A2E38C5002D81AA /* Build configuration list for PBXProject "VYBA Captain" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -2670,7 +2670,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0CA596F12A2E38C5002D81AA /* VenusDriver */,
+				0CA596F12A2E38C5002D81AA /* VYBA Captain */,
 				0CD15E5B2A6AD65600123A1C /* SaloneRide */,
 			);
 		};
@@ -3599,16 +3599,16 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
-				DEVELOPMENT_TEAM = 4RNEWLY2A4;
+				DEVELOPMENT_TEAM = 5L76HC6U9Q;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VenusDriver/Resources/Plist/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to upload files";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "VYBA Captain app wants you to enable location";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow to upload files";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -3644,16 +3644,16 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
-				DEVELOPMENT_TEAM = 4RNEWLY2A4;
+				DEVELOPMENT_TEAM = 5L76HC6U9Q;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=*]" = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VenusDriver/Resources/Plist/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to upload files";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "VYBA Captain app wants you to enable location";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow to upload files";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -3688,18 +3688,18 @@
 				CODE_SIGN_ENTITLEMENTS = SaloneRide.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 5L76HC6U9Q;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VenusDriver/SaloneRide/sloneInfo.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Venus Driver";
+				INFOPLIST_KEY_CFBundleDisplayName = "VYBA Captain";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to upload files";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "VYBA Captain app wants you to enable location";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow to upload files";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
@@ -3734,18 +3734,18 @@
 				CODE_SIGN_ENTITLEMENTS = SaloneRide.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 5L76HC6U9Q;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VenusDriver/SaloneRide/sloneInfo.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Venus Driver";
+				INFOPLIST_KEY_CFBundleDisplayName = "VYBA Captain";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow to upload files";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationUsageDescription = "VenusDriver app wants you to enable location";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "VenusDriver app wants you to enable location";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationUsageDescription = "VYBA Captain app wants you to enable location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "VYBA Captain app wants you to enable location";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow to upload files";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
@@ -3774,7 +3774,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0CA596ED2A2E38C5002D81AA /* Build configuration list for PBXProject "VenusDriver" */ = {
+		0CA596ED2A2E38C5002D81AA /* Build configuration list for PBXProject "VYBA Captain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CA597072A2E38C7002D81AA /* Debug */,
@@ -3783,7 +3783,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0CA597092A2E38C7002D81AA /* Build configuration list for PBXNativeTarget "VenusDriver" */ = {
+		0CA597092A2E38C7002D81AA /* Build configuration list for PBXNativeTarget "VYBA Captain" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CA5970A2A2E38C7002D81AA /* Debug */,
