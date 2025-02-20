@@ -62,10 +62,11 @@ extension VDEarningViewModel {
         })
     }
 
-    func fetchEarningList() {
+    func fetchEarningList(filter : Int? = 0,paymentMode : Int? = 0) {
         var paramToModifyVehicleDetails: JSONDictionary {
             var attributes = [String : Any]()
-            attributes["filter"] = 0
+            attributes["filter"] = filter
+            attributes["payment_mode"] = paymentMode
             return attributes
         }
 

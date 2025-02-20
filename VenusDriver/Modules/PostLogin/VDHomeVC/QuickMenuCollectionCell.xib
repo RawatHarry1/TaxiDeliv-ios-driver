@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFUIText-Semibold.ttf">
+            <string>SFUIText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="QuickMenuCollectionCell" customModule="SaloneRide" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="434" height="240"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="434" height="240"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2s-IT-2Sy">
+                        <rect key="frame" x="0.0" y="0.0" width="434" height="240"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5H-uX-Qhy">
+                                <rect key="frame" x="189" y="19.999999999999996" width="56" height="34.666666666666657"/>
+                                <color key="backgroundColor" name="buttonSelectedOrange"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34.5" id="BaU-TL-Xe1"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="$ 21">
+                                    <color key="baseForegroundColor" name="textColorWhite"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="17.25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6a-uL-Bgy">
+                                <rect key="frame" x="0.0" y="74.666666666666671" width="434" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="31H-6W-MgX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="21"/>
+                                <color key="textColor" name="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Ride Completed" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Z0-DY-afr">
+                                <rect key="frame" x="0.0" y="129.66666666666666" width="434" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31.329999999999998" id="JKq-ai-3Rm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="24"/>
+                                <color key="textColor" name="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEE EARNINGS ACTIVITY" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lRI-dB-peB">
+                                <rect key="frame" x="0.0" y="178.66666666666666" width="434" height="31.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31.329999999999998" id="O3H-M1-BDb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="17"/>
+                                <color key="textColor" name="buttonSelectedOrange"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRIP ID : #16792" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3P-N7-p6V">
+                                <rect key="frame" x="0.0" y="170.66666666666666" width="434" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="Ace-Pf-b58"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFUIText-Semibold" family="SF UI Text" pointSize="17"/>
+                                <color key="textColor" name="textColorGrey"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="av6-3i-oTy">
+                                <rect key="frame" x="80" y="179.33333333333334" width="274" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="j5H-uX-Qhy" firstAttribute="centerX" secondItem="a2s-IT-2Sy" secondAttribute="centerX" id="06n-ha-M6j"/>
+                            <constraint firstItem="T3P-N7-p6V" firstAttribute="top" secondItem="5Z0-DY-afr" secondAttribute="bottom" constant="10" id="3yk-iG-Ryk"/>
+                            <constraint firstItem="X6a-uL-Bgy" firstAttribute="top" secondItem="j5H-uX-Qhy" secondAttribute="bottom" constant="20" id="4Ss-nE-oJu"/>
+                            <constraint firstItem="j5H-uX-Qhy" firstAttribute="top" secondItem="a2s-IT-2Sy" secondAttribute="top" constant="20" id="89t-4E-X07"/>
+                            <constraint firstAttribute="height" constant="240" id="8mn-Qp-Gy9"/>
+                            <constraint firstAttribute="trailing" secondItem="lRI-dB-peB" secondAttribute="trailing" id="ABT-Qy-ijA"/>
+                            <constraint firstItem="T3P-N7-p6V" firstAttribute="leading" secondItem="a2s-IT-2Sy" secondAttribute="leading" id="Ei8-jp-nFT"/>
+                            <constraint firstItem="av6-3i-oTy" firstAttribute="leading" secondItem="a2s-IT-2Sy" secondAttribute="leading" constant="80" id="LgP-dw-p79"/>
+                            <constraint firstItem="av6-3i-oTy" firstAttribute="centerY" secondItem="lRI-dB-peB" secondAttribute="centerY" id="N2J-r0-dop"/>
+                            <constraint firstAttribute="trailing" secondItem="T3P-N7-p6V" secondAttribute="trailing" id="QeJ-Af-tfn"/>
+                            <constraint firstAttribute="trailing" secondItem="5Z0-DY-afr" secondAttribute="trailing" id="Slc-Y2-8j6"/>
+                            <constraint firstItem="5Z0-DY-afr" firstAttribute="top" secondItem="X6a-uL-Bgy" secondAttribute="bottom" constant="20" id="T4S-X4-Xpi"/>
+                            <constraint firstItem="lRI-dB-peB" firstAttribute="top" secondItem="T3P-N7-p6V" secondAttribute="bottom" constant="8" id="VBf-TA-BCz"/>
+                            <constraint firstItem="5Z0-DY-afr" firstAttribute="leading" secondItem="a2s-IT-2Sy" secondAttribute="leading" id="XHQ-1B-nxu"/>
+                            <constraint firstItem="X6a-uL-Bgy" firstAttribute="leading" secondItem="a2s-IT-2Sy" secondAttribute="leading" id="YTo-No-h25"/>
+                            <constraint firstAttribute="trailing" secondItem="av6-3i-oTy" secondAttribute="trailing" constant="80" id="ax2-oE-sUT"/>
+                            <constraint firstItem="lRI-dB-peB" firstAttribute="leading" secondItem="a2s-IT-2Sy" secondAttribute="leading" id="kkR-Ms-9hg"/>
+                            <constraint firstAttribute="trailing" secondItem="X6a-uL-Bgy" secondAttribute="trailing" id="qgb-po-Wuo"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="a2s-IT-2Sy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Dox-tT-8Nh"/>
+                <constraint firstItem="a2s-IT-2Sy" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="HMM-F1-zDg"/>
+                <constraint firstAttribute="bottom" secondItem="a2s-IT-2Sy" secondAttribute="bottom" id="KPb-gs-9fh"/>
+                <constraint firstAttribute="trailing" secondItem="a2s-IT-2Sy" secondAttribute="trailing" id="OaC-Nc-KU7"/>
+            </constraints>
+            <size key="customSize" width="434" height="240"/>
+            <connections>
+                <outlet property="btnEarnig" destination="j5H-uX-Qhy" id="chB-eL-YOb"/>
+                <outlet property="btnSeeEarning" destination="av6-3i-oTy" id="lJm-wD-xAa"/>
+                <outlet property="heightTripId" destination="Ace-Pf-b58" id="R2Q-2r-Br4"/>
+                <outlet property="lblDay" destination="X6a-uL-Bgy" id="b1n-Q1-XaT"/>
+                <outlet property="lblEarningActivity" destination="lRI-dB-peB" id="x8Z-1p-8cA"/>
+                <outlet property="lblRides" destination="5Z0-DY-afr" id="XB6-NG-dPY"/>
+                <outlet property="tripID" destination="T3P-N7-p6V" id="jYH-x6-XWs"/>
+            </connections>
+            <point key="canvasLocation" x="287.02290076335879" y="34.507042253521128"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="buttonSelectedOrange">
+            <color red="0.0" green="0.23529411764705882" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="textColor">
+            <color red="0.10199999809265137" green="0.093999996781349182" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textColorGrey">
+            <color red="0.65499997138977051" green="0.65499997138977051" blue="0.65499997138977051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textColorWhite">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

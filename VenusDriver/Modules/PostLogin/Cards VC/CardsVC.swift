@@ -25,7 +25,7 @@ class CardsVC: UIViewController {
     var selectedIndex = -1
     var emptyObj : GetCardData?
     var didPressSelecrCard: ((GetCardData)->Void)?
-    var comesFromAccount = false
+    var comesFromAccount = true
    var sideMenuHide = false
     
     static func create() -> CardsVC {
@@ -172,8 +172,13 @@ extension CardsVC: UITableViewDelegate,UITableViewDataSource{
         
         if comesFromAccount == true{
             cell.imgViewRadio.isHidden = true
+            cell.imgDelete.isHidden = false
+            cell.btnDelete.isHidden = false
         }else{
             cell.imgViewRadio.isHidden = false
+            cell.imgDelete.isHidden = true
+            cell.btnDelete.isHidden = true
+
         }
         
         if emptyObj?.id == obj?.id{
@@ -221,9 +226,11 @@ extension CardsVC: UITableViewDelegate,UITableViewDataSource{
 //   }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        emptyObj = nil
-        selectedIndex = indexPath.row
-        self.tblViewCards.reloadData()
+        if comesFromAccount == false{
+            emptyObj = nil
+            selectedIndex = indexPath.row
+            self.tblViewCards.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

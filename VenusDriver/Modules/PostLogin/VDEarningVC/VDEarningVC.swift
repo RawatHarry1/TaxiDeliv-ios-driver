@@ -22,6 +22,7 @@ class VDEarningVC: VDBaseVC {
     @IBOutlet weak var totalEarningLbl: UILabel!
     @IBOutlet weak var noDataLbl: UILabel!
 
+    @IBOutlet weak var lblEarningType: UILabel!
     // MARK: -> Variable
     var screenType = 0
     var earningViewModel: VDEarningViewModel = VDEarningViewModel()
@@ -57,7 +58,13 @@ class VDEarningVC: VDBaseVC {
         } else {
             earnningViewSelected()
         }
+        pickerView.delegate = self
     }
+    var pickerOptions = ["All", "Daily", "Weekly"]
+    var pickerOptionsOnOff = ["All", "Cash", "Online"]
+    var selectedOptionEarn: String?
+    var selectedOptionPayment: String?
+    var selectedPickerEarn = true
 
     func earnningViewSelected() {
         filterView.isHidden = false
@@ -83,11 +90,37 @@ class VDEarningVC: VDBaseVC {
         earningViewModel.fetchBookingHistory()
     }
 
+    @IBOutlet weak var lblPaymentMode: UILabel!
+    @IBOutlet weak var viewPicker: UIView!
+    @IBOutlet weak var pickerView: UIPickerView!
+    @IBAction func btnEarningType(_ sender: Any) {
+        self.selectedPickerEarn = true
+        self.pickerView.reloadAllComponents()
+        self.viewPicker.isHidden = false
+        
+    }
     @IBAction func btnSideMenu(_ sender: UIButton) {
         guard let sideMenu = sideMenuController else { return }
         sideMenu.showLeftView()
     }
 
+    @IBAction func pickerDone(_ sender: UIButton) {
+        self.viewPicker.isHidden = true
+        let row = pickerView.selectedRow(inComponent: 0)
+        if selectedPickerEarn == true
+        {
+            selectedOptionEarn = pickerOptions[row]
+            lblEarningType.text = selectedOptionEarn
+            earningViewModel.fetchEarningList(filter: row)
+        }
+        else
+        {
+            selectedOptionPayment = pickerOptionsOnOff[row]
+            lblPaymentMode.text = selectedOptionPayment
+            earningViewModel.fetchEarningList(paymentMode: row)
+
+        }
+    }
     @IBAction func btnhideFilter(_ sender: UIButton) {
         filterOptionsView.isHidden = true
         hideFilterBtn.isHidden = true
@@ -104,6 +137,12 @@ class VDEarningVC: VDBaseVC {
         self.earningTableView.reloadData()
     }
 
+    @IBAction func btnPaymentModel(_ sender: UIButton) {
+        self.selectedPickerEarn = false
+        self.pickerView.reloadAllComponents()
+        self.viewPicker.isHidden = false
+        
+    }
     @IBAction func bookingsBrn(_ sender: UIButton) {
         screenType = 1
         bookingViewSelected()
@@ -157,5 +196,19 @@ extension VDEarningVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+}
+
+extension VDEarningVC : UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return selectedPickerEarn == true ? pickerOptions.count : pickerOptionsOnOff.count    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return selectedPickerEarn == true ?  pickerOptions[row] : pickerOptionsOnOff[row]
     }
 }

@@ -16,6 +16,11 @@ var navigateToChatOnce = false
 var navigateToChat = false
 
 class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
+    @IBOutlet weak var btnClose: UIButton!
+    
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var collViewQuickMenu: UICollectionView!
+    @IBOutlet weak var btnQuick: UIButton!
     func feedbackSuccess() {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1)
@@ -26,7 +31,15 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
         
     }
     
-   
+    @IBAction func btnQuickMenuAct(_ sender: UIButton) {
+        if  self.availabilityButton.isSelected == true
+        {
+            self.btnClose.isHidden = false
+            self.viewQuickMenu.isHidden = false
+            self.pageControl.isHidden = false
+        }
+    }
+    
     @IBOutlet weak var rentalView: UIView!
     @IBOutlet weak var rentalTimeLbl: UILabel!
     @IBOutlet weak var lblRental: UILabel!
@@ -111,7 +124,8 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
     var travelledGmsPath : GMSPath?
     var completePolyline : GMSPolyline?
     var travelledPolyline : GMSPolyline?
-//    var infoWindowETA : MarkerInfoView?
+ 
+    //    var infoWindowETA : MarkerInfoView?
     var requestedPathCoordinates : CLLocationCoordinate2D?
     var polyLinePath = ""
     var isStartTrip = false
@@ -142,10 +156,16 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
         return obj
     }
     var inaStep = false
+    @IBOutlet weak var viewQuickMenu: UIView!
+    @IBAction func btnCloseAct(_ sender: UIButton) {
+        self.btnClose.isHidden = true
+        self.viewQuickMenu.isHidden = true
+        self.pageControl.isHidden = true
+    }
     override func initialSetup() {
         callIndidLoad()
         callBacks()
-       
+        
       //  let obj = ClientModel.currentClientData
         
         NotificationCenter.default.addObserver(self, selector: #selector(appWillEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -281,6 +301,7 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
       }
     var countMain = 0;
     var feedbackOpen = false
+    
     override func viewWillAppear(_ animated: Bool) {
         feedbackOpen = false
         self.navigationController?.navigationBar.isHidden = true
@@ -380,8 +401,57 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
         }
 
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-    }
+        collViewQuickMenu.register(UINib(nibName: "QuickMenuCollectionCell", bundle: nil), forCellWithReuseIdentifier: "QuickMenuCollectionCell")
+        collViewQuickMenu.register(UINib(nibName: "UpcomingScheduleCell", bundle: nil), forCellWithReuseIdentifier: "UpcomingScheduleCell")
 
+        if UserModel.currentUser.login?.operator_service_config?.quickMenuSettings ?? 0 == 1
+        {
+            btnQuick.isHidden = false   
+            self.btnQuick.setTitle((UserModel.currentUser.login?.currency_symbol ?? "") + " " +  Double(  UserModel.currentUser.login?.quick_menu_data?.overallEarning?.totalEarnings ?? 0).toString , for: .normal)
+        }
+        else
+        {
+            btnQuick.isHidden = true
+        }
+        collViewQuickMenu.delegate = self
+        viewQuickMenu.layer.cornerRadius = 10
+        viewQuickMenu.layer.shadowColor = UIColor.black.cgColor
+        viewQuickMenu.layer.shadowOpacity = 0.1
+        viewQuickMenu.layer.shadowOffset = CGSize.zero
+        viewQuickMenu.layer.shadowRadius = 4
+        viewQuickMenu.clipsToBounds = false
+        addValuesToQuickMenuArray()
+    }
+    var quickMenuArray = [String].init()
+    func addValuesToQuickMenuArray()
+    {
+        quickMenuArray = []
+        if let lastRidedata =  UserModel.currentUser.login?.quick_menu_data?.lastRideData
+        {
+            quickMenuArray.append("LastRide")
+        }
+        if let lastTodaydata =  UserModel.currentUser.login?.quick_menu_data?.lastRideData
+        {
+            quickMenuArray.append("Today")
+        }
+        if let upcomingdata =  UserModel.currentUser.login?.quick_menu_data?.upcomingScheduleRide
+        {
+            quickMenuArray.append("Upcoming")
+        }
+        if quickMenuArray.count > 0
+        {
+            pageControl.numberOfPages = quickMenuArray.count
+            pageControl.currentPage = 0
+            pageControl.hidesForSinglePage = true
+        }
+       
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let pageIndex = Int(collViewQuickMenu.contentOffset.x / collViewQuickMenu.frame.width)
+    pageControl.currentPage = pageIndex
+
+
+       }
     override func viewDidLayoutSubviews() {
         newRideReqView.addShadowView(color: VDColors.buttonBorder.color)
         newRideReqView.roundCorner([.topLeft, .topRight], radius: 20)
@@ -569,14 +639,65 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
                 else
                 {
                     if UserModel.currentUser.login?.service_type == 1 {
-                        if UserModel.currentUser.login?.services_config?[0].config?.enableLuggageFare == 1
+ //                       if UserModel.currentUser.login?.services_config?[0].config?.enableLuggageFare == 1
+//                        {
+//                            
+//                            let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
+//                            let vc = storyboard.instantiateViewController(withIdentifier: "LuggageVC") as!  LuggageVC
+//                            vc.modalPresentationStyle = .overCurrentContext
+//                            vc.luggageEntered = {
+//                                luggageCount in
+//                                if UserModel.currentUser.login?.services_config?[0].config?.authenticationWithOTP == 1
+//                                {
+//                                    var attributes = [String: Any]()
+//                            
+//                                    attributes["user_id"] = sharedAppDelegate.notficationDetails?.customer_id
+//                                    attributes["engagement_id"] = sharedAppDelegate.notficationDetails?.trip_id
+//                                    self.homeViewModel.generateRideEndOtp(attributes,response: { [weak self] (result) in
+//                                        switch result {
+//                                        case .success(let data):
+//                                            print("otp")
+//
+//                                            self?.endRideWithOTP(otp: "",luggageCount: luggageCount)
+//                                        case .failure(let error):
+//                                            
+//                                            printDebug(error.localizedDescription)
+//                                            SKToast.show(withMessage: error.localizedDescription)
+//                                        }
+//                                    })
+//
+//                                    
+//                                }
+//                                else
+//                                {
+//                                    var attributes = [String: Any]()
+//                                    if let locationCreds = LocationTracker.shared.lastLocation {
+//                                        attributes["dropLatitude"] = locationCreds.coordinate.latitude
+//                                        attributes["dropLongitude"] = locationCreds.coordinate.longitude
+//                                    }
+//                                    attributes["customerId"] = sharedAppDelegate.notficationDetails?.customer_id
+//                                    attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
+//                                    attributes["rideTime"] = 12
+//                                    attributes["waitTime"] = 3
+//                                    attributes["luggage_count"] = luggageCount
+//                                    self.homeViewModel.endRideApi(attributes)
+//                                }
+//                            }
+//                            
+//                            self.present(vc, animated: true)
+//
+//                       
+//                        }
+                        if UserModel.currentUser.login?.services_config?[0].config?.enable_persons_fare == 1
                         {
                             
                             let storyboard = UIStoryboard(name: "PostLogin", bundle: nil)
                             let vc = storyboard.instantiateViewController(withIdentifier: "LuggageVC") as!  LuggageVC
                             vc.modalPresentationStyle = .overCurrentContext
+                            vc.forPeople = true
+                            vc.maxPeople = UserModel.currentUser.login?.services_config?[0].max_people ?? 1
                             vc.luggageEntered = {
-                                luggageCount in
+                                peopleCount in
                                 if UserModel.currentUser.login?.services_config?[0].config?.authenticationWithOTP == 1
                                 {
                                     var attributes = [String: Any]()
@@ -588,7 +709,7 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
                                         case .success(let data):
                                             print("otp")
 
-                                            self?.endRideWithOTP(otp: "",luggageCount: luggageCount)
+                                            self?.endRideWithOTP(otp: "",personCount: peopleCount)
                                         case .failure(let error):
                                             
                                             printDebug(error.localizedDescription)
@@ -609,7 +730,7 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
                                     attributes["tripId"] = sharedAppDelegate.notficationDetails?.trip_id
                                     attributes["rideTime"] = 12
                                     attributes["waitTime"] = 3
-                                    attributes["luggage_count"] = luggageCount
+                                    attributes["persons_count"] = peopleCount
                                     self.homeViewModel.endRideApi(attributes)
                                 }
                             }
@@ -710,7 +831,7 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
                
             }
         }
-    func endRideWithOTP(otp : String,luggageCount : Int? = 0){
+    func endRideWithOTP(otp : String,luggageCount : Int? = nil,personCount : Int? = nil){
         let vc = VDOtpVC.create()
         vc.rideCompleteOtpCallBack = { otp in
             var attributes = [String: Any]()
@@ -723,9 +844,14 @@ class VDHomeVC: VDBaseVC, SlideToActionButtonDelegate, feedbackSucess {
             attributes["rideTime"] = 12
             attributes["waitTime"] = 3
             attributes["ride_end_otp"] = otp
-            if luggageCount != 0
+            if luggageCount != nil
             {
                 attributes["luggage_count"] = luggageCount
+
+            }
+            if personCount != nil
+            {
+                attributes["persons_count"] = luggageCount
 
             }
             self.homeViewModel.endRideApi(attributes)
@@ -3009,4 +3135,103 @@ extension VDHomeVC{
         return coordinates
     }
 
+}
+extension VDHomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+      
+       
+        return quickMenuArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if quickMenuArray[indexPath.row] == "Today"
+        {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuickMenuCollectionCell", for: indexPath) as! QuickMenuCollectionCell
+            cell.lblDay.text = "TODAY"
+            cell.btnEarnig.setTitle((UserModel.currentUser.login?.currency_symbol ?? "") + " " +  Double(  UserModel.currentUser.login?.quick_menu_data?.last24HrsData?.totalEarnings ?? 0).toString, for: .normal)
+            cell.lblRides.text = String(describing:  UserModel.currentUser.login?.quick_menu_data?.last24HrsData?.totalCompletedRides ?? 0) + (UserModel.currentUser.login?.quick_menu_data?.last24HrsData?.totalCompletedRides == 0 || UserModel.currentUser.login?.quick_menu_data?.last24HrsData?.totalCompletedRides == 1 ?  " Ride Completed" : " Rides Completed")
+            cell.heightTripId.constant = 0
+            cell.tripID.isHidden = true
+            
+            cell.btnSeeEarning.addTarget(self, action: #selector(seeEarningBtn), for: .touchUpInside)
+            return cell
+        }
+        else if quickMenuArray[indexPath.row] == "LastRide"
+        {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "QuickMenuCollectionCell", for: indexPath) as! QuickMenuCollectionCell
+            cell.lblDay.text = "LAST TRIP"
+            cell.btnEarnig.setTitle((UserModel.currentUser.login?.currency_symbol ?? "") + " " +  Double( UserModel.currentUser.login?.quick_menu_data?.lastRideData?.earnings ?? 0).toString, for: .normal)
+            cell.lblRides.text = String(describing:  UserModel.currentUser.login?.quick_menu_data?.last24HrsData?.totalCompletedRides ?? 0) + (UserModel.currentUser.login?.quick_menu_data?.last24HrsData?.totalCompletedRides == 0 || UserModel.currentUser.login?.quick_menu_data?.last24HrsData?.totalCompletedRides == 1 ?  " Ride Completed" : " Rides Completed")
+            cell.heightTripId.constant = 28
+            cell.tripID.isHidden = false
+            cell.lblRides.text = ConvertDateFormater(date: UserModel.currentUser.login?.quick_menu_data?.lastRideData?.dropTime ?? "")
+            cell.tripID.text = "Trip ID : #" + String(describing:  UserModel.currentUser.login?.quick_menu_data?.lastRideData?.rideId ?? 0)
+            cell.btnSeeEarning.addTarget(self, action: #selector(seeEarningBtn), for: .touchUpInside)
+
+            return cell
+        }
+        else if quickMenuArray[indexPath.row] == "Upcoming"
+        {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpcomingScheduleCell", for: indexPath) as! UpcomingScheduleCell
+      
+            cell.datelbl.text = ConvertDateFormater(date: UserModel.currentUser.login?.quick_menu_data?.upcomingScheduleRide?.pickupTime ?? "")
+            cell.rateLbl.text = (UserModel.currentUser.login?.currency_symbol ?? "") + " " +   (UserModel.currentUser.login?.quick_menu_data?.upcomingScheduleRide?.fare ?? "0") 
+//            cell.tripID.text = "Trip ID : #" + String(describing:  UserModel.currentUser.login?.quick_menu_data?.lastRideData?.rideId ?? 0)
+//            cell.btnSeeEarning.addTarget(self, action: #selector(seeEarningBtn), for: .touchUpInside)
+            cell.imageLbl.sd_setImage(with: URL(string: UserModel.currentUser.login?.quick_menu_data?.upcomingScheduleRide?.googleImage
+                                                ?? ""), placeholderImage: UIImage(named: "rideDemo"), options: [.refreshCached, .highPriority], completed: nil)
+
+            return cell
+        }
+        return UICollectionViewCell.init()
+    }
+    
+    @objc func seeEarningBtn()
+    {
+        guard let sideMenuController = sideMenuController else { return }
+        sideMenuController.rootViewController = VDEarningVC.create(0)
+
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSizeMake(UIScreen.main.bounds.width - 40,  collectionView.frame.height)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if scrollView == collectionViewBanner{
+//            let pageIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
+//            currentPageBanner = pageIndex
+//            bannerPageControl.currentPage = pageIndex
+//        }
+//else{
+//    let pageIndex = Int(scrollView.contentOffset.x / scrollView.frame.width)
+//    currentPage = pageIndex
+//    pageControl.currentPage = pageIndex
+//
+//}
+//       }
+
+//       func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//           if scrollView == collectionViewBanner{
+//               stopAutoScrollBanner()
+//           }
+//           else{
+//               stopAutoScroll() // Stop auto-scroll when user starts dragging
+//           }
+//       }
+
+//       func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//           if scrollView == collectionViewBanner{
+//               startAutoScrollBanner() // Restart auto-scroll after user stops dragging
+//           }
+//           else{
+//               startAutoScroll() // Restart auto-scroll after user stops dragging
+//           }
+//       }
+    
 }

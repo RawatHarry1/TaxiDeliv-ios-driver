@@ -133,6 +133,7 @@ class VDWalletVC: VDBaseVC {
             self.amount = amount
             let vc = CardsVC.create()
             vc.sideMenuHide = true
+            vc.comesFromAccount = false
             vc.modalPresentationStyle = .overFullScreen
             
             vc.didPressSelecrCard = { selectedCardData in

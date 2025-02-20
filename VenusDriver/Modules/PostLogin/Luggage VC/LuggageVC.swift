@@ -9,12 +9,16 @@ import UIKit
 
 class LuggageVC: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var lblHeading: UILabel!
     @IBOutlet weak var tfLuggage: UITextField!
     var luggageEntered: ((Int) -> Void)?
   //  var appendedArr = [String]()
+    var forPeople = false
+    var maxPeople = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         tfLuggage.text = "0"
+        lblHeading.text = forPeople == true ? "Enter No. of People" : "Enter Luggage Count"
         tfLuggage.delegate = self
     }
     
@@ -24,13 +28,19 @@ class LuggageVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func btnConfirmAction(_ sender: Any) {
       
-        if tfLuggage.text?.isEmpty == true || tfLuggage.text == "0"  {
+        if tfLuggage.text?.isEmpty == true  {
         
-                self.showAlert(withTitle: "Alert", message: "Please Upload Images!!", on: self)
+                self.showAlert(withTitle: "Alert", message: "Please Enter Value!", on: self)
 
             
            // SKToast.show(withMessage: "Please Upload Images!!")
-        }else{
+        }
+        else if (Int(tfLuggage.text!) ?? 0) > maxPeople
+        {
+            self.showAlert(withTitle: "Alert", message: "Please Enter Value less than or equal to \(maxPeople)", on: self)
+
+        }
+        else{
             self.dismiss(animated: true) { [self] in
                 self.luggageEntered?(Int(tfLuggage.text!) ?? 0)
             }

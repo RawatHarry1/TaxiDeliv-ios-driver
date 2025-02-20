@@ -571,6 +571,10 @@
 		4F1557D6F752152A793303BB /* Pods_VenusDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4646EDF69101DF2D03A7CA7E /* Pods_VenusDriver.framework */; };
 		6FF438039530F1B147E201A2 /* Pods_VenusDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4646EDF69101DF2D03A7CA7E /* Pods_VenusDriver.framework */; };
 		A0E8A714081FA83C2C78A645 /* Pods_SaloneRide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CFAB59E297552D8E5EABC69 /* Pods_SaloneRide.framework */; };
+		BD3174A32D65B35000E1BDE7 /* QuickMenuCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3174A02D65AFFA00E1BDE7 /* QuickMenuCollectionCell.xib */; };
+		BD3174A42D65B35000E1BDE7 /* QuickMenuCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD31749F2D65AFFA00E1BDE7 /* QuickMenuCollectionCell.swift */; };
+		BD3174A92D65E74300E1BDE7 /* UpcomingScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD3174A62D65E58000E1BDE7 /* UpcomingScheduleCell.xib */; };
+		BD3174AA2D65E74300E1BDE7 /* UpcomingScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3174A52D65E58000E1BDE7 /* UpcomingScheduleCell.swift */; };
 		BD577F342D5E068800DB2E89 /* LuggageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD577F322D5E052000DB2E89 /* LuggageVC.swift */; };
 		BDA3181B2D38EB2E00EBA84B /* SlideToActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA318192D38E97F00EBA84B /* SlideToActionButton.swift */; };
 		BDC4FF7A2D547BB400FB26A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BDC4FF782D547BAF00FB26A0 /* GoogleService-Info.plist */; };
@@ -948,6 +952,10 @@
 		7CFAB59E297552D8E5EABC69 /* Pods_SaloneRide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SaloneRide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		821362B34291289AD6706CA7 /* Pods-SaloneRide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaloneRide.debug.xcconfig"; path = "Target Support Files/Pods-SaloneRide/Pods-SaloneRide.debug.xcconfig"; sourceTree = "<group>"; };
 		B39F1E5CBDB467DD5506C603 /* Pods-SaloneRide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaloneRide.release.xcconfig"; path = "Target Support Files/Pods-SaloneRide/Pods-SaloneRide.release.xcconfig"; sourceTree = "<group>"; };
+		BD31749F2D65AFFA00E1BDE7 /* QuickMenuCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickMenuCollectionCell.swift; sourceTree = "<group>"; };
+		BD3174A02D65AFFA00E1BDE7 /* QuickMenuCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickMenuCollectionCell.xib; sourceTree = "<group>"; };
+		BD3174A52D65E58000E1BDE7 /* UpcomingScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingScheduleCell.swift; sourceTree = "<group>"; };
+		BD3174A62D65E58000E1BDE7 /* UpcomingScheduleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingScheduleCell.xib; sourceTree = "<group>"; };
 		BD577F322D5E052000DB2E89 /* LuggageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuggageVC.swift; sourceTree = "<group>"; };
 		BDA318192D38E97F00EBA84B /* SlideToActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideToActionButton.swift; sourceTree = "<group>"; };
 		BDC4FF782D547BAF00FB26A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -1512,6 +1520,10 @@
 				0CBBB0DE2A35CC0100F1EDD0 /* VDHomeVC+MapView.swift */,
 				0CBBB0E02A35CCDA00F1EDD0 /* LocationTracker.swift */,
 				BDA318192D38E97F00EBA84B /* SlideToActionButton.swift */,
+				BD3174A52D65E58000E1BDE7 /* UpcomingScheduleCell.swift */,
+				BD3174A62D65E58000E1BDE7 /* UpcomingScheduleCell.xib */,
+				BD31749F2D65AFFA00E1BDE7 /* QuickMenuCollectionCell.swift */,
+				BD3174A02D65AFFA00E1BDE7 /* QuickMenuCollectionCell.xib */,
 			);
 			path = VDHomeVC;
 			sourceTree = "<group>";
@@ -2829,6 +2841,7 @@
 				0CD15ED62A6AD65600123A1C /* proximanovaexcn-thinit.otf in Resources */,
 				0CD15ED72A6AD65600123A1C /* Proxima Nova Extrabold.otf in Resources */,
 				0CD15ED82A6AD65600123A1C /* Documents.storyboard in Resources */,
+				BD3174A32D65B35000E1BDE7 /* QuickMenuCollectionCell.xib in Resources */,
 				0CD15ED92A6AD65600123A1C /* proximanovaexcn-blackit.otf in Resources */,
 				0CD15EDA2A6AD65600123A1C /* proximanovacond-black.otf in Resources */,
 				0CD15EDB2A6AD65600123A1C /* proximanovacond-extraboldit.otf in Resources */,
@@ -2889,6 +2902,7 @@
 				0CD15F062A6AD65600123A1C /* SFUIText-Regular.ttf in Resources */,
 				0CD15F082A6AD65600123A1C /* proximanova-thin.otf in Resources */,
 				0CD15F092A6AD65600123A1C /* Ratings.storyboard in Resources */,
+				BD3174A92D65E74300E1BDE7 /* UpcomingScheduleCell.xib in Resources */,
 				0CD15F0A2A6AD65600123A1C /* Prelogin.storyboard in Resources */,
 				0CD15F0B2A6AD65600123A1C /* Main.storyboard in Resources */,
 				0CC23AB12A6FAD3600343306 /* VDElectricListCell.xib in Resources */,
@@ -3452,11 +3466,13 @@
 				0C01A5CE2A6E917000B98ADF /* VDCreateProfileViewModel.swift in Sources */,
 				CFCC5E232CE4726000E4C1B6 /* PackageListTblCell.swift in Sources */,
 				0CD15EBD2A6AD65600123A1C /* IQTitleBarButtonItem.swift in Sources */,
+				BD3174AA2D65E74300E1BDE7 /* UpcomingScheduleCell.swift in Sources */,
 				1B34D5A52D3423D5009F0D0F /* PackageThreeCell.swift in Sources */,
 				CF704C982D096EB800D83A3B /* RaiseTicketVC.swift in Sources */,
 				0CED86D02A7A6543007959D6 /* VDWalletTCPopUp.swift in Sources */,
 				0C01A5BD2A6DBCE000B98ADF /* StringConstant.swift in Sources */,
 				0CED86F92A7AD4A7007959D6 /* UIIMage_Extension.swift in Sources */,
+				BD3174A42D65B35000E1BDE7 /* QuickMenuCollectionCell.swift in Sources */,
 				CF1038522D0957F600682919 /* MapSettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

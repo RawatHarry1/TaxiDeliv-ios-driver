@@ -157,6 +157,8 @@ struct LoginModel : Codable {
     var enabled_service : Int?
     var support_ticket_reasons : [String]?
     var services_config : [Service]?
+    var operator_service_config: OperatorServiceConfig?
+    var quick_menu_data : QuickMenuData?
     
     enum CodingKeys: String, CodingKey {
         case stripeCredentials = "stripeCredentials"
@@ -207,6 +209,8 @@ struct LoginModel : Codable {
         case enabled_service = "enabled_service"
         case support_ticket_reasons = "support_ticket_reasons"
         case services_config = "services_config"
+        case operator_service_config = "operator_service_config"
+        case quick_menu_data = "quick_menu_data"
     }
 
     init(from decoder: Decoder) throws {
@@ -267,6 +271,8 @@ struct LoginModel : Codable {
         enabled_service = try values.decodeIfPresent(Int.self, forKey: .enabled_service)
         support_ticket_reasons = try values.decodeIfPresent([String].self, forKey: .support_ticket_reasons)
         services_config = try values.decodeIfPresent([Service].self, forKey: .services_config)
+        operator_service_config = try values.decodeIfPresent(OperatorServiceConfig.self, forKey: .operator_service_config)
+        quick_menu_data = try values.decodeIfPresent(QuickMenuData.self, forKey: .quick_menu_data)
     }
 
 
@@ -319,6 +325,8 @@ struct LoginModel : Codable {
         service_type = nil
         delivery_cancellation_reasons = nil
         services_config = nil
+        operator_service_config = nil
+        quick_menu_data = nil
     }
 }
 
@@ -486,6 +494,8 @@ struct ServicesConfig: Codable {
     let minimumDistance: Int?
     let rideOnRide: Int?
     let tourVehicle: Int?
+    let enable_persons_fare : Int?
+    let fare_per_person : Int?
     
     enum CodingKeys: String, CodingKey {
         case authenticationWithOTP = "authentication_with_otp"
@@ -496,6 +506,8 @@ struct ServicesConfig: Codable {
         case minimumDistance = "minimum_distance"
         case rideOnRide = "ride_on_ride"
         case tourVehicle = "tour_vehicle"
+        case enable_persons_fare = "enable_persons_fare"
+        case fare_per_person = "fare_per_person"
     }
 }
 
@@ -503,11 +515,13 @@ struct Service: Codable {
     let config: ServicesConfig?
     let regionID: Int?
     let vehicleType: Int?
+    let max_people : Int?
     
     enum CodingKeys: String, CodingKey {
         case config
         case regionID = "region_id"
         case vehicleType = "vehicle_type"
+        case max_people = "max_people"
     }
 }
 
@@ -539,3 +553,83 @@ struct popupData:Codable{
     var is_force : Int?
     var popup_text : String?
 }
+struct OperatorServiceConfig: Codable {
+    var customerImageRequired: Int?
+    var earnings: Int?
+    var quickMenuSettings: Int?
+    var recentRides: Int?
+    var scheduleRide: Int?
+    var scheduledRidePayment: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case customerImageRequired = "customer_image_required"
+        case earnings
+        case quickMenuSettings = "quick_menu_settings"
+        case recentRides = "recent_rides"
+        case scheduleRide = "schedule_ride"
+        case scheduledRidePayment = "scheduled_ride_payment"
+    }
+}
+
+
+struct QuickMenuData: Codable {
+    var last24HrsData: Last24HrsData?
+    var lastRideData: LastRideData?
+    var overallEarning: OverallEarning?
+    var upcomingScheduleRide: UpcomingScheduleRide?
+}
+
+struct Last24HrsData: Codable {
+    var totalCompletedRides: Int?
+    var totalEarnings: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case totalCompletedRides = "total_completed_rides"
+        case totalEarnings = "total_earnings"
+    }
+}
+
+struct LastRideData: Codable {
+    var createdTime: String?
+    var dropTime: String?
+    var earnings: Int?
+    var rideId: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case createdTime = "created_time"
+        case dropTime = "drop_time"
+        case earnings
+        case rideId = "ride_id"
+    }
+}
+
+struct OverallEarning: Codable {
+    var totalEarnings: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case totalEarnings = "total_earnings"
+    }
+}
+
+
+
+struct UpcomingScheduleRide: Codable {
+    let customerId: Int?
+    let dropLocation: String?
+    let fare: String?
+    let googleImage: String?
+    let pickupLocation: String?
+    let pickupTime: String?
+    let scheduleId: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case customerId = "customer_id"
+        case dropLocation = "drop_location"
+        case fare
+        case googleImage = "google_image"
+        case pickupLocation = "pickup_location"
+        case pickupTime = "pickup_time"
+        case scheduleId = "schedule_id"
+    }
+}
+
